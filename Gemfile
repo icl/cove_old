@@ -5,6 +5,7 @@ gem 'rails', '3.0.3'
 gem 'simple_form'
 
 gem "resque", :require => "resque/server"
+
 #gem "SystemTimer"
 #gem 'delayed_paperclip', :git => #'git://github.com/jstorimer/delayed_paperclip.git', :branch => 'rails3'
 
@@ -19,7 +20,7 @@ gem 'narray'
 	gem 'fakefs', :require => 'fakefs/safe'
 	gem 'rails3-generators'
 	gem "rspec"
-	gem "rspec-rails", ">= 2.0.0.beta.19"
+	gem "rspec-rails", "~> 2.4.0"
 	gem "capybara"
 	gem "cucumber"
 	gem "database_cleaner"
@@ -27,5 +28,13 @@ gem 'narray'
 	gem "nokogiri"
 	gem "autotest"
 	gem 'autotest-rails'
-	gem 'ruby-debug19'
+	gem 'ruby-debug19', :platforms => :mri_19
+	
+  # additional testing gems
+	gem "thin"
+	gem 'mocha'
+	gem 'bourne'
+	gem 'timecop'
+	gem 'shoulda'
+	
 end
