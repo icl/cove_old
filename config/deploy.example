@@ -1,0 +1,22 @@
+set :application, "cove"
+set :domain,      "domain to deploy to"
+set :repository,  "git@github.com:icl/cove.git"
+set :deploy_to,   "path to deploy to"
+set :user, "user name to deploy with"
+set :scm, :git
+
+role :app, domain
+role :web, domain
+role :db,  domain, :primary => true
+
+# If you are using Passenger mod_rails uncomment this:
+# if you're still using the script/reapear helper you will need
+# these http://github.com/rails/irs_process_scripts
+
+namespace :deploy do
+  task :start do ; end
+  task :stop do ; end
+  task :restart, :roles => :app, :except => { :no_release => true } do
+    run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
+  end
+end

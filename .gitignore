@@ -26,3 +26,4 @@ log/*.log
 tmp/**/*
 public/archive
 public/archive/*
+deploy.rb
