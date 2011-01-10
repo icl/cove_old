@@ -15,7 +15,7 @@ gem 'narray'
 #gem 'devise_invitable', '0.3.4'
 
  group :development, :test do
-	gem "jquery-rails"
+	gem "jquery-rails", ">= 0.2.6"
 	gem 'sqlite3-ruby', :require => 'sqlite3'
 	gem 'fakefs', :require => 'fakefs/safe'
 	gem 'rails3-generators'
