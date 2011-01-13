@@ -183,7 +183,7 @@ DEPENDENCIES
   cucumber-rails
   database_cleaner
   fakefs
-  jquery-rails
+  jquery-rails (>= 0.2.6)
   mocha
   narray
   nokogiri
