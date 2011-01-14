@@ -1,6 +1,13 @@
 Factory.define :regular_user, :class => User do |f|
   f.admin false
-  f.email 'test@test.com'
+  f.email 'user@test.com'
   f.password  "myPassword"
   f.password_confirmation  "myPassword"
+end
+
+Factory.define :admin_user, :class => User do |f|
+  f.admin true
+  f.email "admin@test.com"
+  f.password "password"
+  f.password_confirmation "password"
 end
