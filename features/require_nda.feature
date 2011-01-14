@@ -5,7 +5,7 @@ Feature: Require nda
 
   Scenario: new user logs in
     Given a user who has not yet signed the NDA
-    When a new user attempts to access the site
+    When the user logs in to the site
     Then the user should redirected to a page for NDA authorization
   
   
