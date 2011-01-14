@@ -7,7 +7,7 @@ Feature: Authenticate user
   Scenario: Valid Login credentials
     Given a regular user exists
     When the user enters the correct email and password
-    Then they should be successfully logged in to the system
+    Then the user should be successfully logged in and redirected to root path
     
   Scenario: Invalid Login credentials
     Given a regular_user exists

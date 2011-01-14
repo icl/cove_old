@@ -9,9 +9,9 @@ When /^the user enters the correct email and password$/ do
   click_button("user_submit")
 end
 
-Then /^they should be successfully logged in to the system$/ do
+Then /^the user should be successfully logged in and redirected to root path$/ do
   page.should_not have_xpath("//div[contains(@class, 'flash')]")
-  page.current_url.should == url_for(:controller => "nda", :action => "index")
+  page.current_url.should == "http://www.example.com#{root_path}"
   
 end
 
