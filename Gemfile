@@ -36,5 +36,6 @@ gem 'devise'
 	gem 'bourne'
 	gem 'timecop'
 	gem 'shoulda'
+	gem 'factory_girl_rails'
 	
 end
