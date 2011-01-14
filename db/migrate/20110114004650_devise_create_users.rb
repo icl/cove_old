@@ -10,7 +10,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
       # t.lockable :lock_strategy => :failed_attempts, :unlock_strategy => :both
       # t.token_authenticatable
       t.boolean :admin, :default => false
-
+      t.boolean :has_signed_nda, :default => false
       t.timestamps
     end
 
