@@ -12,7 +12,6 @@ Feature: Authenticate user
   Scenario Outline: Invalid Login credentials
     Given a regular_user exists
     When they user enters an incorrect email or password
-    Then the user should not be logged in and should be redirected back to the
-    login form
+    Then the user should not be logged in and should be redirected back to the login form
   
   
