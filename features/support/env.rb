@@ -16,6 +16,7 @@ require 'cucumber/web/tableish'
 require 'capybara/rails'
 require 'capybara/cucumber'
 require 'capybara/session'
+# require 'cucumber/rails/capybara_javascript_emulation'
 
 require 'factory_girl/step_definitions'
 
