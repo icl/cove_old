@@ -25,7 +25,6 @@ ActiveRecord::Schema.define(:version => 20110114004650) do
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
     t.boolean  "admin",                               :default => false
-    t.boolean  "has_signed_nda",                      :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
