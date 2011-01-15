@@ -16,7 +16,7 @@ describe NdaController do
   describe "POST 'create'" do
     context "check box is clicked" do
       before(:each) do
-        post :create, :accept => 1
+        post :create, :accept => "1"
       end
       it {should redirect_to(root_path)}
       it "should update current users nda_signed property" do
@@ -26,7 +26,7 @@ describe NdaController do
     
     context "check box is unchecked" do
       before(:each) do
-        post :create, :accept => 0
+        post :create, :accept => "0"
       end
       it {should redirect_to(nda_path)}
       it {should set_the_flash.to("You must accept NDA to continue")}

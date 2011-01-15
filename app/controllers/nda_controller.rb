@@ -5,7 +5,7 @@ class NdaController < ApplicationController
   end
   
   def create
-    if params[:accept] == 1
+    if params[:accept].to_i == 1
       current_user.nda_signed = true
       current_user.save
       return redirect_to(root_path)
