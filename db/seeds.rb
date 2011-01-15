@@ -8,3 +8,4 @@
 
 Factory(:regular_user)
 Factory(:admin_user)
+Factory(:first_time_user)
