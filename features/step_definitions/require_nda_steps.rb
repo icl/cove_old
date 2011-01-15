@@ -12,3 +12,12 @@ end
 Then /^the user should redirected to a page for NDA authorization$/ do
   page.current_url.should == url_for(:controller => "nda", :action => "index")
 end
+
+Given /^a user is on the nda page/ do
+  visit("/nda")
+end
+
+When /^the user accepts the nda and hits continue/ do
+  check("accept")
+  click_button("Continue")
+end
