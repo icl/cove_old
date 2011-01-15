@@ -3,4 +3,15 @@ class NdaController < ApplicationController
   def index
     render "index"
   end
+  
+  def create
+    if params[:accept] == 1
+      current_user.nda_signed = true
+      current_user.save
+      return redirect_to(root_path)
+    else
+      flash[:alert] = "You must accept NDA to continue"
+      return redirect_to :action => "index"
+    end
+  end
 end

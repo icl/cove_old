@@ -2,7 +2,10 @@ Cove::Application.routes.draw do
   devise_for :users, :path => "/", :path_names => {:sign_in => "login", 
     :sign_out => "logout"}
   
-  resources :nda, :only => [:index, :create]
+  controller :nda do
+    get "/nda" => "nda#index"
+    post "/nda" => "nda#create"
+  end
   
   root  :to => "place_holder#index"
 end
