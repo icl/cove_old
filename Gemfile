@@ -12,6 +12,7 @@ gem "resque", :require => "resque/server"
 gem 'narray'
 
 gem 'devise'
+gem "cancan"
 #gem 'devise_invitable', '0.3.4'
 
  group :development, :test do
