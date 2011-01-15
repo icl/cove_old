@@ -19,7 +19,7 @@ require 'capybara/session'
 # require 'cucumber/rails/capybara_javascript_emulation'
 
 require 'factory_girl/step_definitions'
-
+include Devise::TestHelpers
 # require 'cucumber/rails/capybara_javascript_emulation' # Lets you click links with onclick javascript handlers without using @culerity or @javascript
 # Capybara defaults to XPath selectors rather than Webrat's default of CSS3. In
 # order to ease the transition to Capybara we set the default here. If you'd
