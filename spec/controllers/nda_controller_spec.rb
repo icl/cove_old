@@ -22,6 +22,9 @@ describe NdaController do
       it "should update current users nda_signed property" do
         User.find(@user.id).nda_signed.should be_true
       end
+      it "should set the nda_signature_date" do
+        User.find(@user.id).nda_signature_date.should be
+      end
     end
     
     context "check box is unchecked" do

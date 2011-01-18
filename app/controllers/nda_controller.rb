@@ -7,6 +7,7 @@ class NdaController < ApplicationController
   def create
     if params[:accept].to_i == 1
       current_user.nda_signed = true
+      current_user.nda_signature_date = DateTime.now
       current_user.save
       return redirect_to(root_path)
     else
