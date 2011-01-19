@@ -12,7 +12,6 @@ doc/plugins
 .DS_Store
 ._*
 database.yml
-db/schema.rb
 development.sqlite3
 test.sqlite3
 production.sqlite3
@@ -26,3 +25,4 @@ log/*.log
 tmp/**/*
 public/archive
 public/archive/*
+deploy.rb
