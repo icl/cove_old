@@ -16,14 +16,15 @@ Given /^the admin is on the invitations page$/ do
 end
 
 When /^they fill in the email address and submit$/ do
-  pending # express the regexp above with the code you wish you had
-end
-
-Then /^the user should receive an email$/ do
-  pending # express the regexp above with the code you wish you had
+  fill_in("email", :with => "invite@devise.com")
+  click_button("Invite User")
 end
 
 Then /^there should be a new user in the db$/ do
+  User.where(:email => "invite@devise.com").lenght.should == 1
+end
+
+Then /^the user should receive an email$/ do
   pending # express the regexp above with the code you wish you had
 end
 
