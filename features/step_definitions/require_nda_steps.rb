@@ -1,6 +1,9 @@
 Given /^a user who has not yet signed the NDA$/ do
   Factory(:first_time_user)
 end
+Given /^there is nobody loggedin$/ do
+  visit("/logout")
+end
 
 When /^the user logs in to the site$/ do
   visit("/login")

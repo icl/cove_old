@@ -5,6 +5,7 @@ Feature: Require nda
   
   Background:
     Given a user who has not yet signed the NDA
+    Given there is nobody loggedin
     When the user logs in to the site
 
   Scenario: New user logs in
