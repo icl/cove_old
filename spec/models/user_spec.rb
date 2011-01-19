@@ -28,4 +28,23 @@ describe User do
       it {@user.should be_nil}
     end
   end
+  
+  describe ".invitation_token_valid?" do
+    before(:each) do
+      @user = User.invite_user!(:email => "invite@devise.com")
+      @return_value = User.invitation_token_valid?(@user.invitation_token)
+    end
+    context "valid token" do
+      before(:each) do
+        @return_value = User.invitation_token_valid?(@user.invitation_token)
+      end
+      it{@return_value.should be_true}
+    end
+    context "invalid token" do
+      before(:each) do
+        @return_value = User.invitation_token_valid?("bad value")
+      end
+      it {@return_value.should be_false}
+    end
+  end
 end

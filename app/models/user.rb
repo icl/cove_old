@@ -21,4 +21,12 @@ class User < ActiveRecord::Base
     end
   end
   
+  def self.invitation_token_valid?(token)
+    if User.where(:invitation_token => token).first
+      return true
+    else
+      return false
+    end
+  end
+  
 end

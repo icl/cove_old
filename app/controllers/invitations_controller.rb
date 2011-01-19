@@ -12,4 +12,14 @@ class InvitationsController < ApplicationController
     end
     redirect_to :action => "new"
   end
+  
+  def edit
+    # if User.invitation_token_valid? params[:id]
+    #       render :action => "edit"
+    #     else
+    #       flash[:alert] = "Your Invitation Token is not valid"
+    #       redirect_to(root_path)
+    #     end
+    render :action => "edit"
+  end
 end

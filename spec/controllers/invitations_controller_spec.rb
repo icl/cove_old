@@ -1,5 +1,5 @@
 require 'spec_helper'
-
+require "ruby-debug"
 describe InvitationsController do
   before(:each) do
     @user = Factory(:admin_user)
@@ -37,6 +37,16 @@ describe InvitationsController do
         User.count.should == (@old_count + 1)
       end
     end
-    
   end  
+  
+  describe "GET 'edit'" do
+    context "valid token" do
+      before(:each) do
+        User.any_instance.expects(:invitation_token_valid?).returns(true)
+        get :edit, :id => 1 
+      end
+      it {should respond_with(:success)}
+      it {should render_template(:edit)}
+    end
+  end
 end
