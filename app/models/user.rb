@@ -1,3 +1,4 @@
+require "ruby-debug"
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable, :lockable and :timeoutable
@@ -6,5 +7,18 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
+  
+  def self.invite_user!(args)
+    # debugger
+    token = ActiveSupport::SecureRandom.base64(10)
+    newUser = User.new :email => args[:email], :password => token, :password_confirmation => token
+    newUser.invitation_token = token
+    # newUser.invitation_token_expiration = DateTime.now + 5
+    if newUser.save
+      return newUser
+    else
+      return nil
+    end
+  end
   
 end
