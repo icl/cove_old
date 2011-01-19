@@ -47,4 +47,31 @@ describe User do
       it {@return_value.should be_false}
     end
   end
+  
+  describe ".confirm_invitation!" do
+    before(:each) do
+      @user = User.invite_user!(:email => "invite@devise.com")
+      @old_password = @user.encrypted_password
+    end
+    context "invalid parameters" do
+      before(:each) do
+        @result = User.confirm_invitation!("password", "password", "token")
+      end
+      it {@result.should be_false}
+      it "should not change the users password" do
+        @user.encrypted_password.should == @old_password
+      end
+    end
+    
+    context "valid parameter" do
+      before(:each) do
+        @result = User.confirm_invitation!("password", "password", @user.invitation_token)
+      end
+      
+      it {@result.should be_true}
+      it "should change the encrypted_password" do
+        User.find(@user.id).encrypted_password.should_not == @old_password
+      end
+    end
+  end
 end
