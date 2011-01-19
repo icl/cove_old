@@ -1,0 +1,5 @@
+<%= form_tag(:action => "create", :method => "post",  :class => "invitation_form") do %>
+  <%= label_tag "email" %>
+  <%= email_field_tag "email" %>
+  <%= submit_tag "Invite User" %>
+<% end -%>

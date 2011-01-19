@@ -7,5 +7,7 @@ Cove::Application.routes.draw do
     post "/nda" => "nda#create"
   end
   
+  resources :invitations, :only => [:new, :create, :edit, :update]
+  
   root  :to => "place_holder#index"
 end
