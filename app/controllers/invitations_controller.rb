@@ -29,7 +29,9 @@ class InvitationsController < ApplicationController
       return redirect_to :action => "edit"
     else
       flash[:notice] = "You are now on official user"
-      redirect_to(root_path)
+      # authenticate_user! User.user_from_token
+      # redirect_to(root_path)
+      sign_in_and_redirect :user, User.user_from_token(params[:id])
     end
   end
 end
