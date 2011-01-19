@@ -10,7 +10,22 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110118183417) do
+ActiveRecord::Schema.define(:version => 20110119035422) do
+
+  create_table "intervals", :force => true do |t|
+    t.string   "filename"
+    t.string   "camera_angle"
+    t.integer  "session_number"
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.string   "session_type"
+    t.string   "phrase_name"
+    t.string   "phrase_type"
+    t.string   "task_name"
+    t.string   "comments"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                               :default => "",    :null => false
