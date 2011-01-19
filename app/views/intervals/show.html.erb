@@ -1,55 +1,33 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Filename:</b>
-  <%= @interval.filename %>
-</p>
+<h1>COVE</h1>
+	
+<h2>Source</h2>
+<ul id="Source">
+	<li>File Name: <%= @interval.filename %></li>
+	<li>Day Number: ##</li>
+	<li>Date: yyyy-mm-dd</li>
+	<li>Camera Angle: <%= @interval.camera_angle %></li>
+	<li>Start Time (24 hr): <%= @interval.start_time %></li>
+</ul>
+			
+<h2>Session Number: <%= @interval.session_number %></h2>
+<ul>
+	<li>Session Type: (9 name types so far)</li>
+	<li>Task: (task name)</li>
+	<li>Start Time (24 hr): <%= @interval.start_time %></li>
+	<li>End Time (24 hr): <%= @interval.end_time %></li>				
+	<li>Duration: hh:mm:ss</li>
+</ul>
 
-<p>
-  <b>Camera angle:</b>
-  <%= @interval.camera_angle %>
-</p>
-
-<p>
-  <b>Session number:</b>
-  <%= @interval.session_number %>
-</p>
-
-<p>
-  <b>Start time:</b>
-  <%= @interval.start_time %>
-</p>
-
-<p>
-  <b>End time:</b>
-  <%= @interval.end_time %>
-</p>
-
-<p>
-  <b>Session type:</b>
-  <%= @interval.session_type %>
-</p>
-
-<p>
-  <b>Phrase name:</b>
-  <%= @interval.phrase_name %>
-</p>
-
-<p>
-  <b>Phrase type:</b>
-  <%= @interval.phrase_type %>
-</p>
-
-<p>
-  <b>Task name:</b>
-  <%= @interval.task_name %>
-</p>
-
-<p>
-  <b>Comments:</b>
-  <%= @interval.comments %>
-</p>
-
+<h2>Phrase: <%= @interval.phrase_name %></h2>
+<ol>
+	<li>Phrase Type: <%= @interval.phrase_type %></li>
+	<li>Phrase Alternative Name: (name)</li>
+</ol>
+<div>
+	<%= player({:file => '/videos/' + @interval.filename}) %>
+</div>
 
 <%= link_to 'Edit', edit_interval_path(@interval) %> |
 <%= link_to 'Back', intervals_path %>
