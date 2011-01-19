@@ -1,0 +1,55 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Filename:</b>
+  <%= @interval.filename %>
+</p>
+
+<p>
+  <b>Camera angle:</b>
+  <%= @interval.camera_angle %>
+</p>
+
+<p>
+  <b>Session number:</b>
+  <%= @interval.session_number %>
+</p>
+
+<p>
+  <b>Start time:</b>
+  <%= @interval.start_time %>
+</p>
+
+<p>
+  <b>End time:</b>
+  <%= @interval.end_time %>
+</p>
+
+<p>
+  <b>Session type:</b>
+  <%= @interval.session_type %>
+</p>
+
+<p>
+  <b>Phrase name:</b>
+  <%= @interval.phrase_name %>
+</p>
+
+<p>
+  <b>Phrase type:</b>
+  <%= @interval.phrase_type %>
+</p>
+
+<p>
+  <b>Task name:</b>
+  <%= @interval.task_name %>
+</p>
+
+<p>
+  <b>Comments:</b>
+  <%= @interval.comments %>
+</p>
+
+
+<%= link_to 'Edit', edit_interval_path(@interval) %> |
+<%= link_to 'Back', intervals_path %>
