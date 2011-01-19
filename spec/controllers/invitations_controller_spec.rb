@@ -1,5 +1,4 @@
 require 'spec_helper'
-require "ruby-debug"
 describe InvitationsController do
   before(:each) do
     @user = Factory(:admin_user)
