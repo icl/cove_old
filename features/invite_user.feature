@@ -5,6 +5,7 @@ Feature: Invite user
   
   Background:
     Given a admin
+    Given there is nobody loggedin
     When the admin logs in to the site
   
   Scenario: admin invites a new user
