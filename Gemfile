@@ -22,8 +22,10 @@ gem "cancan"
 	gem 'rails3-generators'
 	gem "rspec"
 	gem "rspec-rails", "~> 2.4.0"
+	gem 'email_spec'
 	gem "capybara"
 	gem "cucumber"
+	gem 'launchy'
 	gem "database_cleaner"
 	gem "cucumber-rails"
 	gem "nokogiri"
