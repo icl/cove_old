@@ -46,5 +46,32 @@ describe InvitationsController do
       it {should respond_with(:success)}
       it {should render_template(:edit)}
     end
+    context "invalid token" do
+      before(:each) do
+        User.expects(:invitation_token_valid?).returns(false)
+        get :edit, :id => 1
+      end
+      it {should redirect_to(root_path)}
+      it {should set_the_flash.to("Your Invitation token is not valid")}
+    end
+  end
+  
+  describe "PUT 'update'" do
+    context "invalid password" do
+      before :each do 
+        User.expects(:confirm_invitation!).returns(false)
+        put :update, :id => 1
+      end
+      it {should set_the_flash}
+      it {should redirect_to(:action => "edit")}
+    end
+    context "valid password" do
+      before(:each) do
+        User.expects(:confirm_invitation!).returns(true)
+        put :update, :id => 1
+      end
+      it {should redirect_to(root_path)}
+      it {should set_the_flash}
+    end
   end
 end

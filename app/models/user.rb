@@ -27,4 +27,21 @@ class User < ActiveRecord::Base
     end
   end
   
+  def self.confirm_invitation!(password, password_confirmation, token)
+    if (current_user = User.user_from_token(token))
+      if current_user.reset_password!(password, password_confirmation)
+        current_user.invitation_token = nil
+        return true
+      else
+        return false
+      end
+    else
+      return false
+    end
+  end
+  
+  def self.user_from_token(token)
+    User.where(:invitation_token => token).first
+  end
+  
 end
