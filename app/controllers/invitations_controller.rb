@@ -18,6 +18,17 @@ class InvitationsController < ApplicationController
       @user = User.new
       render :action => "edit"
     else
+      flash[:alert] = "Your Invitation token is not valid"
+      redirect_to(root_path)
+    end
+  end
+  
+  def update
+    if !User.confirm_invitation!(params[:password], params[:password_confirmation], params[:id])
+      flash[:alert] = "Your password was invalid please try again"
+      return redirect_to :action => "edit"
+    else
+      flash[:notice] = "You are now on official user"
       redirect_to(root_path)
     end
   end
