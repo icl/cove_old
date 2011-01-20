@@ -60,7 +60,7 @@ describe InvitationsController do
     context "invalid password" do
       before :each do 
         User.expects(:confirm_invitation!).returns(false)
-        put :update, :id => 1
+        put :update, :id => 1, :user => {:password => "password",:password_confirmation => "password"}
       end
       it {should set_the_flash}
       it {should redirect_to(:action => "edit")}
@@ -68,7 +68,7 @@ describe InvitationsController do
     context "valid password" do
       before(:each) do
         User.expects(:confirm_invitation!).returns(true)
-        put :update, :id => 1
+        put :update, :id => 1, :user => {:password => "password",:password_confirmation => "password"}
       end
       it {should redirect_to(root_path)}
       it {should set_the_flash}
