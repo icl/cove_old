@@ -13,14 +13,18 @@
 			<fieldset>
 				<legend>Filters</legend>
 				<fieldset>
-          <!--  PRATIK's Note:
-            just have a drop down of possible dates
-          -->
+					<!--  PRATIK's Note:
+					just have a drop down of possible dates
+					-->
 					<legend>Date</legend>
-					<input name="date-start" />-
-					<input name="date-end" />
+					<select name="date">
+						<option value=""></option>
+						<% @days.each do |d| %>
+							<option value="<%= d %>"><%= d %></option>
+						<% end %>
+					</select>
 				</fieldset>
-        <!--UNUSED
+				<!--UNUSED
 				<fieldset>
 					<legend>Day</legend>
 					<input type="number" name="day-start" /> -
@@ -31,7 +35,7 @@
 					<input type="number" name="session-start"> -
 					<input type="number" name="session-end">
 				</fieldset>
-        -->
+				-->
 				<fieldset>
 					<legend>Camera Angle</legend>
 					<ul>
@@ -39,6 +43,11 @@
 					      so lets grab all possible camera angles from db and have a "radio"
 					      or "fieldset" each angle
 					    -->
+						<li>
+							<label>
+								<input type="radio" name="camera_angle" value=""/>All
+							</label>
+						</li>
 						<% @angles.each do |a| %>
 							<li>
 								<label>
@@ -48,7 +57,7 @@
 						<% end %>
 					</ul>
 				</fieldset>
-	<!--UNUSED
+				<!--UNUSED
 				<fieldset>
 					<legend>Session Type</legend>
 					<label><input name="session-type" type="checkbox" value="warmup" />Warm Up</label>
@@ -74,7 +83,7 @@
 					<label><input name="phase-type" type="checkbox" value="trios"/>Trios</label>
 					<label><input name="phase-type" type="checkbox" value="quartets"/>Quartets</label>
 				</fieldset>
-        -->
+				-->
 				<input type="submit" value="Submit" />
 			</fieldset>
 		</form>

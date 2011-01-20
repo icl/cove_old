@@ -4,6 +4,9 @@ class IntervalsController < ApplicationController
   def index
     @intervals = Interval.find(:all, :order => 'start_time')
     @angles = @intervals.map {|x| x.camera_angle}.uniq
+    @days = @intervals.map{|x| x.start_time}.map {|x|
+	sprintf("%d-%d-%d", x.day, x.month, x.year)
+    }.uniq
 
     respond_to do |format|
       format.html # index.html.erb
