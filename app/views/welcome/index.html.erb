@@ -20,7 +20,10 @@ Logged in as: <%=current_user.email%>
 .clear{clear:both;}
 .user_info{float:right;}
 .cove_header{float:left;}
-.checkerboard{
+.checkerboard {
+width: 850px;	
+}
+.checkerboard div{
 float:left;
 font-size: 600%;
 width:200px;
@@ -31,6 +34,8 @@ border:2px solid #ffffff;
 
 }
 </style>
+<div class="checkerboard">
 <%(0..15).each do |number| %>
-<div class="checkerboard"><img src="/images/dance_3.jpg" width="200" height="150" /></div>
+<div><img src="/images/dance_3.jpg" width="200" height="150" /></div>
 <%end%>
+</div>
