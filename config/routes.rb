@@ -8,6 +8,7 @@ Cove::Application.routes.draw do
   end
   
   resources :invitations, :only => [:new, :create, :edit, :update]
+  match 'invitations/' => 'invitations#new'
   
   root  :to => "place_holder#index"
 end

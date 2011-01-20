@@ -11,6 +11,13 @@ Feature: Invite user
   Scenario: admin invites a new user
     Given the admin is on the invitations page
     When they fill in the email address and submit
-    Then the user should receive an email
     Then there should be a new user in the db
+    # Then the user should receive an email
+    
+  Scenario: user accepts their invitation
+    Given a user has received an invitation
+    When the user visits the invitation acceptance page
+    When the user fills in their new password
+    Then the user should be redirected to root
+    Then the users should be able to login with their new password
   
