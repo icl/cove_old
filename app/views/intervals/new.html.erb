@@ -1,5 +1,23 @@
-<h1>New interval</h1>
+<h1>New Interval</h1>
 
-<%= render 'form' %>
+<%= simple_form_for(@interval) do |f| %>
+  <%= f.error_notification %>
 
-<%= link_to 'Back', intervals_path %>
+  <div class="inputs">
+    <%= f.input :filename %>
+    <%= f.input :camera_angle %>
+    <%= f.input :session_number %>
+    <%= f.input :start_time %>
+    <%= f.input :end_time %>
+    <%= f.input :session_type %>
+    <%= f.input :phrase_name %>
+    <%= f.input :phrase_type %>
+    <%= f.input :task_name %>
+    <%= f.input :comments %>
+  </div>
+
+  <div class="actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
+

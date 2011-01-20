@@ -1,41 +1,187 @@
-<h1>Listing intervals</h1>
+<!DOCTYPE html>
 
-<table>
-  <tr>
-    <th>Filename</th>
-    <th>Camera angle</th>
-    <th>Session number</th>
-    <th>Start time</th>
-    <th>End time</th>
-    <th>Session type</th>
-    <th>Phrase name</th>
-    <th>Phrase type</th>
-    <th>Task name</th>
-    <th>Comments</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
 
-<% @intervals.each do |interval| %>
-  <tr>
-    <td><%= interval.filename %></td>
-    <td><%= interval.camera_angle %></td>
-    <td><%= interval.session_number %></td>
-    <td><%= interval.start_time %></td>
-    <td><%= interval.end_time %></td>
-    <td><%= interval.session_type %></td>
-    <td><%= interval.phrase_name %></td>
-    <td><%= interval.phrase_type %></td>
-    <td><%= interval.task_name %></td>
-    <td><%= interval.comments %></td>
-    <td><%= link_to 'Show', interval %></td>
-    <td><%= link_to 'Edit', edit_interval_path(interval) %></td>
-    <td><%= link_to 'Destroy', interval, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
+<h1>Browse Videos</h1>
+<head>
+<style type = "text/css">
 
-<br />
 
-<%= link_to 'New Interval', new_interval_path %>
+	body {font-family: sans-serif; font-size: 12px;}
+	h1 {
+		padding: 1em;
+		left:0;
+		background-color:#8B8378;
+		color:black}
+
+	#list-nav {
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+
+	#list-nav ul{
+		list-style:none;
+		margin: 0;
+		padding: 0.3 em;
+	}
+
+	#list-nav li{
+		float: left;
+		margin-right: 5 px;
+	}
+
+
+	#list-nav li a {
+		display: block;
+		background-color:#000000;
+		padding: 0.5em;
+	}
+
+	a:link {
+		color: #999966;
+		text-decoration:none;
+		}
+	a:visited {
+		color: #8B8378;
+		text-decoration: none;
+		}
+	a:hover {
+		color: #FEE0C6;
+		text-decoration: none;
+		}
+	a:active {
+		color: #999966;
+		text-decoration: none;
+		}
+
+	#filters {
+		position: relative;
+		left: 25px;
+		width: 30%;
+		padding:1em;
+		margin: 0;
+		background-color: gray;
+		color:#FFFFF2;
+	}
+
+	#filters li{
+		list-style:none;
+	}
+
+	#search {
+		position:absolute;
+		padding: 1em;
+		display:inline;
+		top:10%;
+		right:0;
+		background color: #CDC0B0;
+
+	}
+
+	#search li{
+		list-style:none;
+
+	}
+
+</style>
+
+</head>
+<body>
+
+	<div id="list-nav">
+		<ul>
+			<li><a href="#">Home</a>
+			<li><a href="#">Favorites</a>
+			<li><a href="#">Most Tagged</a>
+			<li><a href="#">Recently Viewed</a>
+			<li><a href="#">Recently Added</a>
+		</ul>
+	</div>
+
+<div id="filters">
+	<h2>Filters</h2>
+	<li>Date</a>
+		<input name="date-start">-
+		<input name="date-end">
+	<li>Day</a>
+		<input type="number"name="day-start"> -
+		<input type="number" name="day-end">
+	<li>Session</a>
+		<input type="number" name="session-start"> -
+		<input type="number" name="session-end">
+	<li>Camera Angle</a>
+		<form id="camera-angles">
+		<ul>
+			<li><input type="checkbox">Wayne</a>
+		</ul>
+	<li>Session Type</a>
+		<form id="session-type">
+		<ul>
+			<li><input type="checkbox">Warm Up</a>
+			<li><input type="checkbox">Practice</a>
+			<li><input type="checkbox">Task</a>
+			<li><input type="checkbox">Show</a>
+			<li><input type="checkbox">Make</a>
+			<li><input type="checkbox">Break</a>
+			<li><input type="checkbox">Group Discussion</a>
+			<li><input type="checkbox">Lecture</a>
+			<li><input type="checkbox">Class</a>
+			<li><input type="checkbox">Experiment</a>
+			<li><input type="checkbox">Structuring</a>
+		</ul>
+	<li>Phrase</a>
+		<ul>
+			<li>Name</a>
+				<input name="phrase-name">
+			<li>Alternative Name</a>
+				<input name="phrase-alternative">
+			<li>Type</a>
+				<ul id="phrase-type">
+					<li><input type="checkbox">Solos</a>
+					<li><input type="checkbox">Duets</a>
+					<li><input type="checkbox">Trios</a>
+					<li><input type="checkbox">Quartets</a>
+				</ul>
+		</ul>
+
+</ul>
+
+<form id="submit-filter">
+<input type="submit" value="Submit" />
+</form>
+
+</div>
+
+<div id="search">
+
+<div class="session-search">
+<li><form id="search bar">
+	<label for= "search-input"> Search
+	<input type="text"name="search" id="search-input">
+	</form></li>
+
+<select id="sort-dropdown">
+	<label for = "sort" id="sort-dropdown"> Sort by:
+	<option value = "relevance">Relevance</option>
+	<option value = "most viewed">Most Viewed</option>
+	<option value = "most tagged">Tagged</option>
+</select>
+</div>
+
+<div class="view">
+<form id="view">
+	<input type="radio" name="view-list"/> List
+	<input type="radio" name="view-thumbnail"/> Thumbnail
+	<input type="radio" name="view-timeline" /> Timeline
+</form>
+
+<form id="submit-center">
+<input type="submit" value="Submit" />
+</form>
+</div>
+
+</div>
+
+</body>
+</html>
+
