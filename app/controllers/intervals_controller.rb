@@ -5,8 +5,23 @@ class IntervalsController < ApplicationController
     @intervals = Interval.find(:all, :order => 'start_time')
     @angles = @intervals.map {|x| x.camera_angle}.uniq
     @days = @intervals.map{|x| x.start_time}.map {|x|
-	sprintf("%d-%d-%d", x.day, x.month, x.year)
+	sprintf("%d-%d-%d", x.month, x.day, x.year)
     }.uniq
+
+    @filtered_intervals = @intervals.reject{|x|
+    	if(params[:date].nil?)
+		true
+	else
+		day = sprintf("%d-%d-%d", x.start_time.month, x.start_time.day, x.start_time.year)
+		params[:date] == day
+	end
+    }.reject{|x|
+    	if(params[:date].nil?)
+		true
+	else
+		params[:camera_angle] == x.camera_angle
+	end
+    }
 
     respond_to do |format|
       format.html # index.html.erb

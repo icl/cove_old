@@ -20,7 +20,7 @@
 					<select name="date">
 						<option value=""></option>
 						<% @days.each do |d| %>
-							<option value="<%= d %>"><%= d %></option>
+							<option value="<%= d %>" <%= params[:date] == d ? "selected='1'" : "" %>><%= d %></option>
 						<% end %>
 					</select>
 				</fieldset>
@@ -51,7 +51,7 @@
 						<% @angles.each do |a| %>
 							<li>
 								<label>
-									<input type="radio" name="camera_angle" value="<%= a %>"/><%= a %>
+									<input type="radio" name="camera_angle" value="<%= a %>" <%= params[:camera_angle] == a ? "checked='1'" : "" %>/><%= a %>
 								</label>
 							</li>
 						<% end %>
@@ -105,7 +105,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<% @intervals.each do |int| %>
+				<% @filtered_intervals.each do |int| %>
 					<tr>
 						<td><%= int.filename %></td>
 						<td><%= int.camera_angle %></td>
