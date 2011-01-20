@@ -1,7 +1,25 @@
 
-<h1>COVE</h1>
+<h1 class="cove_header">COVE</h1>
+
+
+<div class="user_info">
+	<%if !current_user %>
+	<a href="/sign_up">Sign up</a>
+<span><a href="/login">Login</a></span>
+<%else%>
+Logged in as: <%=current_user.email%>
+<span><a href="/logout">Logout</a></span>
+<%end%>
+
+</div>
+
+<br class="clear"/>
+<hr />
 
 <style>
+.clear{clear:both;}
+.user_info{float:right;}
+.cove_header{float:left;}
 .checkerboard{
 float:left;
 font-size: 600%;
@@ -13,20 +31,6 @@ border:2px solid #ffffff;
 
 }
 </style>
-<div class="checkerboard"><img src="images/thumb1.jpg" width=200 height=150></div>
-<div class="checkerboard"><img src="images/thumb2.jpg" width=200 height=150></div>
-<div class="checkerboard"><img src="images/thumb3.jpg" width=200 height=150></div>
-<div class="checkerboard"><img src="images/thumb4.jpg" width=200 height=150></div>
-<div class="checkerboard">5</div>
-<div class="checkerboard">6</div>
-<div class="checkerboard">7</div>
-<div class="checkerboard">8</div>
-<div class="checkerboard">9</div>
-<div class="checkerboard">10</div>
-<div class="checkerboard">11</div>
-<div class="checkerboard">12</div>
-<div class="checkerboard">13</div>
-<div class="checkerboard">14</div>
-<div class="checkerboard">15</div>
-<div class="checkerboard">16</div>
-
+<%(0..15).each do |number| %>
+<div class="checkerboard"><img src="/images/dance_3.jpg" width="200" height="150" /></div>
+<%end%>
