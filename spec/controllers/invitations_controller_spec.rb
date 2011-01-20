@@ -1,9 +1,7 @@
 require 'spec_helper'
 describe InvitationsController do
   before(:each) do
-    @user = Factory(:admin_user)
-    @user.save
-    sign_in @user
+    sign_in_as :admin_user
   end
   
   context "admin is not loggedin" do
