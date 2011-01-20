@@ -63,6 +63,7 @@
 		</form>
 	</div>
 
+	<!-- TODO
 	<div id="search">
 		<form>
 			<label for="searchbox"> Search </label>
@@ -82,4 +83,38 @@
 			<input type="submit" value="Submit" />
 		</form>
 	</div>
+	-->
+
+	<table id="listints">
+		<thead>
+			<tr>
+				<th>Filename</th>
+				<th>Camera Angle</th>
+				<th>Session Number</th>
+				<th>Start Time</th>
+				<th>End Time</th>
+				<th>Session Type</th>
+				<th>Phrase Name</th>
+				<th>Phrase Type</th>
+				<th>Task Name</th>
+				<th>Comments</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @intervals.each do |int| %>
+				<tr>
+					<td><%= int.filename %></td>
+					<td><%= int.camera_angle %></td>
+					<td><%= int.session_number %></td>
+					<td><%= int.start_time %></td>
+					<td><%= int.end_time %></td>
+					<td><%= int.session_type %></td>
+					<td><%= int.phrase_name %></td>
+					<td><%= int.phrase_type %></td>
+					<td><%= int.task_name %></td>
+					<td><%= int.comments %></td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
 </div>

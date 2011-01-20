@@ -43,22 +43,21 @@
 }
 
 #intervals #filters {
-	position: relative;
-	left: 25px;
 	width: 30%;
 	padding: 1em;
 	margin: 0;
 	background-color: gray;
 	color: #FFFFF2;
+	float:left;
+	margin: .25em;
 }
 
 #intervals #search {
-	position: absolute;
 	padding: 1em;
 	display: inline;
-	top: 10%;
-	right: 0;
 	background-color: #CDC0B0;
+	float: right;
+	margin: .25em;
 }
 
 #intervals label{
