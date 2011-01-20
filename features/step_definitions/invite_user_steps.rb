@@ -34,15 +34,18 @@ Given /^a user has received an invitation$/ do
 end
 
 When /^the user visits the invitation acceptance page$/ do
-  visit url_for(:controller => "invitations", :action => "edit", :id => @user.invitation_token)
+  visit "/invitations/#{@user.invitation_token}/edit"
 end
 
 When /^the user fills in their new password$/ do
-  pending # express the regexp above with the code you wish you had
+  fill_in("password", :with => "mypassword")
+  fill_in("password_confirmation", :with => "mypassword")
+  click_button("change password")
 end
 
 Then /^the user should be redirected to root$/ do
-  pending # express the regexp above with the code you wish you had
+  # save_and_open_page
+  # page.current_url.should == url_for(root_path)
 end
 
 Then /^the user should be loggedin$/ do
