@@ -38,17 +38,21 @@ When /^the user visits the invitation acceptance page$/ do
 end
 
 When /^the user fills in their new password$/ do
-  fill_in("password", :with => "mypassword")
-  fill_in("password_confirmation", :with => "mypassword")
-  click_button("change password")
+  fill_in("user_password", :with => "mypassword")
+  fill_in("user_password_confirmation", :with => "mypassword")
+  click_button("user_submit")
 end
 
 Then /^the user should be redirected to root$/ do
-  # save_and_open_page
-  # page.current_url.should == url_for(root_path)
+  page.current_url.should == url_for(:controller => "nda", :action => "index")
 end
 
-Then /^the user should be loggedin$/ do
-  pending # express the regexp above with the code you wish you had
+Then /^the users should be able to login with their new password$/ do
+  visit "/logout"
+  visit "/login"
+  fill_in("user_email", :with => "invite@devise.com")
+  fill_in("user_password", :with => "mypassword")
+  click_button("user_submit")
+  page.current_url.should == url_for(:controller => "nda", :action => "index")
 end
 

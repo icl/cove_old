@@ -24,7 +24,7 @@ class InvitationsController < ApplicationController
   end
   
   def update
-    if !User.confirm_invitation!(params[:password], params[:password_confirmation], params[:id])
+    if !User.confirm_invitation!(params[:user][:password], params[:user][:password_confirmation], params[:id])
       flash[:alert] = "Your password was invalid please try again"
       return redirect_to :action => "edit"
     else
