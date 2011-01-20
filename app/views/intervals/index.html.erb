@@ -13,10 +13,14 @@
 			<fieldset>
 				<legend>Filters</legend>
 				<fieldset>
+          <!--  PRATIK's Note:
+            just have a drop down of possible dates
+          -->
 					<legend>Date</legend>
 					<input name="date-start" />-
 					<input name="date-end" />
 				</fieldset>
+        <!--UNUSED
 				<fieldset>
 					<legend>Day</legend>
 					<input type="number" name="day-start" /> -
@@ -27,12 +31,18 @@
 					<input type="number" name="session-start"> -
 					<input type="number" name="session-end">
 				</fieldset>
+        -->
 				<fieldset>
 					<legend>Camera Angle</legend>
 					<ul>
+            <!-- PRATIK's Note:
+              so lets grab all possible camera angles from db and have a "radio"
+              or "fieldset" each angle
+            -->
 						<li><label><input type="checkbox" name="camera_angle" value="wayne" />Wayne</label></li>
 					</ul>
 				</fieldset>
+	<!--UNUSED
 				<fieldset>
 					<legend>Session Type</legend>
 					<label><input name="session-type" type="checkbox" value="warmup" />Warm Up</label>
@@ -58,13 +68,51 @@
 					<label><input name="phase-type" type="checkbox" value="trios"/>Trios</label>
 					<label><input name="phase-type" type="checkbox" value="quartets"/>Quartets</label>
 				</fieldset>
+        -->
 				<input type="submit" value="Submit" />
 			</fieldset>
 		</form>
 	</div>
 
-	<!-- TODO
-	<div id="search">
+	<!-- PRATIK's note:
+	Let's have a RubyRails generated table inside this div...
+	... somehow connected to the selections in div "filters"
+	-->
+	<div id="results">
+		<table id="listints">
+			<thead>
+				<tr>
+					<th>Filename</th>
+					<th>Camera Angle</th>
+					<th>Session Number</th>
+					<th>Start Time</th>
+					<th>End Time</th>
+					<th>Session Type</th>
+					<th>Phrase Name</th>
+					<th>Phrase Type</th>
+					<th>Task Name</th>
+					<th>Comments</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @intervals.each do |int| %>
+					<tr>
+						<td><%= int.filename %></td>
+						<td><%= int.camera_angle %></td>
+						<td><%= int.session_number %></td>
+						<td><%= int.start_time %></td>
+						<td><%= int.end_time %></td>
+						<td><%= int.session_type %></td>
+						<td><%= int.phrase_name %></td>
+						<td><%= int.phrase_type %></td>
+						<td><%= int.task_name %></td>
+						<td><%= int.comments %></td>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
+	</div>
+	<!--NOT IMPLEMENTED<div id="search">
 		<form>
 			<label for="searchbox"> Search </label>
 			<input type="text" name="search" id="searchbox" />
@@ -84,37 +132,5 @@
 		</form>
 	</div>
 	-->
-
-	<table id="listints">
-		<thead>
-			<tr>
-				<th>Filename</th>
-				<th>Camera Angle</th>
-				<th>Session Number</th>
-				<th>Start Time</th>
-				<th>End Time</th>
-				<th>Session Type</th>
-				<th>Phrase Name</th>
-				<th>Phrase Type</th>
-				<th>Task Name</th>
-				<th>Comments</th>
-			</tr>
-		</thead>
-		<tbody>
-			<% @intervals.each do |int| %>
-				<tr>
-					<td><%= int.filename %></td>
-					<td><%= int.camera_angle %></td>
-					<td><%= int.session_number %></td>
-					<td><%= int.start_time %></td>
-					<td><%= int.end_time %></td>
-					<td><%= int.session_type %></td>
-					<td><%= int.phrase_name %></td>
-					<td><%= int.phrase_type %></td>
-					<td><%= int.task_name %></td>
-					<td><%= int.comments %></td>
-				</tr>
-			<% end %>
-		</tbody>
-	</table>
 </div>
+
