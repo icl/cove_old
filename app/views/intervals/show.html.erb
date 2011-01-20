@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>COVE</h1>
+	
+<h2>Source</h2>
+<ul id="Source">
+	<li>File Name: <%= @interval.filename %></li>
+	<li>Day Number: ##</li>
+	<li>Date: yyyy-mm-dd</li>
+	<li>Camera Angle: <%= @interval.camera_angle %></li>
+	<li>Start Time (24 hr): <%= @interval.start_time %></li>
+</ul>
+			
+<h2>Session Number: <%= @interval.session_number %></h2>
+<ul>
+	<li>Session Type: (9 name types so far)</li>
+	<li>Task: (task name)</li>
+	<li>Start Time (24 hr): <%= @interval.start_time %></li>
+	<li>End Time (24 hr): <%= @interval.end_time %></li>				
+	<li>Duration: hh:mm:ss</li>
+</ul>
+
+<h2>Phrase: <%= @interval.phrase_name %></h2>
+<ol>
+	<li>Phrase Type: <%= @interval.phrase_type %></li>
+	<li>Phrase Alternative Name: (name)</li>
+</ol>
+<div>
+	Player goes here.
+</div>
+
+<%= link_to 'Edit', edit_interval_path(@interval) %> |
+<%= link_to 'Back', intervals_path %>
