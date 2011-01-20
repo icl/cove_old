@@ -26,8 +26,9 @@
 	<li>Phrase Alternative Name: (name)</li>
 </ol>
 <div>
-	Player goes here.
+	<video src="<%= intervals_path :id=> @interval.id , :format=> :m4v %>" autoplay="false" width="300" height="150" controls>
+	</video>
 </div>
 
-<%= link_to 'Edit', edit_interval_path(@interval) %> |
+<%= link_to 'Edit', edit_interval_path(@interval) %> 
 <%= link_to 'Back', intervals_path %>
