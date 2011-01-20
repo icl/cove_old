@@ -1,9 +1,9 @@
-<%= form_tag(:action => "update", :method => "put",  :class => "password_change_form") do %>
-  <%= label_tag "password" %>
-  <%= password_field_tag :password %>
+<%= form_for :user, :url => {:controller => "invitations",:action => "update" }  , :html => {:method => "put"} do |f| -%>
+  <%= f.label :password, "Password" %>
+  <%= f.password_field :password %>
   <p></p>
-  <%= label_tag "password_confirmation" %>
-  <%= password_field_tag :password_confirmation %>
+  <%= f.label :password_confirmation, "Password Confirmation" %>
+  <%= f.password_field :password_confirmation %>
   <p></p>
-  <%= submit_tag "change password" %>
+  <%= f.submit "Change Password" %>
 <% end -%>
