@@ -18,6 +18,6 @@ Feature: Invite user
     Given a user has received an invitation
     When the user visits the invitation acceptance page
     When the user fills in their new password
-    Then the user should be redirected to root
+   Then the user should be redirected to root
     Then the users should be able to login with their new password
   

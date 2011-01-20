@@ -30,3 +30,9 @@ RSpec.configure do |config|
   # instead of true.
   config.use_transactional_fixtures = true
 end
+
+def sign_in_as user_type
+  @user = Factory(user_type.to_sym)
+  @user.save
+  sign_in @user
+end
