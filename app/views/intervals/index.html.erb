@@ -1,0 +1,41 @@
+<h1>Listing intervals</h1>
+
+<table>
+  <tr>
+    <th>Filename</th>
+    <th>Camera angle</th>
+    <th>Session number</th>
+    <th>Start time</th>
+    <th>End time</th>
+    <th>Session type</th>
+    <th>Phrase name</th>
+    <th>Phrase type</th>
+    <th>Task name</th>
+    <th>Comments</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @intervals.each do |interval| %>
+  <tr>
+    <td><%= interval.filename %></td>
+    <td><%= interval.camera_angle %></td>
+    <td><%= interval.session_number %></td>
+    <td><%= interval.start_time %></td>
+    <td><%= interval.end_time %></td>
+    <td><%= interval.session_type %></td>
+    <td><%= interval.phrase_name %></td>
+    <td><%= interval.phrase_type %></td>
+    <td><%= interval.task_name %></td>
+    <td><%= interval.comments %></td>
+    <td><%= link_to 'Show', interval %></td>
+    <td><%= link_to 'Edit', edit_interval_path(interval) %></td>
+    <td><%= link_to 'Destroy', interval, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Interval', new_interval_path %>

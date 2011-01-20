@@ -1,0 +1,2 @@
+module IntervalsHelper
+end
