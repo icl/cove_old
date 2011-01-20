@@ -43,9 +43,7 @@ When /^the user fills in their new password$/ do
   click_button("user_submit")
 end
 
-Then /^the user should be redirected to root$/ do
-  page.current_url.should == url_for(:controller => "nda", :action => "index")
-end
+
 
 Then /^the users should be able to login with their new password$/ do
   visit "/logout"
