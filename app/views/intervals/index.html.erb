@@ -13,27 +13,42 @@
 			<fieldset>
 				<legend>Filters</legend>
 				<fieldset>
+          <!--  PRATIK's Note:
+            just have a drop down of possible dates
+
+
+          -->
 					<legend>Date</legend>
 					<input name="date-start" />-
 					<input name="date-end" />
 				</fieldset>
+        <!--UNUSED
 				<fieldset>
 					<legend>Day</legend>
 					<input type="number" name="day-start" /> -
 					<input type="number" name="day-end" />
 				</fieldset>
+        -->
+        <!--UNUSED
 				<fieldset>
 					<legend>Session</legend>
 					<input type="number" name="session-start"> -
 					<input type="number" name="session-end">
 				</fieldset>
+        -->
 				<fieldset>
 					<legend>Camera Angle</legend>
 					<ul>
+            <!-- PRATIK's Note:
+              so lets grab all possible camera angles from db and have a "radio"
+              or "fieldset" each angle
+
+            -->
 						<li><label><input type="checkbox" name="camera_angle" value="wayne" />Wayne</label></li>
 					</ul>
 				</fieldset>
-				<fieldset>
+				<!--UNUSED
+        <fieldset>
 					<legend>Session Type</legend>
 					<label><input name="session-type" type="checkbox" value="warmup" />Warm Up</label>
 					<label><input name="session-type" type="checkbox" value="practice" />Practice</label>
@@ -47,7 +62,9 @@
 					<label><input name="session-type" type="checkbox" value="experiment" />Experiment</label>
 					<label><input name="session-type" type="checkbox" value="structuring" />Structuring</label>
 				</fieldset>
-				<fieldset>
+        -->
+        <!--UNUSED
+        <fieldset>
 					<legend>Phase</legend>
 					<label for="phrase-name">Name</label>
 					<input type="text" name="phrase-name" id="phrase-name"/>
@@ -58,12 +75,22 @@
 					<label><input name="phase-type" type="checkbox" value="trios"/>Trios</label>
 					<label><input name="phase-type" type="checkbox" value="quartets"/>Quartets</label>
 				</fieldset>
+        -->
 				<input type="submit" value="Submit" />
 			</fieldset>
 		</form>
 	</div>
 
-	<div id="search">
+
+  <!-- PRATIK's note:
+    Let's have a RubyRails generated table inside this div...
+    ... somehow connected to the selections in div "filters"
+  -->
+  <div id="results">
+
+  </div>
+
+	<!--NOT IMPLEMENTED<div id="search">
 		<form>
 			<label for="searchbox"> Search </label>
 			<input type="text" name="search" id="searchbox" />
@@ -81,5 +108,6 @@
 
 			<input type="submit" value="Submit" />
 		</form>
-	</div>
+	</div>-->
 </div>
+
