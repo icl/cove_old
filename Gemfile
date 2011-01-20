@@ -22,14 +22,17 @@ gem "cancan"
 	gem 'rails3-generators'
 	gem "rspec"
 	gem "rspec-rails", "~> 2.4.0"
+	gem 'email_spec'
 	gem "capybara"
 	gem "cucumber"
+	gem 'launchy'
 	gem "database_cleaner"
 	gem "cucumber-rails"
 	gem "nokogiri"
 	gem "autotest"
 	gem 'autotest-rails'
 	gem 'ruby-debug19', :platforms => :mri_19
+	gem 'ruby-debug', :platforms => :mri_18
 	
   # additional testing gems
 	gem "thin"

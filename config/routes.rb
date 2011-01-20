@@ -1,5 +1,6 @@
 Cove::Application.routes.draw do
   resources :intervals
+  get "welcome/index"
 
   devise_for :users, :path => "/", :path_names => {:sign_in => "login", 
     :sign_out => "logout"}
@@ -9,5 +10,8 @@ Cove::Application.routes.draw do
     post "/nda" => "nda#create"
   end
   
-  root  :to => "place_holder#index"
+  resources :invitations, :only => [:new, :create, :edit, :update]
+  match 'invitations/' => 'invitations#new'
+  
+  root  :to => "welcome#index"
 end
