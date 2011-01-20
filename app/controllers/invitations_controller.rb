@@ -5,7 +5,7 @@ class InvitationsController < ApplicationController
   end
   
   def create
-    if User.invite_user!(:email => params[:email] )
+    if User.invite_user!(:email => params[:email])
       flash[:notice] = "The user has been sent an invitation"
     else
       flash[:alert] = "We could not invite your user at this time"
@@ -24,12 +24,14 @@ class InvitationsController < ApplicationController
   end
   
   def update
-    if !User.confirm_invitation!(params[:password], params[:password_confirmation], params[:id])
+    if !User.confirm_invitation!(params[:user][:password], params[:user][:password_confirmation], params[:id])
       flash[:alert] = "Your password was invalid please try again"
       return redirect_to :action => "edit"
     else
       flash[:notice] = "You are now on official user"
-      redirect_to(root_path)
+      # authenticate_user! User.user_from_token
+      # redirect_to(root_path)
+      sign_in_and_redirect :user, User.user_from_token(params[:id])
     end
   end
 end

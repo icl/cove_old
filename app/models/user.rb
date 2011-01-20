@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me
   
   def self.invite_user!(args)
-    token = ActiveSupport::SecureRandom.base64(10)
+    token = ActiveSupport::SecureRandom.hex(10)
     newUser = User.new :email => args[:email], :password => token, :password_confirmation => token
     newUser.invitation_token = token
     # newUser.invitation_token_expiration = DateTime.now + 5
@@ -43,5 +43,5 @@ class User < ActiveRecord::Base
   def self.user_from_token(token)
     User.where(:invitation_token => token).first
   end
-  
+    
 end
