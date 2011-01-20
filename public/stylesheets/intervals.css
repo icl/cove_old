@@ -9,6 +9,15 @@
 	list-style: none;
 }
 
+#intervals fieldset {
+	border: thin white solid;
+	margin: 0;
+}
+
+#intervals fieldset legend {
+	font-weight: bold;
+}
+
 #intervals .nav {
 	position: absolute;
 	top: 0;
@@ -19,13 +28,18 @@
 
 #intervals .nav li {
 	float: left;
-	margin-right: 5px;
-}
-
-#intervals .nav li a {
 	display: block;
 	background-color: black;
 	padding: .5em;
+}
+
+#intervals .nav a {
+	color: white;
+	text-decoration: none;
+}
+#intervals .nav a:hover {
+	color: gray;
+	text-decoration: none;
 }
 
 #intervals #filters {

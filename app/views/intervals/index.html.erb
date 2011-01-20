@@ -1,89 +1,85 @@
 <div id="intervals">
+	<h1>Browse Videos</h1>
+	<ul class="nav">
+		<li><a href="#">Home</a></li>
+		<li><a href="#">Favorites</a></li>
+		<li><a href="#">Most Tagged</a></li>
+		<li><a href="#">Recently Viewed</a></li>
+		<li><a href="#">Recently Added</a></li>
+	</ul>
 
-<h1>Browse Videos</h1>
-<ul class="nav">
-	<li><a href="#">Home</a></li>
-	<li><a href="#">Favorites</a></li>
-	<li><a href="#">Most Tagged</a></li>
-	<li><a href="#">Recently Viewed</a></li>
-	<li><a href="#">Recently Added</a></li>
-</ul>
-
-<div id="filters">
-	<form>
-		<fieldset>
-			<legend>Filters</legend>
+	<div id="filters">
+		<form>
 			<fieldset>
-				<legend>Date</legend>
-				<input name="date-start" />-
-				<input name="date-end" />
+				<legend>Filters</legend>
+				<fieldset>
+					<legend>Date</legend>
+					<input name="date-start" />-
+					<input name="date-end" />
+				</fieldset>
+				<fieldset>
+					<legend>Day</legend>
+					<input type="number" name="day-start" /> -
+					<input type="number" name="day-end" />
+				</fieldset>
+				<fieldset>
+					<legend>Session</legend>
+					<input type="number" name="session-start"> -
+					<input type="number" name="session-end">
+				</fieldset>
+				<fieldset>
+					<legend>Camera Angle</legend>
+					<ul>
+						<li><label><input type="checkbox" name="camera_angle" value="wayne" />Wayne</label></li>
+					</ul>
+				</fieldset>
+				<fieldset>
+					<legend>Session Type</legend>
+					<label><input name="session-type" type="checkbox" value="warmup" />Warm Up</label>
+					<label><input name="session-type" type="checkbox" value="practice" />Practice</label>
+					<label><input name="session-type" type="checkbox" value="task" />Task</label>
+					<label><input name="session-type" type="checkbox" value="show" />Show</label>
+					<label><input name="session-type" type="checkbox" value="make" />Make</label>
+					<label><input name="session-type" type="checkbox" value="break" />Break</label>
+					<label><input name="session-type" type="checkbox" value="groupdiscussion" />Group Discussion</label>
+					<label><input name="session-type" type="checkbox" value="lecture" />Lecture</label>
+					<label><input name="session-type" type="checkbox" value="class" />Class</label>
+					<label><input name="session-type" type="checkbox" value="experiment" />Experiment</label>
+					<label><input name="session-type" type="checkbox" value="structuring" />Structuring</label>
+				</fieldset>
+				<fieldset>
+					<legend>Phase</legend>
+					<label for="phrase-name">Name</label>
+					<input type="text" name="phrase-name" id="phrase-name"/>
+					<label for="phrase-altname">Alternative Name</label>
+					<input type="text" name="phrase-altname" id="phrase-altname"/>
+					<label><input name="phase-type" type="checkbox" value="solos"/>Solos</label>
+					<label><input name="phase-type" type="checkbox" value="duets"/>Duets</label>
+					<label><input name="phase-type" type="checkbox" value="trios"/>Trios</label>
+					<label><input name="phase-type" type="checkbox" value="quartets"/>Quartets</label>
+				</fieldset>
+				<input type="submit" value="Submit" />
 			</fieldset>
-			<fieldset>
-				<legend>Day</legend>
-				<input type="number" name="day-start" /> -
-				<input type="number" name="day-end" />
-			</fieldset>
-			<fieldset>
-				<legend>Session</legend>
-				<input type="number" name="session-start"> -
-				<input type="number" name="session-end">
-			</fieldset>
-			<fieldset>
-				<legend>Camera Angle</legend>
-				<ul>
-					<li><label><input type="checkbox" name="camera_angle" value="wayne" />Wayne</label></li>
-				</ul>
-			</fieldset>
-			<fieldset>
-				<legend>Session Type</legend>
-				<label><input name="session-type" type="checkbox" value="warmup" />Warm Up</label>
-				<label><input name="session-type" type="checkbox" value="practice" />Practice</label>
-				<label><input name="session-type" type="checkbox" value="task" />Task</label>
-				<label><input name="session-type" type="checkbox" value="show" />Show</label>
-				<label><input name="session-type" type="checkbox" value="make" />Make</label>
-				<label><input name="session-type" type="checkbox" value="break" />Break</label>
-				<label><input name="session-type" type="checkbox" value="groupdiscussion" />Group Discussion</label>
-				<label><input name="session-type" type="checkbox" value="lecture" />Lecture</label>
-				<label><input name="session-type" type="checkbox" value="class" />Class</label>
-				<label><input name="session-type" type="checkbox" value="experiment" />Experiment</label>
-				<label><input name="session-type" type="checkbox" value="structuring" />Structuring</label>
-			</fieldset>
-			<fieldset>
-				<legend>Phase</legend>
-				<label for="phrase-name">Name</label>
-				<input type="text" name="phrase-name" id="phrase-name"/>
-				<label for="phrase-altname">Alternative Name</label>
-				<input type="text" name="phrase-altname" id="phrase-altname"/>
-				<label><input name="phase-type" type="checkbox" value="solos"/>Solos</label>
-				<label><input name="phase-type" type="checkbox" value="duets"/>Duets</label>
-				<label><input name="phase-type" type="checkbox" value="trios"/>Trios</label>
-				<label><input name="phase-type" type="checkbox" value="quartets"/>Quartets</label>
-			</fieldset>
-			<input type="submit" value="Submit" />
-		</fieldset>
-	</form>
-</div>
-
-<div id="search">
-	<li>
-		<label for="searchbox"> Search
-		<input type="text" name="search" id="searchbox" />
 		</form>
-	</li>
-
-	<select id="sort-dropdown">
-		<label for = "sort" id="sort-dropdown"> Sort by:
-		<option value = "relevance">Relevance</option>
-		<option value = "most viewed">Most Viewed</option>
-		<option value = "most tagged">Tagged</option>
-	</select>
 	</div>
 
-	<input type="radio" name="view-list"/> List
-	<input type="radio" name="view-thumbnail"/> Thumbnail
-	<input type="radio" name="view-timeline" /> Timeline
+	<div id="search">
+		<form>
+			<label for="searchbox"> Search </label>
+			<input type="text" name="search" id="searchbox" />
 
-	<input type="submit" value="Submit" />
-</div>
+			<label for="sort">Sort by:</label>
+			<select id="sort">
+				<option value="relevance">Relevance</option>
+				<option value="most viewed">Most Viewed</option>
+				<option value="most tagged">Tagged</option>
+			</select>
 
+			<label><input type="radio" name="view" value="list"/>List</label>
+			<label><input type="radio" name="view" value="thumbnail"/>Thumbnail</label>
+			<label><input type="radio" name="view" value="timeline" />Timeline</label>
+
+			<input type="submit" value="Submit" />
+		</form>
+	</div>
 </div>
