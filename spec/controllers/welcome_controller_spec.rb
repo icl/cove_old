@@ -3,10 +3,10 @@ require 'spec_helper'
 describe WelcomeController do
 
   describe "GET 'index'" do
-    it "should be successful" do
-      get 'index'
-      response.should be_success
+    before(:each) do
+      get :index
     end
+    it {should respond_with(:success)}
   end
 
 end
