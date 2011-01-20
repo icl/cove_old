@@ -35,11 +35,17 @@
 				<fieldset>
 					<legend>Camera Angle</legend>
 					<ul>
-            <!-- PRATIK's Note:
-              so lets grab all possible camera angles from db and have a "radio"
-              or "fieldset" each angle
-            -->
-						<li><label><input type="checkbox" name="camera_angle" value="wayne" />Wayne</label></li>
+					    <!-- PRATIK's Note:
+					      so lets grab all possible camera angles from db and have a "radio"
+					      or "fieldset" each angle
+					    -->
+						<% @angles.each do |a| %>
+							<li>
+								<label>
+									<input type="radio" name="camera_angle" value="<%= a %>"/><%= a %>
+								</label>
+							</li>
+						<% end %>
 					</ul>
 				</fieldset>
 	<!--UNUSED
@@ -87,11 +93,6 @@
 					<th>Session Number</th>
 					<th>Start Time</th>
 					<th>End Time</th>
-					<th>Session Type</th>
-					<th>Phrase Name</th>
-					<th>Phrase Type</th>
-					<th>Task Name</th>
-					<th>Comments</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -102,11 +103,6 @@
 						<td><%= int.session_number %></td>
 						<td><%= int.start_time %></td>
 						<td><%= int.end_time %></td>
-						<td><%= int.session_type %></td>
-						<td><%= int.phrase_name %></td>
-						<td><%= int.phrase_type %></td>
-						<td><%= int.task_name %></td>
-						<td><%= int.comments %></td>
 					</tr>
 				<% end %>
 			</tbody>

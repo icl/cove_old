@@ -2,7 +2,8 @@ class IntervalsController < ApplicationController
   # GET /intervals
   # GET /intervals.xml
   def index
-    @intervals = Interval.all
+    @intervals = Interval.find(:all, :order => 'start_time')
+    @angles = @intervals.map {|x| x.camera_angle}.uniq
 
     respond_to do |format|
       format.html # index.html.erb
