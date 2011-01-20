@@ -1,0 +1,25 @@
+<h1>Listing users</h1>
+
+<table>
+  <tr>
+    <th colspan="2">Name (Last, First)</th>
+    <th>Email</th>
+    <th></th>
+	<th></th>
+  </tr>
+
+<% @users.each do |user| %>
+  <tr>
+    <td colspan="2"><%= link_to user.lname + ', ' + user.fname, user %></td>
+    <td><%= user.email %></td>
+    
+	<td>	
+	</td>
+	<td><%= link_to 'Remove', user, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New User', new_user_path %>
