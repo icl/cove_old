@@ -66,3 +66,18 @@
 #intervals label + label {
 	margin-top: .25em;
 }
+
+#intervals #listints td, #intervals #listints th {
+	border: thin solid black;
+	padding: 5px;
+}
+
+#intervals #listints th {
+	background-color: gray;
+	color: white;
+	white-space: nowrap;
+}
+
+#intervals #listints {
+	width: 60%;
+}
