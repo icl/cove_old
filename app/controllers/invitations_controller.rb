@@ -3,7 +3,7 @@ class InvitationsController < ApplicationController
   def new
     render :action => "new"
   end
-  
+
   def create
     if User.invite_user!(:email => params[:email])
       flash[:notice] = "The user has been sent an invitation"
@@ -12,7 +12,7 @@ class InvitationsController < ApplicationController
     end
     redirect_to :action => "new"
   end
-  
+
   def edit
     if User.invitation_token_valid? params[:id]
       @user = User.new
@@ -22,7 +22,7 @@ class InvitationsController < ApplicationController
       redirect_to(root_path)
     end
   end
-  
+
   def update
     if !User.confirm_invitation!(params[:user][:password], params[:user][:password_confirmation], params[:id])
       flash[:alert] = "Your password was invalid please try again"

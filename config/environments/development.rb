@@ -15,7 +15,11 @@ Cove::Application.configure do
   config.action_controller.perform_caching = false
 
   # Don't care if the mailer can't send
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.delivery_method = :test
+  config.action_mailer.smtp_settings = {
+    :address => "smtp.ucsd.edu"
+  }
 
   # Print deprecation notices to the Rails logger
   config.active_support.deprecation = :log

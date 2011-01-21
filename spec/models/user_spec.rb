@@ -19,6 +19,9 @@ describe User do
       it "should set the invitation_token" do
         @user.invitation_token.should be
       end
+      it "should send an email" do
+        ActionMailer::Base.deliveries.length().should be > 0
+      end
     end
     
     context "email address already exists" do
