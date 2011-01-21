@@ -7,6 +7,7 @@ class InvitationsController < ApplicationController
   def create
     if User.invite_user!(:email => params[:email])
       flash[:notice] = "The user has been sent an invitation"
+      InvitationMailer.new
     else
       flash[:alert] = "We could not invite your user at this time"
     end
