@@ -3,54 +3,58 @@
 	margin: 0;
 }
 
+#intervals h1, #intervals h2 {
+	background-color: gray;
+	color: white;
+}
+
 #intervals h1 {
 	padding: 1em;
-	background-color: gray;
 	border-bottom: thin black solid;
-	color: black;
 }
 
 #intervals li {
 	list-style: none;
 }
 
+#intervals #filters {
+	width: 300px;
+	padding: 1em;
+	background-color: gray;
+	float:left;
+	color: white;
+}
+
 #intervals fieldset {
-	border: thin white solid;
-	padding: 5px;
+	border: thin white dotted;
+	padding: 5px 10px 10px 10px;
 }
 
 #intervals fieldset legend {
 	font-weight: bold;
 }
 
-#intervals #filters {
-	width: 30%;
-	padding: 1em;
-	background-color: gray;
-	color: #FFFFF2;
-	float:left;
-}
-
 #intervals label{
 	display: block;
 }
+
+#intervals label input {
+	margin-right: 4px;
+}
+
 #intervals label + label {
 	margin-top: .25em;
 }
 
-#intervals #listints td, #intervals #listints th, #intervals #filters {
+#intervals #results td, #intervals #results th, #intervals #filters {
 	border: thin solid black;
 	padding: 5px;
 }
 
-#intervals #listints th {
+#intervals #results th {
 	background-color: gray;
 	color: white;
 	white-space: nowrap;
-}
-
-#intervals #listints {
-	width: 60%;
 }
 
 #intervals #filters, #intervals #results {
@@ -59,11 +63,21 @@
 	margin-right: 5px;
 }
 
-#intervals #listints {
+#intervals #results {
 	position: relative;
 	top: -2px;
 }
 
 #intervals .filtercontrol.highlighted {
 	outline: 2px solid yellow;
+}
+
+#intervals a {
+	color: black;
+	font-weight: bold;
+	text-decoration: none;
+}
+#intervals a:hover {
+	background-color: inherit;
+	color: red;
 }
