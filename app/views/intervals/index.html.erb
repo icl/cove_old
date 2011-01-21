@@ -72,9 +72,10 @@
 
 <script type="text/javascript">
 $(document).ready(function(){
+	// Highlight the relevant camera angle filter control when you mouse over a row.
 	$("tr.interval").live('mouseover mouseout', function(event){
 		var class = $.grep($(this).attr("class").split(" "), function(e, i){
-			return(e.substr(0, 12) == "cameraangle_")
+			return(e.substr(0, 12) == "cameraangle_");
 		});
 		if(event.type == "mouseover"){
 			$(".filtercontrol."+class).addClass("highlighted");
