@@ -22,7 +22,7 @@
 							</label>
 						</li>
 						<% @angles.each do |a| %>
-							<li>
+							<li class="filtercontrol cameraangle_<%= a.gsub(" ", "") %>">
 								<label>
 									<input type="radio" name="camera_angle" value="<%= a %>" <%= params[:camera_angle] == a ? "checked='checked'" : "" %>/><%= a %>
 								</label>
@@ -48,13 +48,20 @@
 				</tr>
 			</thead>
 			<tbody>
+				<% last_day = "" %>
 				<% @filtered_intervals.each do |int| %>
-					<tr>
+					<% if last_day != int.day %>
+						<tr>
+							<th colspan="6"><%= int.day %></th>
+						</tr>
+						<% last_day = int.day %>
+					<% end %>
+					<tr class="interval cameraangle_<%= int.camera_angle.gsub(" ", "") %>">
 						<td><%= int.session_type %></td>
 						<td><%= int.phrase_name %></td>
 						<td><%= link_to int.filename, int %></td>
 						<td><%= int.camera_angle %></td>
-						<td><%= int.start_time %></td>
+						<td><%= int.start_time_of_day %></td>
 						<td><%= int.duration %></td>
 					</tr>
 				<% end %>
@@ -62,3 +69,18 @@
 		</table>
 	</div>
 </div>
+
+<script type="text/javascript">
+$(document).ready(function(){
+	$("tr.interval").live('mouseover mouseout', function(event){
+		var class = $.grep($(this).attr("class").split(" "), function(e, i){
+			return(e.substr(0, 12) == "cameraangle_")
+		});
+		if(event.type == "mouseover"){
+			$(".filtercontrol."+class).addClass("highlighted");
+		}else{
+			$(".filtercontrol."+class).removeClass("highlighted");
+		}
+	});
+});
+</script>

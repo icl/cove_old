@@ -81,3 +81,7 @@
 #intervals #listints {
 	width: 60%;
 }
+
+#intervals .filtercontrol.highlighted {
+	outline: 2px solid yellow;
+}
