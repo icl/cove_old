@@ -21,9 +21,7 @@ class IntervalsController < ApplicationController
 
     # Build arrays of the unique angles and days.
     @angles = intervals.map {|x| x.camera_angle}.uniq.sort
-    @days = intervals.map{|x| x.start_time}.map {|x|
-	sprintf("%d-%d-%d", x.month, x.day, x.year)
-    }.uniq
+    @days = intervals.map{|x| x.day}.uniq
 
     # Filter by the passed parameters
     @filtered_intervals = intervals.reject{|x|
