@@ -36,6 +36,7 @@
 
 #intervals label{
 	display: block;
+	padding: 5px;
 }
 
 #intervals label input {
@@ -68,8 +69,12 @@
 	top: -2px;
 }
 
-#intervals .filtercontrol.highlighted {
-	outline: 2px solid yellow;
+#intervals .filtercontrol.highlighted, #intervals .filtercontrol:hover {
+	outline: 2px dotted yellow;
+}
+
+#intervals #results tr.highlighted td, #intervals #results tr:hover td {
+	background-color: yellow;
 }
 
 #intervals a {

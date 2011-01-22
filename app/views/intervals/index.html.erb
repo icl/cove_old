@@ -74,14 +74,23 @@
 <script type="text/javascript">
 $(document).ready(function(){
 	// Highlight the relevant camera angle filter control when you mouse over a row.
-	$("tr.interval").live('mouseover mouseout', function(event){
-		var class = $.grep($(this).attr("class").split(" "), function(e, i){
-			return(e.substr(0, 12) == "cameraangle_");
+	// And vice versa
+	$(".filtercontrol").each(function(){
+		var classes = $.grep($(this).attr("class").split(" "), function(e, i){
+			return(e != "filtercontrol");
 		});
-		if(event.type == "mouseover"){
-			$(".filtercontrol."+class).addClass("highlighted");
-		}else{
-			$(".filtercontrol."+class).removeClass("highlighted");
+		for(class in classes){
+			var class = classes[class];
+			$(".filtercontrol."+class).live('mouseover', function(){
+				$(".interval."+class).addClass("highlighted");
+			}).live('mouseout', function(){
+				$(".interval."+class).removeClass("highlighted");
+			});
+			$(".interval."+class).live('mouseover', function(){
+				$(".filtercontrol."+class).addClass("highlighted");
+			}).live('mouseout', function(){
+				$(".filtercontrol."+class).removeClass("highlighted");
+			});
 		}
 	});
 });
