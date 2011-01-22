@@ -30,8 +30,7 @@ class IntervalsController < ApplicationController
     	if(params[:date].nil? || params[:date] == "")
 		false
 	else
-		day = sprintf("%d-%d-%d", x.start_time.month, x.start_time.day, x.start_time.year)
-		params[:date] != day
+		params[:date] != x.day
 	end
     }.reject{|x|
     	if(params[:camera_angle].nil? || params[:camera_angle] == "")
