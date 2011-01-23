@@ -13,6 +13,7 @@ class User < ActiveRecord::Base
     newUser.invitation_token = token
     # newUser.invitation_token_expiration = DateTime.now + 5
     if newUser.save
+      InvitationMailer.welcome_email(newUser).deliver
       return newUser
     else
       return nil
