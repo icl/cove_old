@@ -46,7 +46,7 @@
 		</thead>
 		<tbody>
 			<% last_day = "" %>
-			<% @filtered_intervals.each do |int| %>
+			<% @intervals.each do |int| %>
 				<% if last_day != int.day %>
 					<tr>
 						<th colspan="6"><%= int.day %></th>
@@ -62,7 +62,7 @@
 					<td><%= int.duration %></td>
 				</tr>
 			<% end %>
-			<% if @filtered_intervals.size == 0 %>
+			<% if @intervals.size == 0 %>
 				<tr>
 					<td colspan="6">There were no videos found with these filter options.</td>
 				</tr>
