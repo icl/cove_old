@@ -16,7 +16,7 @@ Given /^the admin is on the invitations page$/ do
 end
 
 When /^they fill in the email address and submit$/ do
-  fill_in("email", :with => "invite@devise.com")
+  fill_in("user_email", :with => "invite@devise.com")
   click_button("Save User")
 end
 

@@ -15,8 +15,7 @@ class Admin::UsersController < ApplicationController
   
   def create
     @error_list = []
-    if params[:user][:email_list]
-      email_string = params[:user][:email_list].read
+    if !params[:user][:email_list].blank?
       email_list = email_string.split(",")
       email_list.each do |email|
         if !User.invite_user!(:email => email.strip)
