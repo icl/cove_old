@@ -10,5 +10,7 @@ describe Admin::UsersController do
   
   describe "GET 'new'" do
     before(:each){get 'new'}
+    it {should render_template(:new)}
+    it {should respond_with(:success)}
   end
 end

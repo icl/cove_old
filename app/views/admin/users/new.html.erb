@@ -1,0 +1,7 @@
+<div class="form_container">
+  <p>Enter the email address of the user you wish to invite</p>
+  <% simple_form_for :user do |f| -%>
+    <%= f.input :email, :required => false%>
+    <%= f.input :email_list, :as => :file, :required => false %>
+  <% end -%>
+</div>

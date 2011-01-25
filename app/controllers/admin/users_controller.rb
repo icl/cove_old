@@ -5,4 +5,8 @@ class Admin::UsersController < ApplicationController
     @all_users = ::User.all
     render 'index'
   end
+  
+  def new
+    render 'new'
+  end
 end

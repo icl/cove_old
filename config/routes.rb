@@ -14,7 +14,7 @@ Cove::Application.routes.draw do
   match 'invitations/' => 'invitations#new'
   
   namespace :admin do
-    resources :users
+    resources :users, :only => [:index, :new, :create]
   end
   
   root  :to => "welcome#index"
