@@ -1,0 +1,14 @@
+<div id="list_container">
+  <table>
+    <tbody>
+      <% if !@all_users.blank? %>
+        <% for user in @all_users %>
+          <tr>
+            <td><%= user.email %></td>
+          </tr>
+        <% end %>
+      <% else %>
+      <% end %>
+    </tbody>
+  </table>
+</div>
