@@ -1,0 +1,19 @@
+<div class="error_containter">
+  <% if !@error_list.blank? %>
+  <p>these users could not be added because they already exist</p>
+    <% for item in @error_list %>
+      <p> <%= item %> </p>
+    <% end %>
+  <% else %>
+    
+  <% end %>
+  
+</div>
+<div class="form_container">
+  <p>Enter the email address of the user you wish to invite</p>
+  <% simple_form_for :user, :url => {:action => "create"}, :html => {:multipart => true} do |f| -%>
+    <%= f.input :email, :required => false%>
+    <%= f.input :email_list, :as => :file, :required => false %>
+    <%= f.button :submit%>
+  <% end -%>
+</div>
