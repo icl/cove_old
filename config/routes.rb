@@ -10,7 +10,7 @@ Cove::Application.routes.draw do
     post "/nda" => "nda#create"
   end
   
-  resources :invitations, :only => [:new, :create, :edit, :update]
+  resources :invitations, :only => [:edit, :update]
   match 'invitations/' => 'invitations#new'
   
   namespace :admin do
