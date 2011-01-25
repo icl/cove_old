@@ -8,12 +8,18 @@
 	color: white;
 }
 
+#intervals h2 {
+	margin-bottom: 5px;
+}
+
 #intervals h1 {
 	padding: 1em;
 	border-bottom: thin black solid;
+	margin-bottom: 5px;
 }
 
 #intervals li {
+	margin-left: 0;
 	list-style: none;
 }
 
@@ -27,7 +33,7 @@
 
 #intervals fieldset {
 	border: thin white dotted;
-	padding: 5px 10px 10px 10px;
+	padding: 5px 5px 10px 10px;
 }
 
 #intervals fieldset legend {
@@ -43,10 +49,6 @@
 	margin-right: 4px;
 }
 
-#intervals label + label {
-	margin-top: .25em;
-}
-
 #intervals #results td, #intervals #results th, #intervals #filters {
 	border: thin solid black;
 	padding: 5px;
@@ -59,14 +61,8 @@
 }
 
 #intervals #filters, #intervals #results {
-	margin-top: 10px;
 	margin-left: 5px;
 	margin-right: 5px;
-}
-
-#intervals #results {
-	position: relative;
-	top: -2px;
 }
 
 #intervals .filtercontrol.highlighted, #intervals .filtercontrol:hover {
@@ -85,4 +81,8 @@
 #intervals a:hover {
 	background-color: inherit;
 	color: red;
+}
+
+#intervals #filters ul {
+	margin-bottom: 0;
 }
