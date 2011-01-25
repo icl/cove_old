@@ -1,0 +1,83 @@
+#intervals h1 {
+	padding: 1em;
+	left: 0;
+	background-color: #8B8378;
+	color: black;
+}
+
+#intervals li {
+	list-style: none;
+}
+
+#intervals fieldset {
+	border: thin white solid;
+	margin: 0;
+}
+
+#intervals fieldset legend {
+	font-weight: bold;
+}
+
+#intervals .nav {
+	position: absolute;
+	top: 0;
+	left: 0;
+	margin: 0;
+	padding: .3em;
+}
+
+#intervals .nav li {
+	float: left;
+	display: block;
+	background-color: black;
+	padding: .5em;
+}
+
+#intervals .nav a {
+	color: white;
+	text-decoration: none;
+}
+#intervals .nav a:hover {
+	color: gray;
+	text-decoration: none;
+}
+
+#intervals #filters {
+	width: 30%;
+	padding: 1em;
+	margin: 0;
+	background-color: gray;
+	color: #FFFFF2;
+	float:left;
+	margin: .25em;
+}
+
+#intervals #search {
+	padding: 1em;
+	display: inline;
+	background-color: #CDC0B0;
+	float: right;
+	margin: .25em;
+}
+
+#intervals label{
+	display: block;
+}
+#intervals label + label {
+	margin-top: .25em;
+}
+
+#intervals #listints td, #intervals #listints th {
+	border: thin solid black;
+	padding: 5px;
+}
+
+#intervals #listints th {
+	background-color: gray;
+	color: white;
+	white-space: nowrap;
+}
+
+#intervals #listints {
+	width: 60%;
+}

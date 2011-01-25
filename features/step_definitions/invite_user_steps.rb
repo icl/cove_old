@@ -12,12 +12,12 @@ end
 
 
 Given /^the admin is on the invitations page$/ do
-  visit url_for(:controller => "invitations", :action => "new")
+  visit url_for(:controller => "admin/users", :action => "new")
 end
 
 When /^they fill in the email address and submit$/ do
-  fill_in("email", :with => "invite@devise.com")
-  click_button("Invite User")
+  fill_in("user_email", :with => "invite@devise.com")
+  click_button("Save User")
 end
 
 Then /^there should be a new user in the db$/ do

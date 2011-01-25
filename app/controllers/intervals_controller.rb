@@ -2,11 +2,36 @@ class IntervalsController < ApplicationController
   # GET /intervals
   # GET /intervals.xml
   def index
-    @intervals = Interval.all
+    intervals = Interval.find(:all, :order => 'start_time').map{|int|
+	duration = (int.end_time - int.start_time)
+	hours = (duration / (60*60)).floor
+	minutes = ((duration - hours*60*60)/60).floor
+	int[:duration] = sprintf("%02dh%02dm", hours, minutes);
+	int
+    }
+    @angles = intervals.map {|x| x.camera_angle}.uniq.sort
+    @days = intervals.map{|x| x.start_time}.map {|x|
+	sprintf("%d-%d-%d", x.month, x.day, x.year)
+    }.uniq
+
+    @filtered_intervals = intervals.reject{|x|
+    	if(params[:date].nil? || params[:date] == "")
+		false
+	else
+		day = sprintf("%d-%d-%d", x.start_time.month, x.start_time.day, x.start_time.year)
+		params[:date] != day
+	end
+    }.reject{|x|
+    	if(params[:camera_angle].nil? || params[:camera_angle] == "")
+		false
+	else
+		params[:camera_angle] != x.camera_angle
+	end
+    }
 
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @intervals }
+      format.xml  { render :xml => @filtered_intervals }
     end
   end
 
