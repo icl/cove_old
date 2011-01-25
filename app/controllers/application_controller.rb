@@ -6,4 +6,11 @@ class ApplicationController < ActionController::Base
       return redirect_to :controller => "nda", :action => "index"
     end
   end
+  
+  def require_admin
+    if !current_user || !current_user.admin
+      flash[:alert] = "You must be loggedin as an admin to access this feature"
+      return redirect_to(root_path)
+    end
+  end
 end
