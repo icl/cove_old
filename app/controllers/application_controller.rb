@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   
   def require_admin
     if !current_user || !current_user.admin
-      flash[:alert] = "You must be an admin to access this feature"
+      flash[:alert] = "You must be loggedin as an admin to access this feature"
       return redirect_to(root_path)
     end
   end
