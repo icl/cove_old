@@ -4,11 +4,12 @@ class IntervalsController < ApplicationController
   def index
     @angles = Interval.unique_angles
     @days = Interval.unique_days
-    @intervals = Interval.find(:all, :order => "start_time").reject{|x|
-	    (params[:date].nil? || params[:date] == "") ? false : (params[:date] != x.day)
-    }.reject{|x|
-	    (params[:camera_angle].nil? || params[:camera_angle] == "") ? false : (params[:camera_angle] != x.camera_angle)
-    }
+#   @intervals = Interval.find(:all, :order => "start_time").reject{|x|
+#	    (params[:date].nil? || params[:date] == "") ? false : (params[:date] != x.day)
+#   }.reject{|x|
+#	    (params[:camera_angle].nil? || params[:camera_angle] == "") ? false : (params[:camera_angle] != x.camera_angle)
+#   }
+    @intervals = Interval.lame_search(params[:search])
 
     respond_to do |format|
       format.html # index.html.erb
