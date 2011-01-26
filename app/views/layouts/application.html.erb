@@ -2,8 +2,14 @@
 <html>
 <head>
   <title>Cove</title>
-  <%= javascript_include_tag :defaults %>
-  <%= javascript_include_tag "jquery.js" %>
+  <% if ENV['RAILS_ENV'] == 'production' %>
+    <%= javascript_include_tag 'jquery.min.js' %>
+    <%= javascript_include_tag 'jquery-ui.min.js' %>
+  <% else %>
+      <%= javascript_include_tag "jquery.js" %>
+      <%= javascript_include_tag "jquery-ui.js" %>
+  <% end %>
+  <%= javascript_include_tag 'application.js' %>
   <%= javascript_include_tag "rails.js" %>
   <%= stylesheet_link_tag 'reset.css' %>
   <%= stylesheet_link_tag 'text.css' %>
