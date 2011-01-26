@@ -28,8 +28,8 @@ class Interval < ActiveRecord::Base
 	end
 
 	def self.lame_search(v)
-		column_names.map{|i| i.to_s}.map{|col|
-			where({col, v})
-		}.inject(:|)
+		args = [].fill("%#{v}%", 0, column_names.size)
+		query = column_names.map{|col| col.to_s}.map{|col| "#{col} LIKE ?"}.join(" OR ")
+		where(query, *args)
 	end
 end
