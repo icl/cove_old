@@ -10,13 +10,11 @@ class Interval < ActiveRecord::Base
 	end
 
 	def day
-		st = read_attribute(:start_time)
-		sprintf("%d-%d-%d", st.month, st.day, st.year)
+		read_attribute(:start_time).strftime("%d-%m-%y")
 	end
 	
 	def start_time_of_day
-		st = read_attribute(:start_time)
-		sprintf("%02d:%02d %s", st.hour % 12, st.min, (st.hour / 12).floor == 0 ? "AM" : "PM")
+		read_attribute(:start_time).strftime("%I:%M %p")
 	end
 
 	def self.unique_days
