@@ -10,6 +10,9 @@ module NavigationHelpers
 
     when /the home\s?page/
       '/'
+      
+    when /the nda\s?page/
+      '/nda'
     
     when /the user administration page/
       '/admin/users'
