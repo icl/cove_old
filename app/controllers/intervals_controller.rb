@@ -7,7 +7,7 @@ class IntervalsController < ApplicationController
     date_filter = (params[:date].nil? || params[:date] == "") ? false : params[:date]
     conditions = []
     unless(params[:camera_angle].nil? || params[:camera_angle] == "")
-	conditions = push("camera_angle = ?", params[:camera_angle])
+	conditions = ["camera_angle = ?", params[:camera_angle]]
     end
     @intervals = Interval.find(:all, :conditions => conditions, :order => "start_time").reject{|row| date_filter && date_filter == row.day}
 
