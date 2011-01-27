@@ -10,7 +10,7 @@ class IntervalsController < ApplicationController
     unless(params[:camera_angle].nil? || params[:camera_angle] == "")
 	conditions = ["camera_angle = ?", params[:camera_angle]]
     end
-    @intervals = Interval.find(:all, :conditions => conditions, :order => "start_time").reject{|row| date_filter && date_filter == row.day} & Interval.lame_search(params[:search])
+    @intervals = Interval.find(:all, :conditions => conditions, :order => "start_time").reject{|row| date_filter && date_filter != row.day} & Interval.lame_search(params[:search])
 
     respond_to do |format|
       format.html # index.html.erb
