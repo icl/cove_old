@@ -12,7 +12,7 @@ class Interval < ActiveRecord::Base
 	def day
 		read_attribute(:start_time).strftime("%d-%m-%y")
 	end
-	
+
 	def start_time_of_day
 		read_attribute(:start_time).strftime("%I:%M %p")
 	end
