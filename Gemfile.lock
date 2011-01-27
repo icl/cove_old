@@ -1,6 +1,7 @@
 GEM
   remote: http://rubygems.org/
   specs:
+    SystemTimer (1.2.2)
     ZenTest (4.4.2)
     abstract (1.0.0)
     actionmailer (3.0.3)
@@ -88,6 +89,9 @@ GEM
       json (~> 1.4.6)
     gherkin (2.3.3-x86-mingw32)
       json (~> 1.4.6)
+    hoptoad_notifier (2.4.2)
+      activesupport
+      builder
     i18n (0.5.0)
     jquery-rails (0.2.6)
       rails (~> 3.0)
@@ -211,6 +215,7 @@ PLATFORMS
   x86-mingw32
 
 DEPENDENCIES
+  SystemTimer
   autotest
   autotest-rails
   bourne
@@ -223,6 +228,7 @@ DEPENDENCIES
   email_spec
   factory_girl_rails
   fakefs
+  hoptoad_notifier
   jquery-rails (>= 0.2.6)
   launchy
   mocha
