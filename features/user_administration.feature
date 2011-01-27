@@ -5,7 +5,7 @@ Feature: User administration
   
   Background:
     Given a admin
-    Given there is nobody loggedin
+    Given there is nobody logged_in
     When the admin logs in to the site
     
   Scenario: display list
