@@ -5,8 +5,7 @@ Feature: Browse Intervals
 
 
 Background:
-	Given a regular user exists
-   And the user enters the correct email and password
+	Given I am a regular user who is logged in
 
 Scenario: Go to browse page
 	When I go to the intervals page

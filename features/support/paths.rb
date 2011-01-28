@@ -10,6 +10,15 @@ module NavigationHelpers
 
     when /the home\s?page/
       '/'
+      
+    when /the nda\s?page/
+      '/nda'
+      
+    when /the login\s?page/
+      '/login'
+      
+    when /the invitations\s?page/
+      url_for(:controller => "admin/users", :action => "new")
     
     when /the user administration page/
       '/admin/users'

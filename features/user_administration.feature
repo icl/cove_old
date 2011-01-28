@@ -4,9 +4,9 @@ Feature: User administration
   I want to see a list of all users
   
   Background:
-    Given a admin
-    Given there is nobody loggedin
-    When the admin logs in to the site
+    Given I am an admin
+    Given there is nobody logged in
+    When I log into the site as an admin
     
   Scenario: display list
     Given I am on the user administration page
