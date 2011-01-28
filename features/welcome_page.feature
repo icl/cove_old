@@ -5,9 +5,9 @@ So that I can better understand the site
 
 Scenario: Visiting
 	Given I am on the root page
-	And there is nobody logged_in
+	And there is nobody logged in
 	Then I should see "Login" within ".user_info"
 	
 Scenario: Visiting after logging in
-	Given a regular_user is logged_in
+	Given I am a regular user who is logged in
 	Then I should see "Logout" within ".user_info"
