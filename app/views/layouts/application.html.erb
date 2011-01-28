@@ -17,6 +17,9 @@
   <%= csrf_meta_tag %>
 </head>
 <body>
+<nav>
+	<%= render "intervals/search" %>
+</nav>
 <div class="content container_12">
   <%= display_flash %>
   <%= yield %>
