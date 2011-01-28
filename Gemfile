@@ -19,7 +19,7 @@ gem 'SystemTimer', :platforms => :mri_18
  group :development, :test do
 	gem "jquery-rails", ">= 0.2.6"
 	gem 'sqlite3-ruby', :require => 'sqlite3'
-	gem 'fakefs', :require => 'fakefs/safe'
+  # gem 'fakefs', :require => 'fakefs/safe'
 	gem 'rails3-generators'
 	gem "rspec"
 	gem "rspec-rails", "~> 2.4.0"
