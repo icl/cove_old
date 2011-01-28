@@ -13,6 +13,7 @@ gem 'narray'
 
 gem 'devise'
 gem "cancan"
+gem 'SystemTimer', :platforms => :mri_18 
 #gem 'devise_invitable', '0.3.4'
 
  group :development, :test do
