@@ -16,15 +16,11 @@
 				<legend>Camera Angle</legend>
 				<ul>
 					<li>
-						<label>
-							<input type="radio" name="camera_angle" value="" <%= params[:camera_angle].nil? || params[:camera_angle] == "" ? "checked='checked'" : "" %>/>Any
-						</label>
+						<%= link_to "Any", intervals_path(add_params :camera_angle => "") %>
 					</li>
 					<% @angles.each do |a| %>
-						<li class="filtercontrol cameraangle_<%= a.gsub(" ", "") %>">
-							<label>
-								<input type="radio" name="camera_angle" value="<%= a %>" <%= params[:camera_angle] == a ? "checked='checked'" : "" %>/><%= a %>
-							</label>
+						<li>
+							<%= link_to a, intervals_path(add_params :camera_angle => a) %>
 						</li>
 					<% end %>
 				</ul>
