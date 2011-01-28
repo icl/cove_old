@@ -16,6 +16,10 @@ gem "cancan"
 gem 'SystemTimer', :platforms => :mri_18 
 #gem 'devise_invitable', '0.3.4'
 
+#group :production do
+gem 'hoptoad_notifier'
+#end
+
  group :development, :test do
 	gem "jquery-rails", ">= 0.2.6"
 	gem 'sqlite3-ruby', :require => 'sqlite3'
