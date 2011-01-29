@@ -17,7 +17,23 @@
   <%= csrf_meta_tag %>
 </head>
 <body>
-<div class="content container_12">
+<div class="content container_16">
+	<div class="grid_12">
+	<%=link_to "Intervals", intervals_path %>
+	<h1 class="cove_header">COVE</h1>
+
+
+	<div class="user_info">
+		<%if !current_user %>
+		<a href="/sign_up">Sign up</a>
+	<span><a href="/login">Login</a></span>
+	<%else%>
+	Logged in as: <%=current_user.email%>
+	<span><a href="/logout">Logout</a></span>
+	<%end%>
+
+	</div>
+</div>
   <%= display_flash %>
   <%= yield %>
 </div>

@@ -1,7 +1,7 @@
 <div id="intervals">
 	<h1>Browse Videos</h1>
 	<div id="filters">
-		<form> 
+		<form>
 			<h2>Filters</h2>
 			<fieldset>
 				<legend>Date</legend>
@@ -36,6 +36,26 @@
 			<input type="submit" value="Submit" />
 		</form>
 	</div>
+
+	<div id="session-search" class ="grid_7" >
+		<select id="sort-dropdown">
+			<label for = "sort" id="sort-dropdown">
+			<option value= "sort-by">Sort By</option>
+			<option value = "date">Date</option>
+			<option value = "relevance">Relevance</option>
+			<option value = "most viewed">Most Viewed</option>
+			<option value = "most tagged">Tagged</option>
+		</select>
+	</div>
+
+	<div class="clear"></div>
+
+	<div id="view" class="grid_14">
+		<form id="view">
+			<input type="radio" name="view-list"/> List
+			<input type="radio" name="view-thumbnail"/> Thumbnail
+			<input type="radio" name="view-timeline" /> Timeline
+		</form>
 
 	<table id="results">
 		<thead>
@@ -99,3 +119,7 @@ $(document).ready(function(){
 	});
 });
 </script>
+</body>
+</html>
+>>>>>>> 3f5324adbe51c09a1355399b0ba9deb1085b1ba7
+

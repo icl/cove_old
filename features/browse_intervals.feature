@@ -5,7 +5,7 @@ Feature: Browse Intervals
 
 
 Background:
-	Given a regular_user is logged_in
+	Given I am a regular user who is logged in
 
 Scenario: Go to browse page
 	When I go to the intervals page
