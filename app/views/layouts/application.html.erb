@@ -14,28 +14,48 @@
   <%= stylesheet_link_tag 'reset.css' %>
   <%= stylesheet_link_tag 'text.css' %>
   <%= stylesheet_link_tag '960.css' %>
+  <%= stylesheet_link_tag 'style.css' %>
   <%= csrf_meta_tag %>
 </head>
 <body>
+	
+	<header class="container_16">
+		<h1 class="grid_5">COVE</h1>
+		<div class="grid_4 user_info prefix_7">
+			<%if !current_user %>
+				<a href="/sign_up">Sign up</a>
+				<span><a href="/login">Login</a></span>
+			<%else%>
+				Logged in as: <%=current_user.email%>
+				<span><a href="/logout">Logout</a></span>
+			<%end%>
+		</div>
+		<div class="grid_4 prefix_7">search would go here</div>
+		<br style="clear: both"/>
+	</header>
+	
+	<nav class="top_nav container_16">
+		<ul class= "grid_16">
+			<li><%= link_to "Home", root_path %></li>
+			<li><%= link_to "Intervals", intervals_path %></li>
+			<li><%= link_to "" %></li>
+			<li><%= link_to "" %></li>
+			<li><%= link_to "" %></li>
+		</ul>
+	</nav>
+	
 <div class="content container_16">
-	<div class="grid_12">
-	<%=link_to "Intervals", intervals_path %>
-	<h1 class="cove_header">COVE</h1>
 
 
-	<div class="user_info">
-		<%if !current_user %>
-		<a href="/sign_up">Sign up</a>
-	<span><a href="/login">Login</a></span>
-	<%else%>
-	Logged in as: <%=current_user.email%>
-	<span><a href="/logout">Logout</a></span>
-	<%end%>
-
-	</div>
-</div>
   <%= display_flash %>
   <%= yield %>
-</div>
+
+	<footer>
+		<h5 class="grid_10">This site was built by the W11 COGS 160 Class</h5>
+		<h5 class="grid_4">Copyright 2011 DK ET AL</h5>
+	<footer>
+
+</div> <!--End of container_16-->
+
 </body>
 </html>
