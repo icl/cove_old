@@ -4,9 +4,9 @@ Feature: Require nda
   I want all newly created user to be redirected to a page where they read and agree to the NDA
   
   Background:
-    Given a user who has not yet signed the NDA
-    And there is nobody logged_in
-    When the user logs in to the site for the first time
+    Given I have not yet signed the NDA
+    And there is nobody logged in
+    When I login to the site for the first time
 
   Scenario: New user logs in
   	Then I should be on the nda page
