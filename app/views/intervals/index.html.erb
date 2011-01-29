@@ -1,64 +1,135 @@
-<div id="intervals">
-	<h1>Browse Videos</h1>
-	<div id="filters">
+<!DOCTYPE html>
+
+<head>
+<title>Search Page</title>
+<link rel="stylesheet" type="text/css" media="all" href="960.css" />
+</head>
+<body>
+
+<div class="container_16"> <!--Head of Container-->
+	<div class="grid_16"> <!--Header-->
+	 	<h1>search</h1>
+	</div> <!--End of Header-->
+	
+	<div class="clear"></div>	
+	
+	<div id="search_bar" class="grid_7">
 		<form>
-			<fieldset>
-				<legend>Filters</legend>
-				<fieldset>
-					<legend>Date</legend>
-					<select name="date">
-						<option value=""></option>
-						<% @days.each do |d| %>
-							<option value="<%= d %>" <%= params[:date] == d ? "selected='selected'" : "" %>><%= d %></option>
-						<% end %>
-					</select>
-				</fieldset>
-				<fieldset>
-					<legend>Camera Angle</legend>
-					<ul>
-						<li>
-							<label>
-								<input type="radio" name="camera_angle" value="" <%= params[:camera_angle].nil? || params[:camera_angle] == "" ? "checked='checked'" : "" %>/>Any
-							</label>
-						</li>
-						<% @angles.each do |a| %>
-							<li>
-								<label>
-									<input type="radio" name="camera_angle" value="<%= a %>" <%= params[:camera_angle] == a ? "checked='checked'" : "" %>/><%= a %>
-								</label>
-							</li>
-						<% end %>
-					</ul>
-				</fieldset>
-				<input type="submit" value="Submit" />
-			</fieldset>
+	  		<input name="q" placeholder="Search Video">
+	  		<input type="submit" value="Search">
 		</form>
 	</div>
-
-	<div id="results">
-		<table id="listints">
-			<thead>
-				<tr>
-					<th>Session Type</th>
-					<th>Phrase Name</th>
-					<th>Filename</th>
-					<th>Camera Angle</th>
-					<th>Start Time</th>
-					<th>Duration</th>
-				</tr>
-			</thead>
-			<tbody>
-				<% @filtered_intervals.each do |int| %>
-					<tr>
-						<td><%= int.session_type %></td>
-						<td><%= int.phrase_name %></td>
-						<td><%= link_to int.filename, int %></td>
-						<td><%= int.camera_angle %></td>
-						<td><%= int.start_time %></td>
-						<td><%= int.duration %></td>
-					</tr>
-				<% end %>
-			</tbody>
-		</table>
+	
+	<div id="session-search" class ="grid_7" >	
+		<select id="sort-dropdown"> 
+			<label for = "sort" id="sort-dropdown">
+			<option value= "sort-by">Sort By</option>
+			<option value = "date">Date</option>
+			<option value = "relevance">Relevance</option>
+			<option value = "most viewed">Most Viewed</option>
+			<option value = "most tagged">Tagged</option>
+		</select>
 	</div>
-</div>
+	
+	<div class="clear"></div>
+	
+	<div id="view" class="grid_14">
+		<form id="view"> 
+			<input type="radio" name="view-list"/> List
+			<input type="radio" name="view-thumbnail"/> Thumbnail
+			<input type="radio" name="view-timeline" /> Timeline
+		</form>
+
+		<form id="submit-center">
+			<input type="submit" value="Submit" />
+		</form>
+	</div>
+	
+	<div class="clear"></div>
+	
+	<div id="filters">
+		<div "filters_header" class="grid-14">
+		<h2>Filters</h2>
+		</div>
+		
+		<ul>
+			
+		<div id="date" class="grid_6">
+		<li>Date</a>
+			<input name="date-start">-
+			<input name="date-end">
+		</div>
+		
+		<div id="day" class="grid_6">
+		<li>Day</a>
+			<input type="number"name="day-start"> - 
+			<input type="number" name="day-end">
+		</div>
+		
+		<div class="2"></div>
+		<div class="clear"></div>
+		
+		<div id="camera_angle" class="grid_14">	
+		<li>Camera Angle</a>
+			<form id="camera-angles">
+			<ul>
+			<li><input type="checkbox">Wayne</a>
+			</ul>
+		</div>
+		
+		<div class="clear"></div>
+		
+		<li>Activity</a>
+			<ul>
+			
+			<div class="grid_3">
+			<li><input type="checkbox">Show</a>
+			<li><input type="checkbox">Make</a>
+			<li><input type="checkbox">Task</a>
+			<li><input type="checkbox">Structuring</a>
+			</div>
+			
+			<div class="grid_3">
+			<li><input type="checkbox">Group Discussion</a>
+			<li><input type="checkbox">Lecture</a>
+			<li><input type="checkbox">Class</a>
+			<li><input type="checkbox">Experiment</a>
+			</div>
+			
+			<div class="grid_3">
+			<li><input type="checkbox">Practice</a>
+			<li><input type="checkbox">Warm Up</a>
+			<li><input type="checkbox">Break</a>
+			</div>
+			
+			<div class="6"></div>
+			</ul>
+			
+			
+			<div class="clear"></div>
+			
+		<li>Phrase</a>
+			<ul>
+			<li>Name</a><input name="phrase-name">
+			<li>Alternative Name</a><input name="phrase-alternative">
+			<li>Type</a>
+				<ul id="phrase-type">
+					<li><input type="checkbox">Solos</a>
+					<li><input type="checkbox">Duets</a>
+					<li><input type="checkbox">Trios</a>
+					<li><input type="checkbox">Quartets</a>
+				</ul>
+		</ul>
+
+		<form id="submit-filter">
+			<input type="submit" value="Submit" />
+		</form>
+
+	</div> <!--End of filter-->
+
+	<div class="clear"></div>
+	
+</div> <!--End of Container-->
+
+</body>
+</html>
