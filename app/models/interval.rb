@@ -20,7 +20,9 @@ class Interval < ActiveRecord::Base
 	def self.unique_days
 		find(:all, :order => "start_time").map{|int| int.day}.uniq
 	end
+	
 	def self.unique_angles
-		find(:all).map{|int| int.camera_angle}.uniq.sort
+		find(:all, :select => "DISTINCT camera_angle")
 	end
+	
 end
