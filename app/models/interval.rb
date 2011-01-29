@@ -18,11 +18,11 @@ class Interval < ActiveRecord::Base
 	end
 
 	def self.unique_days
-		find(:all, :order => "start_time").map{|int| int.day}.uniq
+		find(:all, :select => "start_time", :order => "start_time").map{|int| int.day}.uniq
 	end
 
 	def self.unique_angles
-		find(:all, :select => "DISTINCT camera_angle").map{|int| int.camera_angle}.sort
+		find(:all, :select => "DISTINCT camera_angle", :order => "camera_angle")
 	end
 
 	def self.lame_search(v)
@@ -30,4 +30,5 @@ class Interval < ActiveRecord::Base
 		query = column_names.map{|col| col.to_s}.map{|col| "#{col} LIKE ?"}.join(" OR ")
 		where(query, *args)
 	end
+	
 end
