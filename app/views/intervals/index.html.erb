@@ -21,9 +21,9 @@
 						</label>
 					</li>
 					<% @angles.each do |a| %>
-						<li class="filtercontrol cameraangle_<%= a.gsub(" ", "") %>">
+						<li class="filtercontrol cameraangle_<%= a.camera_angle.gsub(" ", "") %>">
 							<label>
-								<input type="radio" name="camera_angle" value="<%= a %>" <%= params[:camera_angle] == a ? "checked='checked'" : "" %>/><%= a %>
+								<input type="radio" name="camera_angle" value="<%= a.camera_angle %>" <%= params[:camera_angle] == a.camera_angle ? "checked='checked'" : "" %>/><%= a %>
 							</label>
 						</li>
 					<% end %>
