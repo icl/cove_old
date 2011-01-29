@@ -8,10 +8,12 @@ Scenario: Perform a search and get a result
 	When I am on the root page
 	And I search for "Wayne" with the global search
 	Then I should be on the intervals page
-	Then I should see "Wayne" within "#results"
+	And I should see "Wayne" within "#results"
+	And I should see 1 result
 
 Scenario: Perform a search and fail to get a result
 	When I am on the root page
 	And I search for "lkasdmnflkasmdflkansdflkasndflakndf" with the global search
 	Then I should be on the intervals page
-	Then I should see "There were no videos found with these filter options." within "#results"
+	And I should see 0 results
+	And I should see "There were no videos found with these filter options." within "#results"
