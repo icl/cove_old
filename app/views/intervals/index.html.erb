@@ -20,7 +20,7 @@
 					</li>
 					<% @angles.each do |a| %>
 						<li>
-							<%= link_to a, intervals_path(add_params :camera_angle => a) %>
+							<%= link_to a.camera_angle, intervals_path(add_params :camera_angle => a.camera_angle) %>
 						</li>
 					<% end %>
 				</ul>
