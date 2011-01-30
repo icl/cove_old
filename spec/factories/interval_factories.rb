@@ -1,5 +1,5 @@
 Factory.define :interval, :class => Interval do |f|
-  f.filename "/some/random/file"
+  f.filename "test_video.mov"
   f.camera_angle "balcony"
   f.session_number "2"
   f.start_time 5.weeks.ago
