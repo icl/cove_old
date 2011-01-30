@@ -24,6 +24,17 @@
 	<li>Start Time (24 hr): <%= @interval.start_time.strftime("%T") %></li>
 </ul>
 
+<h2>Tags</h2>
+<%= @interval.tags.map { |t| t.name }.join(", ") %>
+Add tag:
+<% form_for @interval do %>
+<% @tags.each do |tag| %>
+<%= check_box_tag :tag_ids, tag.id, @interval.tags.include?(tag), :name => 'interval[tag_ids][]' %>
+<%= tag.name %>
+<% end %>
+<%= submit_tag %>
+<% end %>
+
 <div>
 	<%= video_tag @interval.filename, :controls => true %>
 </div>
