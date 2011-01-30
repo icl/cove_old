@@ -7,6 +7,5 @@ test:
     hoptoad_token: de8d365bdf50e6628c543fa50179cc41
     
 production:
-    cookie_secret: jsMUEn3LGCtWpDX7gV4xIkOgVd3lEf5EzfnwFzYoZwwBj8NNEcQBP8dzloQm8DytbRfI5xJvydZ7zc2nnDCySUUjQrQqXi1ODOAgInOHQFQgBvfZhhuumY86So0WyDTKBf40TJb2W2JvUdncjG3So2McnQUHsz4Mu27RGkAcvsxFCGidmghBmvFOgdwTblj9gbShs8VBW
-    hoptoad_token: 7bb17f59655227a35dca090e03717c92
-    
+    cookie_secret: 
+    hoptoad_token: 
