@@ -1,5 +1,5 @@
 require 'spec_helper'
 
-describe IntervalTags do
+describe IntervalTag do
   pending "add some examples to (or delete) #{__FILE__}"
 end

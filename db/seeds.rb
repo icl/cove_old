@@ -10,4 +10,14 @@ Factory(:regular_user)
 Factory(:admin_user)
 Factory(:first_time_user)
 
-interval = Factory(:interval)
+marking = Factory(:tag, :name => "Marking")
+riffing = Factory(:tag, :name => "Riffing")
+sketching = Factory(:tag, :name => "Sketching")
+Factory(:tag, :name => "Distributed Memory")
+Factory(:tag, :name => "Costumes")
+Factory(:tag, :name => "Sonification")
+Factory(:tag, :name => "Imagery")
+Factory(:tag, :name => "Props")
+
+interval = Factory(:interval, :tags => [marking, riffing, sketching])
+
