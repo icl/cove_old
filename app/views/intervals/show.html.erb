@@ -1,32 +1,145 @@
-<h1>COVE</h1>
+<!DOCTYPE HTML>
 
-<h2>Phrase: <%= @interval.phrase_name %></h2>
-<ul>
-	<li>Phrase Type: <%= @interval.phrase_type %></li>
-	<li>Phrase Alternative Name: (name)</li>
-</ul>
+<!--head copied from application.html.erb on 1.30.2011: .js files taken out-->
 
-<h2>Session Number: <%= @interval.session_number %></h2>
-<ul>
-	<li>Session Type: <%= @session_type %></li>
-	<li>Task: <%= @interval.task_name %></li>
-	<li>Start Time (24 hr): <%= @interval.start_time.strftime("%T") %></li>
-	<li>End Time (24 hr): <%= @interval.end_time.strftime("%T") %></li>				
-	<li>Duration: <%= (@interval.end_time - @interval.start_time.to_time.to_i).strftime("%T") %></li>
-</ul>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ --> 
+<!--[if lt IE 7 ]> <html lang="en" class="no-js ie6"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="en" class="no-js ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="en" class="no-js ie8"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="en" class="no-js ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html lang="en" class="no-js"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
 
-<h2>Source</h2>
-<ul id="Source">
-	<li>File Name: <%= @interval.filename %></li>
-	<li>Day Number: </li>
-	<li>Date: <%= @interval.start_time.strftime("%F") %></li>
-	<li>Camera Angle: <%= @interval.camera_angle %></li>
-	<li>Start Time (24 hr): <%= @interval.start_time.strftime("%T") %></li>
-</ul>
+  <!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame 
+       Remove this if you use the .htaccess -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <!--  Mobile viewport optimized: j.mp/bplateviewport -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<div>
-	<%= video_tag @interval.filename, :controls => true %>
+  <title>Cove</title>
+
+  <%= stylesheet_link_tag 'style.css' %>
+  <%= stylesheet_link_tag '960.css' %>
+  <%= csrf_meta_tag %>
+</head>
+<!-- end head tag-->
+
+<body>
+	
+<!--header copied from application.html.erb on 1.30.2011-->
+	<header class="container_16">
+		<h1 class="grid_5">COVE</h1>
+		<div class="grid_4 user_info prefix_7">
+			<%if !current_user %>
+				<a class="signup_link" href="/sign_up">Sign up</a>
+				<a class="login_link" href="/login">Login</a>
+			<%else%>
+				Logged in as: <%=current_user.email%>
+				<a class="logout_link" href="/logout">Logout</a>
+			<%end%>
+		</div>
+		<div class="grid_4 search_holder prefix_12">search would go here</div>
+		<br style="clear: both"/>
+	</header>
+
+	<nav class="top_nav container_16">
+		<ul class= "grid_16">
+			<li><%= link_to "Home", root_path %></li>
+			<li><%= link_to "Intervals", intervals_path %></li>
+			<li><%= link_to "" %></li>
+			<li><%= link_to "" %></li>
+			<li><%= link_to "" %></li>
+		</ul>
+	</nav>
+<!-- end header-->
+
+
+<!--content for show.html.erb -->
+
+<div class="content container_16">
+	
+	<div class="grid_6" id="sessTypePhrase">
+		<h2><%= @session_type %></h2> <!--Session Type-->
+		<strong>Phrase(s): <%= @interval.phrase_name %></strong> <br/>
+		<strong>Type(s): <%= @interval.phrase_type %></strong>
+	</div>
+	<div class="grid_4" id="cameraAngles">
+		<h3>Angles:</h3>
+		<form>
+			<input type="checkbox" name="daily2" /> Daily 2 
+			<input type="checkbox" name="mirror" />Mirror 
+			<input type="checkbox" name="daily1" />Daily 1 <br/>
+			<input type="checkbox" name="rear2" />Rear 2
+			<input type="checkbox" name="Wayne" />Wayne 
+			<input type="checkbox" name="rear1" />Rear 1
+		</form>
+	</div>
+	<div class="grid_6" id="phenomena">
+		<h3>Phenomena:</h3>
+		<% form_for @interval do %>
+			<% @tags.each do |tag| %>
+				<%= check_box_tag :tag_ids, tag.id, @interval.tags.include?(tag), :name => 'interval[tag_ids][]' %>
+				<%= tag.name %>
+			<% end %>
+			<%= submit_tag %>
+		<% end %>
+	</div>
+	<div class="clear"></div>
+
+
+	<div class="grid_16" id="video">
+		<%= video_tag @interval.filename, :controls => true %>
+	</div>
+	<div class="clear"></div>
+
+
+	<div class="grid_5" id="startTime">
+		<h4>Start: <%= @interval.start_time.strftime("%T") %></h4>
+	</div>
+	<div class="grid_5" id="endTime">
+		<h4>End: <%= @interval.end_time.strftime("%T") %></h4>
+	</div>
+	<div class="grid_6" id="duration">
+		<h4>Duration: <%= (@interval.end_time - @interval.start_time.to_time.to_i).strftime("%T") %></h4>
+	</div>
+	<div class="clear"></div>
+
+
+	<div class="grid_5" id="sessionNum">
+		<h4>Session <%= @interval.session_number %></h4>
+	</div>
+	<div class="grid_5" id="date">
+		<h4><%= @interval.start_time.strftime("%F") %></h4> <!-- Date-->
+	</div>
+	<div class="grid_6" id="filename">
+		<h4><%= @interval.filename %></h4> <!--filename-->
+	</div>
+	<div class="clear"></div>
+	
+	
+	<div class="grid_4">
+		<%= link_to 'Edit', edit_interval_path(@interval) %> 
+	</div>
+	<div class="grid_12">
+		<%= link_to 'Back', intervals_path %>
+	</div>
+	<div class="clear"></div>
+	
+	
 </div>
 
-<%= link_to 'Edit', edit_interval_path(@interval) %> 
-<%= link_to 'Back', intervals_path %>
+<!--end content-->
+
+
+
+<!--footer copied from application.html.erb on 1.30.2011-->
+	<footer class="container_16">
+		<h5 class="grid_10 credits">This site was built by the W11 COGS 160 Class</h5>
+		<h5 class="grid_4 copyright prefix_2">Copyright 2011 DK ET AL</h5>
+	</footer>
+<!--end footer-->
+
+</body>
+
+</html>
