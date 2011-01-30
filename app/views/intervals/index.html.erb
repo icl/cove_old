@@ -35,7 +35,26 @@
 		</form>
 	</div>
 
-	<div id="results">
+	<div class="results">
+	   
+	   <ol>
+	     <% @filtered_intervals.each do |int| %>
+   	     <li>
+               <div class="thumbnail_wrapper grid_7">
+                  <div class="thumbnail_screenshot">
+                     Screenshot
+                  </div>
+                  <div class="thumbnail_details">
+                     Details
+                  </div>
+                  <div class="thumbnail_tags">
+                     Tags
+                  </div>
+               </div>
+           </li>
+	     <% end %>
+	   </ol>
+	   <br class="clear"/>
 		<table id="listints">
 			<thead>
 				<tr>
