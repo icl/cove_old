@@ -10,4 +10,4 @@ Factory(:regular_user)
 Factory(:admin_user)
 Factory(:first_time_user)
 
-interval = Factory(:interval, :filename => 'test_video.mov')
+interval = Factory(:interval)
