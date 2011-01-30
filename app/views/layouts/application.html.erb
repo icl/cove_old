@@ -36,14 +36,14 @@
 		<h1 class="grid_5">COVE</h1>
 		<div class="grid_4 user_info prefix_7">
 			<%if !current_user %>
-				<a href="/sign_up">Sign up</a>
-				<span><a href="/login">Login</a></span>
+				<a class="signup_link" href="/sign_up">Sign up</a>
+				<a class="login_link" href="/login">Login</a>
 			<%else%>
 				Logged in as: <%=current_user.email%>
-				<span><a href="/logout">Logout</a></span>
+				<a class="logout_link" href="/logout">Logout</a>
 			<%end%>
 		</div>
-		<div class="grid_4 prefix_7">search would go here</div>
+		<div class="grid_4 search_holder prefix_12">search would go here</div>
 		<br style="clear: both"/>
 	</header>
 	
@@ -63,12 +63,13 @@
   <%= display_flash %>
   <%= yield %>
 
-	<footer>
-		<h5 class="grid_10">This site was built by the W11 COGS 160 Class</h5>
-		<h5 class="grid_4">Copyright 2011 DK ET AL</h5>
-	<footer>
+</div>
 
-</div> <!--End of container_16-->
+<footer class="container_16">
+	<h5 class="grid_10 credits">This site was built by the W11 COGS 160 Class</h5>
+	<h5 class="grid_4 copyright prefix_2">Copyright 2011 DK ET AL</h5>
+<footer>
+
 <!--[if lt IE 7 ]>
   <script src="js/libs/dd_belatedpng.js"></script>
   <script> DD_belatedPNG.fix('img, .png_bg'); //fix any <img> or .png_bg background-images </script>
