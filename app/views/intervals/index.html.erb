@@ -1,7 +1,7 @@
 <div id="intervals">
 	<h1>Browse Videos</h1>
 	<div id="filters">
-		<form> 
+		<form>
 			<h2>Filters</h2>
 			<fieldset>
 				<legend>Date</legend>
@@ -16,18 +16,15 @@
 				<legend>Camera Angle</legend>
 				<ul>
 					<li>
-						<label>
-							<input type="radio" name="camera_angle" value="" <%= params[:camera_angle].nil? || params[:camera_angle] == "" ? "checked='checked'" : "" %>/>Any
-						</label>
+						<%= link_to "Any", intervals_path(add_params :camera_angle => "") %>
 					</li>
 					<% @angles.each do |a| %>
-						<li class="filtercontrol cameraangle_<%= a.camera_angle.gsub(" ", "") %>">
-							<label>
-								<input type="radio" name="camera_angle" value="<%= a.camera_angle %>" <%= params[:camera_angle] == a.camera_angle ? "checked='checked'" : "" %>/><%= a.camera_angle %>
-							</label>
+						<li>
+							<%= link_to a.camera_angle, intervals_path(add_params :camera_angle => a.camera_angle) %>
 						</li>
 					<% end %>
 				</ul>
+				<input type="hidden" name="camera_angle" value="<%= params[:camera_angle] %>" />
 			</fieldset>
 			<fieldset>
 				<legend>Search</legend>
@@ -36,6 +33,28 @@
 			<input type="submit" value="Submit" />
 		</form>
 	</div>
+
+	<p>There are <span id="resultcount"><%= @intervals.size %></span> results.</p>
+
+	<div id="session-search" class ="grid_7" >
+		<select id="sort-dropdown">
+			<label for = "sort" id="sort-dropdown">
+			<option value= "sort-by">Sort By</option>
+			<option value = "date">Date</option>
+			<option value = "relevance">Relevance</option>
+			<option value = "most viewed">Most Viewed</option>
+			<option value = "most tagged">Tagged</option>
+		</select>
+	</div>
+
+	<div class="clear"></div>
+
+	<div id="view" class="grid_14">
+		<form id="view">
+			<input type="radio" name="view-list"/> List
+			<input type="radio" name="view-thumbnail"/> Thumbnail
+			<input type="radio" name="view-timeline" /> Timeline
+		</form>
 
 	<table id="results">
 		<thead>
@@ -57,7 +76,7 @@
 					</tr>
 					<% last_day = int.day %>
 				<% end %>
-				<tr class="interval cameraangle_<%= int.camera_angle.gsub(" ", "") %>">
+				<tr>
 					<td><%= int.session_type %></td>
 					<td><%= int.phrase_name %></td>
 					<td><%= link_to int.filename, int %></td>
@@ -75,27 +94,5 @@
 	</table>
 </div>
 
-<script type="text/javascript">
-$(document).ready(function(){
-	// Highlight the relevant camera angle filter control when you mouse over a row.
-	// And vice versa
-	$(".filtercontrol").each(function(){
-		var classes = $.grep($(this).attr("class").split(" "), function(e, i){
-			return(e != "filtercontrol");
-		});
-		for(class in classes){
-			var class = classes[class];
-			$(".filtercontrol."+class).live('mouseover', function(){
-				$(".interval."+class).addClass("highlighted");
-			}).live('mouseout', function(){
-				$(".interval."+class).removeClass("highlighted");
-			});
-			$(".interval."+class).live('mouseover', function(){
-				$(".filtercontrol."+class).addClass("highlighted");
-			}).live('mouseout', function(){
-				$(".filtercontrol."+class).removeClass("highlighted");
-			});
-		}
-	});
-});
-</script>
+</body>
+</html>

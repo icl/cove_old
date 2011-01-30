@@ -27,3 +27,5 @@ tmp/**/*
 public/archive
 public/archive/*
 deploy.rb
+application.yml
+*~
