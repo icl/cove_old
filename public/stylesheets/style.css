@@ -1,14 +1,14 @@
-.cove_thumbnail div.thumbnail_wrapper {
+.thumbnail_wrapper {
     margin: 10px;
 }
-.cove_thumbnail div.thumbnail_wrapper div.thumbnail_screenshot {
+.thumbnail_wrapper div.thumbnail_screenshot {
   float: left;
   width: 148px;
   height: 151px;
   border: solid 1px; 
 }
 
-.cove_thumbnail div.thumbnail_wrapper div.thumbnail_details {
+.thumbnail_wrapper div.thumbnail_details {
     float: left;
     width: 248px;
     height: 100px;
@@ -17,7 +17,7 @@
     border-bottom: solid 1px;
 }
 
-.cove_thumbnail div.thumbnail_wrapper div.thumbnail_tags {
+.thumbnail_wrapper div.thumbnail_tags {
     float: left;
     width: 248px;
     height: 50px;
