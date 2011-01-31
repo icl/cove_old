@@ -1,17 +1,35 @@
-<h2>Sign in</h2>
+<div class="login_form grid_16">
 
-<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+<h1>Sign In Below</h1>
+<br>
+<br>
+
+<%=form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
   <p><%= f.label :email %><br />
   <%= f.text_field :email %></p>
+
+<br>
 
   <p><%= f.label :password %><br />
   <%= f.password_field :password %></p>
 
   <% if devise_mapping.rememberable? -%>
+<br>
     <p><%= f.check_box :remember_me %> <%= f.label :remember_me %></p>
   <% end -%>
 
-  <p><%= f.submit "Sign in" %></p>
+<br>
+
+  <p><%= f.submit "Sign In to Cove" %></p>
 <% end %>
 
+</div>
+
+<div class="grid_3">
+	
+	<br>
+	<br>
+
 <%= render :partial => "devise/shared/links" %>
+
+</div>
