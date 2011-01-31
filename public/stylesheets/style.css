@@ -1,0 +1,383 @@
+/* 
+  HTML5 ✰ Boilerplate 
+  
+  style.css contains a reset, font normalization and some base styles.
+  
+  credit is left where credit is due.
+  much inspiration was taken from these projects:
+    yui.yahooapis.com/2.8.1/build/base/base.css
+    camendesign.com/design/
+    praegnanz.de/weblog/htmlcssjs-kickstart
+*/
+
+/* 
+  html5doctor.com Reset Stylesheet (Eric Meyer's Reset Reloaded + HTML5 baseline)
+  v1.4 2009-07-27 | Authors: Eric Meyer & Richard Clark
+  html5doctor.com/html-5-reset-stylesheet/
+*/
+
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+  margin:0;
+  padding:0;
+  border:0;
+  outline:0;
+  font-size:100%;
+  vertical-align:baseline;
+  background:transparent;
+}                  
+
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section { 
+    display:block;
+}
+
+nav ul { list-style:none; }
+
+blockquote, q { quotes:none; }
+
+blockquote:before, blockquote:after,
+q:before, q:after { content:''; content:none; }
+
+a { margin:0; padding:0; font-size:100%; vertical-align:baseline; background:transparent; }
+
+ins { background-color:#ff9; color:#000; text-decoration:none; }
+
+mark { background-color:#ff9; color:#000; font-style:italic; font-weight:bold; }
+
+del { text-decoration: line-through; }
+
+abbr[title], dfn[title] { border-bottom:1px dotted; cursor:help; }
+
+/* tables still need cellspacing="0" in the markup */
+table { border-collapse:collapse; border-spacing:0; }
+
+hr { display:block; height:1px; border:0; border-top:1px solid #ccc; margin:1em 0; padding:0; }
+
+input, select { vertical-align:middle; }
+
+/* END RESET CSS */
+
+
+/* fonts.css from the YUI Library: developer.yahoo.com/yui/
+   Refer to developer.yahoo.com/yui/3/cssfonts/ for font sizing percentages
+
+  There are three custom edits:
+   * remove arial, helvetica from explicit font stack
+   * we normalize monospace styles ourselves
+   * table font-size is reset in the HTML5 reset above so there is no need to repeat
+*/
+body { font:13px/1.231 sans-serif; *font-size:small; } /* hack retained to preserve specificity */
+
+select, input, textarea, button { font:99% sans-serif; }
+
+/* normalize monospace sizing 
+ * en.wikipedia.org/wiki/MediaWiki_talk:Common.css/Archive_11#Teletype_style_fix_for_Chrome
+ */
+pre, code, kbd, samp { font-family: monospace, sans-serif; }
+ 
+
+/* 
+ * minimal base styles 
+ */
+
+
+body, select, input, textarea { 
+  /* #444 looks better than black: twitter.com/H_FJ/statuses/11800719859 */ 
+  color: #444; 
+  /* set your base font here, to apply evenly */
+  /* font-family: Georgia, serif;  */   
+}
+
+/* Headers (h1,h2,etc) have no default font-size or margin,
+   you'll want to define those yourself. */ 
+h1,h2,h3,h4,h5,h6 { font-weight: bold; }
+
+/* always force a scrollbar in non-IE */ 
+html { overflow-y: scroll; }
+
+ 
+/* Accessible focus treatment: people.opera.com/patrickl/experiments/keyboard/test */
+a:hover, a:active { outline: none; }
+
+a, a:active, a:visited { color: #607890; }
+a:hover { color: #036; }
+
+
+ul, ol { margin-left: 1.8em; }
+ol { list-style-type: decimal; }
+
+/* Remove margins for navigation lists */
+nav ul, nav li { margin: 0; } 
+
+small { font-size: 85%; }
+strong, th { font-weight: bold; }
+
+td, td img { vertical-align: top; } 
+
+sub { vertical-align: sub; font-size: smaller; }
+sup { vertical-align: super; font-size: smaller; }
+
+pre { 
+  padding: 15px; 
+  
+  /* www.pathf.com/blogs/2008/05/formatting-quoted-code-in-blog-posts-css21-white-space-pre-wrap/ */
+  white-space: pre; /* CSS2 */
+  white-space: pre-wrap; /* CSS 2.1 */
+  white-space: pre-line; /* CSS 3 (and 2.1 as well, actually) */
+  word-wrap: break-word; /* IE */
+}
+ 
+textarea { overflow: auto; } /* thnx ivannikolic! www.sitepoint.com/blogs/2010/08/20/ie-remove-textarea-scrollbars/ */
+
+.ie6 legend, .ie7 legend { margin-left: -7px; } /* thnx ivannikolic! */
+
+/* align checkboxes, radios, text inputs with their label
+   by: Thierry Koblentz tjkdesign.com/ez-css/css/base.css  */
+input[type="radio"] { vertical-align: text-bottom; }
+input[type="checkbox"] { vertical-align: bottom; }
+.ie7 input[type="checkbox"] { vertical-align: baseline; }
+.ie6 input { vertical-align: text-bottom; }
+
+/* hand cursor on clickable input elements */
+label, input[type=button], input[type=submit], button { cursor: pointer; }
+ 
+/* webkit browsers add a 2px margin outside the chrome of form elements */  
+button, input, select, textarea { margin: 0; }
+
+/* colors for form validity */
+input:valid, textarea:valid   {  }
+input:invalid, textarea:invalid { 
+      border-radius: 1px;
+    -moz-box-shadow: 0px 0px 5px red; 
+ -webkit-box-shadow: 0px 0px 5px red; 
+         box-shadow: 0px 0px 5px red;
+}
+.no-boxshadow input:invalid, 
+.no-boxshadow textarea:invalid { background-color: #f0dddd; }
+
+
+/* These selection declarations have to be separate.
+   No text-shadow: twitter.com/miketaylr/status/12228805301 
+   Also: hot pink. */
+::-moz-selection{ background: #FF5E99; color:#fff; text-shadow: none; }
+::selection { background:#FF5E99; color:#fff; text-shadow: none; } 
+
+/*  j.mp/webkit-tap-highlight-color */
+a:link { -webkit-tap-highlight-color: #FF5E99; } 
+
+/* make buttons play nice in IE:    
+   www.viget.com/inspire/styling-the-button-element-in-internet-explorer/ */
+button {  width: auto; overflow: visible; }
+ 
+/* bicubic resizing for non-native sized IMG: 
+   code.flickr.com/blog/2008/11/12/on-ui-quality-the-little-things-client-side-image-resizing/ */
+.ie7 img { -ms-interpolation-mode: bicubic; }
+
+
+
+/* 
+ * Non-semantic helper classes 
+ */
+
+/* for image replacement */
+.ir { display: block; text-indent: -999em; overflow: hidden; background-repeat: no-repeat; text-align: left; direction: ltr; }
+
+/* Hide for both screenreaders and browsers
+   css-discuss.incutio.com/wiki/Screenreader_Visibility */
+.hidden { display: none; visibility: hidden; } 
+
+/* Hide only visually, but have it available for screenreaders 
+   www.webaim.org/techniques/css/invisiblecontent/  &  j.mp/visuallyhidden  */
+.visuallyhidden { position: absolute !important;    
+  clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+  clip: rect(1px, 1px, 1px, 1px); }
+
+/* Hide visually and from screenreaders, but maintain layout */
+.invisible { visibility: hidden; }
+
+/* >> The Magnificent CLEARFIX: Updated to prevent margin-collapsing on child elements << j.mp/bestclearfix */
+.clearfix:before, .clearfix:after {
+  content: "\0020"; display: block; height: 0; visibility: hidden;	
+} 
+
+.clearfix:after { clear: both; }
+/* Fix clearfix: blueprintcss.lighthouseapp.com/projects/15318/tickets/5-extra-margin-padding-bottom-of-page */
+.clearfix { zoom: 1; }
+
+
+
+
+
+
+ /* Primary Styles
+ */
+
+
+nav.top_nav ul li {
+	display: inline;
+	margin: 0;
+}
+
+body {
+	color: #FFFFFF;
+	background: #2F2F2F;
+}
+
+
+header {
+	height: 100px;
+	background: #2F2F2F;
+}
+
+header h1 {
+	font-size: 36pt;
+	color: #FFFFFF;
+}
+
+.user_info {
+	text-align: right;
+}
+
+.search_holder {
+	text-align: right;
+}
+
+.content {
+	min-height: 760px;
+}
+
+footer h5 {
+	color: #FFFFFF;
+}
+
+.copyright {
+	text-align: right;
+}
+
+.login_form h1 {
+	font-size: 16pt;
+}
+
+.new_interval h1 {
+	font-size: 16pt;
+}
+
+.placeholder {
+	float:center;
+	font-size: 600%;
+	text-align:center;
+	text-shadow: -1px -1px hsl(0,100%,50%), 1px 1px hsl(5.4, 100%, 50%), 3px 2px hsl(10.8, 100%, 50%), 5px 3px hsl(16.2, 100%, 50%), 7px 4px hsl(21.6, 100%, 50%), 9px 5px hsl(27, 100%, 50%), 11px 6px hsl(32.4, 100%, 50%), 13px 7px hsl(37.800000000000004, 100%, 50%), 14px 8px hsl(43.2, 100%, 50%), 16px 9px hsl(48.599999999999994, 100%, 50%), 18px 10px hsl(54, 100%, 50%), 20px 11px hsl(59.400000000000006, 100%, 50%), 22px 12px hsl(64.8, 100%, 50%), 23px 13px hsl(70.2, 100%, 50%), 25px 14px hsl(75.60000000000001, 100%, 50%), 27px 15px hsl(81, 100%, 50%), 28px 16px hsl(86.4, 100%, 50%), 30px 17px hsl(91.80000000000001, 100%, 50%), 32px 18px hsl(97.19999999999999, 100%, 50%), 33px 19px hsl(102.60000000000001, 100%, 50%), 35px 20px hsl(108, 100%, 50%), 36px 21px hsl(113.39999999999999, 100%, 50%), 38px 22px hsl(118.80000000000001, 100%, 50%), 39px 23px hsl(124.19999999999999, 100%, 50%), 41px 24px hsl(129.6, 100%, 50%), 42px 25px hsl(135, 100%, 50%), 43px 26px hsl(140.4, 100%, 50%), 45px 27px hsl(145.8, 100%, 50%), 46px 28px hsl(151.20000000000002, 100%, 50%), 47px 29px hsl(156.6, 100%, 50%), 48px 30px hsl(162, 100%, 50%), 49px 31px hsl(167.39999999999998, 100%, 50%), 50px 32px hsl(172.8, 100%, 50%), 51px 33px hsl(178.20000000000002, 100%, 50%), 52px 34px hsl(183.60000000000002, 100%, 50%), 53px 35px hsl(188.99999999999997, 100%, 50%), 54px 36px hsl(194.39999999999998, 100%, 50%), 55px 37px hsl(199.79999999999998, 100%, 50%), 55px 38px hsl(205.20000000000002, 100%, 50%), 56px 39px hsl(210.60000000000002, 100%, 50%), 57px 40px hsl(216, 100%, 50%), 57px 41px hsl(221.39999999999998, 100%, 50%), 58px 42px hsl(226.79999999999998, 100%, 50%), 58px 43px hsl(232.20000000000002, 100%, 50%), 58px 44px hsl(237.60000000000002, 100%, 50%), 59px 45px hsl(243, 100%, 50%), 59px 46px hsl(248.39999999999998, 100%, 50%), 59px 47px hsl(253.79999999999998, 100%, 50%), 59px 48px hsl(259.2, 100%, 50%), 59px 49px hsl(264.6, 100%, 50%), 60px 50px hsl(270, 100%, 50%), 59px 51px hsl(275.4, 100%, 50%), 59px 52px hsl(280.8, 100%, 50%), 59px 53px hsl(286.20000000000005, 100%, 50%), 59px 54px hsl(291.6, 100%, 50%), 59px 55px hsl(297.00000000000006, 100%, 50%), 58px 56px hsl(302.40000000000003, 100%, 50%), 58px 57px hsl(307.79999999999995, 100%, 50%), 58px 58px hsl(313.2, 100%, 50%), 57px 59px hsl(318.59999999999997, 100%, 50%), 57px 60px hsl(324, 100%, 50%), 56px 61px hsl(329.4, 100%, 50%), 55px 62px hsl(334.79999999999995, 100%, 50%), 55px 63px hsl(340.20000000000005, 100%, 50%), 54px 64px hsl(345.6, 100%, 50%), 53px 65px hsl(351, 100%, 50%), 52px 66px hsl(356.40000000000003, 100%, 50%), 51px 67px hsl(361.8, 100%, 50%), 50px 68px hsl(367.20000000000005, 100%, 50%), 49px 69px hsl(372.59999999999997, 100%, 50%), 48px 70px hsl(377.99999999999994, 100%, 50%), 47px 71px hsl(383.4, 100%, 50%), 46px 72px hsl(388.79999999999995, 100%, 50%), 45px 73px hsl(394.20000000000005, 100%, 50%), 43px 74px hsl(399.59999999999997, 100%, 50%), 42px 75px hsl(405, 100%, 50%), 41px 76px hsl(410.40000000000003, 100%, 50%), 39px 77px hsl(415.79999999999995, 100%, 50%), 38px 78px hsl(421.20000000000005, 100%, 50%), 36px 79px hsl(426.6, 100%, 50%), 35px 80px hsl(432, 100%, 50%), 33px 81px hsl(437.40000000000003, 100%, 50%), 32px 82px hsl(442.79999999999995, 100%, 50%), 30px 83px hsl(448.20000000000005, 100%, 50%), 28px 84px hsl(453.59999999999997, 100%, 50%), 27px 85px hsl(459, 100%, 50%), 25px 86px hsl(464.40000000000003, 100%, 50%), 23px 87px hsl(469.79999999999995, 100%, 50%), 22px 88px hsl(475.20000000000005, 100%, 50%), 20px 89px hsl(480.59999999999997, 100%, 50%), 18px 90px hsl(486, 100%, 50%), 16px 91px hsl(491.40000000000003, 100%, 50%), 14px 92px hsl(496.79999999999995, 100%, 50%), 13px 93px hsl(502.20000000000005, 100%, 50%), 11px 94px hsl(507.59999999999997, 100%, 50%), 9px 95px hsl(513, 100%, 50%), 7px 96px hsl(518.4, 100%, 50%), 5px 97px hsl(523.8, 100%, 50%), 3px 98px hsl(529.2, 100%, 50%), 1px 99px hsl(534.5999999999999, 100%, 50%), 7px 100px hsl(540, 100%, 50%), -1px 101px hsl(545.4000000000001, 100%, 50%), -3px 102px hsl(550.8, 100%, 50%), -5px 103px hsl(556.2, 100%, 50%), -7px 104px hsl(561.6, 100%, 50%), -9px 105px hsl(567, 100%, 50%), -11px 106px hsl(572.4000000000001, 100%, 50%), -13px 107px hsl(577.8000000000001, 100%, 50%), -14px 108px hsl(583.2, 100%, 50%), -16px 109px hsl(588.6, 100%, 50%), -18px 110px hsl(594.0000000000001, 100%, 50%), -20px 111px hsl(599.4000000000001, 100%, 50%), -22px 112px hsl(604.8000000000001, 100%, 50%), -23px 113px hsl(610.1999999999999, 100%, 50%), -25px 114px hsl(615.5999999999999, 100%, 50%), -27px 115px hsl(620.9999999999999, 100%, 50%), -28px 116px hsl(626.4, 100%, 50%), -30px 117px hsl(631.8, 100%, 50%), -32px 118px hsl(637.1999999999999, 100%, 50%), -33px 119px hsl(642.5999999999999, 100%, 50%), -35px 120px hsl(648, 100%, 50%), -36px 121px hsl(653.4, 100%, 50%), -38px 122px hsl(658.8, 100%, 50%), -39px 123px hsl(664.2, 100%, 50%), -41px 124px hsl(669.5999999999999, 100%, 50%), -42px 125px hsl(675, 100%, 50%), -43px 126px hsl(680.4000000000001, 100%, 50%), -45px 127px hsl(685.8, 100%, 50%), -46px 128px hsl(691.2, 100%, 50%), -47px 129px hsl(696.6, 100%, 50%), -48px 130px hsl(702, 100%, 50%), -49px 131px hsl(707.4000000000001, 100%, 50%), -50px 132px hsl(712.8000000000001, 100%, 50%), -51px 133px hsl(718.2, 100%, 50%), -52px 134px hsl(723.6, 100%, 50%), -53px 135px hsl(729.0000000000001, 100%, 50%), -54px 136px hsl(734.4000000000001, 100%, 50%), -55px 137px hsl(739.8000000000001, 100%, 50%), -55px 138px hsl(745.1999999999999, 100%, 50%), -56px 139px hsl(750.5999999999999, 100%, 50%), -57px 140px hsl(755.9999999999999, 100%, 50%), -57px 141px hsl(761.4, 100%, 50%), -58px 142px hsl(766.8, 100%, 50%), -58px 143px hsl(772.1999999999999, 100%, 50%), -58px 144px hsl(777.5999999999999, 100%, 50%), -59px 145px hsl(783, 100%, 50%), -59px 146px hsl(788.4000000000001, 100%, 50%), -59px 147px hsl(793.8000000000001, 100%, 50%), -59px 148px hsl(799.1999999999999, 100%, 50%), -59px 149px hsl(804.5999999999999, 100%, 50%), -60px 150px hsl(810, 100%, 50%), -59px 151px hsl(815.4000000000001, 100%, 50%), -59px 152px hsl(820.8000000000001, 100%, 50%), -59px 153px hsl(826.1999999999999, 100%, 50%), -59px 154px hsl(831.5999999999999, 100%, 50%), -59px 155px hsl(837, 100%, 50%), -58px 156px hsl(842.4000000000001, 100%, 50%), -58px 157px hsl(847.8000000000001, 100%, 50%), -58px 158px hsl(853.2, 100%, 50%), -57px 159px hsl(858.5999999999999, 100%, 50%), -57px 160px hsl(864, 100%, 50%), -56px 161px hsl(869.4000000000001, 100%, 50%), -55px 162px hsl(874.8000000000001, 100%, 50%), -55px 163px hsl(880.1999999999999, 100%, 50%), -54px 164px hsl(885.5999999999999, 100%, 50%), -53px 165px hsl(891, 100%, 50%), -52px 166px hsl(896.4000000000001, 100%, 50%), -51px 167px hsl(901.8, 100%, 50%), -50px 168px hsl(907.1999999999999, 100%, 50%), -49px 169px hsl(912.5999999999999, 100%, 50%), -48px 170px hsl(918, 100%, 50%), -47px 171px hsl(923.4000000000001, 100%, 50%), -46px 172px hsl(928.8000000000001, 100%, 50%), -45px 173px hsl(934.1999999999999, 100%, 50%), -43px 174px hsl(939.5999999999999, 100%, 50%), -42px 175px hsl(945, 100%, 50%), -41px 176px hsl(950.4000000000001, 100%, 50%), -39px 177px hsl(955.8000000000001, 100%, 50%), -38px 178px hsl(961.1999999999999, 100%, 50%), -36px 179px hsl(966.5999999999999, 100%, 50%), -35px 180px hsl(972, 100%, 50%), -33px 181px hsl(977.4000000000001, 100%, 50%), -32px 182px hsl(982.8000000000001, 100%, 50%), -30px 183px hsl(988.2, 100%, 50%), -28px 184px hsl(993.5999999999999, 100%, 50%), -27px 185px hsl(999, 100%, 50%), -25px 186px hsl(1004.4000000000001, 100%, 50%), -23px 187px hsl(1009.8000000000001, 100%, 50%), -22px 188px hsl(1015.1999999999999, 100%, 50%), -20px 189px hsl(1020.5999999999999, 100%, 50%), -18px 190px hsl(1026, 100%, 50%), -16px 191px hsl(1031.4, 100%, 50%), -14px 192px hsl(1036.8, 100%, 50%), -13px 193px hsl(1042.1999999999998, 100%, 50%), -11px 194px hsl(1047.6, 100%, 50%), -9px 195px hsl(1053, 100%, 50%), -7px 196px hsl(1058.4, 100%, 50%), -5px 197px hsl(1063.8000000000002, 100%, 50%), -3px 198px hsl(1069.1999999999998, 100%, 50%), -1px 199px hsl(1074.6, 100%, 50%), -1px 200px hsl(1080, 100%, 50%), 1px 201px hsl(1085.3999999999999, 100%, 50%), 3px 202px hsl(1090.8000000000002, 100%, 50%), 5px 203px hsl(1096.1999999999998, 100%, 50%), 7px 204px hsl(1101.6, 100%, 50%), 9px 205px hsl(1106.9999999999998, 100%, 50%), 11px 206px hsl(1112.4, 100%, 50%), 13px 207px hsl(1117.8, 100%, 50%), 14px 208px hsl(1123.2, 100%, 50%), 16px 209px hsl(1128.6, 100%, 50%), 18px 210px hsl(1134, 100%, 50%), 20px 211px hsl(1139.3999999999999, 100%, 50%), 22px 212px hsl(1144.8000000000002, 100%, 50%), 23px 213px hsl(1150.1999999999998, 100%, 50%), 25px 214px hsl(1155.6000000000001, 100%, 50%), 27px 215px hsl(1161, 100%, 50%), 28px 216px hsl(1166.4, 100%, 50%), 30px 217px hsl(1171.8, 100%, 50%), 32px 218px hsl(1177.2, 100%, 50%), 33px 219px hsl(1182.6, 100%, 50%), 35px 220px hsl(1188.0000000000002, 100%, 50%), 36px 221px hsl(1193.4, 100%, 50%), 38px 222px hsl(1198.8000000000002, 100%, 50%), 39px 223px hsl(1204.1999999999998, 100%, 50%), 41px 224px hsl(1209.6000000000001, 100%, 50%), 42px 225px hsl(1215, 100%, 50%), 43px 226px hsl(1220.3999999999999, 100%, 50%), 45px 227px hsl(1225.8000000000002, 100%, 50%), 46px 228px hsl(1231.1999999999998, 100%, 50%), 47px 229px hsl(1236.6, 100%, 50%), 48px 230px hsl(1241.9999999999998, 100%, 50%), 49px 231px hsl(1247.4, 100%, 50%), 50px 232px hsl(1252.8, 100%, 50%), 51px 233px hsl(1258.2, 100%, 50%), 52px 234px hsl(1263.6, 100%, 50%), 53px 235px hsl(1269, 100%, 50%), 54px 236px hsl(1274.3999999999999, 100%, 50%), 55px 237px hsl(1279.8000000000002, 100%, 50%), 55px 238px hsl(1285.1999999999998, 100%, 50%), 56px 239px hsl(1290.6000000000001, 100%, 50%), 57px 240px hsl(1296, 100%, 50%), 57px 241px hsl(1301.4, 100%, 50%), 58px 242px hsl(1306.8, 100%, 50%), 58px 243px hsl(1312.2, 100%, 50%), 58px 244px hsl(1317.6, 100%, 50%), 59px 245px hsl(1323.0000000000002, 100%, 50%), 59px 246px hsl(1328.4, 100%, 50%), 59px 247px hsl(1333.8000000000002, 100%, 50%), 59px 248px hsl(1339.1999999999998, 100%, 50%), 59px 249px hsl(1344.6000000000001, 100%, 50%), 60px 250px hsl(1350, 100%, 50%), 59px 251px hsl(1355.3999999999999, 100%, 50%), 59px 252px hsl(1360.8000000000002, 100%, 50%), 59px 253px hsl(1366.1999999999998, 100%, 50%), 59px 254px hsl(1371.6, 100%, 50%), 59px 255px hsl(1376.9999999999998, 100%, 50%), 58px 256px hsl(1382.4, 100%, 50%), 58px 257px hsl(1387.8, 100%, 50%), 58px 258px hsl(1393.2, 100%, 50%), 57px 259px hsl(1398.6, 100%, 50%), 57px 260px hsl(1404, 100%, 50%), 56px 261px hsl(1409.3999999999999, 100%, 50%), 55px 262px hsl(1414.8000000000002, 100%, 50%), 55px 263px hsl(1420.1999999999998, 100%, 50%), 54px 264px hsl(1425.6000000000001, 100%, 50%), 53px 265px hsl(1431, 100%, 50%), 52px 266px hsl(1436.4, 100%, 50%), 51px 267px hsl(1441.8, 100%, 50%), 50px 268px hsl(1447.2, 100%, 50%), 49px 269px hsl(1452.6, 100%, 50%), 48px 270px hsl(1458.0000000000002, 100%, 50%), 47px 271px hsl(1463.4, 100%, 50%), 46px 272px hsl(1468.8000000000002, 100%, 50%), 45px 273px hsl(1474.1999999999998, 100%, 50%), 43px 274px hsl(1479.6000000000001, 100%, 50%), 42px 275px hsl(1485, 100%, 50%), 41px 276px hsl(1490.3999999999999, 100%, 50%), 39px 277px hsl(1495.8000000000002, 100%, 50%), 38px 278px hsl(1501.1999999999998, 100%, 50%), 36px 279px hsl(1506.6, 100%, 50%), 35px 280px hsl(1511.9999999999998, 100%, 50%), 33px 281px hsl(1517.4, 100%, 50%), 32px 282px hsl(1522.8, 100%, 50%), 30px 283px hsl(1528.2, 100%, 50%), 28px 284px hsl(1533.6, 100%, 50%), 27px 285px hsl(1539, 100%, 50%), 25px 286px hsl(1544.3999999999999, 100%, 50%), 23px 287px hsl(1549.8000000000002, 100%, 50%), 22px 288px hsl(1555.1999999999998, 100%, 50%), 20px 289px hsl(1560.6000000000001, 100%, 50%), 18px 290px hsl(1566, 100%, 50%), 16px 291px hsl(1571.4, 100%, 50%), 14px 292px hsl(1576.8000000000002, 100%, 50%), 13px 293px hsl(1582.1999999999998, 100%, 50%), 11px 294px hsl(1587.6000000000001, 100%, 50%), 9px 295px hsl(1593, 100%, 50%), 7px 296px hsl(1598.3999999999999, 100%, 50%), 5px 297px hsl(1603.8000000000002, 100%, 50%), 3px 298px hsl(1609.1999999999998, 100%, 50%), 1px 299px hsl(1614.6000000000001, 100%, 50%), 2px 300px hsl(1620, 100%, 50%), -1px 301px hsl(1625.3999999999999, 100%, 50%), -3px 302px hsl(1630.8000000000002, 100%, 50%), -5px 303px hsl(1636.1999999999998, 100%, 50%), -7px 304px hsl(1641.6000000000001, 100%, 50%), -9px 305px hsl(1647, 100%, 50%), -11px 306px hsl(1652.3999999999999, 100%, 50%), -13px 307px hsl(1657.8000000000002, 100%, 50%), -14px 308px hsl(1663.1999999999998, 100%, 50%), -16px 309px hsl(1668.6, 100%, 50%), -18px 310px hsl(1674, 100%, 50%), -20px 311px hsl(1679.3999999999999, 100%, 50%), -22px 312px hsl(1684.8000000000002, 100%, 50%), -23px 313px hsl(1690.1999999999998, 100%, 50%), -25px 314px hsl(1695.6000000000001, 100%, 50%), -27px 315px hsl(1701, 100%, 50%), -28px 316px hsl(1706.4, 100%, 50%), -30px 317px hsl(1711.8000000000002, 100%, 50%), -32px 318px hsl(1717.1999999999998, 100%, 50%), -33px 319px hsl(1722.6000000000001, 100%, 50%), -35px 320px hsl(1728, 100%, 50%), -36px 321px hsl(1733.3999999999999, 100%, 50%), -38px 322px hsl(1738.8000000000002, 100%, 50%), -39px 323px hsl(1744.1999999999998, 100%, 50%), -41px 324px hsl(1749.6000000000001, 100%, 50%), -42px 325px hsl(1755, 100%, 50%), -43px 326px hsl(1760.3999999999999, 100%, 50%), -45px 327px hsl(1765.8000000000002, 100%, 50%), -46px 328px hsl(1771.1999999999998, 100%, 50%), -47px 329px hsl(1776.6000000000001, 100%, 50%), -48px 330px hsl(1782, 100%, 50%), -49px 331px hsl(1787.3999999999999, 100%, 50%), -50px 332px hsl(1792.8000000000002, 100%, 50%), -51px 333px hsl(1798.1999999999998, 100%, 50%), -52px 334px hsl(1803.6, 100%, 50%), -53px 335px hsl(1809, 100%, 50%), -54px 336px hsl(1814.3999999999999, 100%, 50%), -55px 337px hsl(1819.8000000000002, 100%, 50%), -55px 338px hsl(1825.1999999999998, 100%, 50%), -56px 339px hsl(1830.6000000000001, 100%, 50%), -57px 340px hsl(1836, 100%, 50%), -57px 341px hsl(1841.4, 100%, 50%), -58px 342px hsl(1846.8000000000002, 100%, 50%), -58px 343px hsl(1852.1999999999998, 100%, 50%), -58px 344px hsl(1857.6000000000001, 100%, 50%), -59px 345px hsl(1863, 100%, 50%), -59px 346px hsl(1868.3999999999999, 100%, 50%), -59px 347px hsl(1873.8000000000002, 100%, 50%), -59px 348px hsl(1879.1999999999998, 100%, 50%), -59px 349px hsl(1884.6000000000001, 100%, 50%), -60px 350px hsl(1890, 100%, 50%), -59px 351px hsl(1895.3999999999999, 100%, 50%), -59px 352px hsl(1900.8000000000002, 100%, 50%), -59px 353px hsl(1906.1999999999998, 100%, 50%), -59px 354px hsl(1911.6000000000001, 100%, 50%), -59px 355px hsl(1917, 100%, 50%), -58px 356px hsl(1922.3999999999999, 100%, 50%), -58px 357px hsl(1927.8000000000002, 100%, 50%), -58px 358px hsl(1933.1999999999998, 100%, 50%), -57px 359px hsl(1938.6, 100%, 50%), -57px 360px hsl(1944, 100%, 50%), -56px 361px hsl(1949.3999999999999, 100%, 50%), -55px 362px hsl(1954.8000000000002, 100%, 50%), -55px 363px hsl(1960.1999999999998, 100%, 50%), -54px 364px hsl(1965.6000000000001, 100%, 50%), -53px 365px hsl(1971, 100%, 50%), -52px 366px hsl(1976.4, 100%, 50%), -51px 367px hsl(1981.8000000000002, 100%, 50%), -50px 368px hsl(1987.1999999999998, 100%, 50%), -49px 369px hsl(1992.6000000000001, 100%, 50%), -48px 370px hsl(1998, 100%, 50%), -47px 371px hsl(2003.3999999999999, 100%, 50%), -46px 372px hsl(2008.8000000000002, 100%, 50%), -45px 373px hsl(2014.1999999999998, 100%, 50%), -43px 374px hsl(2019.6000000000001, 100%, 50%), -42px 375px hsl(2025, 100%, 50%), -41px 376px hsl(2030.3999999999999, 100%, 50%), -39px 377px hsl(2035.8000000000002, 100%, 50%), -38px 378px hsl(2041.1999999999998, 100%, 50%), -36px 379px hsl(2046.6000000000001, 100%, 50%), -35px 380px hsl(2052, 100%, 50%), -33px 381px hsl(2057.3999999999996, 100%, 50%), -32px 382px hsl(2062.8, 100%, 50%), -30px 383px hsl(2068.2, 100%, 50%), -28px 384px hsl(2073.6, 100%, 50%), -27px 385px hsl(2079, 100%, 50%), -25px 386px hsl(2084.3999999999996, 100%, 50%), -23px 387px hsl(2089.8, 100%, 50%), -22px 388px hsl(2095.2, 100%, 50%), -20px 389px hsl(2100.6000000000004, 100%, 50%), -18px 390px hsl(2106, 100%, 50%), -16px 391px hsl(2111.4, 100%, 50%), -14px 392px hsl(2116.8, 100%, 50%), -13px 393px hsl(2122.2, 100%, 50%), -11px 394px hsl(2127.6000000000004, 100%, 50%), -9px 395px hsl(2133, 100%, 50%), -7px 396px hsl(2138.3999999999996, 100%, 50%), -5px 397px hsl(2143.8, 100%, 50%), -3px 398px hsl(2149.2, 100%, 50%), -1px 399px hsl(2154.6000000000004, 100%, 50%);
+}
+
+/* Thanks to Ryan Bates: http://railscasts.com/episodes/234-simple-form */
+
+.simple_form label {
+  float: left;
+  width: 100px;
+  text-align: right;
+  margin: 2px 10px;
+
+}
+
+.simple_form div.input {
+  margin-bottom: 10px;
+}
+
+.simple_form div.boolean, .simple_form input[type='submit'] {
+  margin-left: 120px;
+}
+
+.simple_form div.boolean label, .simple_form label.collection_radio {
+  float: none;
+  margin: 0;
+}
+
+.simple_form label.collection_radio {
+  margin-right: 10px;
+  margin-left: 2px;
+}
+
+.simple_form .error {
+  clear: left;
+  margin-left: 120px;
+  font-size: 12px;
+  color: #D00;
+  display: block;
+}
+
+.simple_form .hint {
+  clear: left;
+  margin-left: 120px;
+  font-size: 12px;
+  color: #555;
+  display: block;
+  font-style: italic;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+ * Media queries for responsive design
+ * These follow after primary styles so they will successfully override. 
+ */
+
+@media all and (orientation:portrait) { 
+  /* Style adjustments for portrait mode goes here */
+  
+}
+
+@media all and (orientation:landscape) { 
+  /* Style adjustments for landscape mode goes here */
+  
+}
+
+/* Grade-A Mobile Browsers (Opera Mobile, iPhone Safari, Android Chrome)  
+   Consider this: www.cloudfour.com/css-media-query-for-mobile-is-fools-gold/ */
+@media screen and (max-device-width: 480px) {
+  
+  
+  /* Uncomment if you don't want iOS and WinMobile to mobile-optimize the text for you
+     j.mp/textsizeadjust 
+  html { -webkit-text-size-adjust:none; -ms-text-size-adjust:none; } */
+}
+
+/* 
+ * print styles
+ * inlined to avoid required HTTP connection www.phpied.com/delay-loading-your-print-css/ 
+ */
+@media print {
+  * { background: transparent !important; color: #444 !important; text-shadow: none !important; }
+  a, a:visited { color: #444 !important; text-decoration: underline; }
+  a:after { content: " (" attr(href) ")"; } 
+  abbr:after { content: " (" attr(title) ")"; }
+  .ir a:after { content: ""; }  /* Don't show links for images */
+  pre, blockquote { border: 1px solid #999; page-break-inside: avoid; }
+  thead { display: table-header-group; } /* css-discuss.incutio.com/wiki/Printing_Tables */ 
+  tr, img { page-break-inside: avoid; }
+  @page { margin: 0.5cm; }
+  p, h2, h3 { orphans: 3; widows: 3; }
+  h2, h3{ page-break-after: avoid; }
+}
+
+
