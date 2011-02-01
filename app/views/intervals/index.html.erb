@@ -42,11 +42,11 @@
    	     <li>
                <div class="thumbnail_wrapper grid_7">
                   <div class="thumbnail_screenshot">
-                    	<img src="/images/dance_3.jpg"/> 
+                    	<%= link_to(image_tag("/images/dance_3.jpg"), int) %>
                   </div>
                   <div class="thumbnail_details">
                   	<h3><%= int.phrase_name %></h3>
-                    <h4><%= int.filename %></h4>
+                    <h4><%= link_to int.filename, int %></h4>
                     <ol>
                     	<li>Date: <%= int.start_time.strftime("%F") %></li>
                     	<li>Camera Angle: <%= int.camera_angle %></li>
