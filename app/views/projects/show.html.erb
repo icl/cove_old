@@ -1,0 +1,76 @@
+<style>
+
+h2, h3 {
+   font-size: 1.1em; 
+   margin: 30px 0px 5px 0px; 
+}
+
+h1 {
+   font-size: 2em; 
+   margin: 10px 0px 5px 0px; 
+}	
+
+p {
+   width: 800px;
+   margin: 10px 0px;
+}
+
+div.vid-box {
+   float: left;
+   width: 275px;
+}
+
+p.vid-title {
+   font-size: 1em;
+   font-weight: bold;
+}
+
+</style>
+
+<br class="clear" />
+<hr />
+
+<% if user_signed_in? %>
+   <% if @project %>
+      <% if @project.user_id == current_user.id %>
+         <h2>Project:
+            <span style="display: block; float: right; font-size: 0.9em;">
+               <%= link_to 'Back', projects_path %>
+            </span>
+         </h2>
+         <h1><%= @project.name %>
+            <span style="display: block; float: right; font-size: 0.5em;">
+               <%= link_to 'Edit', edit_project_path(@project) %> 
+            </span>
+         </h1>
+         <h3>Elevator Pitch 
+            (<%= link_to 'Edit', edit_project_path(@project)  %>): </h3>
+	 <p><%= @project.desc %></p>
+         <h3> History Queue</h3>
+         <% (1..3).each do |f| %>
+            <div class="vid-box">
+                <p class="vid-title">Title<%= f %></p>
+                <img src="/images/dance_3.jpg" width="200" height="150" />
+                <p class="vid-comment">Comment: Lorem Ipsum</p>
+            </div>
+         <% end %>
+         <div style="clear:both;"></div>
+         <h3>Notes (<%= link_to 'Edit', edit_project_path(@project)  %>): </h3>
+	 <p><%= @project.notes %></p>
+
+        <h3>Owner (<%= link_to 'Edit', edit_project_path(@project)  %>): </h3>
+	<li><%= current_user.email %></li>
+        <span style="display: block; float: right;">
+           <%= link_to 'Destroy', @project , :confirm => 'Are you sure?', :method => :delete  %>
+        </span>
+        <div style="clear:both;"></div>
+    <% else %>
+       <p>You do not have access to this project.</p>
+    <% end %>
+   <% end %>
+<% else %>
+
+   <p>Please log-in to access projects.</p>
+
+<% end %>
+

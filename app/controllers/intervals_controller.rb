@@ -1,4 +1,5 @@
 class IntervalsController < ApplicationController
+    before_filter :authenticate_user!
 	# GET /intervals
 	# GET /intervals.xml
 	def index
@@ -18,10 +19,11 @@ class IntervalsController < ApplicationController
 		end
 	end
 
-	# GET /intervals/1
-	# GET /intervals/1.xml
-	def show
-		@interval = Interval.find(params[:id])
+  # GET /intervals/1
+  # GET /intervals/1.xml
+  def show
+    @interval = Interval.find(params[:id])
+    @tags = Tag.all
 
 		respond_to do |format|
 			format.html # show.html.erb
@@ -61,10 +63,11 @@ class IntervalsController < ApplicationController
 		end
 	end
 
-	# PUT /intervals/1
-	# PUT /intervals/1.xml
-	def update
-		@interval = Interval.find(params[:id])
+  # PUT /intervals/1
+  # PUT /intervals/1.xml
+  def update
+    @interval = Interval.find(params[:id])
+    @interval.attributes = {'tag_ids' => []}.merge(params[:interval] || {})
 
 		respond_to do |format|
 			if @interval.update_attributes(params[:interval])

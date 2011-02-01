@@ -1,6 +1,6 @@
-<div id="intervals">
-	<h1>Browse Videos</h1>
-	<div id="filters">
+<div id="intervals" class="">
+	<h1 class="grid_16">Browse Videos</h1>
+	<div id="filters" class="grid_16">
 		<form>
 			<h2>Filters</h2>
 			<fieldset>
@@ -56,26 +56,57 @@
 			<input type="radio" name="view-timeline" /> Timeline
 		</form>
 
-	<table id="results">
-		<thead>
-			<tr>
-				<th>Session Type</th>
-				<th>Phrase Name</th>
-				<th>Filename</th>
-				<th>Camera Angle</th>
-				<th>Start Time</th>
-				<th>Duration</th>
-			</tr>
-		</thead>
-		<tbody>
-			<% last_day = "" %>
+	<div class="results">
+	   
+	   <ol>
+	     <% @intervals.each do |int| %>
+   	     <li>
+               <div class="thumbnail_wrapper grid_7">
+                  <div class="thumbnail_screenshot">
+                    	<%= link_to(image_tag("/images/dance_3.jpg"), int) %>
+                  </div>
+                  <div class="thumbnail_details">
+                  	<h3><%= int.phrase_name %></h3>
+                    <h4><%= link_to int.filename, int %></h4>
+                    <ol>
+                    	<li>Date: <%= int.start_time.strftime("%F") %></li>
+                    	<li>Camera Angle: <%= int.camera_angle %></li>
+                    	<li>Start Time (24 hr): <%= int.start_time.strftime("%T") %></li>
+                    </ol>
+                  </div>
+                  <div class="thumbnail_tags">
+                  	<ol>
+                  		<p>tag0</p>
+                		<p>tag1</p>
+                		<p>tag2</p>
+                		<p>tag3</p>
+                		<p>tag4</p>
+                		<p>tag5</p>
+                		<p>tag6</p>
+                		<p>tag7</p>
+                		<p>tag8</p>
+                		<p>tag9</p>
+                		<p>tag10</p>
+                	</ol>
+                  </div>
+               </div>
+           </li>
+	     <% end %>
+	   </ol>
+	   <br class="clear"/>
+		<table id="listints" class="grid_16">
+			<thead>
+				<tr>
+					<th>Session Type</th>
+					<th>Phrase Name</th>
+					<th>Filename</th>
+					<th>Camera Angle</th>
+					<th>Start Time</th>
+					<th>Duration</th>
+				</tr>
+			</thead>
+			<tbody>
 			<% @intervals.each do |int| %>
-				<% if last_day != int.day %>
-					<tr>
-						<th colspan="6"><%= int.day %></th>
-					</tr>
-					<% last_day = int.day %>
-				<% end %>
 				<tr>
 					<td><%= int.session_type %></td>
 					<td><%= int.phrase_name %></td>
@@ -93,6 +124,3 @@
 		</tbody>
 	</table>
 </div>
-
-</body>
-</html>

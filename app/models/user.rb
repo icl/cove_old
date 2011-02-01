@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
   
+  has_many :projects
+  
   def self.invite_user!(args)
     token = ActiveSupport::SecureRandom.hex(10)
     newUser = User.new :email => args[:email], :password => token, :password_confirmation => token

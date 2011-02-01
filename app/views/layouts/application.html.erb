@@ -28,38 +28,39 @@
   <%= javascript_include_tag "rails.js" %>
   <%= stylesheet_link_tag 'style.css' %>
   <%= stylesheet_link_tag '960.css' %>
+  <%= stylesheet_link_tag 'style.css'%>
   <%= csrf_meta_tag %>
 </head>
+
 <body>
+	<header class="container_16">
+		<hr class="grid_16"/>
+		<img class="grid_3" src="/images/cove_logo.gif"/>
+		<div class="grid_4 user_info prefix_9">
+			<%if !current_user %>
+				<a class="login_link" href="/login">Login</a>
+			<%else%>
+				Logged in as: <%=current_user.email%>
+				<a class="logout_link" href="/logout">Logout</a>
+			<%end%>
+		</div>
+		<div class="grid_4 search_holder prefix_12">
+			<%= render "intervals/search" %>
+		</div>
+		<br style="clear: both"/>
+	</header>
+	
+	<nav class="top_nav container_16">
+		<ul class="grid_16 main_links">
+			<li class="alpha grid_2"><%= link_to "Home", root_path %></li>
+			<li class="grid_2"><%= link_to "Intervals", intervals_path %></li>
+		</ul>
+		<hr class="grid_16"/>
+		<br style="clear:both"/>
+		
+	</nav>
 	
 <div class="content container_16">
-
-						<header class="container_16">
-						<img class="grid_3" src="/images/cove_logo.gif"/>
-						<div class="grid_4 user_info prefix_9">
-							<%if !current_user %>
-								<a class="signup_link" href="/sign_up">Sign up</a>
-								<a class="login_link" href="/login">Login</a>
-							<%else%>
-								Logged in as: <%=current_user.email%>
-								<a class="logout_link" href="/logout">Logout</a>
-							<%end%>
-						</div>
-						<div class="grid_4 search_holder prefix_12">
-							<%= render "intervals/search" %>
-						</div>
-						<br style="clear: both"/>
-						</header>
-
-						<nav class="top_nav container_16">
-						<ul class= "grid_16">
-							<li><%= link_to "Home", root_path %></li>
-							<li><%= link_to "Intervals", intervals_path %></li>
-							<li><%= link_to "" %></li>
-							<li><%= link_to "" %></li>
-							<li><%= link_to "" %></li>
-						</ul>
-						</nav>
 
 						<div class="content container_16">
 
@@ -68,10 +69,12 @@
 
 						</div>
 
-						<footer class="container_16">
-						<h5 class="grid_10 credits">This site was built by the W11 COGS 160 Class</h5>
-						<h5 class="grid_4 copyright prefix_2">Copyright 2011 DK ET AL</h5>
-						</footer>
+<footer class="container_16">
+		<hr class="grid_16"/>
+	<h5 class="grid_10 credits">This site was built by the W11 COGS 160 Class</h5>
+	<h5 class="grid_4 copyright prefix_2">Copyright 2011 DK ET AL</h5>
+		<hr class="grid_16"/>
+<footer>
 
 						<!--[if lt IE 7 ]>
 						<script src="js/libs/dd_belatedpng.js"></script>

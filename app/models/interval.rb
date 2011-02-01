@@ -31,4 +31,6 @@ class Interval < ActiveRecord::Base
 		where(query, *args)
 	end
 	
+  has_many :interval_tags, :dependent => :destroy
+  has_many :tags, :through => :interval_tags
 end

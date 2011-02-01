@@ -1,0 +1,21 @@
+<h1>Project Form</h1>
+
+<%= simple_form_for(@project) do |f| %>
+  <%= f.error_notification %>
+
+  <dl class="project-inputs">
+    <dt><%= f.label :name %></dt>
+    <dd><%= f.text_field(:name, :size=> 50) %></dd>
+    <dt><%= f.label :user_id %></dt>
+    <dd><%= current_user.email %></dd>
+    <input type="hidden" name="project[user_id]" value="<%= current_user.id %>">
+    <dt><%= f.label :desc %></dt>
+    <dd><%= f.text_area(:desc, :cols => 40, :rows => 5) %></dd>
+
+    <dt><%= f.label :notes %></dt>
+    <dd><%= f.text_area(:notes, :cols => 40, :rows => 5) %></dd>
+
+    <dt><%= f.button :submit %></dt>
+  </dl>
+<% end %>
+
