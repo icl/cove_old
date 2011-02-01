@@ -4,24 +4,21 @@
 <h2>Type(s): <%= @interval.phrase_type %></h2>
 
 <h3>Angles:</h3>
-<form>
-	<input type="checkbox" name="daily2" /> Daily 2 
-	<input type="checkbox" name="mirror" />Mirror 
-	<input type="checkbox" name="daily1" />Daily 1 <br/>
-	<input type="checkbox" name="rear2" />Rear 2
-	<input type="checkbox" name="Wayne" />Wayne 
-	<input type="checkbox" name="rear1" />Rear 1
-</form> 
+
 
 <h3>Phenomena:</h3>
-<% form_for @interval do %>
-	<% @tags.each do |tag| %>
-		<%= check_box_tag :tag_ids, tag.id, @interval.tags.include?(tag), :name => 'interval[tag_ids][]' %>
-		<%= tag.name %>
-	<% end %>
-	<%= submit_tag %>
-<% end %>
+<%= simple_form_for @interval do |f| %>
+<div class="camera_angle_map">
+	<%= f.input :camera_angle,  :collection => %w(daily2 mirror daily1 rear2 Wayne rear1), :as => :radio%>
+	</div>
+	<div class="tag_box">
+	<%= f.association :tags, :as => :check_boxes %>
+	</div>
 
+	<%= f.button :submit %>
+
+<% end %>
+<br/>
 <h4>Session <%= @interval.session_number %></h4>
 <h4><%= @interval.start_time.strftime("%F") %></h4> <!-- Date-->
 
