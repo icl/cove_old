@@ -59,34 +59,27 @@
 	<div class="results">
 	   
 	   <ol>
-	     <% @intervals.each do |int| %>
+	     <% @intervals.each do |interval| %>
    	     <li>
                <div class="thumbnail_wrapper grid_7">
                   <div class="thumbnail_screenshot">
-                    	<%= link_to(image_tag("/images/dance_3.jpg"), int) %>
+                    	<%= link_to(image_tag("/images/dance_3.jpg"), interval) %>
                   </div>
                   <div class="thumbnail_details">
-                  	<h3><%= int.phrase_name %></h3>
-                    <h4><%= link_to int.filename, int %></h4>
+                  	<h3><%= interval.phrase_name %>: <%= link_to interval.filename, interval %></h3>
+
                     <ol>
-                    	<li>Date: <%= int.start_time.strftime("%F") %></li>
-                    	<li>Camera Angle: <%= int.camera_angle %></li>
-                    	<li>Start Time (24 hr): <%= int.start_time.strftime("%T") %></li>
+                    	<li>Date: <%= interval.start_time.strftime("%F") %></li>
+                    	<li>Camera Angle: <%= interval.camera_angle %></li>
+                    	<li>Start Time (24 hr): <%= interval.start_time.strftime("%T") %></li>
+						<li>Session Type: <%= interval.session_type%> </li>
                     </ol>
                   </div>
                   <div class="thumbnail_tags">
                   	<ol>
-                  		<p>tag0</p>
-                		<p>tag1</p>
-                		<p>tag2</p>
-                		<p>tag3</p>
-                		<p>tag4</p>
-                		<p>tag5</p>
-                		<p>tag6</p>
-                		<p>tag7</p>
-                		<p>tag8</p>
-                		<p>tag9</p>
-                		<p>tag10</p>
+						<% interval.tags.limit(3).each do | tag| %>
+						<li><%= tag.name %></li>
+						<% end %>
                 	</ol>
                   </div>
                </div>
@@ -94,33 +87,9 @@
 	     <% end %>
 	   </ol>
 	   <br class="clear"/>
-		<table id="listints" class="grid_16">
-			<thead>
-				<tr>
-					<th>Session Type</th>
-					<th>Phrase Name</th>
-					<th>Filename</th>
-					<th>Camera Angle</th>
-					<th>Start Time</th>
-					<th>Duration</th>
-				</tr>
-			</thead>
-			<tbody>
-			<% @intervals.each do |int| %>
-				<tr>
-					<td><%= int.session_type %></td>
-					<td><%= int.phrase_name %></td>
-					<td><%= link_to int.filename, int %></td>
-					<td><%= int.camera_angle %></td>
-					<td><%= int.start_time_of_day %></td>
-					<td><%= int.duration %></td>
-				</tr>
+
+			<% if @intervals.empty? %>
+					<h1>There were no videos found with these filter options.</h1>
 			<% end %>
-			<% if @intervals.size == 0 %>
-				<tr>
-					<td colspan="6">There were no videos found with these filter options.</td>
-				</tr>
-			<% end %>
-		</tbody>
-	</table>
+
 </div>
