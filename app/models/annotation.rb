@@ -25,8 +25,10 @@ class Annotation
   def fetch_all
     result = []
     @@types_of_annotation.each do |type|
-      result << Annotation.class_from_symobl(type).all
+      tmp = Annotation.class_from_symbol(type).all
+      result << tmp
     end
+    return result
   end
-  private :fetch_all
+  
 end
