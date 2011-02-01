@@ -40,4 +40,21 @@ class Annotation
       return false
     end
   end
+  
+  def annotations_for_user(args)
+    args[:class].where(:user_id => self.user_id)
+  end
+  
+  def annotations_for_interval(args)
+    args[:class].where(:interval_id => self.interval_id)
+  end
+  
+  def where(args)
+    Annotation.class_from_symbol(args.delete(:class_symbol)).where(args)
+  end
+  
+  def execute_arbitraty_method(args)
+    Annotation.class_from_symbol(args[:class_symbol]).send args[:method_name]
+  end
+  
 end

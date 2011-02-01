@@ -62,4 +62,26 @@ describe Annotation do
       @user.annotations.add(:type => :tag, :name => "Test").should be_false
     end
   end
+  
+  describe "#execute_arbitraty_method" do
+    context "valid arguments" do
+      it "should execute command on argument class" do
+        @user.annotations.execute_arbitraty_method(:class_symbol => :interval, :method_name => :class).should == Class
+      end
+    end
+    context "invalid arguments" do
+      it "should raise an exception" do
+        begin
+          @user.annotations.execute_arbitraty_method(:class_symbol => :interl, :method_name => :class).should raise_error
+          fail_with "should have thrown exception"
+        rescue
+          begin
+            @user.annotations.execute_arbitraty_method(:class_symbol => :interval, :method_name => :to_blah).should raise_error          
+            fail_with "should have thrown exception"
+          rescue 
+          end
+        end
+      end
+    end
+  end
 end
