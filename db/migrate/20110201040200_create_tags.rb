@@ -4,7 +4,6 @@ class CreateTags < ActiveRecord::Migration
       t.string :name
       t.integer :user_id
       t.integer :interval_id
-      t.integer :tag_type_id
       t.timestamps
     end
   end
