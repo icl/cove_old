@@ -39,6 +39,7 @@ class IntervalsController < ApplicationController
   # GET /intervals/1.xml
   def show
     @interval = Interval.find(params[:id])
+    @tags = Tag.all
 
     respond_to do |format|
       format.html # show.html.erb
@@ -82,6 +83,7 @@ class IntervalsController < ApplicationController
   # PUT /intervals/1.xml
   def update
     @interval = Interval.find(params[:id])
+    @interval.attributes = {'tag_ids' => []}.merge(params[:interval] || {})
 
     respond_to do |format|
       if @interval.update_attributes(params[:interval])
