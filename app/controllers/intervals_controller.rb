@@ -1,4 +1,5 @@
 class IntervalsController < ApplicationController
+    before_filter :authenticate_user!
   # GET /intervals
   # GET /intervals.xml
   def index
