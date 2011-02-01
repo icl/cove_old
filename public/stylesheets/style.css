@@ -220,6 +220,7 @@ button {  width: auto; overflow: visible; }
 .thumbnail_wrapper {
     margin: 10px;
 }
+
 .thumbnail_wrapper div.thumbnail_screenshot {
   float: left;
   width: 148px;
