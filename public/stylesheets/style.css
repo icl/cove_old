@@ -261,7 +261,7 @@ button {  width: auto; overflow: visible; }
     padding-top: 5px;
 }
 
-.thumbnail_wrapper .thumbnail_tags p{
+.thumbnail_wrapper .thumbnail_tags li{
     float: left;
     padding: 2px 7px 1px 8px;
 }
