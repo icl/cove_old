@@ -15,22 +15,50 @@
 						<!--  Mobile viewport optimized: j.mp/bplateviewport -->
 						<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-						<title>Cove</title>
-						<% if ENV['RAILS_ENV'] == 'production' %>
-							<%= javascript_include_tag 'jquery.min.js' %>
-							<%= javascript_include_tag 'jquery-ui.min.js' %>
-						<% else %>
-							<%= javascript_include_tag "jquery.js" %>
-							<%= javascript_include_tag "jquery-ui.js" %>
-						<% end %>
-						<%= javascript_include_tag 'modernizr-1.6.min.js' %>
-						<%= javascript_include_tag 'application.js' %>
-						<%= javascript_include_tag "rails.js" %>
-						<%= stylesheet_link_tag 'style.css' %>
-						<%= stylesheet_link_tag '960.css' %>
-						<%= csrf_meta_tag %>
-					</head>
-					<body>
+  <title>Cove</title>
+  <% if ENV['RAILS_ENV'] == 'production' %>
+    <%= javascript_include_tag 'jquery.min.js' %>
+    <%= javascript_include_tag 'jquery-ui.min.js' %>
+  <% else %>
+      <%= javascript_include_tag "jquery.js" %>
+      <%= javascript_include_tag "jquery-ui.js" %>
+  <% end %>
+  <%= javascript_include_tag 'modernizr-1.6.min.js' %>
+  <%= javascript_include_tag 'application.js' %>
+  <%= javascript_include_tag "rails.js" %>
+  <%= stylesheet_link_tag 'style.css' %>
+  <%= stylesheet_link_tag '960.css' %>
+  <%= csrf_meta_tag %>
+</head>
+<body>
+	
+	<header class="container_16">
+		<img class="grid_3" src="/images/cove_logo.gif"/>
+		<div class="grid_4 user_info prefix_9">
+			<%if !current_user %>
+				<a class="signup_link" href="/sign_up">Sign up</a>
+				<a class="login_link" href="/login">Login</a>
+			<%else%>
+				Logged in as: <%=current_user.email%>
+				<a class="logout_link" href="/logout">Logout</a>
+			<%end%>
+		</div>
+		<div class="grid_4 search_holder prefix_12">search would go here</div>
+		<br style="clear: both"/>
+	</header>
+	
+	<nav class="top_nav container_16">
+		<ul class= "grid_16">
+			<li><%= link_to "Home", root_path %></li>
+			<li><%= link_to "Intervals", intervals_path %></li>
+			<li><%= link_to "" %></li>
+			<li><%= link_to "" %></li>
+			<li><%= link_to "" %></li>
+		</ul>
+		<hr class="grid_16"/>
+	</nav>
+	
+<div class="content container_16">
 
 						<header class="container_16">
 						<h1 class="grid_5">COVE</h1>
