@@ -358,6 +358,10 @@ footer h5 {
 	color: green;
 }
 
+.flash {
+	font-size: 12pt;
+}
+
 .alert {
 	color: red;
 }
