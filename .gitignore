@@ -29,3 +29,4 @@ public/archive/*
 deploy.rb
 application.yml
 *~
+public/stylesheets/scaffold.css
