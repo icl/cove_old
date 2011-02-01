@@ -227,6 +227,7 @@ button {  width: auto; overflow: visible; }
 nav.top_nav ul li {
 	display: inline;
 	margin: 0;
+	font-size: 14pt;
 }
 
 body {
@@ -266,7 +267,7 @@ footer h5 {
 }
 
 .login_form h1 {
-	font-size: 16pt;
+	font-size: 14pt;
 }
 
 .new_interval h1 {
