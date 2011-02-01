@@ -225,9 +225,8 @@ button {  width: auto; overflow: visible; }
 
 
 nav.top_nav ul li {
-	display: inline;
-	margin: 0;
-	font-size: 14pt;
+	display: block;
+	font-size: 12pt;
 }
 
 body {
@@ -237,6 +236,7 @@ body {
 
 
 header {
+	font-size: 12pt;
 	height: 100px;
 	background: #2F2F2F;
 }
@@ -255,7 +255,7 @@ header h1 {
 }
 
 .content {
-	min-height: 760px;
+	min-height: 650px;
 }
 
 footer h5 {
