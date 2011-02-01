@@ -22,7 +22,25 @@ describe Annotation do
     it {@interval.annotations.interval_id.should be}
   end
   
-  describe "#tags" do
+  describe "#all" do
+    it "should fetch all intervals" do
+      @user.annotations.all(:interval).should == Interval.all
+    end
     
+    it "should fetch all tags" do
+      @user.annotations.all(:tag).should == Tag.all
+    end
+    
+    it "should return all entries" do
+      @user.annotations.all().should == [Tag.all, Interval.all]
+    end
+    
+  end
+  
+  describe ".class_from_symbol" do
+    before(:each) do
+      @result = Annotation.class_from_symbol(:interval)
+    end
+    it {@result.should == Interval}
   end
 end

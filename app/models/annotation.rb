@@ -1,4 +1,5 @@
 class Annotation
+  @@types_of_annotation = [:tag, :interval]
   include ActiveModel::Validations
   attr_accessor :user_id, :interval_id
   validates_presence_of :user_id
@@ -9,7 +10,23 @@ class Annotation
     @interval_id = args[:interval_id]
   end
   
-  def tags
-    
+  def all(class_symbol=:all)
+    if class_symbol == :all
+      self.fetch_all
+    else
+      Annotation.class_from_symbol(class_symbol).all
+    end
   end
+  
+  def self.class_from_symbol(symbol)
+    symbol.to_s.capitalize.constantize
+  end
+  
+  def fetch_all
+    result = []
+    @@types_of_annotation.each do |type|
+      result << Annotation.class_from_symobl(type).all
+    end
+  end
+  private :fetch_all
 end
