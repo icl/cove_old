@@ -16,9 +16,9 @@ end
 Then /^(?:|I )should see a result with a session type of "([^"]*)"$/ do |sessiontype|
   with_scope(".results") do
     if page.respond_to? :should
-      page.should have_content(sessiontype)
+      page.should have_content("Session Type: #{sessiontype}")
     else
-      assert page.has_content?(sessiontype)
+      assert page.has_content?("Session Type: #{sessiontype}")
     end
   end
 end
