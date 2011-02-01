@@ -43,4 +43,23 @@ describe Annotation do
     end
     it {@result.should == Interval}
   end
+  
+  describe "#add" do
+    before(:each) do
+      @user.annotations.interval_id = @interval.id
+    end
+    it "should return a tag" do
+      @user.annotations.add(:type => :tag, :name => "Test").should be_true
+    end
+    
+    it "should not return if annotation is invalid" do
+      @user.annotations.interval_id = nil
+      @user.annotations.add(:type => :tag, :name => "Test").should be_false
+    end
+    
+    it "should return false if contained object can not be created" do
+      Tag.any_instance.expects(:save).returns(false)
+      @user.annotations.add(:type => :tag, :name => "Test").should be_false
+    end
+  end
 end

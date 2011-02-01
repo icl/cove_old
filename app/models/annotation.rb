@@ -31,4 +31,13 @@ class Annotation
     return result
   end
   
+  def add(args)
+    if self.valid?
+      
+      new_object = Annotation.class_from_symbol(args.delete(:type)).new(args)
+      return new_object.save
+    else
+      return false
+    end
+  end
 end
