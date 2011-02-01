@@ -16,6 +16,19 @@
 			<strong>Type: <%= @interval.phrase_type %></strong>
 		</div>
 	</div>
+	<h3>Phenomena:</h3>
+	<%= simple_form_for @interval do |f| %>
+	<div class="camera_angle_map">
+		<%= f.input :camera_angle,  :collection => %w(daily2 mirror daily1 rear2 Wayne rear1), :as => :radio%>
+		</div>
+		<div class="tag_box">
+		<%= f.association :tags, :as => :check_boxes %>
+		</div>
+<br style="clear:both"/>
+		<%= f.button :submit %>
+
+	<% end %>
+	<!-->
 	<div class="grid_5" id="cameraAngles">
 		<div>
 			<form>
@@ -42,8 +55,8 @@
 			<% end %>
 		</div>
 	</div>
+	<!-->
 	<div class="clear"></div>
-
 
 	<div class="grid_16" id="video">
 		<div>
