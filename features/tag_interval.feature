@@ -3,7 +3,6 @@ Feature: Manipulate Tags for an interval
 	I would like to add tags to an interval
 	So that others can find content faster
 	
-	@javascript
 	Scenario: Add tags to an interval
 		Given the tag "Distributed Memory" exists
 		And I am a regular user who is logged in
