@@ -12,6 +12,7 @@
     <%= f.input :phrase_type %>
     <%= f.input :task_name %>
     <%= f.input :comments %>
+    <%= f.association :tags , :as => :check_boxes %>
   </div>
 
   <div class="actions">

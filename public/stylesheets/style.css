@@ -217,6 +217,10 @@ button {  width: auto; overflow: visible; }
 
 /* Style for Interval Thumbnails */
 
+.results {
+    margin: 10px;
+}
+
 .thumbnail_wrapper {
     margin: 10px;
 }
@@ -270,7 +274,7 @@ button {  width: auto; overflow: visible; }
 
 .thumbnail_wrapper div.thumbnail_tags {
     float: left;
-    width: 248px;
+    width: 247px;
     height: 50px;
     border-bottom: solid 1px;
     border-right: solid 1px;
