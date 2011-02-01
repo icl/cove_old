@@ -1,38 +1,48 @@
+<div class="nda">
 	<h1 class="grid_16">You must agree to the terms below in order to continue!</h1>
 	<br>
 	<br>
-	<div class="grid_6 nda_container" style="width:400px; height:300px;">
+	<div class="grid_6 nda_container" style="width:400px; height:400px;">
 
 		All video and other visual content on this site is bound by a collaboration agreement between Wayne McGregor | Random Dance, Sadler's Wells, London and         
 		Professor Kirsh, Department of Cognitive Science, University of California, San Diego.
-		
-		<p>In participating in this course we offer you access to all the copyrighted content we have collected.  But we require that:
-		
-    	<ul>
+		<br></br>
+	
+		In participating in this course we offer you access to all the copyrighted content we have collected.  But we require that:
+		<br></br>
+	
+	   	<ul>
 		<li>you not share in any manner any content from this site</li>
 		<li>you not share your login and pwd with anyone</li>
-		you not make any permanent copies of this content
-		If you present this content in a non-lab setting then the presentation you give will be for research purposes and that you will acknowledge the content in the 
-		following way: 
+		<li>you not make any permanent copies of this content</li>
+		<li>If you present this content in a non-lab setting then the presentation you give will be for research purposes and that you will acknowledge the content in 		
+		the following way: 
+		<br></br>
+		</ul>
 
-    	<b>"Distributed Choreographic Cognition is a collaboration between Professor David Kirsh and Wayne McGregor | Random Dance".</b>
-
-		I have read and understood these terms. In signing here, I agree to abide by these terms.
+	   	<b>"Distributed Choreographic Cognition is a collaboration between Professor David Kirsh and Wayne McGregor | Random Dance".</b>
 	
+		<br></br>
+
+		By checking the box below and clicking on the "Continue" button, I indicate that I have read and understood these terms and that I agree to abide by them.
+
 	</div>
 	<div class="grid_16 form_container">
 		<%= form_tag(:action => "create", :method => "post", :class => "nda_agree_form") do %>
-	 	<h1 class="grid_4">Agree and Proceed </h1>
 		<%= check_box_tag "accept" %>
+		<%= label_tag "I Agree" %>
+		<br></br>
 		<div>
 			<%= submit_tag "Continue" %>    
 		</div>
+		<br></br>
 		<% end -%>
 	</div>
 	<div class="grid_16 cancel_button_container">
 		<!-- <button id="cancel_button"> Cancel </button> -->
 		<a href="/logout"> Cancel </a>
 	</div>
+</div>
 
 <!-- <script type="text/javascript">
   jQuery(document).ready(function() {
