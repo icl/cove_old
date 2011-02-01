@@ -4,6 +4,8 @@ class ProjectsController < ApplicationController
    def new 
       #render :text => "In show"
       @project = Project.new   
+
+	  @project.user = current_user
  
       respond_to do |format|
          format.html # new.html.erb

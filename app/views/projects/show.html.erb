@@ -28,7 +28,6 @@ p.vid-title {
 </style>
 
 <br class="clear" />
-<hr />
 
 <% if user_signed_in? %>
    <% if @project %>
@@ -46,14 +45,7 @@ p.vid-title {
          <h3>Elevator Pitch 
             (<%= link_to 'Edit', edit_project_path(@project)  %>): </h3>
 	 <p><%= @project.desc %></p>
-         <h3> History Queue</h3>
-         <% (1..3).each do |f| %>
-            <div class="vid-box">
-                <p class="vid-title">Title<%= f %></p>
-                <img src="/images/dance_3.jpg" width="200" height="150" />
-                <p class="vid-comment">Comment: Lorem Ipsum</p>
-            </div>
-         <% end %>
+         
          <div style="clear:both;"></div>
          <h3>Notes (<%= link_to 'Edit', edit_project_path(@project)  %>): </h3>
 	 <p><%= @project.notes %></p>
