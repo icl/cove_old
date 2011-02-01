@@ -21,25 +21,24 @@ Background:
 Scenario: Go to browse page
 	When I go to the intervals page
 	Then I should see 4 results
-	And I should see "solo" within ".results"
-	And I should see "duet" within ".results"
-	And I should see "trio" within ".results"
-	And I should see "quartet" within ".results"
+	And I should see a result with a session type of "solo"
+	And I should see a result with a session type of "duet"
+	And I should see a result with a session type of "trio"
+	And I should see a result with a session type of "quartet"
 
 Scenario: Filter by camera angle
 	When I go to the intervals page
 	And I follow "Mirror" within "#filters"
 	Then I should see 2 results
-	And I should see "Mirror" within ".results"
-	And I should see "trio" within ".results"
-	And I should see "quartet" within ".results"
+	And I should see a result with a session type of "trio"
+	And I should see a result with a session type of "quartet"
 
 Scenario: Search
 	When I go to the intervals page
 	And I fill in "search" with "trio" within "#filters"
 	And I press "Submit" within "#filters"
 	Then I should see 1 result
-	And I should see "trio" within ".results"
+	And I should see a result with a session type of "trio"
 
 Scenario: Search and filter by angle
 	When I go to the intervals page
@@ -47,7 +46,7 @@ Scenario: Search and filter by angle
 	And I press "Submit" within "#filters"
 	And I follow "Mirror" within "#filters"
 	Then I should see 1 result
-	And I should see "quartet" within ".results"
+	And I should see a result with a session type of "quartet"
 
 Scenario: Filter by angle and search
 	When I go to the intervals page
@@ -55,14 +54,14 @@ Scenario: Filter by angle and search
 	And I fill in "search" with "et" within "#filters"
 	And I press "Submit" within "#filters"
 	Then I should see 1 result
-	And I should see "quartet" within ".results"
+	And I should see a result with a session type of "quartet"
 
 Scenario: Filter by date
 	When I go to the intervals page
 	And I select "01-01-01" from "date" within "#filters"
 	And I press "Submit" within "#filters"
 	Then I should see 1 result
-	And I should see "solo" within ".results"
+	And I should see a result with a session type of "solo"
 
 Scenario: Filter by date and camera angle
 	When I go to the intervals page
@@ -70,7 +69,7 @@ Scenario: Filter by date and camera angle
 	And I press "Submit" within "#filters"
 	And I follow "Mirror" within "#filters"
 	Then I should see 1 result
-	And I should see "trio" within ".results"
+	And I should see a result with a session type of "trio"
 
 Scenario: Filter by date and camera angle and search
 	When I go to the intervals page
@@ -80,4 +79,4 @@ Scenario: Filter by date and camera angle and search
 	And I fill in "search" with "tr" within "#filters"
 	And I press "Submit" within "#filters"
 	Then I should see 1 result
-	And I should see "trio" within ".results"
+	And I should see a result with a session type of "trio"
