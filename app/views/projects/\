@@ -1,0 +1,20 @@
+<br class="clear"/>
+<hr />
+
+<h1>Projects are coming soon!</h1>
+<%= link_to 'New Project', new_project_path(@project) %> 
+
+<dl>
+<% @project.each do | project | %>
+   <dt style="margin-top:20px;"><%= project.name %></dd>
+   <dd><%= project.desc %></dd>
+
+<dd>
+    <%= link_to 'Show', project %>
+    <%= link_to 'Edit', edit_project_path(project) %>
+    <%= link_to 'Destroy', project, :confirm => 'Are you sure?', :method => :delete  %>
+</dd>
+
+<% end %>
+</dl>
+
