@@ -31,12 +31,11 @@
   <%= csrf_meta_tag %>
 </head>
 <body>
-	
 	<header class="container_16">
+		<hr class="grid_16"/>
 		<img class="grid_3" src="/images/cove_logo.gif"/>
 		<div class="grid_4 user_info prefix_9">
 			<%if !current_user %>
-				<a class="signup_link" href="/sign_up">Sign up</a>
 				<a class="login_link" href="/login">Login</a>
 			<%else%>
 				Logged in as: <%=current_user.email%>
@@ -48,14 +47,16 @@
 	</header>
 	
 	<nav class="top_nav container_16">
-		<ul class= "grid_16">
-			<li><%= link_to "Home", root_path %></li>
-			<li><%= link_to "Intervals", intervals_path %></li>
-			<li><%= link_to "" %></li>
-			<li><%= link_to "" %></li>
-			<li><%= link_to "" %></li>
+		<ul class="grid_16 main_links">
+			<li class="alpha grid_2"><%= link_to "Home", root_path %></li>
+			<li class="grid_2"><%= link_to "Intervals", intervals_path %></li>
+			<li class="grid_2"><%= link_to "Projects" %></li>
+			<li class="grid_2"><%= link_to "Forum" %></li>
+			<li class="omega grid_2"><%= link_to "FAQ" %></li>
 		</ul>
 		<hr class="grid_16"/>
+		<br style="clear:both"/>
+		
 	</nav>
 	
 <div class="content container_16">
@@ -67,8 +68,10 @@
 </div>
 
 <footer class="container_16">
+		<hr class="grid_16"/>
 	<h5 class="grid_10 credits">This site was built by the W11 COGS 160 Class</h5>
 	<h5 class="grid_4 copyright prefix_2">Copyright 2011 DK ET AL</h5>
+		<hr class="grid_16"/>
 <footer>
 
 <!--[if lt IE 7 ]>
