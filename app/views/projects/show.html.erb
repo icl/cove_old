@@ -1,81 +1,262 @@
 <style>
 
-h2, h3 {
-   font-size: 1.1em; 
-   margin: 30px 0px 5px 0px; 
+li.inline {
+   display: inline;
+   list-style-type: none;
+   margin: 10px 20px 10px 0px;
 }
 
-h1 {
-   font-size: 2em; 
-   margin: 10px 0px 5px 0px; 
-}	
-
-p {
-   width: 800px;
-   margin: 10px 0px;
+h2 {
+   font-size: 2em;
+   color: #00fa9a;
+   padding: 0px 0px 5px 0px;
 }
 
-div.vid-box {
-   float: left;
-   width: 275px;
+h3 {
+   font-size: 1.5em;
+   color: #666;
+   padding: 10px 0px 5px 0px;
 }
 
-p.vid-title {
-   font-size: 1em;
+h3 span {
+   font-size: 0.7em;
+}
+
+.vid-title {
    font-weight: bold;
+   padding: 10px 0px 5px 0px;
 }
+
+.vid-comment {
+   padding: 10px 0px 5px 0px;
+}
+
+#vid-cont {
+	background: #999;
+        padding: 10px 0px;
+   color: #000;
+}
+
+.left-arw {border-color:transparent #00fa9a transparent transparent;}
+.right-arw {border-color:transparent transparent transparent #00fa9a;}
 
 </style>
 
-<br class="clear" />
-<hr />
-
+<div class="container_16">
 <% if user_signed_in? %>
    <% if @project %>
       <% if @project.user_id == current_user.id %>
-         <h2>Project:
-            <span style="display: block; float: right; font-size: 0.9em;">
-               <%= link_to 'Back', projects_path %>
-            </span>
-         </h2>
-         <h1><%= @project.name %>
-            <span style="display: block; float: right; font-size: 0.5em;">
-               <%= link_to 'Edit', edit_project_path(@project) %> 
-            </span>
-         </h1>
-         <h3>Elevator Pitch 
-            (<%= link_to 'Edit', edit_project_path(@project)  %>): </h3>
-	 <p><%= @project.desc %></p>
-         <h3> History Queue</h3>
-         <% (1..3).each do |f| %>
-            <div class="vid-box">
-                <p class="vid-title">Title<%= f %></p>
-                <img src="/images/dance_3.jpg" width="200" height="150" />
-                <p class="vid-comment">Comment: Lorem Ipsum</p>
-            </div>
-         <% end %>
-         <div style="clear:both;"></div>
-         <h3>Notes (<%= link_to 'Edit', edit_project_path(@project)  %>): </h3>
-	 <p><%= @project.notes %></p>
-         <h3>Tags (<%= link_to 'Edit', edit_project_path(@project)  %>): </h3>
-         <ul>
-            <% @project.tags.each do |t| %>
-               <li><%= t %></li>
-            <% end %>
-         </ul>
-        <h3>Owner (<%= link_to 'Edit', edit_project_path(@project)  %>): </h3>
-	<li><%= current_user.email %></li>
-        <span style="display: block; float: right;">
-           <%= link_to 'Destroy', @project , :confirm => 'Are you sure?', :method => :delete  %>
-        </span>
-        <div style="clear:both;"></div>
-    <% else %>
-       <p>You do not have access to this project.</p>
-    <% end %>
+	<div class="grid_15">
+		<p>
+                   &nbsp;
+		</p>
+	</div>
+	<!-- end .grid_16 -->
+	<div class="grid_1">
+		<p>
+                   <%= link_to 'Back', projects_path %>
+		</p>
+	</div>
+	<!-- end .grid_1 -->
+	<div class="clear"></div>
+	<div class="grid_16">
+		<h3>
+		   Project <span>(<%= link_to 'Edit', edit_project_path(@project) %>):</span>	
+		</h3>
+	</div>
+	<!-- end .grid_16 -->
+	<div class="clear"></div>
+	<div class="grid_16">
+		<h2>
+		   <%= @project.name %> 
+		</h2>
+	</div>
+	<!-- end .grid_16 -->
+	<div class="clear"></div>
+	<div class="grid_10">
+		<h3>
+		   Featured Video	
+		</h3>
+	</div>
+	<!-- end .grid_10 -->
+	<div class="grid_6">
+		<h3>
+		   Elevator Pitch <span>(<%= link_to 'Edit', edit_project_path(@project) %>):</span>	
+		</h3>
+	</div>
+	<div class="clear"></div>
+	<div class="grid_10">
+		<p style="height: 300px;">
+		      In the coming weeks, you will be able to display an video here to inspire and energize you for your project.	
+		</p>
+	</div>
+	<!-- end .grid_10 -->
+	<div class="grid_6">
+		<p>
+		   <%= @project.desc %> 
+		</p>
+	</div>
+	<!-- end .grid_6 -->
+	<div class="clear"></div>
+	<div class="grid_1">
+		<p>
+<div class="left-arw" style="margin:10px;float:left;border-width:15px; border-style:solid;width:0px;height:0px;line-height:0px;"><!-- --></div>
+		</p>
+	</div>
+	<!-- end .grid_1 -->
+	<div class="grid_14" style="text-align:center;">
+		<h3>
+		   History Queue (coming soon)</span>	
+		</h3>
+	</div>
+	<!-- end .grid_16 -->
+	<div class="grid_1">
+		<p>
+<div class="right-arw" style="margin:10px;float:left;border-width:15px; border-style:solid;width:0px;height:0px;line-height:0px;"><!-- --></div>
+		</p>
+	</div>
+	<!-- end .grid_1 -->
+	<div class="clear"></div>
+</div>
+<div class="container_16" id="vid-cont">
+	<div class="grid_1">
+		<p>
+                   &nbsp;
+		</p>
+	</div>
+	<!-- end .grid_1 -->
+	<div class="grid_4">
+		<p>
+                   <p class="vid-title">Title of Video</p>
+		   <div style="width: 150px; height: 100px; background: #666;">
+                   </div>
+                   <p class="vid-comment">Comments for this video</p>
+		</p>
+	</div>
+	<!-- end .grid_4 -->
+	<div class="grid_1">
+		<p>
+		      &nbsp;	
+		</p>
+	</div>
+	<!-- end .grid_1 -->
+	<div class="grid_4">
+		<p>
+                   <p class="vid-title">Title of Video</p>
+		   <div style="width: 150px; height: 100px; background: #666;">
+                   </div>
+                   <p class="vid-comment">Comments for this video</p>
+		</p>
+	</div>
+	<!-- end .grid_4 -->
+	<div class="grid_1">
+		<p>
+		      &nbsp;	
+		</p>
+	</div>
+	<!-- end .grid_1 -->
+	<div class="grid_4">
+		<p>
+                   <p class="vid-title">Title of Video</p>
+		   <div style="width: 150px; height: 100px; background: #666;">
+                   </div>
+                   <p class="vid-comment">
+                       Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Mauris in urna vitae neque commodo iaculis
+                   </p>
+		</p>
+	</div>
+	<!-- end .grid_4 -->
+	<div class="grid_1">
+		<p>
+                   &nbsp;
+		</p>
+	</div>
+	<!-- end .grid_1 -->
+	<div class="clear"></div>
+	<div class="grid_13">
+		<p>
+                   &nbsp;
+		</p>
+	</div>
+	<!-- end .grid_16 -->
+	<div class="grid_3">
+		<p>
+                   Show more videos 
+		</p>
+	</div>
+	<!-- end .grid_1 -->
+	<div class="clear"></div>
+</div>
+<div container="container_16">
+	<div class="grid_16">
+		<h3>
+		   Notes <span>(<%= link_to 'Edit', edit_project_path(@project) %>):</span>	
+		</h3>
+	</div>
+	<!-- end .grid_16 -->
+	<div class="grid_16">
+		<p>
+	           <%= @project.notes %>	
+		</p>
+	</div>
+	<!-- end .grid_16 -->
+	<div class="clear"></div>
+	<div class="grid_16">
+		<h3>
+		   Tags <span>(<%= link_to 'Edit', edit_project_path(@project) %>):</span>	
+		</h3>
+	</div>
+	<!-- end .grid_16 -->
+	<div class="clear"></div>
+	<div class="grid_16">
+		<p>
+                     <ul>
+                          <% @project.tags.each do |t| %>
+                             <li class="inline"><%= t.capitalize %></li>
+                          <% end %>
+                     </ul>
+		</p>
+	</div>
+	<!-- end .grid_16 -->
+	<div class="clear"></div>
+	<div class="grid_16">
+		<h3>
+		   Owner <span>(<%= link_to 'Edit', edit_project_path(@project) %>):</span>	
+		</h3>
+                   <p><%= current_user.email %></p>
+	</div>
+	<!-- end .grid_16 -->
+	<div class="clear"></div>
+	<div class="grid_15">
+		<p>
+                   &nbsp;
+		</p>
+	</div>
+	<div class="grid_1">
+		<p>
+                   <%= link_to 'Destroy', @project , :confirm => 'Are you sure?', :method => :delete  %>
+		</p>
+	</div>
+	<div class="clear"></div>
+      <% else %>
+
+	<div class="grid_16">
+		<p>
+		    Sorry, but this project is private. 
+		</p>
+	</div>
+	<!-- end .grid_16 -->
+	<div class="clear"></div>
+
+      <% end %>
    <% end %>
 <% else %>
 
-   <p>Please log-in to access projects.</p>
+   <div class="grid_16">
+      <p>
+         Please log in to access projects.
+      </p>
+   </div>
 
 <% end %>
-
+</div>
