@@ -417,6 +417,90 @@ footer h5 {
 	width:300px;
 }
 
+.tag_box {
+	width:500px;
+	float:left;
+}
+/***********************************/
+/* Style adjustments for show.html */
+
+.Edit {
+	margin-bottom: 10px;
+}
+
+.interval_show h1 {
+	font-size: 32px;
+}
+
+.interval_show strong {
+	font-size: 18px;
+}
+
+#cameraAngles img {
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+#cameraAngles p {
+	font-size: 10px;
+	margin-bottom: 5px;
+}
+
+#phenomena p {
+	margin-top: 30px;
+	margin-bottom: 5px;
+	margin-right: 5px;
+	float: right;
+}
+
+#phenomena h2 {
+	margin-bottom: 5px;
+}
+
+#sessTypePhrase div {
+	border-left: solid 1px #e5e5e6;
+	padding: 5px;
+	height: 120px;
+}
+
+#cameraAngles div {
+	border-left: solid 1px #e5e5e6;
+	padding: 5px;
+	height: 120px;
+}
+
+#phenomena div {
+	border-left: solid 1px #e5e5e6;
+	padding: 5px;
+	height: 120px;
+}
+
+#video div p {
+	border: 2px;
+	height: 350px;
+	text-align: center;
+	margin-top: 70px;
+}
+
+#startTime h4 {
+	text-align: right;
+}
+
+#endTime h4 {
+	text-align: center;
+}
+
+#sessionNum h4 {
+	text-align: right;
+}
+
+#date h4 {
+	text-align: center;
+}
+/* end style adjustments for show.html */
+/***************************************/
+
+
 
 /*
  * Media queries for responsive design

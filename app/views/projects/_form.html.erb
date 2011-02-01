@@ -3,19 +3,12 @@
 <%= simple_form_for(@project) do |f| %>
   <%= f.error_notification %>
 
-  <dl class="project-inputs">
-    <dt><%= f.label :name %></dt>
-    <dd><%= f.text_field(:name, :size=> 50) %></dd>
-    <dt><%= f.label :user_id %></dt>
-    <dd><%= current_user.email %></dd>
-    <input type="hidden" name="project[user_id]" value="<%= current_user.id %>">
-    <dt><%= f.label :desc %></dt>
-    <dd><%= f.text_area(:desc, :cols => 40, :rows => 5) %></dd>
+  
+ <%= f.input :name %>
+ <%= f.input :desc, :as => :text, :label => "Elevator Pitch" %>
+ <%= f.input :notes %>
+ <%= f.button :submit %>
 
-    <dt><%= f.label :notes %></dt>
-    <dd><%= f.text_area(:notes, :cols => 40, :rows => 5) %></dd>
+<%= f.hidden_field :user_id %>
 
-    <dt><%= f.button :submit %></dt>
-  </dl>
 <% end %>
-
