@@ -1,4 +1,6 @@
 class ProjectsController < ApplicationController
+  before_filter :authenticate_user!
+  
    def new 
       #render :text => "In show"
       @project = Project.new   

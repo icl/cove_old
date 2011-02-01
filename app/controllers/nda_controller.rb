@@ -10,7 +10,7 @@ class NdaController < ApplicationController
       current_user.nda_signature_date = DateTime.now
       current_user.save
       flash[:notice] = "NDA signed by #{current_user.email} on #{DateTime.now}"
-      return redirect_to(projects_path)
+      return redirect_to(root_path)
     else
       flash[:alert] = "You must accept NDA to continue"
       return redirect_to :action => "index"

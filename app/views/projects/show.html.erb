@@ -57,12 +57,7 @@ p.vid-title {
          <div style="clear:both;"></div>
          <h3>Notes (<%= link_to 'Edit', edit_project_path(@project)  %>): </h3>
 	 <p><%= @project.notes %></p>
-         <h3>Tags (<%= link_to 'Edit', edit_project_path(@project)  %>): </h3>
-         <ul>
-            <% @project.tags.each do |t| %>
-               <li><%= t %></li>
-            <% end %>
-         </ul>
+
         <h3>Owner (<%= link_to 'Edit', edit_project_path(@project)  %>): </h3>
 	<li><%= current_user.email %></li>
         <span style="display: block; float: right;">

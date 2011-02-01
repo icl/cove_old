@@ -4,8 +4,6 @@ class ApplicationController < ActionController::Base
   def require_nda
     if !current_user.nda_signed
       return redirect_to :controller => "nda", :action => "index"
-    else 
-      return redirect_to(projects_path)
     end
   end
   
