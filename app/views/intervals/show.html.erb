@@ -1,6 +1,8 @@
-<h1><%= @session_type %></h1> <!--Session Type-->
+<div class="grid_16 interval_show">
 
-<h2>Phrase(s): <%= @interval.phrase_name %></h2>
+<h1 class=><%= @session_type %></h1> <!--Session Type-->
+
+<h2 class="grid_10">Phrase(s): <%= @interval.phrase_name %></h2>
 <h2>Type(s): <%= @interval.phrase_type %></h2>
 
 <h3>Angles:</h3>
@@ -33,4 +35,6 @@
 
 <%= link_to 'Edit', edit_interval_path(@interval) %> 
 <%= link_to 'Back', intervals_path %>
+
+</div>
 
