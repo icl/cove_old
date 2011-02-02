@@ -1,5 +1,5 @@
 class Annotation
-  @@types_of_annotation = [:tag, :interval].to_set
+  @@types_of_annotation = [:tag].to_set
   include ActiveModel::Validations
   attr_accessor :user_id, :interval_id
   validates_presence_of :user_id
