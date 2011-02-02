@@ -215,9 +215,78 @@ button {  width: auto; overflow: visible; }
 /* Fix clearfix: blueprintcss.lighthouseapp.com/projects/15318/tickets/5-extra-margin-padding-bottom-of-page */
 .clearfix { zoom: 1; }
 
+/* Style for Interval Thumbnails */
+
+.thumbnail_wrapper {
+    margin: 10px;
+}
+.thumbnail_wrapper div.thumbnail_screenshot {
+  float: left;
+  width: 148px;
+  height: 151px;
+  border: solid 1px; 
+}
+
+.thumbnail_wrapper div.thumbnail_details {
+    float: left;
+    width: 247px;
+    height: 100px;
+    border-top: solid 1px;
+    border-right: solid 1px;
+    border-bottom: solid 1px;
+}
+
+.thumbnail_wrapper .thumbnail_details h3{
+    font-size: 15px;
+    padding-top: 5px;
+    text-align: center;
+    font-weight: 900;
+}
+
+.thumbnail_wrapper .thumbnail_details h4{
+    font-size: 15px;
+    text-align: center;
+    font-weight: 800;
+}
+
+.thumbnail_wrapper .thumbnail_details ol{
+    padding: 7px;
+    margin: 0;
+}
+
+.thumbnail_wrapper .thumbnail_tags ol{
+    list-style: none;
+    margin: 0;
+    float: left;
+    padding-top: 5px;
+}
+
+.thumbnail_wrapper .thumbnail_tags p{
+    float: left;
+    padding: 2px 7px 1px 8px;
+}
 
 
+.thumbnail_wrapper div.thumbnail_tags {
+    float: left;
+    width: 248px;
+    height: 50px;
+    border-bottom: solid 1px;
+    border-right: solid 1px;
+}
 
+.thumbnail_wrapper div.thumbnail_screenshot img{
+    float: left;
+    width: 148px;
+    height: 151px;
+}
+.results ol {
+    list-style: none;
+}
+
+.clear {
+    clear: both;
+}
 
 
  /* Primary Styles
@@ -326,17 +395,6 @@ footer h5 {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
 /*
  * Media queries for responsive design
  * These follow after primary styles so they will successfully override. 
@@ -379,5 +437,3 @@ footer h5 {
   p, h2, h3 { orphans: 3; widows: 3; }
   h2, h3{ page-break-after: avoid; }
 }
-
-

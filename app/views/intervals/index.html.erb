@@ -35,7 +35,44 @@
 		</form>
 	</div>
 
-	<div id="results">
+	<div class="results">
+	   
+	   <ol>
+	     <% @filtered_intervals.each do |int| %>
+   	     <li>
+               <div class="thumbnail_wrapper grid_7">
+                  <div class="thumbnail_screenshot">
+                    	<%= link_to(image_tag("/images/dance_3.jpg"), int) %>
+                  </div>
+                  <div class="thumbnail_details">
+                  	<h3><%= int.phrase_name %></h3>
+                    <h4><%= link_to int.filename, int %></h4>
+                    <ol>
+                    	<li>Date: <%= int.start_time.strftime("%F") %></li>
+                    	<li>Camera Angle: <%= int.camera_angle %></li>
+                    	<li>Start Time (24 hr): <%= int.start_time.strftime("%T") %></li>
+                    </ol>
+                  </div>
+                  <div class="thumbnail_tags">
+                  	<ol>
+                  		<p>tag0</p>
+                		<p>tag1</p>
+                		<p>tag2</p>
+                		<p>tag3</p>
+                		<p>tag4</p>
+                		<p>tag5</p>
+                		<p>tag6</p>
+                		<p>tag7</p>
+                		<p>tag8</p>
+                		<p>tag9</p>
+                		<p>tag10</p>
+                	</ol>
+                  </div>
+               </div>
+           </li>
+	     <% end %>
+	   </ol>
+	   <br class="clear"/>
 		<table id="listints">
 			<thead>
 				<tr>
