@@ -1,5 +1,5 @@
 class Annotation
-  @@types_of_annotation = [:tag, :interval]
+  @@types_of_annotation = [:tag].to_set
   include ActiveModel::Validations
   attr_accessor :user_id, :interval_id
   validates_presence_of :user_id
@@ -19,7 +19,11 @@ class Annotation
   end
   
   def self.class_from_symbol(symbol)
-    symbol.to_s.capitalize.constantize
+    if @@types_of_annotation.include? symbol
+      symbol.to_s.concat("ing").capitalize.constantize
+    else
+      raise Exception
+    end
   end
   
   def fetch_all

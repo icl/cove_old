@@ -84,4 +84,13 @@ describe Annotation do
       end
     end
   end
+  
+  describe ".class_from_symbol" do
+    it "should return the appropriate class" do
+      Annotation.class_from_symbol(:tag).should == Taging
+    end
+    it "should throw and exception do" do
+      lambda { Annotation.class_from_symbol(:blah) }.should raise_error()
+    end
+  end
 end
