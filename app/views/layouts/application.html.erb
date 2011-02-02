@@ -33,10 +33,9 @@
 <body>
 	
 	<header class="container_16">
-		<h1 class="grid_5">COVE</h1>
-		<div class="grid_4 user_info prefix_7">
+		<img class="grid_3" src="/images/cove_logo.gif"/>
+		<div class="grid_4 user_info prefix_9">
 			<%if !current_user %>
-				<a class="signup_link" href="/sign_up">Sign up</a>
 				<a class="login_link" href="/login">Login</a>
 			<%else%>
 				Logged in as: <%=current_user.email%>
@@ -55,6 +54,7 @@
 			<li><%= link_to "" %></li>
 			<li><%= link_to "" %></li>
 		</ul>
+		<hr class="grid_16"/>
 	</nav>
 	
 <div class="content container_16">
