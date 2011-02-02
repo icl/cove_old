@@ -38,7 +38,18 @@ describe Annotation do
       @result = Annotation.class_from_symbol(:tag)
     end
     it {@result.should == Tag}
+    it {lambda { Annotation.class_from_symbol(:blah) }.should raise_error()}
   end
+  
+  describe ".join_class_from_symbol" do
+    it "should return the appropriate class" do
+      Annotation.join_class_from_symbol(:tag).should == Taging
+    end
+    it "should throw and exception do" do
+      lambda { Annotation.join_class_from_symbol(:blah) }.should raise_error()
+    end
+  end
+  
   
   describe "#add" do
     before(:each) do
@@ -54,7 +65,7 @@ describe Annotation do
     end
     
     it "should return false if contained object can not be created" do
-      Tag.any_instance.expects(:save).returns(false)
+      Taging.any_instance.expects(:save).returns(false)
       @user.annotations.add(:type => :tag, :name => "Test").should be_false
     end
   end
@@ -62,31 +73,15 @@ describe Annotation do
   describe "#execute_arbitraty_method" do
     context "valid arguments" do
       it "should execute command on argument class" do
-        @user.annotations.execute_arbitraty_method(:class_symbol => :interval, :method_name => :class).should == Class
+        @user.annotations.execute_arbitraty_method(:class_symbol => :tag, :method_name => :class).should == Class
       end
     end
     context "invalid arguments" do
       it "should raise an exception" do
-        begin
-          @user.annotations.execute_arbitraty_method(:class_symbol => :interl, :method_name => :class).should raise_error
-          fail_with "should have thrown exception"
-        rescue
-          begin
-            @user.annotations.execute_arbitraty_method(:class_symbol => :interval, :method_name => :to_blah).should raise_error          
-            fail_with "should have thrown exception"
-          rescue 
-          end
-        end
+        lambda { @user.annotations.execute_arbitraty_method(:class_symbol => :interl, :method_name => :class) }.should raise_error
+        lambda {@user.annotations.execute_arbitraty_method(:class_symbol => :interval, :method_name => :to_blah) }.should raise_error
       end
     end
   end
   
-  describe ".join_class_from_symbol" do
-    it "should return the appropriate class" do
-      Annotation.class_from_symbol(:tag).should == Taging
-    end
-    it "should throw and exception do" do
-      lambda { Annotation.class_from_symbol(:blah) }.should raise_error()
-    end
-  end
 end
