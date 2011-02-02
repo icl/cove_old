@@ -7,7 +7,6 @@ class ProjectsController < ApplicationController
   end
 
   def new
-    #render :text => "In show"
     @project = Project.new
     @project.user = current_user
     render "new"
