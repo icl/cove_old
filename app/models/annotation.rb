@@ -1,5 +1,5 @@
 class Annotation
-  @@types_of_annotation = [:tag].to_set
+  @@types_of_annotation = [:tag, :interval].to_set
   include ActiveModel::Validations
   attr_accessor :user_id, :interval_id
   validates_presence_of :user_id
@@ -14,13 +14,21 @@ class Annotation
     if class_symbol == :all
       self.fetch_all
     else
-      Annotation.class_from_symbol(class_symbol).all
+      Annotation.join_class_from_symbol(class_symbol).all
+    end
+  end
+  
+  def self.join_class_from_symbol(symbol)
+    if @@types_of_annotation.include? symbol
+      symbol.to_s.concat("ing").capitalize.constantize
+    else
+      raise Exception
     end
   end
   
   def self.class_from_symbol(symbol)
     if @@types_of_annotation.include? symbol
-      symbol.to_s.concat("ing").capitalize.constantize
+      symbol.to_s.capitalize.constantize
     else
       raise Exception
     end
@@ -29,7 +37,7 @@ class Annotation
   def fetch_all
     result = []
     @@types_of_annotation.each do |type|
-      tmp = Annotation.class_from_symbol(type).all
+      tmp = Annotation.join_class_from_symbol(type).all
       result << tmp
     end
     return result
@@ -37,8 +45,10 @@ class Annotation
   
   def add(args)
     if self.valid?
-      
-      new_object = Annotation.class_from_symbol(args.delete(:type)).new(args)
+      type = args.delete(:type)
+      resource = Annotation.class_from_symbol(type).where(:name => args.delete(:name))
+      new_object = Annotation.join_class_from_symbol(type).new(args)
+      new_object.send "#{type.to_s}_id=", resource.id
       return new_object.save
     else
       return false
@@ -54,11 +64,11 @@ class Annotation
   end
   
   def where(args)
-    Annotation.class_from_symbol(args.delete(:class_symbol)).where(args)
+    Annotation.join_class_from_symbol(args.delete(:class_symbol)).where(args)
   end
   
   def execute_arbitraty_method(args)
-    Annotation.class_from_symbol(args[:class_symbol]).send args[:method_name]
+    Annotation.join_class_from_symbol(args[:class_symbol]).send args[:method_name]
   end
   
 end

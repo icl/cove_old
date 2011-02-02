@@ -3,6 +3,7 @@ class CreateTagings < ActiveRecord::Migration
     create_table :tagings do |t|
       t.references :user
       t.references :interval
+      t.references :tag
       t.timestamps
     end
   end
