@@ -70,6 +70,21 @@ describe Annotation do
       Taging.any_instance.expects(:save).returns(false)
       @user.annotations.add(:type => :tag, :name => "Test").should be_false
     end
+
+  end
+  
+  
+  describe ".add" do
+    it "should create a Taging instance and Tag instance" do
+      Tag.expects(:can_be_created?).returns(true)
+      Annotation.add(:type => :tag,:user_id => 1, :interval_id => 1,   :name => "Test").should be_true
+    end
+        
+    it "should return false if contained object can not be created" do
+      Tag.expects(:can_be_created?).returns(true)
+      Taging.any_instance.expects(:save).returns(false)
+      Annotation.add(:type => :tag,:user_id => 1, :interval_id => 1,   :name => "Test").should be_false
+    end
     
   end
   
