@@ -55,7 +55,8 @@ describe Annotation do
     before(:each) do
       @user.annotations.interval_id = @interval.id
     end
-    it "should return a tag" do
+    it "should create a Taging instance and Tag instance" do
+      Tag.expects(:can_be_created?).returns(true)
       @user.annotations.add(:type => :tag, :name => "Test").should be_true
     end
     
@@ -65,9 +66,11 @@ describe Annotation do
     end
     
     it "should return false if contained object can not be created" do
+      Tag.expects(:can_be_created?).returns(true)
       Taging.any_instance.expects(:save).returns(false)
       @user.annotations.add(:type => :tag, :name => "Test").should be_false
     end
+    
   end
   
   describe "#execute_arbitraty_method" do

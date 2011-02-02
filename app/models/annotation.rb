@@ -46,9 +46,24 @@ class Annotation
   def add(args)
     if self.valid?
       type = args.delete(:type)
-      resource = Annotation.class_from_symbol(type).where(:name => args.delete(:name))
+      name = args.delete(:name)
+      resource = Annotation.class_from_symbol(type).where(:name => name)
+      
+      # handle a bad name for the actual model class
+      if resource.empty?
+        if Annotation.class_from_symbol(type).can_be_created?
+          unless Annotation.class_from_symbol(type).create(:name => name)
+            return false
+          end
+        else
+          return false
+        end
+      end
+      
+      # create the new join model instance.
       new_object = Annotation.join_class_from_symbol(type).new(args)
       new_object.send "#{type.to_s}_id=", resource.id
+      new_object.user_id = self.id
       return new_object.save
     else
       return false
