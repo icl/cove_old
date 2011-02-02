@@ -18,21 +18,6 @@ class Annotation
     end
   end
   
-  def self.join_class_from_symbol(symbol)
-    if @@types_of_annotation.include? symbol
-      symbol.to_s.concat("ing").capitalize.constantize
-    else
-      raise Exception
-    end
-  end
-  
-  def self.class_from_symbol(symbol)
-    if @@types_of_annotation.include? symbol
-      symbol.to_s.capitalize.constantize
-    else
-      raise Exception
-    end
-  end
   
   def fetch_all
     result = []
@@ -70,12 +55,12 @@ class Annotation
     end
   end
   
-  def annotations_for_user(args)
-    args[:class].where(:user_id => self.user_id)
+  def annotations_for_user(resource_class)
+    resource_class.where(:user_id => self.user_id)
   end
   
-  def annotations_for_interval(args)
-    args[:class].where(:interval_id => self.interval_id)
+  def annotations_for_interval(resource_class)
+    resource_class.where(:interval_id => self.interval_id)
   end
   
   def where(args)
@@ -85,5 +70,23 @@ class Annotation
   def execute_arbitraty_method(args)
     Annotation.join_class_from_symbol(args[:class_symbol]).send args[:method_name]
   end
+  
+  private
+  def self.join_class_from_symbol(symbol)
+    if @@types_of_annotation.include? symbol
+      symbol.to_s.concat("ing").capitalize.constantize
+    else
+      raise Exception
+    end
+  end
+  
+  def self.class_from_symbol(symbol)
+    if @@types_of_annotation.include? symbol
+      symbol.to_s.capitalize.constantize
+    else
+      raise Exception
+    end
+  end
+  
   
 end
