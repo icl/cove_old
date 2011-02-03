@@ -68,6 +68,16 @@ class Annotation
     end
   end
   
+  def self.where(args)
+    Annotation.join_class_from_symbol(args.delete(:class_symbol)).where(args)
+  end
+
+  
+  def self.execute_arbitraty_method(args)
+    Annotation.join_class_from_symbol(args[:class_symbol]).send args[:method_name]
+  end
+  
+  
   
   
   # DEPRECATED METHOD YOU SHOULD USE THE CLASS METHOD INSTEAD
@@ -116,16 +126,6 @@ class Annotation
     end
     return result
   end
-
-  def where(args)
-    Annotation.join_class_from_symbol(args.delete(:class_symbol)).where(args)
-  end
-
-  
-  def execute_arbitraty_method(args)
-    Annotation.join_class_from_symbol(args[:class_symbol]).send args[:method_name]
-  end
-
 
   protected
   def annotations_for_user(join_class, resource_class)
