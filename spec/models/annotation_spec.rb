@@ -22,15 +22,24 @@ describe Annotation do
     it {@interval.annotations.interval_id.should be}
   end
   
-  describe "#all" do    
+  describe ".all" do
+    before(:each) do
+      @tag = Factory(:tag)
+      tg = Taging.new
+      tg.user = @user
+      tg.interval = @interval
+      tg.tag = @tag
+      tg.save
+    end
+    
     it "should fetch all tags" do
-      @user.annotations.all(:tag).should == Tag.all
+      Annotation.all(:tag).should == Taging.all
     end
     
     it "should return all entries" do
-      @user.annotations.all().should == [Tag.where(:user_id => @user.id)]
+      Annotation.all().should == [Taging.all]
     end
-    
+        
   end
   
   describe ".class_from_symbol" do

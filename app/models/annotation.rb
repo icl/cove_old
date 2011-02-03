@@ -10,7 +10,7 @@ class Annotation
     @interval_id = args[:interval_id]
   end
 
-  def all(class_symbol=:all)
+  def self.all(class_symbol=:all)
     if class_symbol == :all
       self.fetch_all
     else
@@ -18,15 +18,17 @@ class Annotation
     end
   end
 
-
-  def fetch_all
+  
+  def self.fetch_all
     result = []
     @@types_of_annotation.each do |type|
-      tmp = Annotation.join_class_from_symbol(type).all
+      tmp = Annotation.join_class_from_symbol(type).joins(type)
       result << tmp
     end
     return result
   end
+  
+  
   # DEPRECATED METHOD YOU SHOULD USE THE CLASS METHOD INSTEAD
   # def add(args)
   #   if self.valid?
@@ -99,21 +101,21 @@ class Annotation
     Annotation.join_class_from_symbol(args[:class_symbol]).send args[:method_name]
   end
 
-  private
-    def self.join_class_from_symbol(symbol)
-      if @@types_of_annotation.include? symbol
-        symbol.to_s.concat("ing").capitalize.constantize
-      else
-        raise Exception
-      end
+  
+  def self.join_class_from_symbol(symbol)
+    if @@types_of_annotation.include? symbol
+      symbol.to_s.concat("ing").capitalize.constantize
+    else
+      raise Exception
     end
+  end
 
-    def self.class_from_symbol(symbol)
-      if @@types_of_annotation.include? symbol
-        symbol.to_s.capitalize.constantize
-      else
-        raise Exception
-      end
+  def self.class_from_symbol(symbol)
+    if @@types_of_annotation.include? symbol
+      symbol.to_s.capitalize.constantize
+    else
+      raise Exception
     end
+  end
 
 end
