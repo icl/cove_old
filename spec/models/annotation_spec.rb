@@ -86,6 +86,9 @@ describe Annotation do
       Annotation.add(:type => :tag,:user => @user, :interval => @interval,   :name => "Test").should be_false
     end
     
+    describe "Validate Associations" do
+      it {Tag.joins(:taging).should be}
+    end
   end
   
   describe "#execute_arbitraty_method" do
