@@ -10,6 +10,18 @@ Factory.define :taging, :class => Taging do |f|
       Factory(:regular_user)
     end
   end
-  f.association :interval, :factory => :interval
-  f.association :tag, :factory => :tag
+  f.interval do
+    if Interval.first
+      Interval.first
+    else
+      Factory(:interval)
+    end
+  end
+  f.tag do
+    if Tag.first
+      Tag.first
+    else
+      Factory(:tag)
+    end
+  end
 end
