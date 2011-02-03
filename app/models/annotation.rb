@@ -1,5 +1,5 @@
 class Annotation
-  @@types_of_annotation = [:tag, :phenomenon].to_set
+  @@types_of_annotation = [:tag, :phenomenon, :comment].to_set
   include ActiveModel::Validations
   attr_accessor :user_id, :interval_id
   validates_presence_of :user_id
@@ -31,12 +31,18 @@ class Annotation
   def self.add(args)
     type = args.delete(:type)
     name = args.delete(:name)
+    user = args.delete(:user)
+    interval = args.delete(:interval)
     resource = Annotation.class_from_symbol(type).where(:name => name).first
 
     # handle a bad name for the actual model class
     unless resource
       if Annotation.class_from_symbol(type).can_be_created?
-        unless Annotation.class_from_symbol(type).create(:name => name)
+        new_resource = Annotation.class_from_symbol(type).new(:name => name)
+        args.keys.each do |key|
+          new_resource.send "#{key}=", args[:key]
+        end
+        unless new_resource.save
           return false
         end
       else
@@ -47,8 +53,8 @@ class Annotation
     # create the new join model instance.
     new_object = Annotation.join_class_from_symbol(type).new(args)
     new_object.send "#{type.to_s}=", resource
-    new_object.user = args[:user]
-    new_object.interval = args[:interval]
+    new_object.user = user
+    new_object.interval = interval
     return new_object.save
   end
   
