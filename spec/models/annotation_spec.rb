@@ -33,7 +33,7 @@ describe Annotation do
     end
     
     it "should return all entries" do
-      Annotation.all().should == [Taging.all]
+      Annotation.all().should == [Phenomenoning.all,Taging.all]
     end
     
     it "should fetch associated resource" do
