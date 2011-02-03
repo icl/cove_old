@@ -36,12 +36,13 @@
 	<header class="container_16">
 		<hr class="grid_16"/>
 		<img class="grid_3" src="/images/cove_logo.gif"/>
-		<div class="grid_4 user_info prefix_9">
-			<%if !current_user %>
-				<a class="login_link" href="/login">Login</a>
-			<%else%>
+			<%if current_user %>
 				Logged in as: <%=current_user.email%>
 				<a class="logout_link" href="/logout">Logout</a>
+				
+			<%else%>
+				<div class="grid_6 prefix_7 login_box">
+				</div>
 			<%end%>
 		</div>
 		<div class="grid_4 search_holder prefix_12">

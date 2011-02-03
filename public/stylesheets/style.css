@@ -110,8 +110,8 @@ html { overflow-y: scroll; }
 /* Accessible focus treatment: people.opera.com/patrickl/experiments/keyboard/test */
 a:hover, a:active { outline: none; }
 
-a, a:active, a:visited { color: #607890; }
-a:hover { color: #036; }
+a, a:active, a:visited { color: #0297C1; }
+a:hover { color: #CD1A70; }
 
 
 ul, ol { margin-left: 1.8em; }
@@ -366,6 +366,13 @@ footer h5 {
 	color: #CD2027;
 }
 
+input[type=search] {
+        text-align: right;
+        cursor: pointer;
+        width:80%;
+        text-shadow: 0 0 2px black;
+
+}
 
 /* Thanks to Ryan Bates: http://railscasts.com/episodes/234-simple-form */
 
