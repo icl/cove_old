@@ -25,11 +25,13 @@ before "deploy:setup", :db
 after "deploy:update_code", "db:symlink"
 
 namespace :deploy do
-  task :start do ; end
+  task :start, :roles => :app do
+    run "touch #{File.join(current_release,'tmp','restart.txt')}"
+  end
   task :stop do ; end
   task :restart, :roles => :app, :except => { :no_release => true } do
-    run "touch #{File.join(current_path,'tmp','restart.txt')}"
-    #run "rm -r #{File.join(current_path, 'tmp', 'cache', '*')}"
+    run "touch #{File.join(current_release,'tmp','restart.txt')}"
+    #run "rm -r #{File.join(current_release, 'tmp', 'cache', '*')}"
   end
 end
 
