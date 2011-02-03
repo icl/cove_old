@@ -315,9 +315,40 @@ header h1 {
 	color: #FFFFFF;
 }
 
-.user_info {
-	text-align: right;
+.header_box {
+	background: #515151;
+	
 }
+
+.user_avatar { 
+	height: 100px;
+}
+
+.user_avatar img { 
+	margin: 10px;
+   
+}
+
+
+.login_status {
+	text-align:right;
+	font-size: 9pt;
+    height: 100px;
+	
+}
+
+.logged_in_as {
+	margin: 10px;
+}
+
+.logout_link {
+	margin: 10px;
+}
+
+.help_link {
+	margin: 10px;
+}
+
 
 .search_holder {
 	text-align: right;
@@ -368,9 +399,8 @@ footer h5 {
 
 input[type=search] {
         text-align: right;
-        cursor: pointer;
-        width:80%;
-        text-shadow: 0 0 2px black;
+        width:60%;
+		margin: 10px;
 
 }
 

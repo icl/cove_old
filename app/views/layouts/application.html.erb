@@ -34,19 +34,27 @@
 
 <body>
 	<header class="container_16">
-		<hr class="grid_16"/>
 		<img class="grid_3" src="/images/cove_logo.gif"/>
 			<%if current_user %>
-				Logged in as: <%=current_user.email%>
-				<a class="logout_link" href="/logout">Logout</a>
+				<div class="grid_6 push_7 header_box">
+					<div class ="alpha grid_2 user_avatar">
+						<%=image_tag gravatar_url_for "ethan.soutar.rau@gmail.com"%>
+					</div>
+					<div class ="omega grid_4 login_status">
+						<div class="logged_in_as">
+						Logged in as: &nbsp <%=current_user.email%>
+						</div>
+						
+						<a class="logout_link" href="/logout">Logout</a> | <a class="help_link" href="https://cove.tenderapp.com">Help</a>
+						<div class="search_holder">
+							<%= render "intervals/search" if current_user %>
+						</div>
+					</div>
+				</div>
 				
 			<%else%>
-				<div class="grid_6 prefix_7 login_box">
-				</div>
+			
 			<%end%>
-		</div>
-		<div class="grid_4 search_holder prefix_12">
-			<%= render "intervals/search" if current_user %>
 		</div>
 		<br style="clear: both"/>
 	</header>
