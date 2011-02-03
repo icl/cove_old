@@ -116,10 +116,18 @@ class Annotation
     end
     return result
   end
-    
-    
+
+  def where(args)
+    Annotation.join_class_from_symbol(args.delete(:class_symbol)).where(args)
+  end
+
+  
+  def execute_arbitraty_method(args)
+    Annotation.join_class_from_symbol(args[:class_symbol]).send args[:method_name]
+  end
 
 
+  protected
   def annotations_for_user(join_class, resource_class)
     join_class.joins(resource_class.to_s.downcase.to_sym).where(:user_id => @user_id)
   end
@@ -129,18 +137,8 @@ class Annotation
   end
   
   def annotations_for_user_and_interval(join_class, resource_class)
-    join_class.joins(resource_class.to_s.downcase.to_sym).where(:interval_id => @interval_id).where(:user_id => @user_id)
-    
+    join_class.joins(resource_class.to_s.downcase.to_sym).where(:interval_id => @interval_id).where(:user_id => @user_id)    
   end
-
-  def where(args)
-    Annotation.join_class_from_symbol(args.delete(:class_symbol)).where(args)
-  end
-
-  def execute_arbitraty_method(args)
-    Annotation.join_class_from_symbol(args[:class_symbol]).send args[:method_name]
-  end
-
   
 
 end
