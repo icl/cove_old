@@ -27,44 +27,44 @@ class Annotation
     end
     return result
   end
-
-  def add(args)
-    if self.valid?
-      type = args.delete(:type)
-      name = args.delete(:name)
-      resource = Annotation.class_from_symbol(type).where(:name => name)
-
-      # handle a bad name for the actual model class
-      if resource.empty?
-        if Annotation.class_from_symbol(type).can_be_created?
-          unless Annotation.class_from_symbol(type).create(:name => name)
-            return false
-          end
-        else
-          return false
-        end
-      end
-
-      # create the new join model instance.
-      new_object = Annotation.join_class_from_symbol(type).new(args)
-      new_object.send "#{type.to_s}_id=", resource.id
-      new_object.user_id = self.user_id
-      new_object.interval_id = self.interval_id
-      return new_object.save
-    else
-      return false
-    end
-  end
+  # DEPRECATED METHOD YOU SHOULD USE THE CLASS METHOD INSTEAD
+  # def add(args)
+  #   if self.valid?
+  #     type = args.delete(:type)
+  #     name = args.delete(:name)
+  #     resource = Annotation.class_from_symbol(type).where(:name => name).first
+  # 
+  #     # handle a bad name for the actual model class
+  #     unless resource
+  #       if Annotation.class_from_symbol(type).can_be_created?
+  #         unless Annotation.class_from_symbol(type).create(:name => name)
+  #           return false
+  #         end
+  #       else
+  #         return false
+  #       end
+  #     end
+  # 
+  #     # create the new join model instance.
+  #     new_object = Annotation.join_class_from_symbol(type).new(args)
+  #     new_object.send "#{type.to_s}=", resource
+  #     new_object.user = self.user_id
+  #     new_object.interval = self.interval_id
+  #     return new_object.save
+  #   else
+  #     return false
+  #   end
+  # end
 
   # class version of the add method. Needs a user_id, interval_id
   # annotation type, name, and any additional arguments
   def self.add(args)
     type = args.delete(:type)
     name = args.delete(:name)
-    resource = Annotation.class_from_symbol(type).where(:name => name)
+    resource = Annotation.class_from_symbol(type).where(:name => name).first
 
     # handle a bad name for the actual model class
-    if resource.empty?
+    unless resource
       if Annotation.class_from_symbol(type).can_be_created?
         unless Annotation.class_from_symbol(type).create(:name => name)
           return false
@@ -76,9 +76,9 @@ class Annotation
 
     # create the new join model instance.
     new_object = Annotation.join_class_from_symbol(type).new(args)
-    new_object.send "#{type.to_s}_id=", resource.id
-    new_object.user_id = args[:user_id]
-    new_object.interval_id = args[:interval_id]
+    new_object.send "#{type.to_s}=", resource
+    new_object.user = args[:user]
+    new_object.interval = args[:interval]
     return new_object.save
   end
 
