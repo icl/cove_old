@@ -3,7 +3,7 @@ Factory.define :tag, :class => Tag do |f|
 end
 
 Factory.define :taging, :class => Taging do |f|
-  f.user_id 1
-  f.interval_id 1
-  f.tag_id 1
+  f.association :user, :factory => :regular_user
+  f.association :interval, :factory => :interval
+  f.association :tag, :factory => :tag
 end
