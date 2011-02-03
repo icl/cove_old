@@ -25,11 +25,7 @@ describe Annotation do
   describe ".all" do
     before(:each) do
       @tag = Factory(:tag)
-      tg = Taging.new
-      tg.user = @user
-      tg.interval = @interval
-      tg.tag = @tag
-      tg.save
+      Factory(:taging)
     end
     
     it "should fetch all tags" do
@@ -39,7 +35,10 @@ describe Annotation do
     it "should return all entries" do
       Annotation.all().should == [Taging.all]
     end
-        
+    
+    it "should fetch associated resource" do
+      Annotation.all(:tag).first.tag.should be
+    end    
   end
   
   describe ".class_from_symbol" do
