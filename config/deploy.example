@@ -31,7 +31,11 @@ namespace :deploy do
   task :stop do ; end
   task :restart, :roles => :app, :except => { :no_release => true } do
     run "touch #{File.join(current_release,'tmp','restart.txt')}"
-    #run "rm -r #{File.join(current_release, 'tmp', 'cache', '*')}"
+    #run "rm -r #{File.join(current_release, 'tmp', 'cache', '*')}" # Uncomment when using caching
+  end
+  desc "Install gems via bundler"
+  task :bundle, :roles => :app do
+    run "cd #{current_release} && bundle install"
   end
 end
 
@@ -65,5 +69,10 @@ namespace :db do
   desc "Make symlink for database yaml" 
   task :symlink do
     run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml" 
+  end
+  
+  desc "Migrate to your newest database structure"
+  task :migrate do
+    run "cd #{current_release} && rake db:migrate"
   end
 end
