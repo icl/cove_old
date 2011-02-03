@@ -101,14 +101,36 @@ class Annotation
 
   # class version of the add method. Needs a user_id, interval_id
   # annotation type, name, and any additional arguments
+  
+  def all(symbol)
+    if self.user_id && self.interval_id
+      result = self.annotations_for_user_and_interval(Annotation.join_class_from_symbol(symbol), Annotation.class_from_symbol(symbol))
+    else
+      if self.user_id
+        result= self.annotations_for_user(Annotation.join_class_from_symbol(symbol), Annotation.class_from_symbol(symbol))
+      end
+
+      if self.interval_id
+        result =  self.annotations_for_interval(Annotation.join_class_from_symbol(symbol), Annotation.class_from_symbol(symbol))
+      end
+    end
+    return result
+  end
+    
+    
 
 
   def annotations_for_user(join_class, resource_class)
     join_class.joins(resource_class.to_s.downcase.to_sym).where(:user_id => @user_id)
   end
 
-  def annotations_for_interval(resource_class)
+  def annotations_for_interval(join_class,resource_class)
     join_class.joins(resource_class.to_s.downcase.to_sym).where(:interval_id => @interval_id)
+  end
+  
+  def annotations_for_user_and_interval(join_class, resource_class)
+    join_class.joins(resource_class.to_s.downcase.to_sym).where(:interval_id => @interval_id).where(:user_id => @user_id)
+    
   end
 
   def where(args)

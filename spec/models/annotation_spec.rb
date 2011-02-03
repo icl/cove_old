@@ -112,5 +112,32 @@ describe Annotation do
       end
     end
   end
-  
+
+  describe "#all" do
+    before(:each) do
+      @tag = Factory(:tag)
+      Factory(:taging)
+    end
+    context "only user_id" do
+      it "should return all resources for specific user" do
+        expected_value = Taging.joins(:tag).where(:user_id => @user.id)
+        @user.annotations.all(:tag).should == expected_value
+      end
+    end
+    
+    context "only interval_id" do
+      it "should return all resources for specific interval_id" do
+        expected_value = Taging.joins(:tag).where(:interval_id => @interval.id)
+        @interval.annotations.all(:tag).should == expected_value
+      end
+    end
+    
+    context "both user_id and interval_id" do
+      it "should return resources that have the user_id and resource_id" do
+        @user.annotations.interval_id = @interval.id
+        expected_value = Taging.joins(:tag).where(:interval_id => @interval.id).where(:user_id => @user.id)
+        @user.annotations.all(:tag).should == expected_value
+      end
+    end
+  end
 end
