@@ -140,5 +140,4 @@ class Annotation
     join_class.joins(resource_class.to_s.downcase.to_sym).where(:interval_id => @interval_id).where(:user_id => @user_id)    
   end
   
-
 end
