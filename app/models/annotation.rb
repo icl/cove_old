@@ -39,8 +39,10 @@ class Annotation
     unless resource
       if Annotation.class_from_symbol(type).can_be_created?
         new_resource = Annotation.class_from_symbol(type).new(:name => name)
-        args.keys.each do |key|
-          new_resource.send "#{key}=", args[:key]
+        if args[:opt]
+          args[:opt].keys.each do |key| 
+            new_resource.send "#{key}=", args[:opt][key]
+          end
         end
         unless new_resource.save
           return false
@@ -51,7 +53,7 @@ class Annotation
     end
 
     # create the new join model instance.
-    new_object = Annotation.join_class_from_symbol(type).new(args)
+    new_object = Annotation.join_class_from_symbol(type).new()
     new_object.send "#{type.to_s}=", resource
     new_object.user = user
     new_object.interval = interval

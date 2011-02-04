@@ -94,6 +94,10 @@ describe Annotation do
       Annotation.add(:type => :tag,:user => @user, :interval => @interval,   :name => "Test").should be_false
     end
     
+    it "should set extra optional attributes" do
+      Annotation.add(:type => :comment,:user => @user, :interval => @interval,   :name => "Test", :opt => {:body => "blah this is atest"}).should be_true
+    end
+    
     describe "Validate Associations" do
       it {Tag.joins(:taging).should be}
     end
