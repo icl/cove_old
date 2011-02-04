@@ -418,65 +418,61 @@ footer h5 {
 	font-size: 18px;
 }
 
-#cameraAngles img {
-	margin-top: 5px;
-	margin-bottom: 5px;
-}
 
-#cameraAngles p {
-	font-size: 10px;
-	margin-bottom: 5px;
-}
-
-#phenomena p {
+div#phenomena p {
 	margin-top: 30px;
 	margin-bottom: 5px;
 	margin-right: 5px;
-	float: right;
+	float: left;
 }
 
-#phenomena h2 {
+div#phenomena h2 {
 	margin-bottom: 5px;
 }
 
-#sessTypePhrase div {
+div#sessTypePhrase div {
 	border-left: solid 1px #e5e5e6;
 	padding: 5px;
 	height: 120px;
 }
 
-#cameraAngles div {
+.cam_angle {
 	border-left: solid 1px #e5e5e6;
 	padding: 5px;
 	height: 120px;
 }
 
-#phenomena div {
+.phenomena {
 	border-left: solid 1px #e5e5e6;
 	padding: 5px;
 	height: 120px;
+	text-align: left;
 }
 
-#video div p {
+div#tag_checkboxes label {
+	text-align: left;
+}
+
+div#video div p {
 	border: 2px;
 	height: 350px;
 	text-align: center;
 	margin-top: 70px;
 }
 
-#startTime h4 {
+div#startTime h4 {
 	text-align: right;
 }
 
-#endTime h4 {
+div#endTime h4 {
 	text-align: center;
 }
 
-#sessionNum h4 {
+div#sessionNum h4 {
 	text-align: right;
 }
 
-#date h4 {
+div#date h4 {
 	text-align: center;
 }
 /* end style adjustments for show.html */
