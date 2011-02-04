@@ -8,7 +8,6 @@
 	</div>
 	<div class="clear"></div>
 
-
 	<div class="grid_5" id="sessTypePhrase">
 		<div>
 			<h1><%= @interval.session_type %></h1> <!--Session Type-->
@@ -18,11 +17,10 @@
 	</div>
 	
 	<%= simple_form_for @interval do |f| %>
-	<div class="camera_angle_map">
+	<div class="grid_5" id="camera_angle_map">
 		<div class="cam_angle">
 			<strong>Camera Angle: </strong>
 			<%= f.input :camera_angle,  :collection => %w(daily2 mirror daily1 rear2 Wayne rear1), :as => :radio, :label => false %>
-		<!-->	<img src="/images/angles.png" width="160" height="60" /> <br/> <!-->
 		</div>
 	</div>
 	
