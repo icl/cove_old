@@ -96,6 +96,7 @@ describe Annotation do
     
     it "should set extra optional attributes" do
       Annotation.add(:type => :comment,:user => @user, :interval => @interval,   :name => "Test", :opt => {:body => "blah this is atest"}).should be_true
+      Comment.where(:body => "blah this is atest").length().should be > 0
     end
     
     describe "Validate Associations" do
