@@ -1,32 +1,94 @@
-<h1>COVE</h1>
+<div class="interval_show container_16">
 
-<h2>Phrase: <%= @interval.phrase_name %></h2>
-<ul>
-	<li>Phrase Type: <%= @interval.phrase_type %></li>
-	<li>Phrase Alternative Name: (name)</li>
-</ul>
+	<div class="grid_1 Edit">
+		<%= link_to 'Edit', edit_interval_path(@interval) %> 
+	</div>
+	<div class="grid_15">
+		<%= link_to 'Back', intervals_path %>
+	</div>
+	<div class="clear"></div>
 
-<h2>Session Number: <%= @interval.session_number %></h2>
-<ul>
-	<li>Session Type: <%= @session_type %></li>
-	<li>Task: <%= @interval.task_name %></li>
-	<li>Start Time (24 hr): <%= @interval.start_time.strftime("%T") %></li>
-	<li>End Time (24 hr): <%= @interval.end_time.strftime("%T") %></li>				
-	<li>Duration: <%= (@interval.end_time - @interval.start_time.to_time.to_i).strftime("%T") %></li>
-</ul>
 
-<h2>Source</h2>
-<ul id="Source">
-	<li>File Name: <%= @interval.filename %></li>
-	<li>Day Number: </li>
-	<li>Date: <%= @interval.start_time.strftime("%F") %></li>
-	<li>Camera Angle: <%= @interval.camera_angle %></li>
-	<li>Start Time (24 hr): <%= @interval.start_time.strftime("%T") %></li>
-</ul>
+	<div class="grid_5" id="sessTypePhrase">
+		<div>
+			<h1><%= @interval.session_type %></h1> <!--Session Type-->
+			<strong>Phrase: <%= @interval.phrase_name %></strong> <br/>
+			<strong>Type: <%= @interval.phrase_type %></strong>
+		</div>
+	</div>
+	<h3>Phenomena:</h3>
+	<%= simple_form_for @interval do |f| %>
+	<div class="camera_angle_map">
+		<%= f.input :camera_angle,  :collection => %w(daily2 mirror daily1 rear2 Wayne rear1), :as => :radio%>
+		</div>
+		<div class="tag_box">
+		<%= f.association :tags, :as => :check_boxes %>
+		</div>
+<br style="clear:both"/>
+		<%= f.button :submit %>
 
-<div>
-	<%= video_tag @interval.filename, :controls => true %>
+	<% end %>
+	<!-->
+	<div class="grid_5" id="cameraAngles">
+		<div>
+			<form>
+				<p>*Angle selection may not yet be available.</p>
+				<input type="checkbox" name="daily2" /> Daily 2  
+				<input type="checkbox" name="mirror" /> Mirror 
+				<input type="checkbox" name="daily1" /> Daily 1 <br/>
+				<img src="/images/Angles.png" width="160" height="60" /> <br/>
+				<input type="checkbox" name="rear2" /> Rear 2
+				<input type="checkbox" name="Wayne" /> Wayne 
+				<input type="checkbox" name="rear1" /> Rear 1 <br/>
+			</form>
+		</div>
+	</div>
+	<div class="grid_6" id="phenomena">
+		<div>
+		<h2>Phenomena:</h2>
+			<% form_for @interval do %>
+				<% @tags.each do |tag| %> 
+					<%= check_box_tag :tag_ids, tag.id, @interval.tags.include?(tag), :name => 'interval[tag_ids][]' %>
+					<%= tag.name %>
+				<% end %> 
+				<p><%= submit_tag %></p>
+			<% end %>
+		</div>
+	</div>
+	<!-->
+	<div class="clear"></div>
+
+	<div class="grid_16" id="video">
+		<div>
+		<p><%= video_tag @interval.filename, :controls => true %></p>
+		</div>
+	</div>
+	<div class="clear"></div>
+
+
+	<div class="grid_5" id="startTime">
+		<h4>Start: <%= @interval.start_time.strftime("%T") %></h4>
+	</div>
+	<div class="grid_5" id="endTime">
+		<h4>End: <%= @interval.end_time.strftime("%T") %></h4>
+	</div>
+	<div class="grid_6" id="duration">
+		<h4>Duration: <%= (@interval.end_time - @interval.start_time.to_time.to_i).strftime("%T") %></h4>
+	</div>
+	<div class="clear"></div>
+
+
+	<div class="grid_5" id="sessionNum">
+		<h4>Session <%= @interval.session_number %></h4>
+	</div>
+	<div class="grid_5" id="date">
+		<h4><%= @interval.start_time.strftime("%F") %></h4> <!-- Date-->
+	</div>
+	<div class="grid_6" id="filename">
+		<h4><%= @interval.filename %></h4> <!--filename-->
+	</div>
+	<div class="clear"></div>
+	
+	
+
 </div>
-
-<%= link_to 'Edit', edit_interval_path(@interval) %> 
-<%= link_to 'Back', intervals_path %>

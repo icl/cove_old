@@ -1,34 +1,19 @@
-<!--
-
-<style>
-.clear{clear:both;}
-.user_info{float:right;}
-.cove_header{float:left;}
-.checkerboard {	
-}
-.checkerboard div{
-float:left;
-font-size: 600%;
-width:200px;
-length:200px;
-text-align:center;
-background-color: gray;
-border:2px solid #ffffff;
-
-}
-</style>
-<div class="checkerboard">
-<%(0..15).each do |number| %>
-<div><img src="/images/dance_3.jpg" width="200" height="150" /></div>
-<%end%>
-</div>
-
-/ --> 
-
-<div class="containter_16">
-
+<% if !current_user %>
 <h1 class= "placeholder grid_16">EPIC PLACEHOLDER</h1>
 
-</div>
+<% else %>
+<section class="grid_16">
+	<h2>Projects</h2>
+		<%= link_to "Make a New Project", new_project_path %>
+	<dl>
+	<% Project.all.each do | project | %>
+	   <% if project.user_id == current_user.id %>
+	      <dt style="margin-top:20px;"><%= link_to project.name, project %></dd>
+	      <dd><%= project.desc %></dd>
+	   <% end %>
+	<% end %>
+	</dl>
+<% end%>
+</section>
 
-	
+
