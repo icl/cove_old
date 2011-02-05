@@ -1,6 +1,6 @@
 class Interval < ActiveRecord::Base
   
-  def import
+  def self.import
     Dir.foreach("tmp/notes/") do |file|
       if file =~ /[^(\.|\.\.)].*csv$/
         note_file = File.new("tmp/notes/#{file}")
@@ -20,7 +20,7 @@ class Interval < ActiveRecord::Base
               
             when :start_time
               
-            when :end_time
+            when :duration
               
             when :session_type
               
