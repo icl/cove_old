@@ -1,13 +1,7 @@
 class Interval < ActiveRecord::Base
   
-	def duration
-		st = read_attribute(:start_time)
-		et = read_attribute(:end_time)
-
-		duration = et-st
-		hours = (duration / (60*60)).floor
-		minutes = ((duration - hours*60*60)/60).floor
-		sprintf("%02dh%02dm", hours, minutes)
+	def end_time
+    Time.at(start_time.to_i + duration)
 	end
 
 	def day
