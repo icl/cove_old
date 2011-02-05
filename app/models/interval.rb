@@ -52,11 +52,12 @@ class Interval < ActiveRecord::Base
             when :camera_angle
               
             when :session_number
-              
+              /^Session (\d+)$/.match(field)
             when :start_time
               
             when :duration
-              
+              (h,m,s) = field.split(/[^\d]/)
+	      s + m*60 + h*60*60
             when :session_type
               
             when :phrase_name
