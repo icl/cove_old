@@ -37,7 +37,7 @@ class Interval < ActiveRecord::Base
           end # End |case| block
         end # End |do| block
         
-        report.each do |row|
+        notes.each do |row|
           Interval.create(row.to_hash)
         end
         
