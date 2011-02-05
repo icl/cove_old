@@ -1,0 +1,15 @@
+<h1>Editting a project</h1>
+    
+    <% if @project %>
+       <% if user_signed_in? %>
+          <% if @project.user_id == current_user.id %>
+             <%= render 'form' %>
+          <% else %>
+             <p>You do not have permission to edit this project</p>
+          <% end %>
+       <% else %>
+          <p>Please sign-in to access projects.</p> 
+       <% end %>
+    <% end %>
+
+<%= link_to 'Back', projects_path %>
