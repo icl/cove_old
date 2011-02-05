@@ -7,7 +7,7 @@ class Interval < ActiveRecord::Base
         notes = FasterCSV.new(note_file,
           :headers => true,
           :header_converters => :symbol,
-          :skip_blanks => true;
+          :skip_blanks => true,
           :col_sep => ','
         )
         notes.convert do |field, info|
