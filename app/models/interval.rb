@@ -52,7 +52,7 @@ class Interval < ActiveRecord::Base
             when :camera_angle
               
             when :session_number
-              /^Session (\d+)$/.match(field)
+              /^Session (\d+)$/.match(field)[1]
             when :start_time
               
             when :duration
