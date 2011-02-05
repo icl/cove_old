@@ -10,11 +10,11 @@ class Annotation
     @interval_id = args[:interval_id]
   end
 
-  def self.all(class_symbol=:all)
-    if class_symbol == :all
+  def self.all(type=:all)
+    if type == :all
       self.fetch_all
     else
-      Annotation.join_class_from_symbol(class_symbol).all
+      Annotation.join_class_from_symbol(type).all
     end
   end
 
@@ -77,12 +77,12 @@ class Annotation
   end
   
   def self.where(args)
-    Annotation.join_class_from_symbol(args.delete(:class_symbol)).where(args)
+    Annotation.join_class_from_symbol(args.delete(:type)).where(args)
   end
 
   
   def self.execute_arbitraty_method(args)
-    Annotation.join_class_from_symbol(args[:class_symbol]).send args[:method_name]
+    Annotation.join_class_from_symbol(args[:type]).send args[:method_name]
   end
   
   

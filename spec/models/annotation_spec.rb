@@ -107,13 +107,13 @@ describe Annotation do
   describe ".execute_arbitraty_method" do
     context "valid arguments" do
       it "should execute command on argument class" do
-        Annotation.execute_arbitraty_method(:class_symbol => :tag, :method_name => :class).should == Class
+        Annotation.execute_arbitraty_method(:type => :tag, :method_name => :class).should == Class
       end
     end
     context "invalid arguments" do
       it "should raise an exception" do
-        lambda { Annotation.execute_arbitraty_method(:class_symbol => :interl, :method_name => :class) }.should raise_error
-        lambda {Annotation.execute_arbitraty_method(:class_symbol => :interval, :method_name => :to_blah) }.should raise_error
+        lambda { Annotation.execute_arbitraty_method(:type => :interl, :method_name => :class) }.should raise_error
+        lambda {Annotation.execute_arbitraty_method(:type => :interval, :method_name => :to_blah) }.should raise_error
       end
     end
   end
