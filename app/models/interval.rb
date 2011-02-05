@@ -13,7 +13,7 @@ class Interval < ActiveRecord::Base
         notes.convert do |field, info|
           case info.header.underscore
             when :file_name
-              
+              # Drop File Extension
             when :camera_angle
               
             when :session_number
@@ -37,7 +37,7 @@ class Interval < ActiveRecord::Base
           end # End |case| block
         end # End |do| block
         
-        report.each do |row|
+        notes.each do |row|
           Interval.create(row.to_hash)
         end
         
