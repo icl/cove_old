@@ -15,6 +15,9 @@ set :branch, "master"
 set :deploy_via, :remote_cache
 set :db_user, "cove"
 set :db_password, "secret"
+set :cookie_secret, "secret"
+set :hoptoad_token, "secret"
+set :ga_token, "secret"
 
 role :app, domain
 role :web, domain
@@ -22,6 +25,7 @@ role :db,  domain, :primary => true
 
 
 before "deploy:setup", :db
+before "deploy:setup", :app
 after "deploy:update_code", "db:symlink"
 
 namespace :deploy do
@@ -38,6 +42,32 @@ namespace :deploy do
     run "cd #{current_release} && bundle install"
   end
 end
+
+namespace :app do
+  desc "Create application yaml in shared path"
+  task :default do
+    app_config = ERB.new <<-EOF
+    development:
+        cookie_secret: 8ac8f9f675f9fb12a4cde70574726907a0e88405d733c3409e4eed4674c1f4e23626819465b3a70e9514d304125948fa90e5f59cf45e9a9b739ffafcdc4c529b
+        hoptoad_token: de8d365bdf50e6628c543fa50179cc41
+        ga_token:
+
+    test:
+        cookie_secret: 8ac8f9f675f9fb12a4cde70574726907a0e88405d733c3409e4eed4674c1f4e23626819465b3a70e9514d304125948fa90e5f59cf45e9a9b739ffafcdc4c529b
+        hoptoad_token: de8d365bdf50e6628c543fa50179cc41
+        ga_token:
+
+    production:
+        cookie_secret: #{cookie_secret}
+        hoptoad_token: #{hoptoad_token}
+        ga_token: #{ga_token}
+    EOF
+    
+    run "mkdir -p #{shared_path}/config"
+    put app_config.result, "#{shared_path}/config/application.yml"
+  end
+end
+  
 
 namespace :db do
   desc "Create database yaml in shared path" 
