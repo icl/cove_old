@@ -289,9 +289,9 @@ button {  width: auto; overflow: visible; }
 }
 
 
- /* Primary Styles - USE THIS AREA TO UPDATE THE STYLES FOR YOUR PAGES!!!
- */
+/* Primary Styles - USE THIS AREA TO UPDATE THE STYLES FOR YOUR PAGES!!! */
 
+/* Header */
 
 nav.top_nav ul li {
 	display: block;
@@ -306,7 +306,7 @@ body {
 
 header {
 	font-size: 12pt;
-	height: 100px;
+	height: 110px;
 	background: #2F2F2F;
 }
 
@@ -315,8 +315,20 @@ header h1 {
 	color: #FFFFFF;
 }
 
+.logo {
+	margin-top: 35px;
+}
+
+.login_fields {
+	height: 100px;
+	margin-top:10px;
+	background: #383838;
+	
+}
+
 .header_box {
-	background: #515151;
+	margin-top:10px;
+	background: #383838;
 	
 }
 
@@ -398,9 +410,10 @@ footer h5 {
 }
 
 input[type=search] {
-        text-align: right;
-        width:60%;
-		margin: 10px;
+		font-size: 16px;
+        width: 70%;
+		margin-top: 15px;
+		margin-right: 10px;
 
 }
 

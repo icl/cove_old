@@ -34,7 +34,7 @@
 
 <body>
 	<header class="container_16">
-		<img class="grid_3" src="/images/cove_logo.gif"/>
+		<img class="grid_3 logo" src="/images/cove_logo.gif"/>
 			<%if current_user %>
 				<div class="grid_6 push_7 header_box">
 					<div class ="alpha grid_2 user_avatar">
@@ -44,7 +44,6 @@
 						<div class="logged_in_as">
 						Logged in as: &nbsp <%=current_user.email%>
 						</div>
-						
 						<a class="logout_link" href="/logout">Logout</a> | <a class="help_link" href="https://cove.tenderapp.com">Help</a>
 						<div class="search_holder">
 							<%= render "intervals/search" if current_user %>
@@ -53,6 +52,11 @@
 				</div>
 				
 			<%else%>
+				<div class="grid_6 push_7 header_login_box">
+					<div class="alpha grid_6 login_fields">
+						
+					</div>
+				</div>
 			
 			<%end%>
 		</div>
@@ -60,6 +64,7 @@
 	</header>
 	
 	<nav class="top_nav container_16">
+		<hr class="grid_16"/>
 		<ul class="grid_16 main_links">
 			<li class="alpha grid_2"><%= link_to "Home", root_path %></li>
 			<li class="grid_2"><%= link_to "Intervals", intervals_path %></li>
