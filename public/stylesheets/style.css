@@ -110,8 +110,8 @@ html { overflow-y: scroll; }
 /* Accessible focus treatment: people.opera.com/patrickl/experiments/keyboard/test */
 a:hover, a:active { outline: none; }
 
-a, a:active, a:visited { color: #607890; }
-a:hover { color: #036; }
+a, a:active, a:visited { color: #0297C1; }
+a:hover { color: #CD1A70; }
 
 
 ul, ol { margin-left: 1.8em; }
@@ -289,9 +289,9 @@ button {  width: auto; overflow: visible; }
 }
 
 
- /* Primary Styles - USE THIS AREA TO UPDATE THE STYLES FOR YOUR PAGES!!!
- */
+/* Primary Styles - USE THIS AREA TO UPDATE THE STYLES FOR YOUR PAGES!!! */
 
+/* Header */
 
 nav.top_nav ul li {
 	display: block;
@@ -306,7 +306,7 @@ body {
 
 header {
 	font-size: 12pt;
-	height: 100px;
+	height: 110px;
 	background: #2F2F2F;
 }
 
@@ -315,8 +315,49 @@ header h1 {
 	color: #FFFFFF;
 }
 
-.user_info {
-	text-align: right;
+.logo {
+	margin-top: 35px;
+}
+
+.login_fields {
+	height: 100px;
+	margin-top:10px;
+	background: #383838;
+	
+}
+
+.header_box {
+	margin-top:10px;
+	background: #383838;
+	
+}
+
+.user_avatar { 
+	height: 100px;
+}
+
+.user_avatar img { 
+	margin: 10px;
+   
+}
+
+.login_status {
+	text-align:left;
+	font-size: 10pt;
+    height: 100px;
+	
+}
+
+.logged_in_as {
+	margin: 10px;
+}
+
+.logout_link {
+	margin: 10px;
+}
+
+.help_link {
+	margin: 10px;
 }
 
 .search_holder {
@@ -355,7 +396,7 @@ footer h5 {
 }
 
 .notice {
-	color: green;
+	color: #95C53D;
 }
 
 .flash {
@@ -363,9 +404,14 @@ footer h5 {
 }
 
 .alert {
-	color: red;
+	color: #CD2027;
 }
 
+input[type=search] {
+		font-size: 17px;
+        width: 73%;
+
+}
 
 /* Thanks to Ryan Bates: http://railscasts.com/episodes/234-simple-form */
 
