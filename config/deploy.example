@@ -1,18 +1,78 @@
+# Cove Capistrano Deploy
+require 'erb'
+
+# This is an example deploy.rb
+# Please change domain, deploy_to path, user, db_user, and db_password if needed
+
 set :application, "cove"
-set :domain,      "domain to deploy to"
-set :repository,  "git@github.com:icl/cove.git"
-set :deploy_to,   "path to deploy to"
-set :user, "user name to deploy with"
+set :domain,      "[HOSTNAME]"
+set :repository,  "git://github.com/icl/cove.git"
+set :use_sudo, false
+set :deploy_to,   "/path/to/rails/app/#{application}"
+set :user, "deploy"
 set :scm, :git
+set :branch, "master"
+set :deploy_via, :remote_cache
+set :db_user, "cove"
+set :db_password, "secret"
 
 role :app, domain
 role :web, domain
 role :db,  domain, :primary => true
 
+
+before "deploy:setup", :db
+after "deploy:update_code", "db:symlink"
+
 namespace :deploy do
-  task :start do ; end
+  task :start, :roles => :app do
+    run "touch #{File.join(current_release,'tmp','restart.txt')}"
+  end
   task :stop do ; end
   task :restart, :roles => :app, :except => { :no_release => true } do
-    run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
+    run "touch #{File.join(current_release,'tmp','restart.txt')}"
+    #run "rm -r #{File.join(current_release, 'tmp', 'cache', '*')}" # Uncomment when using caching
+  end
+  desc "Install gems via bundler"
+  task :bundle, :roles => :app do
+    run "cd #{current_release} && bundle install"
+  end
+end
+
+namespace :db do
+  desc "Create database yaml in shared path" 
+  task :default do
+    db_config = ERB.new <<-EOF
+    base: &base
+      adapter: mysql2
+      username: #{db_user}
+      password: #{db_password}
+      host: localhost
+
+    development:
+      database: #{application}_dev
+      <<: *base
+
+    test:
+      database: #{application}_test
+      <<: *base
+
+    production:
+      database: #{application}_prod
+      <<: *base
+    EOF
+
+    run "mkdir -p #{shared_path}/config" 
+    put db_config.result, "#{shared_path}/config/database.yml" 
+  end
+
+  desc "Make symlink for database yaml" 
+  task :symlink do
+    run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml" 
+  end
+  
+  desc "Migrate to your newest database structure"
+  task :migrate do
+    run "cd #{current_release} && RAILS_ENV=production rake db:migrate"
   end
 end
