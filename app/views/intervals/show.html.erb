@@ -73,7 +73,7 @@
 		<h4>End: <%= @interval.end_time.strftime("%T") %></h4>
 	</div>
 	<div class="grid_6" id="duration">
-		<h4>Duration: <%= (@interval.end_time - @interval.start_time.to_time.to_i).strftime("%T") %></h4>
+		<h4>Duration: <%= @interval.duration_string %></h4>
 	</div>
 	<div class="clear"></div>
 
