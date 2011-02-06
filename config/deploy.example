@@ -136,6 +136,6 @@ namespace :db do
   
   desc "Migrates to your newest database structure"
   task :migrate do
-    run "cd #{current_release} && rake db:migrate"
+    run "cd #{current_release} && RAILS_ENV=production rake db:migrate"
   end
 end
