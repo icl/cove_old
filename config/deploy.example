@@ -1,18 +1,141 @@
+# Cove Capistrano Deploy
+require 'erb'
+
+# This is an example deploy.rb
+# Please change domain, deploy_to path, user, db_user, db_password, secrets, and tokens if needed
+
 set :application, "cove"
-set :domain,      "domain to deploy to"
-set :repository,  "git@github.com:icl/cove.git"
-set :deploy_to,   "path to deploy to"
-set :user, "user name to deploy with"
+set :domain,      "domain.example.com"
+set :repository,  "git://github.com/icl/cove.git"
+set :use_sudo, false
+set :deploy_to,   "/path/to/#{application}"
+set :video_path, "path/to/videos" # Relative path within #{deploy_to}/shared/
+set :user, "deploy_user"
 set :scm, :git
+set :branch, "master"
+set :deploy_via, :remote_cache
+set :db_user, "db_user"
+set :db_password, "secret"
+set :cookie_secret, "secret"
+set :hoptoad_token, "secret"
+set :ga_token, ""
 
 role :app, domain
 role :web, domain
 role :db,  domain, :primary => true
 
+
+before "deploy:setup", :db, :app
+after "deploy:update_code", "db:symlink", "app:symlink", :bundle
+
 namespace :deploy do
-  task :start do ; end
+  task :start, :roles => :app do
+    run "touch #{File.join(current_release,'tmp','restart.txt')}"
+  end
   task :stop do ; end
   task :restart, :roles => :app, :except => { :no_release => true } do
-    run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
+    run "#{try_sudo} touch #{File.join(current_release,'tmp','restart.txt')}"
+    #run "#{try_sudo} rm -r #{File.join(current_release, 'tmp', 'cache', '*')}"
+  end
+end
+
+namespace :bundle do
+  desc "Add mysql2git s to Gemfile and install all gems via bundle"
+  task :default do
+    new_lines = []
+    master = %x[cat #{File.join(current_release, 'Gemfile')}]
+    master.each do |line|
+      if line =~ /mysql2/
+        new_lines += ["gem 'mysql2' # Production only gem. DO NOT COMMIT\n"]
+      else
+        new_lines += line
+      end
+    end
+    gemfile = File.join(current_release, 'Gemfile')
+    %x[echo "" > #{gemfile}]
+    new_lines.each do |line|
+      %x[echo #{line} >> #{gemfile}]
+    end
+    run "cd #{current_release} && #{try_sudo} bundle install"
+  end
+      
+  desc "Run bundle install"
+  task :install do
+    run "cd #{current_release} && #{try_sudo} bundle install"
+  end
+end
+
+namespace :app do
+  desc "Create application yaml in shared path"
+  task :default do
+    app_config = ERB.new <<-EOF
+    development:
+        cookie_secret: 8ac8f9f675f9fb12a4cde70574726907a0e88405d733c3409e4eed4674c1f4e23626819465b3a70e9514d304125948fa90e5f59cf45e9a9b739ffafcdc4c529b
+        hoptoad_token: de8d365bdf50e6628c543fa50179cc41
+        ga_token:
+
+    test:
+        cookie_secret: 8ac8f9f675f9fb12a4cde70574726907a0e88405d733c3409e4eed4674c1f4e23626819465b3a70e9514d304125948fa90e5f59cf45e9a9b739ffafcdc4c529b
+        hoptoad_token: de8d365bdf50e6628c543fa50179cc41
+        ga_token:
+
+    production:
+        cookie_secret: #{cookie_secret}
+        hoptoad_token: #{hoptoad_token}
+        ga_token: #{ga_token}
+    EOF
+    
+    run "mkdir -p #{shared_path}/config"
+    put app_config.result, "#{shared_path}/config/application.yml"
+  end
+  
+  desc "Make symlink for application yaml" 
+  task :symlink do
+    run "ln -nfs #{shared_path}/config/application.yml #{release_path}/config/application.yml"
+  end
+  
+  desc "Video directory setup"
+  task :video_setup do
+    run "if [ ! -d #{shared_path}/#{video_path} ];then; mkdir -p #{shared_path}/#{video_path}; fi"
+    run "#{try_sudo} rm -rf #{release_path}/public/videos"
+    run "ln -nfs #{shared_path}/#{video_path} #{release_path}/public/videos"
+  end
+end
+
+namespace :db do
+  desc "Create database yaml in shared path" 
+  task :default do
+    db_config = ERB.new <<-EOF
+    base: &base
+      adapter: mysql2
+      username: #{db_user}
+      password: #{db_password}
+      host: localhost
+
+    development:
+      database: #{application}_dev
+      <<: *base
+
+    test:
+      database: #{application}_test
+      <<: *base
+
+    production:
+      database: #{application}_prod
+      <<: *base
+    EOF
+
+    run "mkdir -p #{shared_path}/config" 
+    put db_config.result, "#{shared_path}/config/database.yml" 
+  end
+
+  desc "Make symlink for database yaml" 
+  task :symlink do
+    run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml" 
+  end
+  
+  desc "Migrate to your newest database structure"
+  task :migrate do
+    run "cd #{current_release} && rake db:migrate"
   end
 end
