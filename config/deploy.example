@@ -26,7 +26,7 @@ role :db,  domain, :primary => true
 
 before "deploy:setup", :db, :app
 after "deploy:update_code", "db:symlink", "app:symlink", :bundle
-after "deploy:rollback", :bundle
+#after "deploy:rollback", :bundle
 
 namespace :deploy do
   task :start, :roles => :app do
