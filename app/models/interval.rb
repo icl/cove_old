@@ -50,8 +50,9 @@ class Interval < ActiveRecord::Base
             when :filename
               field.gsub(/\.(mov|m4v)/,'')
             when :session_number
-              /^Session (\d+)$/.match(field)[1]
+              /^[A-Za-z\s]+(\d+)/.match(field)[1]
             when :start_time
+              field.gsub!(/-/,':')
       		    (t1,t2) = field.split("+")
       		    if t2.nil?
       			    DateTime.parse(t1)
@@ -64,7 +65,7 @@ class Interval < ActiveRecord::Base
       	      h.nil? ? 0 : h[1]
       	      m = field.match(/(\d*)m/)[1]
       	      m.nil? ? 0 : m[1]
-      	      s = field.match(/(\d*)s/)[1]
+      	      s = field.match(/(\d*)s?$/)[1]
       	      s.nil? ? 0 : s[1]
       	      s.to_i + m.to_i*60 + h.to_i*60*60
             else
@@ -79,9 +80,9 @@ class Interval < ActiveRecord::Base
           interval.save
         end
         
-        if !Dir.exists?('log/notes')
-          Dir.mkdir('log/notes')
-        end
+        #if !Dir.exists?('log/notes') # Doesn't work for some reason. Directory needs to be created manually
+        #  Dir.mkdir('log/notes')
+        #end
         
         File.move("tmp/notes/#{file}","log/notes/#{file}.imported_at_#{Time.now.strftime("%Y%m%d%H%M")}")
         
