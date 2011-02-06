@@ -41,7 +41,7 @@
 	<div class="grid_6" id="phenomena">
 		<div>
 		<h2>Phenomena:</h2>
-			<% form_for @interval do %>
+			<%= form_for @interval do %>
 				<% @tags.each do |tag| %> 
 					<%= check_box_tag :tag_ids, tag.id, @interval.tags.include?(tag), :name => 'interval[tag_ids][]' %>
 					<%= tag.name %>
