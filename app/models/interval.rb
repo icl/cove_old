@@ -50,9 +50,15 @@ class Interval < ActiveRecord::Base
             when :camera_angle
               field.to_s
             when :session_number
-              /^Session (\d+)$/.match(field)
+              /^Session (\d+)$/.match(field)[1]
             when :start_time
-              
+		    (t1,t2) = field.split("+")
+		    if t2.nil?
+			    DateTime.parse(t1)
+		    else
+			    (h,m,s) = t2.split(":").map{|v| v.to_i}
+			    DateTime.parse(t1) + h.hours + m.minutes + s.seconds
+		    end
             when :duration
 	            h = field.match(/(\d*)h/)[0]
       	      h.nil? ? 0 : h[1]
