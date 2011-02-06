@@ -41,6 +41,12 @@ GEM
       mocha (= 0.9.8)
     builder (2.1.2)
     cancan (1.5.0)
+    capistrano (2.5.19)
+      highline
+      net-scp (>= 1.0.0)
+      net-sftp (>= 2.0.0)
+      net-ssh (>= 2.0.14)
+      net-ssh-gateway (>= 1.0.0)
     capybara (0.4.0)
       celerity (>= 0.7.9)
       culerity (>= 0.2.4)
@@ -86,6 +92,7 @@ GEM
       json (~> 1.4.6)
     gherkin (2.3.3-x86-mingw32)
       json (~> 1.4.6)
+    highline (1.6.1)
     hoptoad_notifier (2.4.2)
       activesupport
       builder
@@ -108,6 +115,13 @@ GEM
     mocha (0.9.8)
       rake
     narray (0.5.9.9)
+    net-scp (1.0.4)
+      net-ssh (>= 1.99.1)
+    net-sftp (2.0.5)
+      net-ssh (>= 2.0.9)
+    net-ssh (2.1.0)
+    net-ssh-gateway (1.0.1)
+      net-ssh (>= 1.99.1)
     nokogiri (1.4.4)
     nokogiri (1.4.4-x86-mingw32)
     polyglot (0.3.1)
@@ -199,6 +213,7 @@ DEPENDENCIES
   autotest-rails
   bourne
   cancan
+  capistrano
   capybara
   cucumber
   cucumber-rails
