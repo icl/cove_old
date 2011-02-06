@@ -24,9 +24,9 @@ role :app, domain
 role :web, domain
 role :db,  domain, :primary => true
 
-
 before "deploy:setup", :db, :app
 after "deploy:update_code", "db:symlink", "app:symlink", :bundle
+after "deploy:rollback", :bundle
 
 namespace :deploy do
   task :start, :roles => :app do
@@ -40,33 +40,33 @@ namespace :deploy do
 end
 
 namespace :bundle do
-  desc "Add mysql2git s to Gemfile and install all gems via bundle"
+  desc "Adds mysql2 to Gemfile and install all gems via bundle"
   task :default do
     new_lines = []
-    master = %x[cat #{File.join(current_release, 'Gemfile')}]
+    master = capture "cat #{File.join(current_release, 'Gemfile')}"
     master.each do |line|
       if line =~ /mysql2/
         new_lines += ["gem 'mysql2' # Production only gem. DO NOT COMMIT\n"]
       else
-        new_lines += line
+        new_lines += [line] #[line.gsub(/\n/,'')]
       end
     end
     gemfile = File.join(current_release, 'Gemfile')
-    %x[echo "" > #{gemfile}]
-    new_lines.each do |line|
-      %x[echo #{line} >> #{gemfile}]
-    end
+    gemfile_config = ERB.new <<-EOF
+        #{new_lines.each {|line| line}}
+    EOF
+    put gemfile_config.result, "#{gemfile}"
     run "cd #{current_release} && #{try_sudo} bundle install"
   end
       
-  desc "Run bundle install"
+  desc "Runs `bundle install` on current release"
   task :install do
     run "cd #{current_release} && #{try_sudo} bundle install"
   end
 end
 
 namespace :app do
-  desc "Create application yaml in shared path"
+  desc "Creates application yaml in shared path"
   task :default do
     app_config = ERB.new <<-EOF
     development:
@@ -89,12 +89,12 @@ namespace :app do
     put app_config.result, "#{shared_path}/config/application.yml"
   end
   
-  desc "Make symlink for application yaml" 
+  desc "Makes symlink for application yaml" 
   task :symlink do
     run "ln -nfs #{shared_path}/config/application.yml #{release_path}/config/application.yml"
   end
   
-  desc "Video directory setup"
+  desc "Sets up Video symlink"
   task :video_setup do
     run "if [ ! -d #{shared_path}/#{video_path} ];then; mkdir -p #{shared_path}/#{video_path}; fi"
     run "#{try_sudo} rm -rf #{release_path}/public/videos"
@@ -103,7 +103,7 @@ namespace :app do
 end
 
 namespace :db do
-  desc "Create database yaml in shared path" 
+  desc "Creates database yaml in shared path" 
   task :default do
     db_config = ERB.new <<-EOF
     base: &base
@@ -129,12 +129,12 @@ namespace :db do
     put db_config.result, "#{shared_path}/config/database.yml" 
   end
 
-  desc "Make symlink for database yaml" 
+  desc "Makes symlink for database yaml" 
   task :symlink do
     run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml" 
   end
   
-  desc "Migrate to your newest database structure"
+  desc "Migrates to your newest database structure"
   task :migrate do
     run "cd #{current_release} && rake db:migrate"
   end
