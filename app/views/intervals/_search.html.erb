@@ -1,7 +1,5 @@
 <form action="/intervals" method="GET">
-	<label>
-		Search:
-		<input type="text" id="global_search" name="search" Placeholder="Enter Query" />
-	</label>
-	<input type="submit" id="global_search_submit" />
+<input type=search results=3 placeholder=Search... name="search" value="<%= params[:s] %>">
+<noscript><input type="submit" id="global_search_submit" /></noscript>
 </form>
+
