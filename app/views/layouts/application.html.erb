@@ -44,11 +44,16 @@
 						<div class="logged_in_as">
 						Logged in as: &nbsp <%=current_user.email%>
 						</div>
-						<a class="logout_link" href="/logout">Logout</a> | <a class="help_link" href="https://cove.tenderapp.com">Help</a>
+						<a class="logout_link" href="/logout">Logout</a>
+						|<a class="help_link" href="https://cove.tenderapp.com">Help</a>
+						<%if current_user.admin %> 
+						|<a class="admin_link"href="/admin/users/new">Admin</a>
+						<%end%>
 					</div>
 				</div>
 				
 			<%else%>
+			
 			
 			<%end%>
 		</div>
