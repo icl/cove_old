@@ -475,74 +475,66 @@ input[type=search] {
 }
 
 .interval_show h1 {
-	font-size: 32px;
+	font-size: 40px;
 }
 
 .interval_show strong {
 	font-size: 18px;
 }
 
-#cameraAngles img {
+div#sessTypePhrase div {
+	border-left: solid 1px #e5e5e6;
+	padding: 5px;
+	height: 90px;
+}
+
+.info {
+	border-right: solid 1px #e5e5e6;
+	padding: 5px;
+	height: 90px;
+}
+
+.info h3 {
+	text-align: right;
 	margin-top: 5px;
-	margin-bottom: 5px;
+	font-size: 20px;
 }
 
-#cameraAngles p {
-	font-size: 10px;
-	margin-bottom: 5px;
+.info h4 {
+	text-align: right;
+	margin-top: 5px;
+	font-size: 14px;
 }
 
-#phenomena p {
-	margin-top: 30px;
-	margin-bottom: 5px;
-	margin-right: 5px;
-	float: right;
-}
-
-#phenomena h2 {
-	margin-bottom: 5px;
-}
-
-#sessTypePhrase div {
-	border-left: solid 1px #e5e5e6;
+.time {
 	padding: 5px;
-	height: 120px;
+	height: 90px;
+	text-align: center;
 }
 
-#cameraAngles div {
-	border-left: solid 1px #e5e5e6;
-	padding: 5px;
-	height: 120px;
+.space {
+	height: 20px;
 }
 
-#phenomena div {
-	border-left: solid 1px #e5e5e6;
-	padding: 5px;
-	height: 120px;
+.cam_angle {
+	text-align: center;
 }
 
-#video div p {
+div#tag_checkboxes label {
+	text-align: left;
+}
+
+div#video div p {
 	border: 2px;
-	height: 350px;
-	text-align: center;
-	margin-top: 70px;
-}
-
-#startTime h4 {
-	text-align: right;
-}
-
-#endTime h4 {
 	text-align: center;
 }
 
-#sessionNum h4 {
-	text-align: right;
+.filename {
+	margin-bottom: 20px;
 }
 
-#date h4 {
-	text-align: center;
-}
+
+
 /* end style adjustments for show.html */
 /***************************************/
 
