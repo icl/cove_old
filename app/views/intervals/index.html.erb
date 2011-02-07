@@ -1,6 +1,6 @@
 <div id="intervals" class="">
 	<h1 class="grid_16">Browse Videos</h1>
-	<div id="filters" class="grid_16">
+	<div id="filters" class="grid_16 interval_filters">
 		<form>
 			<h2>Filters</h2>
 			<fieldset>
@@ -14,7 +14,7 @@
 			</fieldset>
 			<fieldset>
 				<legend>Camera Angle</legend>
-				<ul>
+				<ul class="camera_angle">
 					<li>
 						<%= link_to "Any", intervals_path(add_params :camera_angle => "") %>
 					</li>

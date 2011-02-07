@@ -36,26 +36,21 @@
 	<header class="container_16">
 		<%= link_to image_tag("cove_logo.gif", :class=> "grid_3 logo"), root_path%>
 			<%if current_user %>
-				<div class="grid_6 push_7 header_box">
-					<div class ="alpha grid_2 user_avatar">
-						<%=image_tag gravatar_url_for "ethan.soutar.rau@gmail.com"%>
-					</div>
-					<div class ="omega grid_4 login_status">
-						<div class="logged_in_as">
-						Logged in as: &nbsp <%=current_user.email%>
-						</div>
-						<a class="logout_link" href="/logout">Logout</a>
-						|<a class="help_link" href="https://cove.tenderapp.com">Help</a>
+				<div class="grid_13 user_links">
+					<ul>
+						<li class="first user_avatar"><%=image_tag gravatar_url_for "ethan.soutar.rau@gmail.com"%></li>
+						<li><%=current_user.email%></li>
+						<li><a class="second logout_link" href="/logout">Logout</a></li>
+						<li><a class="help_link" href="https://cove.tenderapp.com">Help</a></li>
 						<%if current_user.admin %> 
-						|<a class="admin_link"href="/admin/users/new">Admin</a>
+						<li><a class="admin_link"href="/admin/users/new">Admin</a></li>
 						<%end%>
-					</div>
+					</ul>
 				</div>
 			<%else%>
 			
 			
 			<%end%>
-		</div>
 		<br style="clear: both"/>
 	</header>
 	

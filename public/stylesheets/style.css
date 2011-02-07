@@ -306,7 +306,6 @@ body {
 
 header {
 	font-size: 12pt;
-	height: 110px;
 	background: #2F2F2F;
 }
 
@@ -316,52 +315,48 @@ header h1 {
 }
 
 .logo {
-	margin-top: 35px;
+	margin-top: 10px;
 }
 
-.login_fields {
-	height: 100px;
-	margin-top:10px;
-	background: #383838;
-	
-}
-
-.header_box {
-	margin-top:10px;
-	background: #383838;
-	
-}
-
-.user_avatar { 
-	height: 100px;
-}
-
-.user_avatar img { 
-	margin: 10px;
+.user_avatar img {
+	width: 20px; 
+	height: 20px;
    
 }
 
-.login_status {
-	text-align:left;
+.user_links ul {
+	background: #383838;
+	height: 40px;
 	font-size: 10pt;
-    height: 100px;
+	margin-left: 0;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	display: inline;
+	line-height: 20px;
+	height: 20px;
+	float: right;
+	} 
+
+.user_links ul li {
+	margin-left: 0;
+	padding: 0px 7px;
+	border-left: 2px solid gray;
+	list-style: none;
+	display: block;
+	float: left;
+	}
+		
+.user_links ul li.first {
+	margin-left: 0;
+	border-left: none;
+	list-style: none;
+	display: block;
+	}
+
+
+.form_container_invite {
+	line-height: 2.0;
 	
-}
-
-.logged_in_as {
-	margin: 10px;
-}
-
-.logout_link {
-	margin: 10px;
-}
-
-.help_link {
-	margin: 10px;
-}
-
-.admin_link {
-	margin: 10px;
 }
 
 
@@ -416,6 +411,14 @@ input[type=search] {
 		font-size: 17px;
         width: 73%;
 
+}
+
+.camera_angle {
+	display: block;
+}
+
+.interval_filters {
+	line-height: 2.0;
 }
 
 /* Thanks to Ryan Bates: http://railscasts.com/episodes/234-simple-form */
