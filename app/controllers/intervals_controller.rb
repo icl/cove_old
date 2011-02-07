@@ -1,10 +1,11 @@
 class IntervalsController < ApplicationController
     before_filter :authenticate_user!
     before_filter :require_nda
-
+    
 	def index
 		@angles = Interval.unique_angles
 		@days = Interval.unique_days
+
 
     date_filter = (params[:date].nil? || params[:date] == "") ? false : params[:date]
     conditions = []
