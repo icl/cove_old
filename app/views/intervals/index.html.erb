@@ -1,95 +1,95 @@
-<div id="intervals" class="">
-	<h1 class="grid_16">Browse Videos</h1>
-	<div id="filters" class="grid_16 interval_filters">
-		<form>
-			<h2>Filters</h2>
-			<fieldset>
-				<legend>Date</legend>
-				<select name="date">
-					<option value=""></option>
-					<% @days.each do |d| %>
-						<option value="<%= d %>" <%= params[:date] == d ? "selected='selected'" : "" %>><%= d %></option>
-					<% end %>
-				</select>
-			</fieldset>
-			<fieldset>
-				<legend>Camera Angle</legend>
-				<ul class="camera_angle">
+<div id="intervals" class="grid_16">
+<h1 class="grid_16">Browse Videos</h1>
+<div id="filters" class="grid_16">
+	<form>
+		<h2>Filters</h2>
+		<fieldset>
+			<legend>Date</legend>
+			<select name="date">
+				<option value=""></option>
+				<% @days.each do |d| %>
+					<option value="<%= d %>" <%= params[:date] == d ? "selected='selected'" : "" %>><%= d %></option>
+				<% end %>
+			</select>
+		</fieldset>
+		<fieldset>
+			<legend>Camera Angle</legend>
+			<ul>
+				<li>
+					<%= link_to "Any", intervals_path(add_params :camera_angle => "") %>
+				</li>
+				<% @angles.each do |a| %>
 					<li>
-						<%= link_to "Any", intervals_path(add_params :camera_angle => "") %>
+						<%= link_to a.camera_angle, intervals_path(add_params :camera_angle => a.camera_angle) %>
 					</li>
-					<% @angles.each do |a| %>
-						<li>
-							<%= link_to a.camera_angle, intervals_path(add_params :camera_angle => a.camera_angle) %>
-						</li>
-					<% end %>
-				</ul>
-				<input type="hidden" name="camera_angle" value="<%= params[:camera_angle] %>" />
-			</fieldset>
-			<fieldset>
-				<legend>Search</legend>
-				<input type="text" name="search" value="<%= params[:search] %>" />
-			</fieldset>
-			<input type="submit" value="Submit" />
-		</form>
-	</div>
-
-	<p>There are <span id="resultcount"><%= @intervals.size %></span> results.</p>
-
-	<div id="session-search" class ="grid_7" >
-		<select id="sort-dropdown">
-			<label for = "sort" id="sort-dropdown">
-			<option value= "sort-by">Sort By</option>
-			<option value = "date">Date</option>
-			<option value = "relevance">Relevance</option>
-			<option value = "most viewed">Most Viewed</option>
-			<option value = "most tagged">Tagged</option>
-		</select>
-	</div>
-
-	<div class="clear"></div>
-
-	<div id="view" class="grid_14">
-		<form id="view">
-			<input type="radio" name="view-list"/> List
-			<input type="radio" name="view-thumbnail"/> Thumbnail
-			<input type="radio" name="view-timeline" /> Timeline
-		</form>
-
-	<div class="results">
-	   
-	   <ol>
-	     <% @intervals.each do |interval| %>
-   	     <li>
-               <div class="thumbnail_wrapper grid_7">
-                  <div class="thumbnail_screenshot">
-                    	<%= link_to(image_tag("/images/dance_3.jpg"), interval) %>
-                  </div>
-                  <div class="thumbnail_details">
-                  	<h3><%= interval.phrase_name %>: <%= link_to interval.filename, interval %></h3>
-
-                    <ol>
-                    	<li>Date: <%= interval.start_time.strftime("%F") %></li>
-                    	<li>Camera Angle: <%= interval.camera_angle %></li>
-                    	<li>Start Time (24 hr): <%= interval.start_time.strftime("%T") %></li>
-			<li>Session Type: <%= interval.session_type%> </li>
-                    </ol>
-                  </div>
-                  <div class="thumbnail_tags">
-                  	<ol>
-						<% interval.tags.limit(3).each do | tag| %>
-						<li><%= tag.name %></li>
-						<% end %>
-                	</ol>
-                  </div>
-               </div>
-           </li>
-	     <% end %>
-	   </ol>
-	   <br class="clear"/>
-
-			<% if @intervals.empty? %>
-					<h1>There were no videos found with these filter options.</h1>
-			<% end %>
-
+				<% end %>
+			</ul>
+			<input type="hidden" name="camera_angle" value="<%= params[:camera_angle] %>" />
+		</fieldset>
+		<fieldset>
+			<legend>Search</legend>
+			<input type="text" name="search" value="<%= params[:search] %>" />
+		</fieldset>
+		<input type="submit" value="Submit" />
+	</form>
 </div>
+
+<p class="grid_16">There are <span id="resultcount"><%= @intervals.size %></span> results.</p>
+
+<div class="clear"></div>
+<div id="session-search" class ="grid_7" >
+	<select id="sort-dropdown">
+		<label for = "sort" id="sort-dropdown">
+		<option value= "sort-by">Sort By</option>
+		<option value = "date">Date</option>
+		<option value = "relevance">Relevance</option>
+		<option value = "most viewed">Most Viewed</option>
+		<option value = "most tagged">Tagged</option>
+	</select>
+</div>
+
+<div class="clear"></div>
+
+<div id="view" class="grid_14">
+	<form id="view">
+		<input type="radio" name="view-list"/> List
+		<input type="radio" name="view-thumbnail"/> Thumbnail
+		<input type="radio" name="view-timeline" /> Timeline
+	</form>
+</div>
+
+<div class="clear"></div>
+     <% @intervals.each do |interval| %>
+     <ol class="browse_cont">
+<li class="grid_2 browse_box_name"><%= link_to raw("Session <span>")+interval.id.to_s()+raw("</span>"), interval %></span></li> 
+      <li class="grid_3"><div style="width: 160px; height: 90px; background: #ccc;">&nbsp;</div></li> 
+      <li class="grid_2 browse_box">Camera Angle <span><%= interval.camera_angle %></span></li> 
+      <li class="grid_2 browse_box">Session Type <span><%= interval.session_type  %></li> 
+      <li class="grid_2 browse_box_date">
+		<%= interval.start_time.strftime("%A") %>
+		<span><b>
+		<%= interval.start_time.strftime("%b") %> 
+		<%= interval.start_time.strftime("%d") %>,</b>
+		<%= interval.start_time.strftime("%Y") %>
+		</span>
+		<%= interval.start_time.strftime("%I")%> :
+		<%= interval.start_time.strftime("%M")%> 
+		<%= interval.start_time.strftime("%p")%>
+	</li> 
+      <li class="grid_4">
+	 <ul class="browse_box_ul">
+	   <li>Phrase: <%= interval.phrase_name  %></li>
+	   <li>...</li>
+	   <li>...</li>
+	   <li class="alt"><%= link_to "Show more information", interval %></li>
+	 </ul>
+      </li> 
+      <li class="grid_1"><%= link_to raw("<div class=\"arrow\"></div>"), interval %></li> 
+      <br class="clear">
+   </ol> 
+     <% end %>
+<div class="clear"></div>
+		<% if @intervals.empty? %>
+				<h1>There were no videos found with these filter options.</h1>
+		<% end %>
+
