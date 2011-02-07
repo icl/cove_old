@@ -18,59 +18,53 @@
 	</div>
 	
 	<%= simple_form_for @interval do |f| %>
-	<div class="grid_5" id="camera_angle_map">
+	<div class="grid_6" id="camera_angle_map">
 		<div class="cam_angle">
-			<strong>Camera Angle: </strong>
-			<%= f.input :camera_angle,  :collection => %w(daily2 mirror daily1 rear2 Wayne rear1), :as => :radio, :label => false %>
+			<%= image_for_camera_angle @interval.camera_angle %>
 		</div>
 	</div>
 	
-	<div class="grid_6 tag_box">
-		<div class="phenomena">
-			<p>Phenomena:</p>
-			<div class="tagger" id="tag_checkboxes">
-				<%= f.association :tags, :as => :check_boxes, :label => false %>
-				<%= f.button :submit %>
-			</div>
+	<div class="grid_5 more_info">
+		<div class="info">
+			<h3>Session <%= @interval.session_number %></h3>
+			<h3><%= @interval.start_time.strftime("%F") %></h3> <!-- Date-->
+			<h4>Length: <%= @interval.duration_string %></h4>
 		</div>
 	</div>
 <br style="clear:both"/>
-
 	<% end %>
-
 	<div class="clear"></div>
+
+
+	<div class="grid_16 space">
+	</div>
+	<div class="clear"></div>
+	
 
 	<div class="grid_16" id="video">
 		<div>
-		<p><%= video_tag @interval.filename, :controls => true %></p>
+			<p><%= video_tag @interval.filename, :controls => true, :height => 270, :width => 480 %></p>
 		</div>
 	</div>
 	<div class="clear"></div>
 
 
-	<div class="grid_5" id="startTime">
-		<h4>Start: <%= @interval.start_time.strftime("%T") %></h4>
-	</div>
-	<div class="grid_5" id="endTime">
-		<h4>End: <%= @interval.end_time.strftime("%T") %></h4>
-	</div>
-	<div class="grid_6" id="duration">
-		<h4>Duration: <%= @interval.duration_string %></h4>
-	</div>
-	<div class="clear"></div>
-
-
-	<div class="grid_5" id="sessionNum">
-		<h4>Session <%= @interval.session_number %></h4>
-	</div>
-	<div class="grid_5" id="date">
-		<h4><%= @interval.start_time.strftime("%F") %></h4> <!-- Date-->
-	</div>
-	<div class="grid_6" id="filename">
-		<h4><%= @interval.filename %></h4> <!--filename-->
+	<div class="grid_16 time">
+		<div class="time">
+			<h4><%= @interval.start_time.strftime("%T") %> ------------------------------------------------------------------------------------------</h4>
+		</div>
 	</div>
 	<div class="clear"></div>
 	
+
+	<div class="grid_16 space">
+	</div>
+	<div class="clear"></div>
+	
+
+	<div class="grid_16 filename">
+	<h3>File: <%= @interval.filename %></h3> <!--filename-->
+	<div class="clear"></div>
 	
 
 </div>

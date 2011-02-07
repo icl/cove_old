@@ -475,42 +475,49 @@ input[type=search] {
 }
 
 .interval_show h1 {
-	font-size: 32px;
+	font-size: 40px;
 }
 
 .interval_show strong {
 	font-size: 18px;
 }
 
-
-div#phenomena p {
-	margin-top: 30px;
-	margin-bottom: 5px;
-	margin-right: 5px;
-	float: left;
-}
-
-div#phenomena h2 {
-	margin-bottom: 5px;
-}
-
 div#sessTypePhrase div {
 	border-left: solid 1px #e5e5e6;
 	padding: 5px;
-	height: 120px;
+	height: 90px;
+}
+
+.info {
+	border-right: solid 1px #e5e5e6;
+	padding: 5px;
+	height: 90px;
+}
+
+.info h3 {
+	text-align: right;
+	margin-top: 5px;
+	font-size: 20px;
+}
+
+.info h4 {
+	text-align: right;
+	margin-top: 5px;
+	font-size: 14px;
+}
+
+.time {
+	padding: 5px;
+	height: 90px;
+	text-align: center;
+}
+
+.space {
+	height: 20px;
 }
 
 .cam_angle {
-	border-left: solid 1px #e5e5e6;
-	padding: 5px;
-	height: 120px;
-}
-
-.phenomena {
-	border-left: solid 1px #e5e5e6;
-	padding: 5px;
-	height: 120px;
-	text-align: left;
+	text-align: center;
 }
 
 div#tag_checkboxes label {
@@ -519,26 +526,15 @@ div#tag_checkboxes label {
 
 div#video div p {
 	border: 2px;
-	height: 350px;
-	text-align: center;
-	margin-top: 70px;
-}
-
-div#startTime h4 {
-	text-align: right;
-}
-
-div#endTime h4 {
 	text-align: center;
 }
 
-div#sessionNum h4 {
-	text-align: right;
+.filename {
+	margin-bottom: 20px;
 }
 
-div#date h4 {
-	text-align: center;
-}
+
+
 /* end style adjustments for show.html */
 /***************************************/
 
