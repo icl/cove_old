@@ -6,7 +6,7 @@ So that I can better understand the site
 Scenario: Visiting
 	Given I am on the root page
 	And there is nobody logged in
-	Then I should see "Login" within ".header_login_box"
+	Then I should not see "Logout"
 	
 Scenario: Visiting after logging in
 	Given I am a regular user who is logged in
