@@ -11,14 +11,15 @@
 			</select>
 		</fieldset>
 		<div>
-			<legend>Camera Angle</legend>
+			<%= label_tag :camera_angle, "Camera Angle" %>
 			<%= select_tag(:camera_angle, options_for_select(@camera_angles, :selected =>params[:camera_angle]), :include_blank =>true)%>
-			<legend>Session Type</legend>
+			<%= label_tag :session_type, "Session Type" %>
 			<%= select_tag(:session_type, options_for_select(@session_types, :selected =>params[:session_type]), :include_blank =>true)%>
-			<legend>Phrase Type</legend>
+			<%= label_tag :phrase_type, "Phrase Type" %>
 			<%= select_tag(:phrase_type, options_for_select(@phrase_types, :selected =>params[:phrase_type]), :include_blank =>true)%>
-			<legend>Phrase Name</legend>
+			<%= label_tag :phrase_name,"Phrase Name" %>
 			<%= select_tag(:phrase_name, options_for_select(@phrase_names, :selected =>params[:phrase_name]), :include_blank =>true)%>
+			<%= hidden_field_tag :search, params[:search]%>
 		</div>
 		<input type="submit" value="Submit" />
 	</form>
