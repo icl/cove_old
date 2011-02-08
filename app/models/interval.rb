@@ -19,7 +19,7 @@ class Interval < ActiveRecord::Base
 	end
 	
 	def self.unique_days
-		find(:all, :select => "start_time", :order => "start_time").map{|int| int.day}.uniq
+		find(:all, :select => "start_time", :order => "start_time").map{|int| [int.day, int.start_time ]}.uniq
 	end
 
 	def self.unique_angles
@@ -42,6 +42,20 @@ class Interval < ActiveRecord::Base
 		args = [].fill("%#{v}%", 0, column_names.size)
 		query = column_names.map{|col| col.to_s}.map{|col| "#{col} LIKE ?"}.join(" OR ")
 		where(query, *args)
+	end
+	
+	def self.search args
+	  search_conditions = {}
+	  
+	  search_conditions[:camera_angle] = args[:camera_angle] unless args[:camera_angle].blank?
+	  search_conditions[:session_type] = args[:session_type] unless args[:session_type].blank?
+	  search_conditions[:phrase_type] =  args[:phrase_type]  unless args[:phrase_type].blank?
+	  search_conditions[:phrase_name] =  args[:phrase_name]  unless args[:phrase_name].blank?
+	  search_conditions[:start_time] =  Time.parse(args[:date]).beginning_of_day..Time.parse(args[:date]).end_of_day  unless args[:date].blank?
+	  
+	  parm = [].fill("%#{args[:search]}%", 0, column_names.size)
+		query = column_names.map{|col| col.to_s}.map{|col| "#{col} LIKE ?"}.join(" OR ")
+		where(query, *parm).where(search_conditions)
 	end
 	
   has_many :interval_tags, :dependent => :destroy

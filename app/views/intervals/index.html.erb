@@ -1,15 +1,8 @@
 <div id="filters" class="grid_16">
 	<form>
 		<h2>Filters</h2>
-		<fieldset>
-			<legend>Date</legend>
-			<select name="date">
-				<option value=""></option>
-				<% @days.each do |d| %>
-					<option value="<%= d %>" <%= params[:date] == d ? "selected='selected'" : "" %>><%= d %></option>
-				<% end %>
-			</select>
-		</fieldset>
+		<%= select_tag(:date, options_for_select(@days, :selected =>params[:date]), :include_blank =>true)%>
+
 		<div>
 			<%= label_tag :camera_angle, "Camera Angle" %>
 			<%= select_tag(:camera_angle, options_for_select(@camera_angles, :selected =>params[:camera_angle]), :include_blank =>true)%>
@@ -25,7 +18,7 @@
 	</form>
 </div>
 
-<p class="grid_16">There are <span id="resultcount"><%= @intervals.size %></span> results.</p>
+<p class="grid_16">There are <span id="resultcount"><%= @intervals.size if @intervals %></span> results.</p>
 
 <div class="clear"></div>
 <div id="session-search" class ="grid_7" >

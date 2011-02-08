@@ -7,8 +7,8 @@ Background:
 	Given I am a regular user who is logged in
 	And the following interval exists:
 
-		|	camera angle	|	start time		|	duration		|	session type	|
-		|	Wayne		|	1-1-2001 01:10:00	|	2m32s			|	solo		|
+		|	camera angle	|	start time		|	duration		|	session type	| phrase_type |
+		|	Wayne		|	1-1-2001 01:10:00	|	2m32s			|	solo		| shadow|
 	And the following interval exists:
 		|	camera angle	|	start time		|	duration		|	session type	|
 		|	Wayne		|	1-2-2001 01:10:00	|	3m4s			|	duet		|
@@ -27,6 +27,12 @@ Scenario: Go to browse page
 	And I should see a result with a session type of "trio"
 	And I should see a result with a session type of "quartet"
 
+Scenario: Filter by phrase type
+	When I go to the intervals page
+	And I select "shadow" from "Phrase Type"
+	And I press "Submit" within "#filters"
+	Then I should see 1 result
+
 Scenario: Filter by camera angle
 	When I go to the intervals page
 	And I select "Mirror" from "Camera Angle"
@@ -41,6 +47,7 @@ Scenario: Search
 	And I press "Submit" within ".search_box"
 	Then I should see 1 result
 	And I should see a result with a session type of "trio"
+	
 Scenario: Search and filter by angle
 	When I go to the intervals page
 	And I fill in "search" with "et"
