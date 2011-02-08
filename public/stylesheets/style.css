@@ -413,12 +413,41 @@ input[type=search] {
 
 }
 
-.camera_angle {
-	display: block;
-}
 
 .interval_filters {
 	line-height: 2.0;
+}
+
+.interval_filters p {
+	padding-right: 20px;
+	float: left;
+}
+
+.date_filter {
+	width: 100px;
+
+}
+
+.camera_angle {
+	width: 100px;
+}
+
+.session_type {
+	width: 100px;
+}
+
+.phrase_type {
+	width: 100px;
+}
+
+.phrase_name {
+	width: 100px;
+}
+
+.filter_results {
+	margin-top: 20px;
+	font-size: 14pt;
+	color: gold;
 }
 
 /* Thanks to Ryan Bates: http://railscasts.com/episodes/234-simple-form */

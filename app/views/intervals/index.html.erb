@@ -1,55 +1,25 @@
 <div id="filters" class="grid_16">
-	<form>
-		<h2>Filters</h2>
-		<fieldset>
-			<legend>Date</legend>
-			<select name="date">
-				<option value=""></option>
-				<% @days.each do |d| %>
-					<option value="<%= d %>" <%= params[:date] == d ? "selected='selected'" : "" %>><%= d %></option>
-				<% end %>
-			</select>
-		</fieldset>
-		<div>
-			<%= label_tag :camera_angle, "Camera Angle" %>
-			<%= select_tag(:camera_angle, options_for_select(@camera_angles, :selected =>params[:camera_angle]), :include_blank =>true)%>
-			<%= label_tag :session_type, "Session Type" %>
-			<%= select_tag(:session_type, options_for_select(@session_types, :selected =>params[:session_type]), :include_blank =>true)%>
-			<%= label_tag :phrase_type, "Phrase Type" %>
-			<%= select_tag(:phrase_type, options_for_select(@phrase_types, :selected =>params[:phrase_type]), :include_blank =>true)%>
-			<%= label_tag :phrase_name,"Phrase Name" %>
-			<%= select_tag(:phrase_name, options_for_select(@phrase_names, :selected =>params[:phrase_name]), :include_blank =>true)%>
-			<%= hidden_field_tag :search, params[:search]%>
+	<h2>Filters</h2>
+	<form class="interval_filters">
+		<p><%= label_tag :date, "Date" %></br>
+		<%= select_tag(:date, options_for_select(@days, :selected =>params[:date]), :include_blank =>true, :class =>"date_filter")%></p>
+		<p><%= label_tag :camera_angle, "Camera Angle" %></br>
+		<%= select_tag(:camera_angle, options_for_select(@camera_angles, :selected =>params[:camera_angle]), :include_blank =>true, :class =>"camera_angle")%></p>
+		<p><%= label_tag :session_type, "Session Type" %></br>
+		<%= select_tag(:session_type, options_for_select(@session_types, :selected =>params[:session_type]), :include_blank =>true, :class =>"session_type")%></p>
+		<p><%= label_tag :phrase_type, "Phrase Type" %></br>
+		<%= select_tag(:phrase_type, options_for_select(@phrase_types, :selected =>params[:phrase_type]), :include_blank =>true, :class =>"phrase_type")%></p>
+		<p><%= label_tag :phrase_name, "Phrase Name" %></br>
+		<%= select_tag(:phrase_name, options_for_select(@phrase_names, :selected =>params[:phrase_name]), :include_blank =>true, :class =>"phrase_name")%></p>
+		<%= hidden_field_tag :search, params[:search]%></br>
+		<div class= "filters_submit">
+		<input type="submit" value="Update Filters"/>
 		</div>
-		<input type="submit" value="Submit" />
 	</form>
 </div>
 
-<p class="grid_16">There are <span id="resultcount"><%= @intervals.size %></span> results.</p>
+<p class="grid_16 filter_results">There are <span id="resultcount"><%= @intervals.size %></span> results.</p>
 
-<div class="clear"></div>
-<div id="session-search" class ="grid_7" >
-	<select id="sort-dropdown">
-		<label for = "sort" id="sort-dropdown">
-		<option value= "sort-by">Sort By</option>
-		<option value = "date">Date</option>
-		<option value = "relevance">Relevance</option>
-		<option value = "most viewed">Most Viewed</option>
-		<option value = "most tagged">Tagged</option>
-	</select>
-</div>
-
-<div class="clear"></div>
-
-<div id="view" class="grid_14">
-	<form id="view">
-		<input type="radio" name="view-list"/> List
-		<input type="radio" name="view-thumbnail"/> Thumbnail
-		<input type="radio" name="view-timeline" /> Timeline
-	</form>
-</div>
-
-<div class="clear"></div>
 
 <div class="grid_16 display_results">
      <% @intervals.each do |interval| %>
