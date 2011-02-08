@@ -114,7 +114,6 @@ GEM
     mime-types (1.16)
     mocha (0.9.8)
       rake
-    mysql2 (0.2.6)
     narray (0.5.9.9)
     net-scp (1.0.4)
       net-ssh (>= 1.99.1)
@@ -226,7 +225,6 @@ DEPENDENCIES
   jquery-rails (>= 0.2.6)
   launchy
   mocha
-  mysql2
   narray
   nokogiri
   rails (= 3.0.3)
