@@ -2,18 +2,18 @@
 
 	<h2>Filters</h2>
 	<form class="interval_filters">
-		<p><%= label_tag :date, "Date" %></br>
+		<p class="grid_2 suffix_1 alpha"><%= label_tag :date, "Date" %></br>
 		<%= select_tag(:date, options_for_select(@days, :selected =>params[:date]), :include_blank =>true, :class =>"date_filter")%></p>
-		<p><%= label_tag :camera_angle, "Camera Angle" %></br>
+		<p class="grid_2 suffix_1"><%= label_tag :camera_angle, "Camera Angle" %></br>
 		<%= select_tag(:camera_angle, options_for_select(@camera_angles, :selected =>params[:camera_angle]), :include_blank =>true, :class =>"camera_angle")%></p>
-		<p><%= label_tag :session_type, "Session Type" %></br>
+		<p class="grid_2 suffix_1"><%= label_tag :session_type, "Session Type" %></br>
 		<%= select_tag(:session_type, options_for_select(@session_types, :selected =>params[:session_type]), :include_blank =>true, :class =>"session_type")%></p>
-		<p><%= label_tag :phrase_type, "Phrase Type" %></br>
+		<p class="grid_2 suffix_1"><%= label_tag :phrase_type, "Phrase Type" %></br>
 		<%= select_tag(:phrase_type, options_for_select(@phrase_types, :selected =>params[:phrase_type]), :include_blank =>true, :class =>"phrase_type")%></p>
-		<p><%= label_tag :phrase_name, "Phrase Name" %></br>
+		<p class="grid_2 "><%= label_tag :phrase_name, "Phrase Name" %></br>
 		<%= select_tag(:phrase_name, options_for_select(@phrase_names, :selected =>params[:phrase_name]), :include_blank =>true, :class =>"phrase_name")%></p>
 		<%= hidden_field_tag :search, params[:search]%></br>
-		<div class= "filters_submit">
+		<div class= "grid_1 omega filters_submit">
 		<input type="submit" value="Update Filters"/>
 
 		</div>
