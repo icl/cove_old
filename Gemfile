@@ -50,3 +50,5 @@ gem 'hoptoad_notifier'
 	gem 'factory_girl_rails'
 	
 end
+
+#gem 'mysql2'
