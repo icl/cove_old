@@ -41,7 +41,6 @@ Scenario: Search
 	And I press "Submit" within ".search_box"
 	Then I should see 1 result
 	And I should see a result with a session type of "trio"
-@javascript
 Scenario: Search and filter by angle
 	When I go to the intervals page
 	And I fill in "search" with "et"
@@ -63,14 +62,14 @@ Scenario: Filter by angle and search
 Scenario: Filter by date
 	When I go to the intervals page
 	And I select "01-01-01" from "date"
-	And I press "Submit"
+	And I press "Submit" within "#filters"
 	Then I should see 1 result
 	And I should see a result with a session type of "solo"
 
 Scenario: Filter by date and camera angle
 	When I go to the intervals page
 	And I select "01-02-01" from "date" within "#filters"
-	And I press "Submit" within ".search_box"
+	And I press "Submit" within "#filters"
 	And I select "Mirror" from "Camera Angle"
 	And I press "Submit" within "#filters"
 	Then I should see 1 result
