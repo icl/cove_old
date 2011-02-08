@@ -17,14 +17,26 @@ class Interval < ActiveRecord::Base
 	def start_time_of_day
 		read_attribute(:start_time).strftime("%I:%M %p")
 	end
-
+	
 	def self.unique_days
 		find(:all, :select => "start_time", :order => "start_time").map{|int| int.day}.uniq
 	end
 
 	def self.unique_angles
-		find(:all, :select => "DISTINCT camera_angle", :order => "camera_angle")
+		return group(:camera_angle).collect { |interval| interval.camera_angle}
 	end
+	
+	def self.unique_phrase_types
+	  return group(:phrase_type).collect { |interval| interval.phrase_type}
+	end
+	
+	def self.unique_phrase_names
+	  return group(:phrase_name).collect { |interval| interval.phrase_name}
+	end
+
+  def self.unique_session_types
+    return group(:session_type).collect { |interval| interval.session_type}
+  end
 
 	def self.lame_search(v)
 		args = [].fill("%#{v}%", 0, column_names.size)

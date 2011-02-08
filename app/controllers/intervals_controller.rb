@@ -3,8 +3,11 @@ class IntervalsController < ApplicationController
     before_filter :require_nda
     
 	def index
-		@angles = Interval.unique_angles
+		@camera_angles = Interval.unique_angles
 		@days = Interval.unique_days
+		@session_types = Interval.unique_session_types
+		@phrase_types = Interval.unique_phrase_types
+		@phrase_names = Interval.unique_phrase_names
 
 
     date_filter = (params[:date].nil? || params[:date] == "") ? false : params[:date]

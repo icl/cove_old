@@ -10,24 +10,16 @@
 				<% end %>
 			</select>
 		</fieldset>
-		<fieldset>
+		<div>
 			<legend>Camera Angle</legend>
-			<ul>
-				<li>
-					<%= link_to "Any", intervals_path(add_params :camera_angle => "") %>
-				</li>
-				<% @angles.each do |a| %>
-					<li>
-						<%= link_to a.camera_angle, intervals_path(add_params :camera_angle => a.camera_angle) %>
-					</li>
-				<% end %>
-			</ul>
-			<input type="hidden" name="camera_angle" value="<%= params[:camera_angle] %>" />
-		</fieldset>
-		<fieldset>
-			<legend>Search</legend>
-			<input type="text" name="search" value="<%= params[:search] %>" />
-		</fieldset>
+			<%= select_tag(:camera_angle, options_for_select(@camera_angles, :selected =>params[:camera_angle]), :include_blank =>true)%>
+			<legend>Session Type</legend>
+			<%= select_tag(:session_type, options_for_select(@session_types, :selected =>params[:session_type]), :include_blank =>true)%>
+			<legend>Phrase Type</legend>
+			<%= select_tag(:phrase_type, options_for_select(@phrase_types, :selected =>params[:phrase_type]), :include_blank =>true)%>
+			<legend>Phrase Name</legend>
+			<%= select_tag(:phrase_name, options_for_select(@phrase_names, :selected =>params[:phrase_name]), :include_blank =>true)%>
+		</div>
 		<input type="submit" value="Submit" />
 	</form>
 </div>
