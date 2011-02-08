@@ -1,5 +1,3 @@
-<div id="intervals" class="grid_16">
-<h1 class="grid_16">Browse Videos</h1>
 <div id="filters" class="grid_16">
 	<form>
 		<h2>Filters</h2>
@@ -59,6 +57,8 @@
 </div>
 
 <div class="clear"></div>
+
+<div class="grid_16 display_results">
      <% @intervals.each do |interval| %>
      <ol class="browse_cont">
 <li class="grid_2 browse_box_name"><%= link_to raw("Session <span>")+interval.id.to_s()+raw("</span>"), interval %></span></li> 
@@ -76,7 +76,7 @@
 		<%= interval.start_time.strftime("%M")%> 
 		<%= interval.start_time.strftime("%p")%>
 	</li> 
-      <li class="grid_4">
+      <li class="grid_3">
 	 <ul class="browse_box_ul">
 	   <li>Phrase: <%= interval.phrase_name  %></li>
 	   <li>...</li>
@@ -92,4 +92,4 @@
 		<% if @intervals.empty? %>
 				<h1>There were no videos found with these filter options.</h1>
 		<% end %>
-
+</divx>

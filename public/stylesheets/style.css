@@ -542,21 +542,15 @@ div#video div p {
 }
 
 
-
-
-
-
-
-
-
-
+/***********************************/
+/* Style adjustments for intervals.index.html */
 
 .browse_cont {
     margin:20px 0px;
     padding:20px 0px;
-	background: #666; 
-	border-top: 5px solid #2b1b17; 
-	border-bottom: 5px solid #2b1b17; 
+	background: #383838; 
+	border-top: 2px solid gray; 
+	border-bottom: 2px solid gray; 
 	clear: both; 
 	}
  .browse_box, .browse_box_date {
@@ -626,12 +620,12 @@ div#video div p {
     color: #000;
  }
 .arrow {
-border-color: transparent transparent transparent #ffd700;
-border-style:solid;
-border-width:20px;
-width:0;
-height:0;
-       margin-top: 25px;
+	border-color: transparent transparent transparent #ffd700;
+	border-style:solid;
+	border-width:20px;
+	width:0;
+	height:0;
+	margin-top: 25px;
 }
 
 
