@@ -3,7 +3,7 @@ class NdaController < ApplicationController
   def index
     render "index"
   end
-  
+
   def create
     if params[:accept].to_i == 1
       current_user.nda_signed = true

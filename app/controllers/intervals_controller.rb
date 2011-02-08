@@ -1,19 +1,15 @@
 class IntervalsController < ApplicationController
     before_filter :authenticate_user!
     before_filter :require_nda
-	# GET /intervals
-	# GET /intervals.xml
+    
+	def index
+		@camera_angles = Interval.unique_angles
+		@days = Interval.unique_days
+		@session_types = Interval.unique_session_types
+		@phrase_types = Interval.unique_phrase_types
+		@phrase_names = Interval.unique_phrase_names
 
-  def index
-    @angles = Interval.unique_angles
-    @days = Interval.unique_days
-
-    date_filter = (params[:date].nil? || params[:date] == "") ? false : params[:date]
-    conditions = []
-    unless(params[:camera_angle].nil? || params[:camera_angle] == "")
-      conditions = ["camera_angle = ?", params[:camera_angle]]
-    end
-    @intervals = Interval.find(:all, :conditions => conditions, :order => "start_time").reject{|row| date_filter && date_filter != row.day} & Interval.lame_search(params[:search])
+    @intervals = Interval.search params
 
     render 'index'
   end
