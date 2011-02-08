@@ -1,5 +1,6 @@
-<form action="/intervals" method="GET">
-<input type=search results=3 placeholder=Search... name="search" value="<%= params[:s] %>">
-<noscript><input type="submit" id="global_search_submit" /></noscript>
+<div class="search_box">
+<%= form_tag add_params(:contoller => params[:controller]), {:method => :get } %>
+<input type="search" results=3 placeholder="Search..." name="search" value="<%= params[:search] %>">
+<input type="submit" id="global_search_submit" value="Submit" />
 </form>
-
+</div>
