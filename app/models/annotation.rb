@@ -9,7 +9,13 @@ class Annotation
     @user_id = args[:user_id]
     @interval_id = args[:interval_id]
   end
-
+  
+  # The Main finder method. Will get the desired Annotations based
+  # on the filter
+  #
+  # @param [Symbol] the annotation type filter. :all will return
+  # all Annotations. 
+  # @return [Array] an array containing all the annotation objects
   def self.all(type=:all)
     if type == :all
       self.fetch_all
@@ -28,6 +34,21 @@ class Annotation
     return result
   end
   
+  # Creates a new annotation of the specified type.
+  # will first check to see if there is already 
+  # a model with the same name. If one is not found
+  # then it will attempt to make one.
+  # A join model object will also be created 
+  # connecting the new instance to the specified 
+  # user and interval.
+  #
+  # Example 
+  #   Annotation.add(:type => :tag, :name => "test", :user => current_user,
+  #   :interval => Interval.find(params[:id]))
+  #
+  #   Would create a new tag with the name test as well as a 
+  #   new tagging object that connects the tag to the 
+  #   current user and the interval that we are viewing. 
   def self.add(args)
     type = args.delete(:type)
     name = args.delete(:name)
@@ -60,6 +81,11 @@ class Annotation
     return new_object.save
   end
   
+  # Manipulate the symobl into the appropriate join model class
+  # Example
+  #   Annotation.join_class_from_symbol(:tag)
+  #   
+  #   Will return Taging.
   def self.join_class_from_symbol(symbol)
     if @@types_of_annotation.include? symbol
       symbol.to_s.concat("ing").capitalize.constantize
@@ -67,7 +93,12 @@ class Annotation
       raise Exception
     end
   end
-
+  
+  # Manipulate the symbol into the correct annotaion type class
+  # Example
+  #   Annotation.class_from_symbol(:tag)
+  #   
+  #   Will return Tag
   def self.class_from_symbol(symbol)
     if @@types_of_annotation.include? symbol
       symbol.to_s.capitalize.constantize
@@ -76,6 +107,13 @@ class Annotation
     end
   end
   
+  # Used the execute a where clause on the specified type
+  # Example
+  #   Annotation.where(:type => :tag, :email => "ryan@weald.com")
+  #
+  #   Will execute Tag.where(:name => "test")
+  #
+  #   and return all tags with a name test
   def self.where(args)
     Annotation.join_class_from_symbol(args.delete(:type)).where(args)
   end
@@ -117,9 +155,9 @@ class Annotation
   #   end
   # end
 
+
   # class version of the add method. Needs a user_id, interval_id
   # annotation type, name, and any additional arguments
-  
   def all(symbol)
     if self.user_id && self.interval_id
       result = self.annotations_for_user_and_interval(Annotation.join_class_from_symbol(symbol), Annotation.class_from_symbol(symbol))
