@@ -80,7 +80,39 @@ class Annotation
     new_object.interval = interval
     return new_object.save
   end
-  
+
+  def self.create!(args)
+    type = args.delete(:type)
+    name = args.delete(:name)
+    user = args.delete(:user)
+    interval = args.delete(:interval)
+    resource = Annotation.class_from_symbol(type).where(:name => name).first
+
+    # handle a bad name for the actual model class
+    unless resource
+      if Annotation.class_from_symbol(type).can_be_created?
+        new_resource = Annotation.class_from_symbol(type).new(:name => name)
+        if args[:opt]
+          args[:opt].keys.each do |key| 
+            new_resource.send "#{key}=", args[:opt][key]
+          end
+        end
+        unless new_resource.save
+          return false
+        end
+      else
+        return false
+      end
+    end
+
+    # create the new join model instance.
+    new_object = Annotation.join_class_from_symbol(type).new()
+    new_object.send "#{type.to_s}_id=", resource
+    new_object.user_id = user
+    new_object.interval_id = interval
+    return new_object.save
+ 
+  end
   # Manipulate the symobl into the appropriate join model class
   # Example
   #   Annotation.join_class_from_symbol(:tag)

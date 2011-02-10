@@ -145,4 +145,15 @@ describe Annotation do
       end
     end
   end
+  describe ".create!" do
+    before(:each) do
+      @tag = Factory(:tag)
+    end
+    
+    it "should create a new object" do
+      result = Annotation.create!(:name => @tag.name, :type => :tag, :user => 1, :interval => 1)
+      Taging.count.should be > 0
+
+    end
+  end
 end
