@@ -80,8 +80,14 @@ class Annotation
     new_object.interval = interval
     return new_object.save
   end
-
-  def self.create!(args)
+  
+  #create a new Annotation model and also accompanying join model
+  #acts just like add except it does not require you to pass in 
+  #objects to user and interval. You can pass in integers instead
+  #
+  #WARNING DOES NOT CHECK IF IDs ARE VALID COULD CAUSE 
+  #BADLY LINKED DATA
+  def self.add!(args)
     type = args.delete(:type)
     name = args.delete(:name)
     user = args.delete(:user)
