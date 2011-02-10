@@ -102,7 +102,7 @@ class Interval < ActiveRecord::Base
         notes.each do |row|
           raw_data = row.to_hash.reject {|k,v| !Interval.column_names.index(k.to_s)}
           data={}
-          data = raw_data.collect{|k,v| data[k]=v.strip }
+          data = raw_data.collect{|k,v| data[k]=v.strip rescue v }
           interval = Interval.new(data)
           interval.start_time = DateTime.parse(interval.filename.match(/[0-9]{4}(-[0-9]{2}){2}/)[0] + " " + interval.start_time.strftime("%H:%M"))
           interval.save
