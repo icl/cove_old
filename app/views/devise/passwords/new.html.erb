@@ -1,12 +1,14 @@
+<div class="grid_16 forgot_password">
 <h2>Forgot your password?</h2>
-
+Enter your email below and we will send you instructions for resetting your password.
+<br></br>
 <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
   <%= devise_error_messages! %>
-
+<br></br>
   <p><%= f.label :email %><br />
   <%= f.text_field :email %></p>
-
-  <p><%= f.submit "Send me reset password instructions" %></p>
+  <p><%= f.submit "Reset Password" %></p>
 <% end %>
-
+<br></br>
 <%= render :partial => "devise/shared/links" %>
+</div>

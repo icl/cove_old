@@ -2,6 +2,7 @@
 db/*.sqlite3
 db/schema.rb
 log/*.log
+log/notes/*
 tmp/**/*
 .DS_Store
 capybara-*
@@ -29,3 +30,6 @@ public/archive/*
 deploy.rb
 application.yml
 *~
+public/stylesheets/scaffold.css
+.eprj
+public/videos

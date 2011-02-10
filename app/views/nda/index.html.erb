@@ -1,23 +1,49 @@
-<div class="nda_container" style="overflow:scroll; width:400px; height:300px;">
-  Insert the NDA Text HERE
-  
-  
-  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-</div>
-<div class="form_container">
-  <%= form_tag(:action => "create", :method => "post", :class => "nda_agree_form") do %>
-    <p> Some Type of Accept text </p>
-    <%= check_box_tag "accept" %>
-    <div>
-      <%= submit_tag "Continue" %>    
-    </div>
-  <% end -%>
-</div>
-<div class="cancel_button_container">
-  <!-- <button id="cancel_button"> Cancel </button> -->
-  <a href="/logout"> Cancel </a>
+<div class="nda">
+	<h1 class="grid_16">You must agree to the terms below in order to continue!</h1>
+	<br>
+	<br>
+	<div class="grid_6 nda_container">
+
+		All video and other visual content on this site is bound by a collaboration agreement between Wayne McGregor | Random Dance, Sadler's Wells, London and         
+		Professor Kirsh, Department of Cognitive Science, University of California, San Diego.
+		<br></br>
+	
+		In participating in this course we offer you access to all the copyrighted content we have collected.  But we require that:
+		<br></br>
+	
+	   	<ul>
+		<li>you not share in any manner any content from this site</li>
+		<li>you not share your login and pwd with anyone</li>
+		<li>you not make any permanent copies of this content</li>
+		<li>If you present this content in a non-lab setting then the presentation you give will be for research purposes and that you will acknowledge the content in 		
+		the following way: 
+		<br></br>
+		</ul>
+
+	   	<b>"Distributed Choreographic Cognition is a collaboration between Professor David Kirsh and Wayne McGregor | Random Dance".</b>
+	
+		<br></br>
+
+		By checking the box below and clicking on the "Continue" button, I indicate that I have read and understood these terms and that I agree to abide by them.
+		
+		<br></br>
+
+	</div>
+	<div class="grid_16 form_container">
+		<%= form_tag(:action => "create", :method => "post", :class => "nda_agree_form") do %>
+		<%= check_box_tag "accept" %>
+		<%= label_tag "I Agree" %>
+		<br></br>
+		<div>
+			<%= submit_tag "Continue" %>    
+		</div>
+		<br></br>
+		<% end -%>
+	</div>
+	<div class="grid_16 cancel_button_container">
+		<!-- <button id="cancel_button"> Cancel </button> -->
+		<a href="/logout"> Cancel </a>
+	</div>
 </div>
 
 <!-- <script type="text/javascript">
