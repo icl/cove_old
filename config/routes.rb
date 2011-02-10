@@ -19,5 +19,5 @@ Cove::Application.routes.draw do
     resources :users, :only => [:index, :new, :create]
   end
   
-  root  :to => "welcome#index"
+  root  :to => "intervals#index"
 end

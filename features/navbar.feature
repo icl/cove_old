@@ -13,12 +13,12 @@ So that
 
 	Scenario: user visits welcome page
 		Given I am on the root page
-		Then I should see "Intervals"
+		Then I should see "Browse"
 		
 	Scenario: user clicks intervals link
 		Given a regular user exists
 	    When I enter the correct email and password
-		Then I should see "Intervals"
-		When I follow "Intervals"
+		Then I should see "Browse"
+		When I follow "Browse"
 		Then I should be on the intervals page
 		

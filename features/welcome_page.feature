@@ -6,8 +6,8 @@ So that I can better understand the site
 Scenario: Visiting
 	Given I am on the root page
 	And there is nobody logged in
-	Then I should see "Login" within ".user_info"
+	Then I should not see "Logout"
 	
 Scenario: Visiting after logging in
 	Given I am a regular user who is logged in
-	Then I should see "Logout" within ".user_info"
+	Then I should see "Logout" within ".user_links"
