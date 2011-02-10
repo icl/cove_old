@@ -34,26 +34,35 @@
 
 <body>
 	<header class="container_16">
-		<hr class="grid_16"/>
-		<img class="grid_3" src="/images/cove_logo.gif"/>
-		<div class="grid_4 user_info prefix_9">
-			<%if !current_user %>
-				<a class="login_link" href="/login">Login</a>
+
+		<%= link_to image_tag("cove_logo.gif", :class=> "grid_3 logo"), root_path%>
+			<%if current_user %>
+				<div class="grid_13 user_links">
+					<ul>
+						<li class="first user_avatar"><%=image_tag gravatar_url_for "ethan.soutar.rau@gmail.com"%></li>
+						<li><%=current_user.email%></li>
+						<li><a class="second logout_link" href="/logout">Logout</a></li>
+						<li><a class="help_link" href="https://cove.tenderapp.com">Help</a></li>
+						<%if current_user.admin %> 
+						<li><a class="admin_link"href="/admin/users/new">Admin</a></li>
+						<%end%>
+					</ul>
+				</div>
 			<%else%>
-				Logged in as: <%=current_user.email%>
-				<a class="logout_link" href="/logout">Logout</a>
+			
+			
 			<%end%>
-		</div>
-		<div class="grid_4 search_holder prefix_12">
-			<%= render "intervals/search" if current_user %>
-		</div>
 		<br style="clear: both"/>
 	</header>
 	
 	<nav class="top_nav container_16">
+		<hr class="grid_16"/>
 		<ul class="grid_16 main_links">
 			<li class="alpha grid_2"><%= link_to "Home", root_path %></li>
-			<li class="grid_2"><%= link_to "Intervals", intervals_path %></li>
+			<li class="grid_2"><%= link_to "Browse", intervals_path %></li>
+			<div class="search_holder grid_4 push_8">
+				<%= render "intervals/search" if current_user %>
+			</div>
 		</ul>
 		<hr class="grid_16"/>
 		<br style="clear:both"/>
@@ -61,10 +70,9 @@
 	</nav>
 	
 <div class="content container_16">
+	<%= display_flash %>
+	<%= yield %>
 
-  <%= display_flash %>
-<br>
-  <%= yield %>
 </div>
 
 <footer class="container_16">
