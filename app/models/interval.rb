@@ -118,4 +118,7 @@ class Interval < ActiveRecord::Base
     end # End |Dir.foreach| block
   end # End |def import| block
 
+  def annotations
+    @annotations ||= Annotation.new :interval_id => self.id
+  end
 end

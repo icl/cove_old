@@ -1,5 +1,9 @@
 class Tag < ActiveRecord::Base
-  has_many :interval_tags, :dependent => :destroy
-  has_many :intervals, :through => :interval_tags 
   validates_uniqueness_of :name
+  has_many :tagings
+  
+  def self.can_be_created?
+    true
+  end
+  
 end
