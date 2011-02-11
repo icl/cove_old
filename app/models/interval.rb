@@ -102,7 +102,7 @@ class Interval < ActiveRecord::Base
         notes.each do |row|
           raw_data = row.to_hash.reject {|k,v| !Interval.column_names.index(k.to_s)}
           data={}
-          data = raw_data.collect{|k,v| data[k]=v.strip rescue v }
+          raw_data.each{|k,v| data[k]=v.strip rescue data[k]=v }
           interval = Interval.new(data)
           interval.start_time = DateTime.parse(interval.filename.match(/[0-9]{4}(-[0-9]{2}){2}/)[0] + " " + interval.start_time.strftime("%H:%M"))
           interval.save
@@ -112,7 +112,7 @@ class Interval < ActiveRecord::Base
         #  Dir.mkdir('log/notes')
         #end
         
-        File.move("tmp/notes/#{file}","log/notes/#{file}.imported_at_#{Time.now.strftime("%Y%m%d%H%M")}")
+        #File.move("tmp/notes/#{file}","log/notes/#{file}.imported_at_#{Time.now.strftime("%Y%m%d%H%M")}")
         
       end # End |if file| block
     end # End |Dir.foreach| block
