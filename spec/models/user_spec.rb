@@ -77,4 +77,13 @@ describe User do
       end
     end
   end
+  
+  
+  context "Adding Annotations" do
+    before(:each) do
+      @user = Factory(:regular_user)
+    end
+    it {@user.should respond_to(:annotations)}
+    it {@user.annotations.should be}
+  end
 end
