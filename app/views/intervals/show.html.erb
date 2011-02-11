@@ -41,11 +41,21 @@
 	<div class="clear"></div>
 	
 
-	<div class="grid_16" id="video">
-		<div>
+		<div class="grid_4">&nbsp;</div>
+		<div class="grid_5 video">
 			<p><%= video_tag @interval.filename, :controls => true, :height => 270, :width => 480 %></p>
+		</div>	
+	
+		<div class="grid_4 video_snippit">
+	
+			<div class="interval_time_background">
+				<div class="interval_time">
+					3:14-4:34
+				</div>
+			</div>
+			<input type="button" value="Creat Interval" class="create_interval_button"></input>
 		</div>
-	</div>
+			
 	<div class="clear"></div>
 
 

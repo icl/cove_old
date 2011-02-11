@@ -561,15 +561,40 @@ div#tag_checkboxes label {
 	text-align: left;
 }
 
-div#video div p {
-	border: 2px;
-	text-align: center;
-}
-
 .filename {
 	margin-bottom: 20px;
 }
 
+.video_snippit{
+	float:right;
+	height:60px;
+	background:#383838;
+	border-top:1px solid white;
+	border-bottom: 1px solid white;
+}
+
+.interval_time_background{
+	margin:10px;
+	height:60%;
+	width:40%;
+	background:#2f2f2f;
+	
+}
+
+.interval_time{
+	padding-top:10px;
+	color:#0297c1;
+	text-align:center;
+}
+
+.interval.tags{
+	float:left;
+}
+
+.create_interval_button{
+	margin-top:20px;
+	float:right;
+}
 
 /***********************************/
 /* Style adjustments for intervals.index.html */
@@ -707,3 +732,78 @@ div#video div p {
   p, h2, h3 { orphans: 3; widows: 3; }
   h2, h3{ page-break-after: avoid; }
 }
+
+/* search page style*/
+
+div.search_header{
+	height:60px;
+	background-color:black;
+}
+.search_header #search_bar{
+	margin-left:10px;
+	margin-top:15px;
+	padding:5px;
+	width: 360px;
+}
+
+.search_header #selectors{
+	margin-top:15px;
+	float:right;
+}
+
+.search_header #selectors ul{
+	list-style:none;
+}
+
+.search_header #selectors ul li{
+	color:gray;
+	font-size:12px;
+	float:left;
+	margin:5px;
+}
+
+/*.arrow-right { 
+		float:right;
+		margin-top:10px;
+        width: 0px;
+        height: 0px;
+      	border-top: 15px solid transparent;
+        border-bottom: 15px solid transparent;
+        border-left: 15px solid #EC8723;
+}
+*/
+
+.button{
+	height:30px;
+	width:70px;
+	margin-top:15px;
+	float:right;
+	border:transparent;
+	opacity:.5;
+	background:#EC8723;
+}
+
+.button:hover{
+	opacity:1;
+	background:#EC8723;
+	color:white;
+}
+#popular_box, #trending_box, #suggestions_box{
+	margin-top:20px;
+	height:400px;
+	background-color:#383838;
+}
+
+h2{
+	color:#0297C1;
+	font-size:20px;
+	margin-top:20px;
+	margin-bottom:10px;
+	margin-left:20px;
+}
+#popular_box li{
+	margin-left:20px;
+	list-style:none;
+}
+
+
