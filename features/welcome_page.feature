@@ -10,4 +10,4 @@ Scenario: Visiting
 	
 Scenario: Visiting after logging in
 	Given I am a regular user who is logged in
-	Then I should see "Logout" within ".login_status"
+	Then I should see "Logout" within ".user_links"

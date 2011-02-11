@@ -3,16 +3,13 @@ class IntervalsController < ApplicationController
     before_filter :require_nda
     
 	def index
-		@angles = Interval.unique_angles
+		@camera_angles = Interval.unique_angles
 		@days = Interval.unique_days
+		@session_types = Interval.unique_session_types
+		@phrase_types = Interval.unique_phrase_types
+		@phrase_names = Interval.unique_phrase_names
 
-
-    date_filter = (params[:date].nil? || params[:date] == "") ? false : params[:date]
-    conditions = []
-    unless(params[:camera_angle].nil? || params[:camera_angle] == "")
-      conditions = ["camera_angle = ?", params[:camera_angle]]
-    end
-    @intervals = Interval.find(:all, :conditions => conditions, :order => "start_time").reject{|row| date_filter && date_filter != row.day} & Interval.lame_search(params[:search])
+    @intervals = Interval.search params
 
     render 'index'
   end

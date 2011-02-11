@@ -306,7 +306,6 @@ body {
 
 header {
 	font-size: 12pt;
-	height: 110px;
 	background: #2F2F2F;
 }
 
@@ -316,49 +315,50 @@ header h1 {
 }
 
 .logo {
-	margin-top: 35px;
+	margin-top: 10px;
 }
 
-.login_fields {
-	height: 100px;
-	margin-top:10px;
-	background: #383838;
-	
-}
-
-.header_box {
-	margin-top:10px;
-	background: #383838;
-	
-}
-
-.user_avatar { 
-	height: 100px;
-}
-
-.user_avatar img { 
-	margin: 10px;
+.user_avatar img {
+	width: 20px; 
+	height: 20px;
    
 }
 
-.login_status {
-	text-align:left;
+.user_links ul {
+	background: #383838;
+	height: 40px;
 	font-size: 10pt;
-    height: 100px;
+	margin-left: 0;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	display: inline;
+	line-height: 20px;
+	height: 20px;
+	float: right;
+	} 
+
+.user_links ul li {
+	margin-left: 0;
+	padding: 0px 7px;
+	border-left: 2px solid gray;
+	list-style: none;
+	display: block;
+	float: left;
+	}
+		
+.user_links ul li.first {
+	margin-left: 0;
+	border-left: none;
+	list-style: none;
+	display: block;
+	}
+
+
+.form_container_invite {
+	line-height: 2.0;
 	
 }
 
-.logged_in_as {
-	margin: 10px;
-}
-
-.logout_link {
-	margin: 10px;
-}
-
-.help_link {
-	margin: 10px;
-}
 
 .search_holder {
 	text-align: right;
@@ -411,6 +411,43 @@ input[type=search] {
 		font-size: 17px;
         width: 73%;
 
+}
+
+
+.interval_filters {
+	line-height: 2.0;
+}
+
+.interval_filters p {
+	padding-right: 20px;
+	float: left;
+}
+
+.date_filter {
+	width: 100px;
+
+}
+
+.camera_angle {
+	width: 100px;
+}
+
+.session_type {
+	width: 100px;
+}
+
+.phrase_type {
+	width: 100px;
+}
+
+.phrase_name {
+	width: 100px;
+}
+
+.filter_results {
+	margin-top: 20px;
+	font-size: 14pt;
+	color: gold;
 }
 
 /* Thanks to Ryan Bates: http://railscasts.com/episodes/234-simple-form */
@@ -532,6 +569,94 @@ div#video div p {
 .filename {
 	margin-bottom: 20px;
 }
+
+
+/***********************************/
+/* Style adjustments for intervals.index.html */
+
+.browse_cont {
+    margin:20px 0px;
+    padding:20px 0px;
+	background: #383838; 
+	border-top: 2px solid gray; 
+	border-bottom: 2px solid gray; 
+	clear: both; 
+	}
+ .browse_box, .browse_box_date {
+    height: 80px;
+    background: #2f2f2f;
+    text-align: center;
+    padding: 5px 0px;
+ }
+ .browse_box span {
+    display: block;
+    color: #ffd700;
+    font-size: 1.1em;
+    font-weight: bold;
+    /* text-transform: uppercase; */
+    padding: 10px 0px;
+ }
+ .browse_box_date span {
+    display: block;
+    color: #ffd700;
+    font-size: 1.1em;
+    font-weight: bold;
+    /* text-transform: uppercase; */
+    padding: 6px 0px;
+ }
+ .browse_box_date span b {
+    display: block;
+    font-size: 1.1em;
+ }
+ ul.browse_box_ul {
+    padding: 0px;
+    margin: 0px;
+ }
+ ul.browse_box_ul li {
+    padding: 0px;
+    margin: 0px;
+    list-style-type: none;
+    margin-bottom: 7px;
+ }
+ ul.browse_box_ul li.alt {
+    background: #999;
+    text-align: center;
+    padding: 2px 0px;
+ }
+ .browse_box_name {
+    height: 50px;
+    background: #0297c1;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0px;
+ }
+
+ .browse_box_name a {
+    text-decoration: none;
+    color: #fff;
+ }
+
+
+ .browse_box_name span {
+    display: block;
+    text-decoration: none;
+    color: #fff;
+    font-size: 2em;
+ }
+
+ .browse_box_name:hover {
+    background: #5e767e;
+    color: #000;
+ }
+.arrow {
+	border-color: transparent transparent transparent #ffd700;
+	border-style:solid;
+	border-width:20px;
+	width:0;
+	height:0;
+	margin-top: 25px;
+}
+
 
 
 

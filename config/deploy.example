@@ -12,7 +12,7 @@ set :deploy_to,   "/path/to/#{application}"
 set :video_path, "path/to/videos" # Relative path within #{deploy_to}/shared/
 set :user, "deploy_user"
 set :scm, :git
-set :branch, "master"
+set :branch, "release"
 set :deploy_via, :remote_cache
 set :db_user, "db_user"
 set :db_password, "secret"
@@ -50,6 +50,9 @@ namespace :bundle do
       else
         new_lines += [line] #[line.gsub(/\n/,'')]
       end
+    end
+    if !master.to_s.match(/mysql/)
+      new_lines += ["\ngem 'mysql2' # Production only gem. DO NOT COMMIT\n"]
     end
     gemfile = File.join(current_release, 'Gemfile')
     gemfile_config = ERB.new <<-EOF

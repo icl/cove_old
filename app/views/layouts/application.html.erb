@@ -37,21 +37,21 @@
 
 		<%= link_to image_tag("cove_logo.gif", :class=> "grid_3 logo"), root_path%>
 			<%if current_user %>
-				<div class="grid_6 push_7 header_box">
-					<div class ="alpha grid_2 user_avatar">
-						<%=image_tag gravatar_url_for "ethan.soutar.rau@gmail.com"%>
-					</div>
-					<div class ="omega grid_4 login_status">
-						<div class="logged_in_as">
-						Logged in as: &nbsp <%=current_user.email%>
-						</div>
-						<a class="logout_link" href="/logout">Logout</a> | <a class="help_link" href="https://cove.tenderapp.com">Help</a>
-					</div>
+				<div class="grid_13 user_links">
+					<ul>
+						<li class="first user_avatar"><%=image_tag gravatar_url_for "ethan.soutar.rau@gmail.com"%></li>
+						<li><%=current_user.email%></li>
+						<li><a class="second logout_link" href="/logout">Logout</a></li>
+						<li><a class="help_link" href="https://cove.tenderapp.com">Help</a></li>
+						<%if current_user.admin %> 
+						<li><a class="admin_link"href="/admin/users/new">Admin</a></li>
+						<%end%>
+					</ul>
 				</div>
 			<%else%>
 			
+			
 			<%end%>
-		</div>
 		<br style="clear: both"/>
 	</header>
 	
@@ -60,8 +60,7 @@
 		<ul class="grid_16 main_links">
 			<li class="alpha grid_2"><%= link_to "Home", root_path %></li>
 			<li class="grid_2"><%= link_to "Browse", intervals_path %></li>
-			<li class="grid_2"><%= link_to "Search", intervals_path %></li>
-			<div class="search_holder grid_4 push_6">
+			<div class="search_holder grid_4 push_8">
 				<%= render "intervals/search" if current_user %>
 			</div>
 		</ul>

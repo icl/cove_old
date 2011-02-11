@@ -14,11 +14,9 @@ Then /^(?:|I )should see (\d+) result(?:|s)$/ do |num|
 end
 
 Then /^(?:|I )should see a result with a session type of "([^"]*)"$/ do |sessiontype|
-  with_scope(".results") do
     if page.respond_to? :should
-      page.should have_content("Session Type: #{sessiontype}")
+      page.should have_content(sessiontype)
     else
-      assert page.has_content?("Session Type: #{sessiontype}")
+      assert page.has_content?(sessiontype)
     end
-  end
 end
