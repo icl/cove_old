@@ -23,6 +23,10 @@ gem 'SystemTimer', :platforms => :mri_18
 gem 'hoptoad_notifier'
 #end
 
+# Sunspot SOLR Search
+gem 'sunspot', 	'1.2.rc4',		:require => 'sunspot'
+gem 'sunspot_rails', '1.2.rc4'
+
  group :development, :test do
 	gem "jquery-rails", ">= 0.2.6"
 	gem 'sqlite3-ruby', :require => 'sqlite3'
