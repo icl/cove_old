@@ -43,9 +43,16 @@
 
 		<div class="grid_4">&nbsp;</div>
 		<div class="grid_5 video">
-			<p><%= video_tag @interval.filename, :controls => true, :height => 270, :width => 480 %></p>
-		</div>	
-	
+		  <!-- Begin VideoJS -->
+		  <div class="vim-css video-js-box">
+		    <!-- Using the Video for Everybody Embed Code http://camendesign.com/code/video_for_everybody -->
+            <video id="cove-video-player" class="video-js" width="480" height="270" controls>
+              <source src="/videos/<%= @interval.filename %>" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"' />
+            </video>
+          </div>
+          <button class="markstart">Mark start</button><button class="markend">Mark end</button>
+          <!-- End VideoJS -->
+	    </div>
 		<div class="grid_4 video_snippit">
 	
 			<div class="interval_time_background">
