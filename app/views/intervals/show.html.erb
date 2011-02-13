@@ -60,7 +60,11 @@
 					3:14-4:34
 				</div>
 			</div>
-			<input type="button" value="Creat Interval" class="create_interval_button"></input>
+			<%= form_for([@interval, @interval.snippets.build]) do |f| %>
+			    <%= f.hidden_field(:offset) %>
+			    <%= f.hidden_field(:duration) %>
+			    <%= f.submit "Create Snippet", :class => "create_interval_button" %>
+			<% end %>
 		</div>
 			
 	<div class="clear"></div>
