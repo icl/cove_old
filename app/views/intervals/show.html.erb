@@ -53,13 +53,16 @@
 					3:14-4:34
 				</div>
 			</div>
-			<input type="button" value="Creat Interval" class="create_interval_button"></input>
+			<input type="button" value="Create Interval" class="create_interval_button"></input>
 		</div>
 			
 	<div class="clear"></div>
 
 
 	<div class="grid_16 time">
+		<input type="button" value="Start Marker" class="start_interval_button"></input>
+		<input type="button" value="End Marker" class="end_interval_button"></input>
+
 		<div class="time">
 			<h4><%= @interval.start_time.strftime("%T") %> ------------------------------------------------------------------------------------------</h4>
 		</div>

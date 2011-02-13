@@ -594,7 +594,17 @@ div#tag_checkboxes label {
 .create_interval_button{
 	margin-top:20px;
 	float:right;
+    background: #FDD017;
 }
+
+.start_interval_button{
+    background: #4CC417;
+}
+
+.end_interval_button{
+    background: #FF0000;
+}
+
 
 /***********************************/
 /* Style adjustments for intervals.index.html */
