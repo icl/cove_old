@@ -594,6 +594,18 @@ div#tag_checkboxes label {
 .create_interval_button{
 	margin-top:20px;
 	float:right;
+	height:30px;
+	width:110px;
+	float:right;
+	border:transparent;
+	opacity:.5;
+	background:#EC8723;
+	}
+
+.create_interval_button:hover{
+	opacity:1;
+	background:#EC8723;
+	color:white; 
 }
 
 /***********************************/
