@@ -5,7 +5,8 @@ Cove::Application.routes.draw do
   resources :projects
   
   resources :collections
-  match 'collections/:id/add/:interval' => 'collections#add', :as => :add_to_collections
+  match 'collections/:id/add/:interval' => 'collections#add', :as => :add_to_collection
+  match 'collections/:id/remove/:interval' => 'collections#remove', :as => :remove_from_collection
 
   devise_for :users, :path => "/", :path_names => {:sign_in => "login", 
     :sign_out => "logout"}
