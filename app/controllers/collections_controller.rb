@@ -69,11 +69,19 @@ class CollectionsController < ApplicationController
     redirect_to(@collection, :notice => notice)
   end
   
+  def set_priority # Set individual priority
+    #
+  end
+  
   def prioritize_intervals
     @collection = Collection.find(params[:id])
     # Save Priorities from jQuery Sortable List
     notice = "Interval Priorities have been saved"
     redirect_to(@collection, :notice => notice)
+  end
+  
+  def set_priorities # Set priorities from a input form list
+    #
   end
   
   def add
