@@ -1,0 +1,15 @@
+<%= simple_form_for(@collection) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="inputs">
+    <%= f.input :name %>
+    <%= f.input :description %>
+	<!--> Add to Projects <-->
+	<!--> Add Collections via autocomplete? <-->
+	<input class="integer" id="collection_user_id" name="collection[user_id]" type="hidden" value="<%= current_user.id %>" />
+</div>
+
+  <div class="actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

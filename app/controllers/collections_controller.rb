@@ -22,6 +22,11 @@ class CollectionsController < ApplicationController
   
   def create
     @collection = Collection.new(params[:collection])
+    if @collection.save
+      redirect_to(@collection, :notice => 'Collection was successfully created.')
+    else
+      render :action => "new"
+    end
   end
   
   def update
@@ -31,47 +36,93 @@ class CollectionsController < ApplicationController
     else
       @collection = Collection.new(params[:collection])
     end
+    if @collection.update_attributes(params[:collection])
+      redirect_to(@collection, :notice => 'Interval was successfully updated.')
+    else
+      render :action => "edit"
+    end
+  end
+  
+  def prioritize_interval #parameters :id => collection_id, :interval => interval_id
+    @collection = Collection.find(params[:id])
+    priority_list = YAML.load(@collection.interval_priorities)
+    priority = priority_list.select {|k,v| v == params[:interval]}[0][0].to_i rescue nil
+    if priority.blank?
+      notice = "Interval does not exist in collection"
+    else
+      if params[:direction] == "up"
+        new_priority = priority - 1
+      else
+        new_priority = priority + 1
+      end
+      if new_priority == 0 || new_priority > priority_list.count
+        notice = "Error: Invalid priority"
+      else
+        d_interval = priority_list[new_priority.to_s]
+        priority_list[priority.to_s] = d_interval
+        priority_list[new_priority.to_s] = params[:interval]
+        @collection.interval_priorities = priority_list.to_yaml
+        @collection.save
+        notice = "Priority of interval was successfully edited"
+      end
+    end
+    redirect_to(@collection, :notice => notice)
+  end
+  
+  def prioritize_intervals
+    @collection = Collection.find(params[:id])
+    # Save Priorities from jQuery Sortable List
+    notice = "Interval Priorities have been saved"
+    redirect_to(@collection, :notice => notice)
   end
   
   def add
-    if Collection.find(params[:id]).user_id == current_user.id
+    @collection = Collection.find(params[:id])
+    if @collection.user_id == current_user.id
     # params[:id] = Collection_id, params[:interval] = Interval_id
-      @collection = Collection.find(params[:id])
       @interval = Interval.find_by_id(params[:interval])
-      @collection.intervals += [@interval]
-      priority = YAML.load(@collection.interval_priorities).keys.sort!{|a,b| a.to_i <=> b.to_i}.last.to_i + 1
-      new_priority = {"#{priority.to_s}" => @interval.id.to_s}
-      new_priorities = YAML.load(@collection.interval_priorities).merge new_priority
+      if !@collection.intervals.blank?
+        priority = YAML.load(@collection.interval_priorities).keys.sort!{|a,b| a.to_i <=> b.to_i}.last.to_i + 1
+        new_priority = {"#{priority.to_s}" => @interval.id.to_s}
+        new_priorities = YAML.load(@collection.interval_priorities).merge new_priority
+      else
+        new_priorities = {'1' => @interval.id.to_s}
+      end
       @collection.interval_priorities = new_priorities.to_yaml
+      @collection.intervals += [@interval]
       @collection.save
       notice = "Interval was added successfully"
     else
       notice = "Interval was not added to collection: Permission Denied."
     end
-    redirect_to(@collection)
+    redirect_to(@collection, :notice => notice)
   end
   
   def remove
-    if Collection.find(params[:id]).user_id == current_user.id
+    @collection = Collection.find(params[:id])
+    if @collection.user_id == current_user.id && !@collection.intervals.blank?
     # params[:id] = Collection_id, params[:interval] = Interval_id
-      @collection = Collection.find(params[:id])
       @interval = Interval.find_by_id(params[:interval])
-      @collection.intervals -= [@interval]
-      priority = YAML.load(@collection.interval_priorities).select {|k,v| v.to_i == @interval.id}[0][0].to_i
-      subpriorities = {}
-      YAML.load(@collection.interval_priorities).select {|k,v| k.to_i > priority}.each do |sk,sv|
-        subpriorities[(sk.to_i - 1).to_s] = sv
+      if @collection.intervals.include? @interval
+        @collection.intervals -= [@interval]
+        priority = YAML.load(@collection.interval_priorities).select {|k,v| v.to_i == @interval.id}[0][0].to_i
+        subpriorities = {}
+        YAML.load(@collection.interval_priorities).select {|k,v| k.to_i > priority}.each do |sk,sv|
+          subpriorities[(sk.to_i - 1).to_s] = sv
+        end
+        last_priority = YAML.load(@collection.interval_priorities).keys.sort!{|a,b| a.to_i <=> b.to_i}.last.to_i
+        new_priorities = YAML.load(@collection.interval_priorities).merge! subpriorities
+        new_priorities.delete(last_priority.to_s)
+        @collection.interval_priorities = new_priorities.to_yaml
+        @collection.save
+        notice = "Interval was removed successfully"
+      else
+        notice = "Interval does not exist in collection"
       end
-      last_priority = YAML.load(@collection.interval_priorities).keys.sort!{|a,b| a.to_i <=> b.to_i}.last.to_i
-      new_priorities = YAML.load(@collection.interval_priorities).merge! subpriorities
-      new_priorities.delete(last_priority.to_s)
-      @collection.interval_priorities = new_priorities.to_yaml
-      @collection.save
-      notice = "Interval was removed successfully"
     else
       notice = "Interval was not removed from collection: Permission Denied."
     end
-    redirect_to(@collection)
+    redirect_to(@collection, :notice => notice)
   end  
   
   def destroy
