@@ -13,7 +13,7 @@
 		<p class="grid_2 "><%= label_tag :phrase_name, "Phrase Name" %></br>
 		<%= select_tag(:phrase_name, options_for_select(@phrase_names, :selected =>params[:phrase_name]), :include_blank =>true, :class =>"phrase_name")%></p>
 		<%= hidden_field_tag :search, params[:search]%></br>
-		<div class= "grid_1 omega filters_submit">
+		<div class= "grid_2 omega filters_submit">
 		<input type="submit" value="Update Filters"/>
 
 		</div>
