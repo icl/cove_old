@@ -60,6 +60,7 @@ class Interval < ActiveRecord::Base
 	
   has_many :interval_tags, :dependent => :destroy
   has_many :tags, :through => :interval_tags
+  has_many :snippets
 
   def self.import!
     Dir.foreach("tmp/notes/") do |file|

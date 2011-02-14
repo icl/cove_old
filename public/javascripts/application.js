@@ -4,9 +4,18 @@ VideoJS.DOMReady(function(){
     controlsHiding: false
   });
 
-  $("button.markstart").click(function(){ myPlayer.markSnippetStart(); });
-  $("button.markend").click(function(){ myPlayer.markSnippetEnd(); });
-
-  
+  $("button.markstart").click(function(){
+    myPlayer.markSnippetStart();
+    $('#snippet_offset').value = myPlayer.snippetStart();
+  });
+  $("button.markend").click(function(){
+    myPlayer.markSnippetEnd();
+    $('#snippet_duration').value = myPlayer.snippetDuration();
+  });
+ 
+  $('#new_snippet').submit(function(){
+    $('#snippet_offset').value = myPlayer.snippetStart();
+    $('#snippet_duration').value = myPlayer.snippetDuration();
+  });  
 });
 
