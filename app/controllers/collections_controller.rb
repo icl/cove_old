@@ -42,11 +42,13 @@ class CollectionsController < ApplicationController
       priority = YAML.load(@collection.interval_priorities).keys.sort!{|a,b| a.to_i <=> b.to_i}.last.to_i + 1
       new_priority = {"#{priority.to_s}" => @interval.id.to_s}
       new_priorities = YAML.load(@collection.interval_priorities).merge new_priority
+      @collection.interval_priorities = new_priorities.to_yaml
       @collection.save
       notice = "Interval was added successfully"
     else
       notice = "Interval was not added to collection: Permission Denied."
     end
+    redirect_to(@collection)
   end
   
   def remove
@@ -55,20 +57,21 @@ class CollectionsController < ApplicationController
       @collection = Collection.find(params[:id])
       @interval = Interval.find_by_id(params[:interval])
       @collection.intervals -= [@interval]
-      priority = YAML.load(@collection.interval_priorities).select {|k,v| v.to_s == @interval.id}.keys.to_i
+      priority = YAML.load(@collection.interval_priorities).select {|k,v| v.to_i == @interval.id}[0][0].to_i
       subpriorities = {}
-      YAML.load(@collection.interval_priorities).select {|k,v| k > priority}.each do |sk,sv|
+      YAML.load(@collection.interval_priorities).select {|k,v| k.to_i > priority}.each do |sk,sv|
         subpriorities[(sk.to_i - 1).to_s] = sv
       end
-      last_priority = subpriorities.keys.sort!{|a,b| a.to_i <=> b.to_i}.last.to_i
+      last_priority = YAML.load(@collection.interval_priorities).keys.sort!{|a,b| a.to_i <=> b.to_i}.last.to_i
       new_priorities = YAML.load(@collection.interval_priorities).merge! subpriorities
       new_priorities.delete(last_priority.to_s)
-      @collection.interval_priorities = new_priorities
+      @collection.interval_priorities = new_priorities.to_yaml
       @collection.save
       notice = "Interval was removed successfully"
     else
       notice = "Interval was not removed from collection: Permission Denied."
     end
+    redirect_to(@collection)
   end  
   
   def destroy

@@ -15,6 +15,10 @@ class CreateCollections < ActiveRecord::Migration
       t.references :interval
       t.references :tag
     end
+    create_table :collections_projects,:id => false do |t|
+      t.references :collection
+      t.references :project
+    end
   end
 
   def self.down

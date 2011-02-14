@@ -4,4 +4,5 @@ class Project < ActiveRecord::Base
    #end
    belongs_to :user
    serialize :tags
+   has_and_belongs_to_many :collections
 end
