@@ -596,7 +596,6 @@ div#tag_checkboxes label {
 	float:right;
 	height:30px;
 	width:110px;
-	float:right;
 	border:transparent;
 	opacity:.5;
 	background:#EC8723;
@@ -615,6 +614,36 @@ div#tag_checkboxes label {
 .end_interval_button{
     background: #FF0000;
 }
+
+.markstart{
+     background: #4CC417;
+     border:transparent;
+     margin: 5px;
+}
+
+.markend{
+    background: #FF0000;
+    border:transparent;
+    margin: 5px;
+    float: right;
+}
+
+.interval_form {
+    margin-left: 50px;
+    margin-top: 15px;
+    background: #383838;
+    width: 400px;
+}
+
+.interval_form label{
+    margin-right: 50px;
+    padding: 10px;
+
+.interval_form .interval_descript{
+    height: 300px;  
+    float: left;
+}
+
 
 
 /***********************************/

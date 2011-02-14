@@ -50,7 +50,20 @@
               <source src="/videos/<%= @interval.filename %>" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"' />
             </video>
           </div>
-          <button class="markstart">Mark start</button><button class="markend">Mark end</button>
+          <button class="markstart">Mark Start</button>
+          <button class="markend">Mark End</button>
+          
+          <div class="interval_form">
+          		<label>
+          			Title:
+          		</label>
+          		<input type="text" id="interval_title"/>
+          		</br>	
+          		<label>
+          			Description:
+          		</label>	
+          		<input type="text" id="interval_descript"/>
+          </div>
           <!-- End VideoJS -->
 	    </div>
 		<div class="grid_4 video_snippit">
@@ -67,9 +80,6 @@
 
 
 	<div class="grid_16 time">
-		<input type="button" value="Start Marker" class="start_interval_button"></input>
-		<input type="button" value="End Marker" class="end_interval_button"></input>
-
 		<div class="time">
 			<h4><%= @interval.start_time.strftime("%T") %> ------------------------------------------------------------------------------------------</h4>
 		</div>
