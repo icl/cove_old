@@ -30,12 +30,12 @@ jQuery(function() {
 				priority += "\'" + $(this).find(".priority").text() + "\': \'" + $(this).attr("id") + "\',";
 			});
 			priority += "}"
-			$.ajaxSetup({
-				'beforeSend': function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name=csrf-token]').attr('content'));}
-			});
 			$.ajax({
 				type: 'POST',
 				url: '/collections/<%= @collection.id %>/prioritize',
+				beforeSend: function(xhr) {
+					xhr.setRequestHeader('X-CSRF-Token', $('meta[name=csrf-token]').attr('content'));
+				},
 				data: priority
 			});
 		}
