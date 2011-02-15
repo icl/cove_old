@@ -4,7 +4,7 @@ $(document).ready(function(){
 			$.get(
 				"/definitions/"+$(this).text(),
 				function(data){
-					$(data).find(".definition_holder").first().appendTo(".content");
+					$(data).find(".definition_holder").first().appendTo(".content").hide().show("slow");
 				}
 			);
 		})
@@ -12,7 +12,7 @@ $(document).ready(function(){
 			$(".definition_holder").trigger("goaway");
 		});
 	$(".definition_holder").live("goaway",function(){
-		$(this).hide(2, function(){
+		$(this).hide("slow", function(){
 			$(this).remove();
 		});
 	});
