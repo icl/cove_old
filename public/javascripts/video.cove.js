@@ -984,6 +984,7 @@ VideoJS.player.extend({
   onError: function(fn){ this.addVideoListener("error", fn); return this; },
   onEnded: function(fn){
     this.addVideoListener("ended", fn); return this;
+
   }
 });
 
@@ -1009,6 +1010,8 @@ VideoJS.player.newBehavior("player", function(player){
     this.trackBuffered();
     // Buffer Full
     this.onBufferedUpdate(this.isBufferFull);
+    // COVE snippets
+    this.onCurrentTimeUpdate(this.stopIfSnippetEnded);
   },{
     playerOnVideoError: function(event){
       this.log(event);
@@ -1071,7 +1074,17 @@ VideoJS.player.newBehavior("player", function(player){
       this.each(this.resizeListeners, function(listener){
         (listener.context(this))();
       });
+    },
+    
+    // COVE snippets
+    stopIfSnippetEnded: function(){
+      if (this.currentTime() >= this.duration()) {
+        this.pause();
+        this.currentTime(this.duration());
+//        this.onEnded();
+      }
     }
+    
   }
 );
 /* Mouse Over Video Reporter Behaviors - i.e. Controls hiding based on mouse location
