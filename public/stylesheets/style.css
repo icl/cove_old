@@ -577,7 +577,8 @@ div#tag_checkboxes label {
 	margin:10px;
 	height:60%;
 	width:40%;
-	background:#2f2f2f;
+	opacity:.6;
+	background:black;
 	
 }
 
@@ -608,15 +609,13 @@ div#tag_checkboxes label {
 	background:#EC8723;
 }
 
-.mark_button{
-	text-align:center;
-}
 
 .markstart {
+	display block;
 	margin-top:10px;
 	margin-right:10px;
-	height:30px;
-	width:90px;
+	height:40px;
+	width:50px;
 	opacity:1;
 	background:#00CC00;
 	color:white; 
@@ -624,10 +623,11 @@ div#tag_checkboxes label {
 }
 
 .markend {
+	display:block;
 	margin-top:10px;
 	margin-right:10px;
-	height:30px;
-	width:90px;
+	height:40px;
+	width:50px;
 	opacity:1;
 	background:#FF3333;
 	color:white; 
@@ -646,7 +646,6 @@ div#tag_checkboxes label {
 
 .interval_form {
 	border-left:1px solid white;
-    margin-left: 60px;
     margin-top: 10px;
     background: #383838;
    	padding:5px;
@@ -666,7 +665,7 @@ div#tag_checkboxes label {
 
 .interval_form input{
 	float:right;
-	width:210px;
+	width:270px;
     margin-right: 10px;
 }
 .interval_form input#interval_description{
@@ -679,7 +678,6 @@ div#tag_checkboxes label {
 }
 
 .cancel {
-	margin-right:10px;
 	height:30px;
 	width:90px;
 	opacity:1;
@@ -689,7 +687,7 @@ div#tag_checkboxes label {
 }
 
 .save {
-	margin-right:10px;
+	margin-left:10px;
 	height:30px;
 	width:90px;
 	opacity:1;
