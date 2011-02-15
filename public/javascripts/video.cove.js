@@ -59,7 +59,7 @@ var VideoJS = JRClass.extend({
     };
     // Override default options with global options
     if (typeof VideoJS.options == "object") { _V_.merge(this.options, VideoJS.options); }
-    // Override default & global options with options specific to this player
+    // Override deefault & global options with options specific to this player
     if (typeof setOptions == "object") { _V_.merge(this.options, setOptions); }
     // Override preload & autoplay with video attributes
     if (this.getPreloadAttribute() !== undefined) { this.options.preload = this.getPreloadAttribute(); }
@@ -823,22 +823,28 @@ VideoJS.player.extend({
 
   currentTime: function(seconds){
     if (seconds !== undefined) {
-      try { this.video.currentTime = seconds; }
+      try { this.video.currentTime = this.offset() + seconds; }
       catch(e) { this.warning(VideoJS.warnings.videoNotReady); }
       this.values.currentTime = seconds;
       return this;
     }
-    return this.video.currentTime;
+    return this.video.currentTime - this.offset();
   },
   onCurrentTimeUpdate: function(fn){
     this.currentTimeListeners.push(fn);
   },
 
-  duration: function(){
-    return this.video.duration;
+
+  // COVE play snippets
+  offset: function(){
+    return this.options.offset !== undefined ? this.options.offset : 0;
   },
   
-  // COVE snippets
+  duration: function(){
+    return this.options.duration !== undefined ? this.options.duration : this.video.duration;
+  },
+  
+  // COVE select snippets
   markSnippetStart: function() {
     this.snippetStart(this.currentTime());
   },
