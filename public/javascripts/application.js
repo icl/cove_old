@@ -4,7 +4,7 @@ $(document).ready(function(){
 			$.get(
 				"/definitions/"+$(this).text(),
 				function(data){
-					$(data).find(".definition_holder").first().appendTo(".content").hide().show("slow");
+					$(data).find(".definition_holder").first().prependTo("body").hide().show("slow");
 				}
 			);
 		})
