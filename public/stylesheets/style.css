@@ -457,6 +457,7 @@ input[type=search] {
 	background: #383838;
 	border: 1px solid gray;
 	display: block;
+	overflow: auto;
 }
 
 .definition_holder h1 {
