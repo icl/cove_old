@@ -630,18 +630,19 @@ div#tag_checkboxes label {
 
 .interval_form {
     margin-left: 50px;
-    margin-top: 15px;
+    margin-top: 5px;
     background: #383838;
     width: 400px;
 }
 
 .interval_form label{
-    margin-right: 50px;
+    margin-top: 10px;
     padding: 10px;
+    width: 100px;
+}
 
-.interval_form .interval_descript{
-    height: 300px;  
-    float: left;
+.interval_form input[text]{
+    margin-right: 10px;
 }
 
 
