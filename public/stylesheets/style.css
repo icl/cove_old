@@ -419,8 +419,7 @@ input[type=search] {
 }
 
 .interval_filters p {
-	padding-right: 20px;
-	float: left;
+
 }
 
 .date_filter {
@@ -449,6 +448,38 @@ input[type=search] {
 	font-size: 14pt;
 	color: gold;
 }
+
+
+/* styles for glossary popups */
+
+.definition_holder {
+	max-height: 400px;
+	background: #383838;
+	border: 1px solid gray;
+	display: block;
+	overflow: auto;
+}
+
+.definition_holder h1 {
+	color: #0297C1;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	margin-left: 5px;
+	
+}
+
+.definition_holder p {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	margin-left: 5px;
+	margin-right: 20px;
+	
+}
+
+
+
+
+
 
 /* Thanks to Ryan Bates: http://railscasts.com/episodes/234-simple-form */
 
