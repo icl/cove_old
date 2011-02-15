@@ -6,17 +6,13 @@ class DefinitionsController < ApplicationController
   end
 
   def show
-    @record = Phenomena.find_by_name(params[:id])
+    @record = Phenomenon.find_by_name(params[:id])
 
     render 'show'
   end
 
   def new
   end
-
-  def edit
-    @term = Definition.find(param[:term])
-    render 'edit'
-  end
+  
 end
 
