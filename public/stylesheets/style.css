@@ -598,14 +598,67 @@ div#tag_checkboxes label {
 	width:110px;
 	float:right;
 	border:transparent;
-	opacity:.5;
+	opacity:1;
 	background:#EC8723;
+	color:white;
 	}
 
 .create_interval_button:hover{
-	opacity:1;
+ 	opacity:.5;
 	background:#EC8723;
+}
+
+.mark_button{
+	text-align:center;
+}
+
+.markstart {
+	margin-top:10px;
+	margin-right:10px;
+	height:30px;
+	width:90px;
+	opacity:1;
+	background:#00CC00;
 	color:white; 
+	border:transparent;
+}
+
+.markend {
+	margin-top:10px;
+	margin-right:10px;
+	height:30px;
+	width:90px;
+	opacity:1;
+	background:#FF3333;
+	color:white; 
+	border:transparent;
+}
+
+.markstart:hover {
+	opacity:.5;
+	background:#00CC00;
+}
+
+.markend:hover{
+	opacity:.5;
+	background:#FF3333;
+}
+
+.interval_form {
+    margin-left: 50px;
+    margin-top: 5px;
+    background: #383838;
+    width: 400px;
+}
+
+.interval_form label{
+    margin-top: 10px;
+    padding: 10px;
+    width: 100px;
+}
+
+.interval_form input[text]{
+    margin-right: 10px;
 }
 
 /***********************************/
