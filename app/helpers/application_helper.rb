@@ -18,4 +18,8 @@ module ApplicationHelper
 	  new_p.merge! params_to_add
 	  new_p.to_hash
   end
+  def gravatar_url_for email 
+    hash = Digest::MD5.hexdigest(email)
+    image_src = "http://www.gravatar.com/avatar/#{hash}"
+  end
 end

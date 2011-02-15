@@ -74,3 +74,15 @@ task :sync_vid_db => [:environment, "public/videos"] do
   end
 end
 
+=begin
+#just a test method, delete later
+task :make_vid => "videos" do
+  sh "echo 'Video' >> 'videos/test.tmp'"
+  mv "videos/test.tmp","videos/test_move.tp"
+  files = Dir.glob("*.*")
+  files.each do | file |
+
+  end
+end
+=end
+
