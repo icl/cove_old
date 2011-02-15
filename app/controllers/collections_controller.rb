@@ -69,19 +69,15 @@ class CollectionsController < ApplicationController
     redirect_to(@collection, :notice => notice)
   end
   
-  def set_priority # Set individual priority
-    #
-  end
-  
   def prioritize_intervals
     @collection = Collection.find(params[:id])
-    # Save Priorities from jQuery Sortable List
+    # Save Priorities from jQuery Sortable List via POST
+    # JSON Input has a trailing comma. So JSON parser is: ActiveSupport::JSON.decode(params[:priority].gsub(/,\}/,'}'))
+    @collection.interval_priorities = ActiveSupport::JSON.decode(params[:priority].gsub(/,\}/,'}')).to_yaml
+    @collection.save
     notice = "Interval Priorities have been saved"
-    redirect_to(@collection, :notice => notice)
-  end
-  
-  def set_priorities # Set priorities from a input form list
-    #
+    #redirect_to(@collection, :notice => notice)
+    render :nothing => true
   end
   
   def add
