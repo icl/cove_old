@@ -1,19 +1,29 @@
 $(document).ready(function(){
+	var hoverstatus = [];
 	$(".define_me")
 		.live("mouseenter", function(){
-			$.get(
-				"/definitions/"+$(this).text(),
-				function(data){
-					$(data).find(".definition_holder").first().prependTo("body").hide().show("slow");
-				}
-			);
+			var name = $(this).text();
+			hoverstatus[name] = 1;
+			if($("#definition_"+name).length){
+				$("#definition_"+name).show("fast");
+			}else{
+				$.get(
+					"/definitions/"+name,
+					function(data){
+						var def = $(data).find(".definition_holder").first().prependTo("body").hide().attr("id", "definition_"+name)
+						if(hoverstatus[name]){
+							def.show("fast");
+						}
+					}
+				);
+			}
 		})
 		.live("mouseleave", function(){
-			$(".definition_holder").trigger("goaway");
+			var name = $(this).text();
+			hoverstatus[name] = 0;
+			$("#definition_"+name).trigger("goaway");
 		});
 	$(".definition_holder").live("goaway",function(){
-		$(this).hide("slow", function(){
-			$(this).remove();
-		});
+		$(this).hide("slow");
 	});
 });
