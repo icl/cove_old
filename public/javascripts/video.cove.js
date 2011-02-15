@@ -809,6 +809,7 @@ VideoJS.player.extend({
   addVideoListener: function(type, fn){ _V_.addListener(this.video, type, fn.rEvtContext(this)); },
 
   play: function(){
+    if (this.currentTime() < 0) this.currentTime(0);
     this.video.play();
     return this;
   },
