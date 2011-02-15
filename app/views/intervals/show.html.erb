@@ -9,32 +9,6 @@
 	<div class="clear"></div>
 
 
-	<div class="grid_12" id="sessTypePhrase">
-		<div>
-			<strong><%= @interval.session_type %></h1> <!--Session Type-->
-			<strong>&nbsp;</strong>
-			<strong>Phrase fill <%= @interval.phrase_name %></strong>
-			<strong>&nbsp;</strong>
-			<strong>Type fill <%= @interval.phrase_type %></strong>
-			<strong>&nbsp;</strong>
-
-			<!--button here to expand -->
-			
-			<strong>Task fill <%= @interval.task_name %></strong> </br>
-			<strong><%= @interval.start_time.strftime("%F") %></strong>
-			<strong>&nbsp;</strong>
-			<strong>Session <%= @interval.session_number %></strong>
-			<strong>&nbsp;</strong>
-			<strong>Starting at <%= @interval.start_time.strftime("%T") %></strong>
-			<strong><%= @interval.duration_string %></strong> </br>
-			<strong>File: <%= @interval.filename %></strong> <!--filename-->
-		</div>
-	</div>
-	
-
-	</div>
-	
-	
 	<%= simple_form_for @interval do |f| %>
 	<div class="grid_4" id="camera_angle_map">
 		<div class="cam_angle">
@@ -42,10 +16,35 @@
 		</div>
 	</div>
 	
+	<div class="grid_12 show_meta_data">
+		<h1><%= @interval.session_type %></h1> <!--Session Type-->
+		<h1><%= @interval.phrase_name %></h1>
+		<h1><%= @interval.phrase_type %></h1> </br>
 
-<br style="clear:both"/>
+		<!--button here to expand? -->
+		
+		<h2>Session <%= @interval.session_number %></h2> 
+		<h2><%= @interval.start_time.strftime("%F") %></h2>
+		<h2><%= @interval.task_name %></h2>
+		<h2><%= @interval.start_time.strftime("%T") %></h2>
+		<h2><%= @interval.duration_string %></h2> </br>
+		<h2><%= @interval.filename %></h2> <!--filename-->
+	</div>
+
+	<br style="clear:both"/>
 	<% end %>
 	<div class="clear"></div>
+	
+	
+	<div class="grid_16 space">
+	</div>
+	<div class="clear"></div>
+	
+	<div class="grid_16 search_add_show_tags" align=RIGHT>
+		<button type="button" id="show_tags_add">Add</button>
+		<input type"text" value="Search/Add tag"></input>
+	</div>
+	
 	
 	<div class="grid_16">
 		<div id="tags_alpha" align=CENTER>
@@ -74,8 +73,9 @@
 		<a href="alpha">W</a><span> .</span>
 		<a href="alpha">X</a><span> .</span>
 		<a href="alpha">Y</a><span> .</span>
-		<a href="alpha">Z</a><span> .</span>
+		<a href="alpha">Z</a>
 		</div>
+
 
 	</div>
 	<div class="clear"></div>
@@ -114,9 +114,7 @@
 	<div class="clear"></div>
 
 
-	<div class="grid_16 space">
-	</div>
-	<div class="clear"></div>
+
 
 
 </div>
