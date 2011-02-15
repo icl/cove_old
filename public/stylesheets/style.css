@@ -645,21 +645,69 @@ div#tag_checkboxes label {
 }
 
 .interval_form {
-    margin-left: 50px;
-    margin-top: 5px;
+	border-left:1px solid white;
+    margin-left: 60px;
+    margin-top: 10px;
     background: #383838;
-    width: 400px;
+   	padding:5px;
+   	height:125px;
+}
+
+.interval_form div{
+	text-align:right;
+	margin:10px;
 }
 
 .interval_form label{
+	text-align:right;
     margin-top: 10px;
-    padding: 10px;
-    width: 100px;
+    padding: 10px;	
 }
 
-.interval_form input[text]{
+.interval_form input{
+	float:right;
+	width:210px;
     margin-right: 10px;
 }
+.interval_form input#interval_description{
+	height:70px;
+}
+
+.save_button{
+	margin-top:10px;
+	text-align:center;
+}
+
+.cancel {
+	margin-right:10px;
+	height:30px;
+	width:90px;
+	opacity:1;
+	background:#0297c1;
+	color:white; 
+	border:transparent;
+}
+
+.save {
+	margin-right:10px;
+	height:30px;
+	width:90px;
+	opacity:1;
+	background:#0297c1;
+	color:white; 
+	border:transparent;
+}
+
+.cancel:hover {
+	opacity:.5;
+	background:#0297c1;
+}
+
+.save:hover{
+	opacity:.5;
+	background:#0297c1;
+}
+
 
 /***********************************/
 /* Style adjustments for intervals.index.html */
