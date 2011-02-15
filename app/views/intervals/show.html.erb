@@ -9,30 +9,95 @@
 	<div class="clear"></div>
 
 
-	<div class="grid_5" id="sessTypePhrase">
+	<div class="grid_12" id="sessTypePhrase">
 		<div>
-			<h1><%= @interval.session_type %></h1> <!--Session Type-->
-			<strong>Phrase: <%= @interval.phrase_name %></strong> <br/>
-			<strong>Type: <%= @interval.phrase_type %></strong>
+			<strong><%= @interval.session_type %></h1> <!--Session Type-->
+			<strong>&nbsp;</strong>
+			<strong>Phrase fill <%= @interval.phrase_name %></strong>
+			<strong>&nbsp;</strong>
+			<strong>Type fill <%= @interval.phrase_type %></strong>
+			<strong>&nbsp;</strong>
+
+			<!--button here to expand -->
+			
+			<strong>Task fill <%= @interval.task_name %></strong> </br>
+			<strong><%= @interval.start_time.strftime("%F") %></strong>
+			<strong>&nbsp;</strong>
+			<strong>Session <%= @interval.session_number %></strong>
+			<strong>&nbsp;</strong>
+			<strong>Starting at <%= @interval.start_time.strftime("%T") %></strong>
+			<strong><%= @interval.duration_string %></strong> </br>
+			<strong>File: <%= @interval.filename %></strong> <!--filename-->
 		</div>
 	</div>
 	
+
+	</div>
+	
+	
 	<%= simple_form_for @interval do |f| %>
-	<div class="grid_6" id="camera_angle_map">
+	<div class="grid_4" id="camera_angle_map">
 		<div class="cam_angle">
 			<%= image_for_camera_angle @interval.camera_angle %>
 		</div>
 	</div>
 	
-	<div class="grid_5 more_info">
-		<div class="info">
-			<h3>Session <%= @interval.session_number %></h3>
-			<h3><%= @interval.start_time.strftime("%F") %></h3> <!-- Date-->
-			<h4>Length: <%= @interval.duration_string %></h4>
-		</div>
-	</div>
+
 <br style="clear:both"/>
 	<% end %>
+	<div class="clear"></div>
+	
+	<div class="grid_16">
+		<div id="tags_alpha" align=CENTER>
+		<a href="alpha">A</a><span> .</span>
+		<a href="alpha">B</a><span> .</span>
+		<a href="alpha">C</a><span> .</span>
+		<a href="alpha">D</a><span> .</span>
+		<a href="alpha">E</a><span> .</span>
+		<a href="alpha">F</a><span> .</span>
+		<a href="alpha">G</a><span> .</span>
+		<a href="alpha">H</a><span> .</span>
+		<a href="alpha">I</a><span> .</span>
+		<a href="alpha">J</a><span> .</span>
+		<a href="alpha">K</a><span> .</span>
+		<a href="alpha">L</a><span> .</span>
+		<a href="alpha">M</a><span> .</span>
+		<a href="alpha">N</a><span> .</span>
+		<a href="alpha">O</a><span> .</span>
+		<a href="alpha">P</a><span> .</span>
+		<a href="alpha">Q</a><span> .</span>
+		<a href="alpha">R</a><span> .</span>
+		<a href="alpha">S</a><span> .</span>
+		<a href="alpha">T</a><span> .</span>
+		<a href="alpha">U</a><span> .</span>
+		<a href="alpha">V</a><span> .</span>
+		<a href="alpha">W</a><span> .</span>
+		<a href="alpha">X</a><span> .</span>
+		<a href="alpha">Y</a><span> .</span>
+		<a href="alpha">Z</a><span> .</span>
+		</div>
+
+	</div>
+	<div class="clear"></div>
+	
+	<div class="grid_16" id="tags">
+		<button type="button" id="selected">Marking</button>
+		<button type="button" id="selected">Sonification</button>
+		<button type="button" id="pendingthis">Pending Example</button>
+		<button type="button" id="selected">Visualization</button>
+
+		<button type="button">Costumes</button>
+		<button type="button">Distributed Memory</button>
+		<button type="button">Imagery</button>
+		<button type="button">Props</button>
+		<button type="button">Riffing</button>
+		<button type="button">Sketching</button>
+		<button type="button">Structuring</button>
+		<button type="button" id="pendingother">Pending Example2</button>
+
+		
+		
+	</div>
 	<div class="clear"></div>
 
 
@@ -49,23 +114,10 @@
 	<div class="clear"></div>
 
 
-	<div class="grid_16 time">
-		<div class="time">
-			<h4><%= @interval.start_time.strftime("%T") %> ------------------------------------------------------------------------------------------</h4>
-		</div>
-	</div>
-	<div class="clear"></div>
-	
-
 	<div class="grid_16 space">
 	</div>
 	<div class="clear"></div>
-	
 
-	<div class="grid_16 filename">
-	<h3>File: <%= @interval.filename %></h3> <!--filename-->
-	<div class="clear"></div>
-	
 
 </div>
 

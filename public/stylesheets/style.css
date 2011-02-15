@@ -512,7 +512,7 @@ input[type=search] {
 }
 
 .interval_show h1 {
-	font-size: 40px;
+	font-size: 20px;
 }
 
 .interval_show strong {
@@ -520,33 +520,54 @@ input[type=search] {
 }
 
 div#sessTypePhrase div {
-	border-left: solid 1px #e5e5e6;
+	/*border-bottom: solid 1px #e5e5e6; */
 	padding: 5px;
 	height: 90px;
 }
 
-.info {
-	border-right: solid 1px #e5e5e6;
-	padding: 5px;
-	height: 90px;
+div#tags_alpha {
+	position: right;
+}
+	
+
+div#tags button#selected {
+	background: #00CCFF;
+	border: 3px groove #00FFFF;
+	padding: 2px;
+	width: 140px;
+	height: 25px;
+	margin: 6px;
+	font-style: normal;
 }
 
-.info h3 {
-	text-align: right;
-	margin-top: 5px;
-	font-size: 20px;
+div#tags button#pendingthis {
+	background: #00CCFF;
+	border: 3px dashed #00FFFF;
+	padding: 2px;
+	width: 140px;
+	height: 25px;
+	margin: 6px;
+	font-style: normal;
 }
 
-.info h4 {
-	text-align: right;
-	margin-top: 5px;
-	font-size: 14px;
+div#tags button {
+	background: #999999;
+	border: 3px double #888888;
+	padding: 2px;
+	width: 140px;
+	height: 25px;
+	margin: 6px;
+	font-style: italic;
 }
 
-.time {
-	padding: 5px;
-	height: 90px;
-	text-align: center;
+div#tags button#pendingother {
+	background: #999999;
+	border: 3px dashed #CCCCCC;
+	padding: 2px;
+	width: 140px;
+	height: 25px;
+	margin: 6px;
+	font-style: italics;
 }
 
 .space {
@@ -569,7 +590,8 @@ div#video div p {
 .filename {
 	margin-bottom: 20px;
 }
-
+/* end style adjustments for show.html */
+/***************************************/
 
 /***********************************/
 /* Style adjustments for intervals.index.html */
@@ -660,7 +682,7 @@ div#video div p {
 
 
 
-/* end style adjustments for show.html */
+/* end style adjustments for intervals.index.html */
 /***************************************/
 
 
