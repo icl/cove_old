@@ -11,10 +11,6 @@ class CreateCollections < ActiveRecord::Migration
       t.references :interval
       t.references :collection
     end
-    create_table :collections_tags,:id => false do |t|
-      t.references :interval
-      t.references :tag
-    end
     create_table :collections_projects,:id => false do |t|
       t.references :collection
       t.references :project
@@ -24,6 +20,5 @@ class CreateCollections < ActiveRecord::Migration
   def self.down
     drop_table :collections
     drop_table :collections_intervals
-    drop_table :collections_tags
   end
 end
