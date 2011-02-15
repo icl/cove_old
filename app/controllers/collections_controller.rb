@@ -52,8 +52,10 @@ class CollectionsController < ApplicationController
     else
       if params[:direction] == "up"
         new_priority = priority - 1
-      else
+      elsif params[:direction] == "down"
         new_priority = priority + 1
+      else
+        new_priority = 0
       end
       if new_priority == 0 || new_priority > priority_list.count
         notice = "Error: Invalid priority"
@@ -66,7 +68,11 @@ class CollectionsController < ApplicationController
         notice = "Priority of interval was successfully edited"
       end
     end
-    redirect_to(@collection, :notice => notice)
+    if request.xhr?
+      render :nothing => true
+    else
+      redirect_to(@collection, :notice => notice)
+    end
   end
   
   def prioritize_intervals
@@ -99,7 +105,11 @@ class CollectionsController < ApplicationController
     else
       notice = "Interval was not added to collection: Permission Denied."
     end
-    redirect_to(@collection, :notice => notice)
+    if request.xhr?
+      render :nothing => true
+    else
+      redirect_to(@collection, :notice => notice)
+    end
   end
   
   def remove
@@ -126,7 +136,11 @@ class CollectionsController < ApplicationController
     else
       notice = "Interval was not removed from collection: Permission Denied."
     end
-    redirect_to(@collection, :notice => notice)
+    if request.xhr?
+      render :nothing => true
+    else
+      redirect_to(@collection, :notice => notice)
+    end
   end  
   
   def destroy

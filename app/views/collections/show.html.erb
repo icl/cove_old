@@ -1,11 +1,11 @@
-<div class="collection_container grid_16">
+<div class="collection_container grid_16" id = "<%= @collection.id %>">
 	<div class="grid_16" style="border: 5px; border-style: solid; border-color:silver;"><%= @collection.name %></div>
 	<div class="grid_16"><%= @collection.description %></div>
 	<% if !@collection.intervals.blank? %>
-	<ul class="sortable">
+	<ul class="sortable_collection">
 	<% YAML.load(@collection.interval_priorities).keys.sort!{|a,b| a.to_i <=> b.to_i}.each do |priority| %><% interval = Interval.find(YAML.load(@collection.interval_priorities)[priority.to_s]) %>
-		<li id="<%= interval.id %>" class="grid_16 ui-state-default" style="height: 50px; border: 1px; border-style: solid; border-color:silver;">
-			<div class="grid_1"><br /><%= link_to "∧", prioritize_interval_path(:id => @collection.id, :interval => interval.id, :direction => 'up'), :class => "priority_link", :direction => "up" %>|<%= link_to "∨", prioritize_interval_path(:id => @collection.id, :interval => interval.id, :direction => 'down'), :class => "priority_link", :direction => "down" %></div>
+		<li id="<%= interval.id %>" class="grid_16 ui-state-default interval_row" style="height: 50px; border: 1px; border-style: solid; border-color:silver;">
+			<div class="grid_1"><%= link_to "∧", prioritize_interval_path(:id => @collection.id, :interval => interval.id, :direction => 'up'), :class => "priority_link", :direction => "up", :id => interval.id %><br />--<br /><%= link_to "∨", prioritize_interval_path(:id => @collection.id, :interval => interval.id, :direction => 'down'), :class => "priority_link", :direction => "down" %></div>
 			<div class="grid_3">Priority: <span class="priority"><%= priority %></span><br />Video_id: <%= interval.id%></div>
 			<div class="grid_3">Session <%= interval.session_number.to_s %></div>
 			<div class="grid_3">Camera Angle: <br /> <%= interval.camera_angle %></div>
@@ -16,43 +16,3 @@
 	</ul>
 	<% end %>
 </div>
-
-<script>
-jQuery(function() {
-	jQuery(".sortable").sortable({
-		delay: 500,
-		stop: function() {
-			var i = 1;
-			var priority = "priority={";
-			$.each($(".sortable li"),function() {
-				$(this).find(".priority").text(i);
-				i++;
-				priority += "\'" + $(this).find(".priority").text() + "\': \'" + $(this).attr("id") + "\',";
-			});
-			priority += "}"
-			$.ajax({
-				type: 'POST',
-				url: '/collections/<%= @collection.id %>/prioritize',
-				beforeSend: function(xhr) {
-					xhr.setRequestHeader('X-CSRF-Token', $('meta[name=csrf-token]').attr('content'));
-				},
-				data: priority
-			});
-		}
-	});
-	jQuery(".sortable").disableSelection();
-});
-jQuery(".priority_link").live('click', function(event) {
-	var target = jQuery(event.target);
-	var direction = target.attr("direction")
-	
-	if (direction == "up") {
-		
-	} else if (direction == "down") {
-	
-	} else {
-		// failure
-		break;
-	}
-});
-</script>
