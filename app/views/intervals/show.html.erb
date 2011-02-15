@@ -50,7 +50,6 @@
               <source src="/videos/<%= @interval.filename %>" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"' />
             </video>
           </div>
-          <button class="markstart">Mark start</button><button class="markend">Mark end</button>
           <!-- End VideoJS -->
 	    </div>
 		<div class="grid_4 video_snippit">
@@ -60,22 +59,47 @@
 					3:14-4:34
 				</div>
 			</div>
+
 			<%= form_for([@interval, @interval.snippets.build]) do |f| %>
 			    <%= f.hidden_field(:offset) %>
 			    <%= f.hidden_field(:duration) %>
 			    <%= f.submit "Create Snippet", :class => "create_interval_button" %>
 			<% end %>
+		
 		</div>
-			
+		
 	<div class="clear"></div>
+	<div class="grid_4">&nbsp</div>
+	<div class="grid_1 mark_button">
+		<!--<button class="markstart">Mark start</button>
+        <button class="markend">Mark end</button>-->
+        <button class="markstart">Start</button>
+        <button class="markend">End</button>
+     </div>
+    
+    <div class="grid_7 interval_form">
+        <div><label>Title: </label><input type="text" id="interval_title"/></input></div>
+        <div><label>Description: </label><input type="text" id="interval_description"/></div>
+     </div>
+
+	
+	<div class="grid_3">&nbsp</div>
 
 
-	<div class="grid_16 time">
-		<div class="time">
-			<h4><%= @interval.start_time.strftime("%T") %> ------------------------------------------------------------------------------------------</h4>
-		</div>
+	<div class="clear"></div>
+	<div class="grid_8">&nbsp</div>
+	<div class="grid_4 save_button">
+		<button class="cancel">Cancel</button>
+        <button class="save">Save</button>
 	</div>
-	<div class="clear"></div>
+	<div class="grid_4">&nbsp</div>
+
+	<!--<div class="grid_16 time">
+		<div class="time">
+			<h4><%= @interval.start_time.strftime("%T") %> ------------------------------------------------------------------------------------------
+		</div
+	</div
+	<div class="clear"div -->
 	
 
 	<div class="grid_16 space">
