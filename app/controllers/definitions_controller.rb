@@ -1,2 +1,5 @@
 class DefinitionsController < ApplicationController
 
+
+end
+
