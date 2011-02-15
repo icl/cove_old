@@ -577,7 +577,8 @@ div#tag_checkboxes label {
 	margin:10px;
 	height:60%;
 	width:40%;
-	background:#2f2f2f;
+	opacity:.6;
+	background:black;
 	
 }
 
@@ -597,14 +598,90 @@ div#tag_checkboxes label {
 	height:30px;
 	width:110px;
 	border:transparent;
-	opacity:.5;
+	opacity:1;
 	background:#EC8723;
+	color:white;
 	}
 
 .create_interval_button:hover{
-	opacity:1;
+ 	opacity:.5;
 	background:#EC8723;
+}
+
+.markbutton {
+    float: left;
+    display:block;
+}
+
+.markstart {
+    margin-top:10px;
+	height:40px;
+	width:50px;
+	opacity:1;
+	background:#00CC00;
 	color:white; 
+	border:transparent;
+}
+
+.markend {
+	margin-top:10px;
+	height:40px;
+	width:50px;
+	opacity:1;
+	background:#FF3333;
+	color:white; 
+	border:transparent;
+}
+
+.markstart:hover {
+	opacity:.5;
+	background:#00CC00;
+}
+
+.markend:hover{
+	opacity:.5;
+	background:#FF3333;
+}
+
+.interval_form {
+	border-left:1px solid white;
+    margin-top: 10px;
+    background: #383838;
+   	height:125px;
+}
+
+.interval_form div{
+	text-align:right;
+	margin:10px;
+}
+
+.interval_form label{
+	text-align:right;
+    margin-top: 10px;
+    padding: 10px;	
+}
+
+.interval_form input{
+	float:right;
+	width:270px;
+    margin-right: 10px;
+}
+.interval_form input#interval_description{
+	height:70px;
+}
+
+.save_button{
+	margin-top:10px;
+	text-align:center;
+}
+
+.cancel {
+	height:30px;
+	width:90px;
+	opacity:1;
+	background:#0297c1;
+	color:white; 
+	border:transparent;
 }
 
 .start_interval_button{
@@ -615,37 +692,25 @@ div#tag_checkboxes label {
     background: #FF0000;
 }
 
-.markstart{
-     background: #4CC417;
-     border:transparent;
-     margin: 5px;
+.save {
+	margin-left:10px;
+	height:30px;
+	width:90px;
+	opacity:1;
+	background:#0297c1;
+	color:white; 
+	border:transparent;
 }
 
-.markend{
-    background: #FF0000;
-    border:transparent;
-    margin: 5px;
-    float: right;
+.cancel:hover {
+	opacity:.5;
+	background:#0297c1;
 }
 
-.interval_form {
-    margin-left: 50px;
-    margin-top: 5px;
-    background: #383838;
-    width: 400px;
+.save:hover{
+	opacity:.5;
+	background:#0297c1;
 }
-
-.interval_form label{
-    margin-top: 10px;
-    padding: 10px;
-    width: 100px;
-}
-
-.interval_form input[text]{
-    margin-right: 10px;
-}
-
-
 
 /***********************************/
 /* Style adjustments for intervals.index.html */
