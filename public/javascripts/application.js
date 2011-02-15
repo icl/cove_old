@@ -28,7 +28,7 @@ jQuery(".priority_link").live('click', function(event) {
 	var target_row = target.parents('li');
 	var collection = target.parents('.collection_container').attr('id')
 
-	if( !((target_row.attr('id') == '1' && direction == "up") || (target_row.attr('id') == $('.priority_link').last().parents('li').attr('id') && direction == "down")) ) {
+	if( !((target_row.attr('id') == $('.priority_link').first().parents('li').attr('id') && direction == "up") || (target_row.attr('id') == $('.priority_link').last().parents('li').attr('id') && direction == "down")) ) {
 
 		$.ajax({
 			type: 'POST',
@@ -40,18 +40,26 @@ jQuery(".priority_link").live('click', function(event) {
 				if (direction == "up") {
 
 					var updata = target_row.prev('li');
+					var up_priority = updata.find('.priority').text();
 					var data = target_row;
+					var priority = data.find('.priority').text();
 
 					updata.replaceWith(data);
 					data.after(updata);
+					data.find('.priority').text(up_priority);
+					updata.find('.priority').text(priority);
 
 				} else if (direction == "down") {
 
 					var downdata = target_row.next('li');
+					var down_priority = downdata.find('.priority').text();
 					var data = target_row;
+					var priority = data.find('.priority').text();
 
 					target_row.replaceWith(downdata);
 					downdata.after(data);
+					data.find('.priority').text(down_priority);
+					downdata.find('.priority').text(priority);
 
 				} else {
 					// failure does nothing
