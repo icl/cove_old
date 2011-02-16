@@ -647,31 +647,27 @@ div#tag_checkboxes label {
 	border-left:1px solid white;
     margin-top: 10px;
     background: #383838;
-   	height:125px;
+   	height:auto;
+    padding: 10px;
 }
 
-.interval_form div{
-	text-align:right;
-	margin:10px;
+.interval_form legend{
+    color: #EC8723;
+    font-size: large;
 }
 
-.interval_form label{
-	text-align:right;
-    margin-top: 10px;
-    padding: 10px;	
-}
 
 .interval_form input{
-	float:right;
-	width:270px;
-    margin-right: 10px;
+	width:380px;
+    margin-bottom: 10px;
 }
-.interval_form input#interval_description{
-	height:70px;
+
+.interval_form textarea{
+    width: 380px;
+    margin-top:0px;
 }
 
 .save_button{
-	margin-top:10px;
 	text-align:center;
 }
 
@@ -684,16 +680,8 @@ div#tag_checkboxes label {
 	border:transparent;
 }
 
-.start_interval_button{
-    background: #4CC417;
-}
-
-.end_interval_button{
-    background: #FF0000;
-}
-
 .save {
-	margin-left:10px;
+	margin:10px;
 	height:30px;
 	width:90px;
 	opacity:1;

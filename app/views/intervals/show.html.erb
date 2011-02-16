@@ -41,8 +41,7 @@
 	<div class="clear"></div>
 	
 
-		<div class="grid_4">&nbsp;</div>
-		<div class="grid_5 video">
+		<div class="grid_9 video">
 		  <!-- Begin VideoJS -->
 		  <div class="vim-css video-js-box">
 		    <!-- Using the Video for Everybody Embed Code http://camendesign.com/code/video_for_everybody -->
@@ -61,30 +60,32 @@
 				</div>
 			</div>
 
-			<input type="button" value="Create Interval" class="create_interval_button"></input>
-
+			
+			<%= form_for([@interval, @interval.snippets.build]) do |f| %>
+			    <%= f.hidden_field(:offset) %>
+			    <%= f.hidden_field(:duration) %>
+			    <%= f.submit "Create Snippet", :class => "create_interval_button" %>
+			<% end %>
 		</div>
 		
 	<div class="clear"></div>
-	<div class="grid_4">&nbsp</div>
 	<div class="grid_1 mark_button">
 		<!--<button class="markstart">Mark start</button>
         <button class="markend">Mark end</button>-->
-        <button class="markstart">Start</button>
-        <button class="markend">End</button>
+        <button class="markstart">Start Mark</button>
+        <button class="markend">End Mark</button>
      </div>
     
     <div class="grid_7 interval_form">
-        <div><label>Title: </label><input type="text" id="interval_title"/></input></div>
-        <div><label>Description: </label><input type="text" id="interval_description"/></div>
+    	<fieldset>
+    	<legend>Create Snippet</legend>
+    	<p>Title:</p><input type="text" id="interval_title"></input><br/>
+        <p>Description:</p><textarea cols=37 rows=3 id="interval_description"></textarea>
+		</fieldset>     
      </div>
 
-	
-	<div class="grid_3">&nbsp</div>
-
-
 	<div class="clear"></div>
-	<div class="grid_8">&nbsp</div>
+	<div class="grid_4">&nbsp</div>
 	<div class="grid_4 save_button">
 		<button class="cancel">Cancel</button>
         <button class="save">Save</button>
