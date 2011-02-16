@@ -597,7 +597,6 @@ div#tag_checkboxes label {
 	float:right;
 	height:30px;
 	width:110px;
-	float:right;
 	border:transparent;
 	opacity:1;
 	background:#EC8723;
@@ -609,11 +608,15 @@ div#tag_checkboxes label {
 	background:#EC8723;
 }
 
+.mark_button {
+    float: left;
+    display:block;
+    text-align: center;
+}
 
 .markstart {
-	display block;
-	margin-top:10px;
-	margin-right:10px;
+    margin-top:10px;
+    margin-left: 20px;
 	height:40px;
 	width:50px;
 	opacity:1;
@@ -622,10 +625,15 @@ div#tag_checkboxes label {
 	border:transparent;
 }
 
+.mark_button input{
+    width: 100px;
+    position: relative;
+    
+}
+
 .markend {
-	display:block;
 	margin-top:10px;
-	margin-right:10px;
+    margin-left: 20px;
 	height:40px;
 	width:50px;
 	opacity:1;
@@ -648,32 +656,38 @@ div#tag_checkboxes label {
 	border-left:1px solid white;
     margin-top: 10px;
     background: #383838;
-   	padding:5px;
-   	height:125px;
+   	height:auto;
+    padding: 10px;
+    display: block;
 }
 
-.interval_form div{
-	text-align:right;
-	margin:10px;
+.interval_form legend{
+    color: #EC8723;
+    font-size: large;
+    text-align: left;
+    margin-left: 38px;
 }
 
-.interval_form label{
-	text-align:right;
+.interval_form fieldset{
+    text-align: center;
+}
+
+.interval_form p{
+    text-align: left;
+    margin-left: 38px;
     margin-top: 10px;
-    padding: 10px;	
 }
 
 .interval_form input{
-	float:right;
-	width:270px;
-    margin-right: 10px;
+	width:380px;
 }
-.interval_form input#interval_description{
-	height:70px;
+
+.interval_form textarea{
+    width: 380px;
+    margin-top:0px;
 }
 
 .save_button{
-	margin-top:10px;
 	text-align:center;
 }
 
@@ -687,7 +701,7 @@ div#tag_checkboxes label {
 }
 
 .save {
-	margin-left:10px;
+	margin:10px;
 	height:30px;
 	width:90px;
 	opacity:1;
@@ -705,7 +719,6 @@ div#tag_checkboxes label {
 	opacity:.5;
 	background:#0297c1;
 }
-
 
 /***********************************/
 /* Style adjustments for intervals.index.html */
