@@ -1,7 +1,9 @@
 			<%= @interval.snippets.each do |snippet| %>
 			<div class="interval_time_background">
 				<div class="interval_time">
-					<%= snippet.offset %>-<%= snippet.offset + snippet.duration %>
+				    <%= link_to interval_snippet_path(@interval, snippet) do %>
+    					<%= snippet.offset.round(2) %>-<%= (snippet.offset + snippet.duration).round(2) %>
+    			    <% end %>
 				</div>
 			</div>
 			<% end %>
