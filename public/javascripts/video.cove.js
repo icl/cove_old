@@ -859,6 +859,9 @@ VideoJS.player.extend({
     }
     return this.values.snippetEnd;
   },
+  snippetDuration: function() {
+    return this.snippetEnd() - this.snippetStart();
+  },
 
   buffered: function(){
     // Storing values allows them be overridden by setBufferedFromProgress
