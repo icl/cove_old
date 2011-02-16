@@ -1,0 +1,7 @@
+			<%= @interval.snippets.each do |snippet| %>
+			<div class="interval_time_background">
+				<div class="interval_time">
+					<%= snippet.offset %>-<%= snippet.offset + snippet.duration %>
+				</div>
+			</div>
+			<% end %>

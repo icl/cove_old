@@ -54,11 +54,7 @@
 	    </div>
 		<div class="grid_4 video_snippit">
 	
-			<div class="interval_time_background">
-				<div class="interval_time">
-					3:14-4:34
-				</div>
-			</div>
+			<%= render 'snippets' %>
 
 			<%= form_for([@interval, @interval.snippets.build]) do |f| %>
 			    <%= f.hidden_field(:offset) %>
