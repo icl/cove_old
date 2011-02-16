@@ -69,7 +69,7 @@ class CollectionsController < ApplicationController
       end
     end
     if request.xhr?
-      render :nothing => true
+      render :text => (notice =~ /error/i) ? "failed" : "success"
     else
       redirect_to(@collection, :notice => notice)
     end
@@ -106,7 +106,7 @@ class CollectionsController < ApplicationController
       notice = "Interval was not added to collection: Permission Denied."
     end
     if request.xhr?
-      render :nothing => true
+      render :text => (notice =~ /error/i) ? "failed" : "success"
     else
       redirect_to(@collection, :notice => notice)
     end
@@ -137,7 +137,7 @@ class CollectionsController < ApplicationController
       notice = "Interval was not removed from collection: Permission Denied."
     end
     if request.xhr?
-      render :nothing => true
+      render :text => (notice =~ /error/i) ? "failed" : "success"
     else
       redirect_to(@collection, :notice => notice)
     end
