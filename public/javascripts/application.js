@@ -27,6 +27,7 @@ $(document).ready(function(){
 		.live("mousemove", function(e){
 			var name = $(this).text();
 			$("#definition_"+name)
+				.css("position", "absolute")
 				.css("top", (e.pageY + offY) + "px")
 				.css("left", (e.pageX + offX) + "px");
 		})
