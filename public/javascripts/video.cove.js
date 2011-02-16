@@ -864,6 +864,9 @@ VideoJS.player.extend({
       this.values.snippetEnd = seconds;
       this.updateSnippetSelectionBars();
     }
+    if (this.values.snippetEnd == undefined || this.values.snippetEnd < this.snippetStart()) {
+      this.values.snippetEnd = this.duration();
+    }
     return this.values.snippetEnd;
   },
   snippetDuration: function() {
@@ -1273,8 +1276,10 @@ VideoJS.player.newBehavior("snippetSelectionBar", function(element){
     updateSnippetSelectionBars: function(newTime){
       var currentTime = (newTime !== undefined) ? newTime : this.currentTime();
       var left = this.snippetStart() / this.duration();
-      var validEnd = this.snippetEnd() !== undefined && this.snippetEnd() > this.snippetStart();
-      var right = 1 - (validEnd ? this.snippetEnd() : currentTime) / this.duration();        
+      // This would make snippet selection end track play
+      //var validEnd = this.snippetEnd() !== undefined && this.snippetEnd() > this.snippetStart();
+      //var right = 1 - (validEnd ? this.snippetEnd() : currentTime) / this.duration();        
+      var right = 1 - this.snippetEnd() / this.duration();
       
       if (isNaN(left)) return;
       this.each(this.snippetSelectionBars, function(bar){
