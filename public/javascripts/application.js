@@ -1,6 +1,7 @@
 VideoJS.DOMReady(function(){
       
   var myPlayer = VideoJS.setup('cove-video-player',{
+//    offset: 30,
     controlsHiding: false
   });
 
