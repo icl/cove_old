@@ -19,6 +19,7 @@ describe AnnotationsController do
     end
   end
 
+
   def perform_post
     post :create, :format => :json, :interval_id => @taging.interval_id, 
       :type => :tag, :name => "Test"
