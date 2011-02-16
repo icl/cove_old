@@ -7,18 +7,18 @@ VideoJS.DOMReady(function(){
 
   $("button.markstart").click(function(){
     myPlayer.markSnippetStart();
-    $('#snippet_offset').value = myPlayer.snippetStart();
+    return false;
   });
   $("button.markend").click(function(){
     myPlayer.markSnippetEnd();
-    $('#snippet_duration').value = myPlayer.snippetDuration();
+    return false;
   });
  
   $('#new_snippet').submit(function(){
-    $('#snippet_offset').value = myPlayer.snippetStart();
-    $('#snippet_duration').value = myPlayer.snippetDuration();
-    $('#snippet_title').value = $('#snippet_title_textbox').value;
-    $('#snippet_description').value = $('#snippet_description_textbox').value;
+    $('#snippet_offset').val( myPlayer.snippetStart() );
+    $('#snippet_duration').val( myPlayer.snippetDuration() );
+
+    return true;
   });  
 });
 

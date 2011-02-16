@@ -61,30 +61,36 @@
 		</div>
 		
 	<div class="clear"></div>
-	<div class="grid_8 mark_button">
-		<!--<button class="markstart">Mark start</button>
-        <button class="markend">Mark end</button>-->
-		<button class="markstart">Start Mark</button>
-    	<input type="text" id="start_mark" value=""></input>
-    	<button class="markend">End Mark</button>
-    	<input type="text" id="end_mark"></input>
-     </div>
-    <div class="clear"></div>
-    <div class="grid_8 interval_form">
-    	<fieldset>
-    	<legend>Create Snippet</legend>
-    	<p>Title:</p><input type="text" id="interval_title"></input><br/>
-        <p>Description:</p><textarea cols=37 rows=3 id="interval_description"></textarea>
-		</fieldset>     
-     </div>
 
-	<div class="clear"></div>
-	<div class="grid_4">&nbsp</div>
-	<div class="grid_4 save_button">
-		<button class="cancel">Cancel</button>
-        <button class="save">Save</button>
-	</div>
-	<div class="grid_4">&nbsp</div>
+    <%= form_for([@interval, @interval.snippets.build]) do |f| %>
+	    <div class="grid_8 mark_button">
+		    <button class="markstart">Start Mark</button>
+        	<input type="text" id="start_mark"></input>
+        	<button class="markend">End Mark</button>
+        	<input type="text" id="end_mark"></input>
+         </div>
+        <div class="clear"></div>
+        <div class="grid_8 interval_form">
+        	<fieldset>
+            	<legend>Create Snippet</legend>
+            	<p>Title:</p>
+            	<%= f.text_field :title %><br/>
+                <p>Description:</p>
+                <%= f.text_field :description %>
+		    </fieldset>     
+         </div>
+
+	    <div class="clear"></div>
+	    <div class="grid_4">&nbsp</div>
+	    <div class="grid_4 save_button">
+		    <button class="cancel">Cancel</button>
+            <%= f.hidden_field :offset %>
+            <%= f.hidden_field :duration %>
+		    <%= f.submit "Save", :class => "save" %>
+	    </div>
+	<% end %>
+
+    <div class="grid_4">&nbsp</div>
 
 	<!--<div class="grid_16 time">
 		<div class="time">
