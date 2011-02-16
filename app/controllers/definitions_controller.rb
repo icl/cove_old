@@ -4,9 +4,11 @@ class DefinitionsController < ApplicationController
 
   def show
     @term = Phenomenon.find_by_name(params[:id])
-    @name = @term.id
-    @definition = @term.description
-
+    if @term.nil?
+    else
+	    @name = @term.id
+	    @definition = @term.description
+    end
     render 'show'
   end
 end

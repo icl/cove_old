@@ -4,7 +4,10 @@ Feature: Check Glossary
 	I want to submit an ajax request and get the definition of a term, if one exists
 
 Background:
-	Given a phenomenon exists with a name of "riffing"
+	Given the following phenomenon exists:
+		|	name	|	description		|
+		|	riffing	|	Blah de blah riffing	|
+	And I am a regular user who is logged in
 
 Scenario: Request existent definition
 	When I go to the definition page for "riffing"

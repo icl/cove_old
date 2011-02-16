@@ -19,6 +19,9 @@ module NavigationHelpers
       
     when /the invitations\s?page/
       url_for(:controller => "admin/users", :action => "new")
+
+    when /the definition\s?page for "(.*)"/
+      url_for(:controller => "definitions", :action => "show", :id => $1)
     
     when /the user administration page/
       '/admin/users'
