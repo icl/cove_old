@@ -504,6 +504,7 @@ input[type=search] {
 	width:500px;
 	float:left;
 }
+
 /***********************************/
 /* Style adjustments for show.html */
 
@@ -511,70 +512,64 @@ input[type=search] {
 	margin-bottom: 10px;
 }
 
-.interval_show h1 {
-	font-size: 20px;
+.video_show_title {
+	display: inline;
+	color: #0297C1;
+	font-size: 16pt;
+	margin-bottom: 10px;
 }
-
-.interval_show strong {
-	font-size: 18px;
-}
-
-.sessTypePhrase div {
-	/*border-bottom: solid 1px #e5e5e6; */
-	padding: 5px;
-	height: 90px;
-}
+	
 
 .show_meta_data h1 {
 	margin-right: 50px;
-	display: inline;
+	display: block;
 }
 
 .show_meta_data h2 {
 	margin-right: 40px;
-	display: inline;
+	display: block;
 }
 
-div#tags_alpha {
+.tags_alpha {
 	position: right;
 }
 
-div#tags button#selected {
-	background: #00CCFF;
-	border: 3px groove #00FFFF;
+.tags button#selected {
+	background: #00CCFF; /*light blue*/
+	border: 3px groove #00FFFF; /*darker light blue*/
 	padding: 2px;
-	width: 140px;
+	width: 90px;
 	height: 22px;
 	margin: 6px;
 	font-style: normal;
 }
 
-div#tags button#pendingthis {
-	background: #00CCFF;
-	border: 3px dashed #00FFFF;
+.tags #pendingthis  {
+	background: #00CCFF; /*light blue*/
+	border: 3px dashed #00FFFF; /*darker light blue*/
 	padding: 2px;
-	width: 140px;
+	width: 90px;
 	height: 22px;
 	margin: 6px;
 	font-style: normal;
 }
 
-div#tags button {
-	background: #999999;
-	border: 3px double #888888;
+.tags button {
+	background: #999999; /*light grey*/
+	border: 3px double #888888; /*darker light grey*/
 	padding: 2px;
-	width: 140px;
+	width: 90px;
 	height: 22px;
 	margin: 6px;
 	font-style: italic;
 	font-size: 12px;
 }
 
-div#tags button#pendingother {
-	background: #999999;
+.tags #pendingother {
+	background: #999999;  /*light grey*/
 	border: 3px dashed #CCCCCC;
 	padding: 2px;
-	width: 140px;
+	width: 90px;
 	height: 22px;
 	margin: 6px;
 	font-style: italics;
@@ -584,21 +579,17 @@ div#tags button#pendingother {
 	height: 20px;
 }
 
-.cam_angle {
-	text-align: center;
-}
-
-div#tag_checkboxes label {
-	text-align: left;
-}
-
-div#video div p {
+.video div p {
 	border: 2px;
-	text-align: center;
+	text-align: left;
 }
 
 /* end style adjustments for show.html */
 /***************************************/
+
+
+
+
 
 /***********************************/
 /* Style adjustments for intervals.index.html */
