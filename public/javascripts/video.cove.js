@@ -975,9 +975,6 @@ VideoJS.player.extend({
   },
 
   onError: function(fn){ this.addVideoListener("error", fn); return this; },
-  onEnded: function(fn){
-    this.addVideoListener("ended", fn); return this;
-  }
 });
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -988,6 +985,7 @@ VideoJS.player.extend({
 /* Player Behaviors - How VideoJS reacts to what the video is doing.
 ================================================================================ */
 VideoJS.player.newBehavior("player", function(player){
+    this.activateEndListeners();
     this.onError(this.playerOnVideoError);
     // Listen for when the video is played
     this.onPlay(this.playerOnVideoPlay);
@@ -1002,6 +1000,7 @@ VideoJS.player.newBehavior("player", function(player){
     this.trackBuffered();
     // Buffer Full
     this.onBufferedUpdate(this.isBufferFull);
+
   },{
     playerOnVideoError: function(event){
       this.log(event);
@@ -1064,7 +1063,22 @@ VideoJS.player.newBehavior("player", function(player){
       this.each(this.resizeListeners, function(listener){
         (listener.context(this))();
       });
+    },
+
+    /* COVE: Ended tracking -------------------------------------------------------------- */
+    endListeners: [],
+    onEnded: function(fn){
+      this.endListeners.push(fn);
+    },
+    triggerEndListeners: function(){
+      this.each(this.endListeners, function(listener){
+        (listener.context(this))();
+      });
+    },
+    activateEndListeners: function(){
+        this.addVideoListener("ended", this.triggerEndListeners);
     }
+
   }
 );
 /* Mouse Over Video Reporter Behaviors - i.e. Controls hiding based on mouse location
