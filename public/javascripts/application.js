@@ -1,7 +1,7 @@
 jQuery(function() {
 	jQuery(".sortable_collection").sortable({
-		delay: 500,
-		stop: function() {
+		distance: 40,
+		update: function() {
 			var i = 1;
 			var priority = "priority={";
 			$.each($(".sortable_collection li"),function() {
