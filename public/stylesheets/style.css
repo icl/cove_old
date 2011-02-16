@@ -608,13 +608,15 @@ div#tag_checkboxes label {
 	background:#EC8723;
 }
 
-.markbutton {
+.mark_button {
     float: left;
     display:block;
+    text-align: center;
 }
 
 .markstart {
     margin-top:10px;
+    margin-left: 20px;
 	height:40px;
 	width:50px;
 	opacity:1;
@@ -623,8 +625,15 @@ div#tag_checkboxes label {
 	border:transparent;
 }
 
+.mark_button input{
+    width: 100px;
+    position: relative;
+    
+}
+
 .markend {
 	margin-top:10px;
+    margin-left: 20px;
 	height:40px;
 	width:50px;
 	opacity:1;
@@ -649,17 +658,28 @@ div#tag_checkboxes label {
     background: #383838;
    	height:auto;
     padding: 10px;
+    display: block;
 }
 
 .interval_form legend{
     color: #EC8723;
     font-size: large;
+    text-align: left;
+    margin-left: 38px;
 }
 
+.interval_form fieldset{
+    text-align: center;
+}
+
+.interval_form p{
+    text-align: left;
+    margin-left: 38px;
+    margin-top: 10px;
+}
 
 .interval_form input{
 	width:380px;
-    margin-bottom: 10px;
 }
 
 .interval_form textarea{
