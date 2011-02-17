@@ -609,16 +609,19 @@ input[type=search] {
 	float:left;
 }
 
+.snippet_button{
+	text-align:right;
+	border:10px solid #2F2F2F;
+}
+
 .create_interval_button{
-	display:none;
 	height:30px;
 	width:130px;
 	border:transparent;
 	opacity:1;
 	background:#EC8723;
 	color:white;
-	float:right;
-	}
+}
 
 .create_interval_button:hover{
  	opacity:.5;
@@ -651,7 +654,7 @@ input[type=search] {
 
 .markend {
 	margin-top:10px;
-    margin-left: 95px;
+	margin-left:83px;
 	height:30px;
 	width:90px;
 	opacity:1;
@@ -672,7 +675,7 @@ input[type=search] {
 
 .interval_form {
 	border-left:1px solid white;
-    margin-top: 20px;
+    margin-top: 10px;
     background: #383838;
    	height:200px;
     padding: 5px;
@@ -693,6 +696,7 @@ input[type=search] {
 .interval_form p{
     text-align: left;
 }
+
 
 .interval_form input{
 	width:420px;

@@ -48,7 +48,6 @@
 		<%= form_for([@interval, @interval.snippets.build]) do |f| %>
 		<%= f.hidden_field(:offset) %>
 	    <%= f.hidden_field(:duration) %>
-		<%= f.submit "Create Snippet", :class => "create_interval_button" %>
 		<% end %>
 	</div>
 
@@ -60,17 +59,23 @@
 	<div class="clear"></div>
 
 	
-	<div class="grid_16 mark_button">
+	<div class="grid_8 mark_button">
+
 	 <button class="markstart">Start Mark</button> or <input type="text" id="start_mark"></input>
    	 <button class="markend">End Mark</button> or <input type="text" id="end_mark"></input>
     </div>
-
+    
+    <div class="grid_4 snippet_button">
+    <%= f.submit "Create Snippet", :class => "create_interval_button" %>
+    </div>
+    
 	<% end %>
 
 
  <div class="grid_8 interval_form">
     <fieldset>
     	<legend>Create Snippet</legend>
+    	
     	<p>Title:</p><input type="text" id="interval_title"></input><br/>
    		<p>Description:</p><textarea cols=37 rows=3 id="interval_description"></textarea>
 	</fieldset>   
