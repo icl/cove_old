@@ -15,4 +15,4 @@ Scenario: Request existent definition
 
 Scenario: Request nonexistent definition
 	When I go to the definition page for "captain picard"
-	Then I should not see ".definition_holder"
+	Then I should not see the element ".definition_holder"
