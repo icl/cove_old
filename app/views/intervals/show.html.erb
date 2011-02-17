@@ -52,7 +52,7 @@
 
           <!-- End VideoJS -->
 	    </div>
-		<div class="grid_4 video_snippit">
+		<div id="snippet_list" class="grid_4 video_snippit">
 	
 			<%= render 'intervals/snippets' %>
 
@@ -62,7 +62,7 @@
 		
 	<div class="clear"></div>
 
-    <%= form_for([@interval, @interval.snippets.build]) do |f| %>
+    <%= form_for([@interval, @interval.snippets.build], :remote => true) do |f| %>
 	    <div class="grid_8 mark_button">
 		    <button class="markstart">Start Mark</button>
         	<input type="text" id="start_mark"></input>
