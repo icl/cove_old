@@ -9,6 +9,8 @@ Cove::Application.routes.draw do
   match 'collections/:id/remove/:interval' => 'collections#remove', :as => :remove_from_collection
   match 'collections/:id/prioritize/:interval/:direction' => 'collections#prioritize_interval', :as => :prioritize_interval
   match 'collections/:id/prioritize' => 'collections#prioritize_intervals', :as => :prioritize_intervals
+  #match 'projects/:id/add/:collection' => 'projects#add_collection', :as => :add_collection
+  #match 'projects/:id/remove/:collection' => 'projects#remove_collection', :as => :remove_collection
 
   devise_for :users, :path => "/", :path_names => {:sign_in => "login", 
     :sign_out => "logout"}
