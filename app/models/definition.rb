@@ -5,6 +5,7 @@ class Definition < ActiveRecord:Base
 =end
   def self.import!
     Dir.foreach("tmp/definitions/") do |file|  #for each file in tmp definitions
+      
       if file =~ /[^(\.|\.\.)].*csv$/  #check if its a CSV file
         note_file = File.new("tmp/notes/#{file}") #save file in temp variable
         notes = FasterCSV.new(note_file, #throw CSV file at FasterCSV tool
@@ -43,10 +44,11 @@ class Definition < ActiveRecord:Base
                 new_phen.description = row.get_the_definition
               else
                 stored_phen.description = row.get_the_definition
+              end
             else
               puts "Unrecognized term. create new tag type then try again."
-            end #end when
           end #end case
+        end #end |do row|
 
 
           #raw_data = row.to_hash.reject {|k,v| !Interval.column_names.index(k.to_s)}
@@ -54,7 +56,6 @@ class Definition < ActiveRecord:Base
           #raw_data.each{|k,v| data[k]=v.strip rescue data[k]=v }
           #interval = Interval.new(data)
           #interval.save
-        end
         
         #if !Dir.exists?('log/notes') # Doesn't work for some reason. Directory needs to be created manually
         #  Dir.mkdir('log/notes')
