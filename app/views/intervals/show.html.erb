@@ -1,30 +1,3 @@
-<div class="grid_8 video">
-		  <!-- Begin VideoJS -->
-		  <div class="vim-css video-js-box">
-		    <!-- Using the Video for Everybody Embed Code http://camendesign.com/code/video_for_everybody -->
-            <video id="cove-video-player" class="video-js" width="480" height="270" controls>
-              <source src="/videos/<%= @interval.filename %>" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"' />
-            </video>
-          </div>
-
-          <!-- End VideoJS -->
-	    </div>
-		<div class="grid_5 video_snippit">
-	
-			<div class="interval_time_background">
-				<div class="interval_time">
-					3:14-4:34
-				</div>
-			</div>
-
-			
-			<%= form_for([@interval, @interval.snippets.build]) do |f| %>
-			    <%= f.hidden_field(:offset) %>
-			    <%= f.hidden_field(:duration) %>
-			    <%= f.submit "Create Snippet", :class => "create_interval_button" %>
-			<% end %>
-		</div>
-		
 <div class="interval_show">
 
 	<div class="clear"></div>
@@ -56,16 +29,7 @@
 	<% end %>
 	<div class="clear"></div>
 
-
-<<<<<<< HEAD
-
-=======
-	<div class="grid_16 space">
-	</div>
-	<div class="clear"></div>
-	
-
-		<div class="grid_9 video">
+<div class="grid_8 video">
 		  <!-- Begin VideoJS -->
 		  <div class="vim-css video-js-box">
 		    <!-- Using the Video for Everybody Embed Code http://camendesign.com/code/video_for_everybody -->
@@ -76,46 +40,51 @@
 
           <!-- End VideoJS -->
 	    </div>
-		<div class="grid_4 video_snippit">
-	
-			<%= render 'intervals/snippets' %>
-
-            <button class="create_interval_button">Create Interval</button>
+		<div class="grid_7 video_snippit_wrapper">
+			<h2>Snippets</h2>
+			<div class="video_snippit">
+			<div class="interval_time_background">
+				<div class="interval_time">
+					3:14-4:34
+				</div>
+			</div>
+			</div>
 			
+			<%= form_for([@interval, @interval.snippets.build]) do |f| %>
+			    <%= f.hidden_field(:offset) %>
+			    <%= f.hidden_field(:duration) %>
+			    <%= f.submit "Create Snippet", :class => "create_interval_button" %>
+			<% end %>
 		</div>
-		
->>>>>>> f48bf6ba4f7a1d00395700e57220052a662569c5
-	<div class="clear"></div>
 
-    <%= form_for([@interval, @interval.snippets.build]) do |f| %>
-	    <div class="grid_8 mark_button">
-		    <button class="markstart">Start Mark</button>
-        	<input type="text" id="start_mark"></input>
+
+	<div class="clear"></div>
+	<div class="grid_8 mark_button">
+		<!--<button class="markstart">Mark start</button>
+        <button class="markend">Mark end</button>-->
+        <form action="/snippets" method="get">
+    		<button class="markstart">Start Mark</button>
+        	<input type="text" id="start_mark" value=""></input>
         	<button class="markend">End Mark</button>
         	<input type="text" id="end_mark"></input>
-         </div>
-        <div class="clear"></div>
-        <div class="grid_8 interval_form">
-        	<fieldset>
-            	<legend>Create Snippet</legend>
-            	<p>Title:</p>
-            	<%= f.text_field :title %><br/>
-                <p>Description:</p>
-                <%= f.text_field :description %>
-		    </fieldset>     
-         </div>
+        </form>
+     </div>
+    <div class="clear"></div>
+    <div class="grid_8 interval_form">
+    	<fieldset>
+    	<legend>Create Snippet</legend>
+    	<p>Title:</p><input type="text" id="interval_title"></input><br/>
+        <p>Description:</p><textarea cols=37 rows=3 id="interval_description"></textarea>
+		</fieldset>     
+     </div>
 
-	    <div class="clear"></div>
-	    <div class="grid_4">&nbsp</div>
-	    <div class="grid_4 save_button">
-		    <button class="cancel">Cancel</button>
-            <%= f.hidden_field :offset %>
-            <%= f.hidden_field :duration %>
-		    <%= f.submit "Save", :class => "save" %>
-	    </div>
-	<% end %>
-
-    <div class="grid_4">&nbsp</div>
+	<div class="clear"></div>
+	<div class="grid_4">&nbsp</div>
+	<div class="grid_4 save_button">
+		<button class="cancel">Cancel</button>
+        <button class="save">Save</button>
+	</div>
+	<div class="grid_4">&nbsp</div>
 
 	<!--<div class="grid_16 time">
 		<div class="time">
