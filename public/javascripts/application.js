@@ -6,13 +6,13 @@ $(document).ready(function(){
 		.live("mouseenter", function(e){
 			var name = $(this).text();
 			hoverstatus[name] = 1;
-			if($("#definition_"+name).length){
-				$("#definition_"+name).fadeIn("fast");
+			if($("#definition_"+name.replace(" ", "_")).length){
+				$("#definition_"+name.replace(" ", "_")).fadeIn("fast");
 			}else{
 				$.get(
 					"/definitions/"+name,
 					function(data){
-						var def = $(data).find(".definition_holder").first().prependTo("body").hide().attr("id", "definition_"+name)
+						var def = $(data).find(".definition_holder").first().prependTo("body").hide().attr("id", "definition_"+name.replace(" ", "_"))
 						if(hoverstatus[name]){
 							def
 								.fadeIn("fast")
@@ -26,7 +26,7 @@ $(document).ready(function(){
 		})
 		.live("mousemove", function(e){
 			var name = $(this).text();
-			$("#definition_"+name)
+			$("#definition_"+name.replace(" ", "_"))
 				.css("position", "absolute")
 				.css("top", (e.pageY + offY) + "px")
 				.css("left", (e.pageX + offX) + "px");
@@ -34,7 +34,7 @@ $(document).ready(function(){
 		.live("mouseleave", function(){
 			var name = $(this).text();
 			hoverstatus[name] = 0;
-			$("#definition_"+name).trigger("goaway");
+			$("#definition_"+name.replace(" ", "_")).trigger("goaway");
 		});
 	$(".definition_holder").live("goaway",function(){
 		$(this).fadeOut("slow");
