@@ -1,16 +1,23 @@
 <% if @collections %>
 	<% @collections.each do |collection| %>
-		<div class="collection_container grid_16">
-			<div class="grid_16" style="border: 5px; border-style: solid; border-color:silver;"><%= collection.name %></div>
-			<div class="grid_16"><%= collection.description %></div>
+		<div class="grid_16 alpha collection_container">
+			
+			<p class="grid_16" style="margin-top: 20px; font-size: 14pt; color: gold;"><%= collection.name %></p>
+				<div class="grid_16"><%= collection.description %></div>
+			
 			<% if !collection.intervals.blank?%>
 			<% YAML.load(collection.interval_priorities).keys.sort!{|a,b| a.to_i <=> b.to_i}.each do |priority| %><% interval = Interval.find(YAML.load(collection.interval_priorities)[priority.to_s]) %>
-				<div class="grid_16" style="border: 1px; border-style: solid; border-color:silver;">
-					<div class="grid_3"><div style="height: 30px;">Priority: <%= priority %><br />Video_id: <%= interval.id%></div></div>
+				<div class="grid_16 omega" style="border: 1px; border-style: solid; border-color:silver;">
+					
+					<div class="grid_3">
+						<div style="height: 30px;">Position: <%= priority %><br />Video_id: <%= interval.id%></div>
+					</div>
+					
 					<div class="grid_3">Session <%= interval.session_number.to_s %></div>
 					<div class="grid_3">Camera Angle: <%= interval.camera_angle %></div>
 					<div class="grid_3">Session Type: <%= interval.session_type %></div>
 					<div class="grid_3">Session Time: <%= interval.start_time.strftime("%Y-%m-%d %H:%M") %><br />Duration: <%= interval.duration_string %></div>
+					
 				</div>
 			<% end %>
 			<% end %>
