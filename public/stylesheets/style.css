@@ -578,6 +578,7 @@ input[type=search] {
 	overflow: auto;
 }
 
+
 .show_tags_add {  /*container*/
 	display: none;
 	border: solid 2px #383838;

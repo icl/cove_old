@@ -69,13 +69,13 @@
 		
 		<div class="show_tags_selected">
 <!-- this shows the tags currently applied to the interval SHOULD BE CHECKED-->
+			<input type="checkbox" class="tag_phenomena"> Selected Tags </input> 	</br>
+			<input type="checkbox"> Selected Tags </br>
+			<em><input type="checkbox"> Pending Tag </br></em>
 			<input type="checkbox"> Selected Tags </br>
 			<input type="checkbox"> Selected Tags </br>
 			<input type="checkbox"> Selected Tags </br>
-			<input type="checkbox"> Selected Tags </br>
-			<input type="checkbox"> Selected Tags </br>
-			<input type="checkbox"> Selected Tags </br>
-			<input type="checkbox"> Selected Tags </br>
+			<em><input type="checkbox"> Pending Tag </br></em>
 			<input type="checkbox"> Selected Tags </br>
 			<input type="checkbox"> Selected Tags </br>
 			<input type="checkbox"> Selected Tags </br>
@@ -144,7 +144,7 @@
 					<option>list of misc.</option>
 				</select>
 			</form>
-			</p>
+			
 			
 			<h2 class="tags_add_button">Submit</h2> </br>
 			
@@ -155,12 +155,24 @@
 									
 		</div>
 		
+			
 		<div class="tags_add_new">
+		
+			<p>Category:</p>
+			<form>
+				<select class="tags_menu">
+					<option selected="selected"></option>
+					<option>Phenomena</option>
+					<option>People</option>
+					<option>Miscellaneous</option>
+				</select>
+			</form>
+			
 			<p>New Tag:</p>
 			<input type="text" />
 			
 			<p>Description:</p>
-			<textarea rows="6" cols="20"></textarea>
+			<textarea rows="4" cols="20"></textarea>
 		
 			<h2 class="tags_add_new_button">Submit</h2>
 		</div>
