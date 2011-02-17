@@ -1,98 +1,87 @@
 <div class="interval_show">
 
-	<div class="clear"></div>
+	 <%= simple_form_for @interval do |f| %>
+	 
 
-
-	<div class="grid_5" id="sessTypePhrase">
+	<div class="grid_5 show_metadata">
 		<div>
-			<h1><%= @interval.session_type %></h1> <!--Session Type-->
-			<strong>Phrase: <%= @interval.phrase_name %></strong> <br/>
-			<strong>Type: <%= @interval.phrase_type %></strong>
+			<h1>ID #: <%= @interval.session_type %></h1> <!--Session Type-->
+			<h2><%= @interval.phrase_name %></h2>
+			<h2><%= @interval.phrase_type %></h2>
+			<h2><%= @interval.task_name %></h2>
 		</div>
 	</div>
 	
-	<%= simple_form_for @interval do |f| %>
-	<div class="grid_6" id="camera_angle_map">
+	<div class="grid_3 show_camera_angle">
 		<div class="cam_angle">
 			<%= image_for_camera_angle @interval.camera_angle %>
 		</div>
 	</div>
 	
-	<div class="grid_5 more_info">
-		<div class="info">
-			<h3>Session <%= @interval.session_number %></h3>
-			<h3><%= @interval.start_time.strftime("%F") %></h3> <!-- Date-->
-			<h4>Length: <%= @interval.duration_string %></h4>
-		</div>
-	</div>
+	<div class="grid_8">&nbsp</div>
+	
 	<br style="clear:both"/>
 	<% end %>
 	
 	<div class="clear"></div>
 
-</div>
 
-<div class="grid_8 video">
-		  <!-- Begin VideoJS -->
-	<div class="vim-css video-js-box">
+	<div class="grid_8 video">
+			  <!-- Begin VideoJS -->
+		<div class="vim-css video-js-box">
 		    <!-- Using the Video for Everybody Embed Code http://camendesign.com/code/video_for_everybody -->
-     <video id="cove-video-player" class="video-js" width="480" height="270" controls>
-	 <source src="/videos/<%= @interval.filename %>" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"' />
-     </video>
-    
+     	<video id="cove-video-player" class="video-js" width="480" height="270" controls>
+	 	<source src="/videos/<%= @interval.filename %>" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"' />
+    	 </video>
+    	
+    	<div>
+			<p><%= video_tag @interval.filename, :controls => true, :height => 270, :width => 480 %></p>
+		</div>
+    	
     </div>
-
           <!-- End VideoJS -->
-</div>
-
-<div id="snippet_list" class="grid_4 video_snippit">
+          
+	</div>
+	
+	<div class="grid_4 video_snippit">
 		<%= render 'intervals/snippets' %>
 		<%= form_for([@interval, @interval.snippets.build]) do |f| %>
 		<%= f.hidden_field(:offset) %>
 	    <%= f.hidden_field(:duration) %>
 		<%= f.submit "Create Snippet", :class => "create_interval_button" %>
 		<% end %>
-</div>
+	</div>
 
 	 <%= form_for([@interval, @interval.snippets.build], :remote => true) do |f| %>
-    
-<div class="grid_4">&nbsp</div>
 
-<div class="grid_9 mark_button">
-	 <button class="markstart">Start Mark</button> or 
-		<div class="mark_start_time">
-		    Start Time
-        <input type="text" id="start_mark"></input>
-        </div>
-    <button class="markend">End Mark</button> or 
-        <div class="mark_end_time">
-        End Time
-        <input type="text" id="end_mark"></input>
-        </div>
+
+	<div class="grid_3 show_tags"></div>
+
+	<div class="clear"></div>
+
 	
-	</form>
-       <% end %> 
-</div>
+	<div class="grid_16 mark_button">
+	 <button class="markstart">Start Mark</button> or <input type="text" id="start_mark"></input>
+   	 <button class="markend">End Mark</button> or <input type="text" id="end_mark"></input>
+    </div>
 
-<div class="clear"></div>
-   
-   <div class="grid_8 interval_form">
-    	<fieldset>
+	<% end %>
+
+
+ <div class="grid_8 interval_form">
+    <fieldset>
     	<legend>Create Snippet</legend>
     	<p>Title:</p><input type="text" id="interval_title"></input><br/>
-        <p>Description:</p><textarea cols=37 rows=3 id="interval_description"></textarea>
-		</fieldset>     
+   		<p>Description:</p><textarea cols=37 rows=3 id="interval_description"></textarea>
+	</fieldset>   
+	
+	<div class="save_cancel_button">
+		<button class="cancel">Cancel</button>
+        <button class="save">Save</button>
      </div>
     
     <div class="grid_8">&nbsp</div>
 
 	<div class="clear"></div>
-	
-	<div class="grid_4">&nbsp</div>
-	
-	<div class="grid_4 save_button">
-		<button class="cancel">Cancel</button>
-        <button class="save">Save</button>
-	</div>
-	
-	<div class="grid_6">&nbsp</div>
+
+</div>

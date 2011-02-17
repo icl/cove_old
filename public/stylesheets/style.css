@@ -495,82 +495,98 @@ input[type=search] {
   font-style: italic;
 }
 
-.camera_angle_map {
-	
-	width:300px;
-}
 
-.tag_box {
-	width:500px;
-	float:left;
-}
+
 /***********************************/
 /* Style adjustments for show.html */
 
-.Edit {
-	margin-bottom: 10px;
+	
+.show_metadata {
+	background: #666666;
+	padding: 6px;
+	height: 63px;
 }
 
-.interval_show h1 {
-	font-size: 40px;
+
+.show_metadata h1 {
+	margin-right: 50px;
+	display: block;
 }
 
-.interval_show strong {
-	font-size: 18px;
+
+.show_tags {
+	border: solid 1px #666666;
+	height: 150px;
+	width: 198px;
+	margin-right: 10px;
+	float: right;
 }
 
-div#sessTypePhrase div {
-	border-left: solid 1px #e5e5e6;
-	padding: 5px;
-	height: 90px;
+.tags_alpha {
+	position: right;
 }
 
-.info {
-	border-right: solid 1px #e5e5e6;
-	padding: 5px;
-	height: 90px;
+.tags button#selected {
+	background: #00CCFF; /*light blue*/
+	border: 3px groove #00FFFF; /*darker light blue*/
+	padding: 2px;
+	width: 90px;
+	height: 22px;
+	margin: 6px;
+	font-style: normal;
 }
 
-.info h3 {
-	text-align: right;
-	margin-top: 5px;
-	font-size: 20px;
+.tags #pendingthis  {
+	background: #00CCFF; /*light blue*/
+	border: 3px dashed #00FFFF; /*darker light blue*/
+	padding: 2px;
+	width: 90px;
+	height: 22px;
+	margin: 6px;
+	font-style: normal;
 }
 
-.info h4 {
-	text-align: right;
-	margin-top: 5px;
-	font-size: 14px;
+.tags button {
+	background: #999999; /*light grey*/
+	border: 3px double #888888; /*darker light grey*/
+	padding: 2px;
+	width: 90px;
+	height: 22px;
+	margin: 6px;
+	font-style: italic;
+	font-size: 12px;
 }
 
-.time {
-	padding: 5px;
-	height: 90px;
-	text-align: center;
+.tags #pendingother {
+	background: #999999;  /*light grey*/
+	border: 3px dashed #CCCCCC;
+	padding: 2px;
+	width: 90px;
+	height: 22px;
+	margin: 6px;
+	font-style: italics;
 }
 
 .space {
 	height: 20px;
 }
 
-.cam_angle {
-	text-align: center;
-}
-
-div#tag_checkboxes label {
-	text-align: left;
-}
-
 .filename {
 	margin-bottom: 20px;
 }
 
+.video div p {
+	border: 2px;
+	text-align: left;
+}
+
+
+
 .video_snippit{
-	border-left:10px solid #2F2F2F;
-	height:260px;
+	border-left: solid 10px #2F2F2F;
+	height: 270px;
 	background:#383838;
-	border-top:1px solid white;
-	border-bottom: 1px solid white;
+	
 }
 
 
@@ -594,13 +610,14 @@ div#tag_checkboxes label {
 }
 
 .create_interval_button{
-	margin-top:20px;
+	display:none;
 	height:30px;
 	width:130px;
 	border:transparent;
 	opacity:1;
 	background:#EC8723;
 	color:white;
+	float:right;
 	}
 
 .create_interval_button:hover{
@@ -608,13 +625,13 @@ div#tag_checkboxes label {
 	background:#EC8723;
 }
 
-.mark_button {
-    text-align: center;
+
+.mark_button{
+	text-align:left;
 }
 
 .markstart {
     margin-top:10px;
-    margin-left: 20px;
 	height:30px;
 	width:90px;
 	opacity:1;
@@ -624,21 +641,17 @@ div#tag_checkboxes label {
 }
 
 .mark_button input{
-    width: 70px;
-    position: relative;
+	margin-left:5px;
+	border:transparent;
+	height:27px;
+    width:70px;
     
 }
 
-.mark_start_time, .mark_end_time{
-	background:black;
-	height:40px;
-	width:100px;
-	color:white;
-}
 
 .markend {
 	margin-top:10px;
-    margin-left: 20px;
+    margin-left: 95px;
 	height:30px;
 	width:90px;
 	opacity:1;
@@ -659,41 +672,40 @@ div#tag_checkboxes label {
 
 .interval_form {
 	border-left:1px solid white;
-    margin-top: 5px;
+    margin-top: 20px;
     background: #383838;
-   	height:auto;
-    padding: 10px;
+   	height:200px;
+    padding: 5px;
     display: block;
 }
 
 .interval_form legend{
-    color: #EC8723;
-    font-size: large;
-    text-align: left;
-    margin-left: 38px;
+	color: #EC8723;
+    font-size: 14px;
+    text-align: left;s
 }
 
 .interval_form fieldset{
-    text-align: center;
+	margin-top:10px;
+	margin-left:20px;
 }
 
 .interval_form p{
     text-align: left;
-    margin-left: 38px;
-    margin-top: 10px;
 }
 
 .interval_form input{
-	width:380px;
+	width:420px;
+	margin-bottom:10px;
 }
 
 .interval_form textarea{
-    width: 380px;
-    margin-top:0px;
+    width: 420px;
+    margin-bottom:10px;
 }
 
-.save_button{
-	text-align:center;
+.save_cancel_button{
+	text-align:right;
 }
 
 .cancel {
@@ -813,8 +825,9 @@ div#tag_checkboxes label {
 
 
 
-
 /* end style adjustments for show.html */
+
+/* end style adjustments for intervals.index.html */
 /***************************************/
 
 
