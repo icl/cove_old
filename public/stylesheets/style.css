@@ -698,10 +698,36 @@ div#video div p {
     padding: 5px 0px;
 }
 
+.collection_box_name {
+    height: 40px;
+    background: #0297c1;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0px;
+ }
+
+.collection_box_name a {
+    text-decoration: none;
+    color: #fff;
+ }
+
+
+.collection_box_name span {
+    display: block;
+    text-decoration: none;
+    color: #fff;
+    font-size: 2em;
+ }
+
+.collection_box_name:hover {
+    background: #5e767e;
+    color: #000;
+ }
+
 .collection_box span {
     display: block;
     color: #ffd700;
-    font-size: 1em;
+    font-size: .95em;
     font-weight: bold;
     /* text-transform: uppercase; */
     padding: 2px 0px;
@@ -714,7 +740,7 @@ div#video div p {
 /***********************************/
 /* Style sheet for dropdown add widget */
 
-	ul.dropdown {
+	ul.dropdown{
 		position: absolute;
 		width: 200px;
 		margin: 0;
@@ -722,14 +748,19 @@ div#video div p {
 	}
 
 	ul.dropdown li{
-		
 		float: none;
 		list-style: none;
+    	background-color: #999996;
+        font-size: .95em;
+    	font-weight: bold;
+        padding: .5em;
 	}
 	
 	ul.dropdown li a{
         display: block;
-        background-color: #b88080;
+    	background-color: #ffd700;
+        font-size: .95em;
+    	font-weight: bold;
         border: 1px solid #b88080;
         padding: .5em;
         text-decoration: none;
@@ -740,16 +771,33 @@ div#video div p {
         color: #fff;
 	}
 	
-	
 	ul.dropdown li ul.vdrop{
 		display: none;
 		position: inherit;
         padding: 0;
 	}
 	
+	ul.dropdown li ul.vdrop li a{
+		background-color: #C9AA00;
+	}
+	
+	ul.dropdown li ul.vdrop li a:hover{
+        background-color: #333;
+	}
+	
+	ul.dropdown li ul.vdrop li a.add{
+        background-color: #ffd700;
+	}
+	
+	ul.dropdown li ul.vdrop li a.add:hover{
+        background-color: #333;
+        color: #fff;        
+	}
+	
 	ul.dropdown li:hover ul.vdrop{
 		display: block;
 	}	
+	
 
 /* end style adjustments for dropdown add */
 /***********************************/
