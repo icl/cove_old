@@ -84,7 +84,13 @@
   <ul>
   <%- @phenomenon.each do |phenom| %>
     <li> 
-    <%= link_to phenom.phenomenon.name, {:controller => "annotations", :action => "create", :type => "phenomenon", :name => phenom.phenomenon.name}, :method => "post" %>
+    <%- if @name.include?(phenom.name) %>
+    <div class="phenomenon_container phenom_present">
+    <%- else %>
+    <div class="phenomenon_container">
+    <%- end %>
+    <%= link_to phenom.name, {:controller => "annotations", :action => "create", :type => "phenomenon", :name => phenom.name, :interval_id => @interval.id, :format => :json}, :method => "post" ,:remote => true %>
+    </div>
     </li>
   <%- end %> 
   </ul>
@@ -92,9 +98,9 @@
 <br />
 <div id="add_tag_form_container">
   <h5> Create a new Tag</h5>
-  <%= form_tag({:action => "create",:controller => "annotations", :interval_id => @interval.id}, :method => "post") do %>
+  <%= form_tag({:action => "create",:controller => "annotations", :interval_id => @interval.id , :format => :json}, :method => "post", :remote => :true) do %>
     <%= text_field_tag :name %>
-    <%= hidden_field_tag "type", :value  => "tag" %>
+    <%= hidden_field_tag "type", "tag" %>
     <%= submit_tag "Create Tag" %>
   <%- end %>
 </div>

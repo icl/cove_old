@@ -1,8 +1,9 @@
 class AnnotationsController < ApplicationController
+  before_filter :authenticate_user!
   respond_to :html, :json
   before_filter :find_interval
   def index
-    @annotations = @interval.annotations.all(params[:type])
+    @annotations = @interval.annotations.all(params[:type].to_sym)
     respond_with(@annotations)
   end
 
@@ -14,7 +15,7 @@ class AnnotationsController < ApplicationController
       flash[:notice] = "You have successfully created a new annotation"
     end
     respond_with do |format|
-      format.html {redirect_to :action => "index"}
+      format.html {redirect_to :action => "index", :type => params[:type]}
       format.json { render :json => new_annotation}
     end
   end

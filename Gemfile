@@ -41,7 +41,7 @@ gem 'hoptoad_notifier'
 	gem "autotest"
 	gem 'autotest-rails'
   # gem 'ruby-debug19', :platforms => :mri_19
-  # gem 'ruby-debug', :platforms => :mri_18
+  #gem 'ruby-debug', :platforms => :mri_18
 	
   # additional testing gems
 	gem "thin"

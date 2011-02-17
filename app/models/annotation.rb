@@ -1,3 +1,4 @@
+require "ruby-debug"
 class Annotation
   @@types_of_annotation = [:tag, :phenomenon, :comment, :question].to_set
   include ActiveModel::Validations
@@ -88,6 +89,7 @@ class Annotation
   #WARNING DOES NOT CHECK IF IDs ARE VALID COULD CAUSE 
   #BADLY LINKED DATA
   def self.add!(args)
+    debugger
     type = args.delete(:type)
     name = args.delete(:name)
     user = args.delete(:user)

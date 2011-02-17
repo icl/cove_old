@@ -20,7 +20,12 @@ class IntervalsController < ApplicationController
     #@tags = Taging.where :interval_id => @interval.id
     @tags = @interval.annotations.all(:tag)
     #@phenomenon = Phenomenoning.where :interval_id => @interval.id
-    @phenomenon = @interval.annotations.all(:phenomenon)
+    @phenomenon = Phenomenon.all
+    @phenomenoning = @interval.annotations.all(:phenomenon)
+    @name = []
+    @phenomenoning.each do |phenom|
+      @name << phenom.phenomenon.name
+    end
     render "show"
   end
 
