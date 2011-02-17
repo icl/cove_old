@@ -40,16 +40,13 @@
 
           <!-- End VideoJS -->
 	    </div>
-		<div class="grid_7 video_snippit_wrapper">
-			<h2>Snippets</h2>
-			<div class="video_snippit">
-			<div class="interval_time_background">
-				<div class="interval_time">
-					3:14-4:34
-				</div>
-			</div>
-			</div>
-			
+
+		<div id="snippet_list" class="grid_4 video_snippit">
+	
+			<%= render 'intervals/snippets' %>
+
+            <button class="create_interval_button">Create Interval</button>
+
 			<%= form_for([@interval, @interval.snippets.build]) do |f| %>
 			    <%= f.hidden_field(:offset) %>
 			    <%= f.hidden_field(:duration) %>
@@ -57,14 +54,10 @@
 			<% end %>
 		</div>
 
-
-	<div class="clear"></div>
-	<div class="grid_8 mark_button">
-		<!--<button class="markstart">Mark start</button>
-        <button class="markend">Mark end</button>-->
-        <form action="/snippets" method="get">
-    		<button class="markstart">Start Mark</button>
-        	<input type="text" id="start_mark" value=""></input>
+    <%= form_for([@interval, @interval.snippets.build], :remote => true) do |f| %>
+	    <div class="grid_8 mark_button">
+		    <button class="markstart">Start Mark</button>
+        	<input type="text" id="start_mark"></input>
         	<button class="markend">End Mark</button>
         	<input type="text" id="end_mark"></input>
         </form>
