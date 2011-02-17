@@ -31,7 +31,7 @@
 <li class="grid_2 browse_box_name"><%= link_to raw("Session <span>")+interval.id.to_s()+raw("</span>"), interval %></span></li> 
       <li class="grid_3"><div style="width: 160px; height: 90px; background: #ccc;">&nbsp;</div></li> 
       <li class="grid_2 browse_box">Camera Angle <span><%= interval.camera_angle %></span></li> 
-      <li class="grid_2 browse_box">Session Type <span><%= interval.session_type  %></li> 
+      <li class="grid_2 browse_box">Session Type <span class="define_me"><%= interval.session_type  %></span></li> 
       <li class="grid_2 browse_box_date">
 		<%= interval.start_time.strftime("%A") %>
 		<span><b>

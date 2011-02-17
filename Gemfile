@@ -15,6 +15,7 @@ gem "resque", :require => "resque/server"
 gem 'narray'
 
 gem 'devise'
+gem 'rails_admin', :git => 'git://github.com/sferik/rails_admin.git'
 gem "cancan"
 gem 'SystemTimer', :platforms => :mri_18 
 #gem 'devise_invitable', '0.3.4'
