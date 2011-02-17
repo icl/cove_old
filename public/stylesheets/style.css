@@ -454,6 +454,7 @@ input[type=search] {
 
 .definition_holder {
 	max-height: 400px;
+	max-width: 200px;
 	background: #383838;
 	border: 1px solid gray;
 	display: block;
