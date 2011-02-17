@@ -11,7 +11,7 @@
 		<li id="<%= interval.id %>" class="ui-state-default interval_row collection_cont">
 			
 			<div class="grid_1"><%= link_to "∧", prioritize_interval_path(:id => @collection.id, :interval => interval.id, :direction => 'up'), :class => "priority_link", :direction => "up", :id => interval.id %><br />--<br /><%= link_to "∨", prioritize_interval_path(:id => @collection.id, :interval => interval.id, :direction => 'down'), :class => "priority_link", :direction => "down" %></div>
-			<div class="grid_3">Position: <span class="priority"><%= priority %></span><br />Video_id: <%= interval.id%></div>
+			<div class="grid_3">Position: <span class="priority"><%= priority %></span><br />Interval: <%= interval.id%></div>
 			<div class="grid_3 collection_box_name">Session <br /><span><%= interval.session_number.to_s %></span></div>
 			<div class="grid_2 collection_box">Camera Angle: <br /><span><%= interval.camera_angle %></span></div>
 			<div class="grid_2 collection_box">Session Type: <br /><span><%= interval.session_type %></span></div>
