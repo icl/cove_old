@@ -1,19 +1,46 @@
+<head>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$(".show_tags_add_button").click(function(){
+				//$("div").removeClass(".show_tags_selected");
+				$(".show_tags_add").slideToggle("slow"); 
+
+			});
+		});
+
+		$(document).ready(function(){
+			$(".tags_go_new_button").click(function(){
+				$(".tags_add_new").slideToggle("slow"); 
+
+			});
+		});
+	
+	
+	</script>
+
+</head>
+
+
+
 <div class="interval_show">
 
 	 <%= simple_form_for @interval do |f| %>
-	 
-
-
-	<div class="grid_5 show_metadata">
-		<div>
-			<h1>ID #: <%= @interval.session_type %></h1> <!--Session Type-->
-			<h2><%= @interval.phrase_name %></h2>
-			<h2><%= @interval.phrase_type %></h2>
-			<h2><%= @interval.task_name %></h2>
-		</div>
+	 <div class="grid_3 show_metadata">
+		<h1>ID #</h1>
+		<h2>Sess <%= @interval.session_number %> : <%= @interval.session_type %></h2>
+		<h2><%= @interval.phrase_name %></h2>
+		<h2><%= @interval.phrase_type %></h2>
+		<h2><%= @interval.task_name %></h2>
 	</div>
+		
+	<div class="grid_2 show_metadata2">
+		<h2><%= @interval.start_time.strftime("%F") %></h2> <!--date-->
+		<h2><%= @interval.start_time.strftime("%T") %></h2>
+		<h2><%= @interval.duration_string %></h2>
+	</div>
+
 	
-		<div class="grid_3 show_camera_angle">
+	<div class="grid_3 show_camera_angle">
 		<div class="cam_angle">
 			<%= image_for_camera_angle @interval.camera_angle %>
 		</div>
@@ -21,33 +48,130 @@
 	
 	<div class="grid_8">
 	</div>
-	
 	<div class="clear"></div>
 
-
-	<div class="grid_8 video">
-		<div>
-			<p><%= video_tag @interval.filename, :controls => true, :height => 270, :width => 480 %></p>
-		</div>
+	<div class="grid_8 show_video_player">
+		<p><%= video_tag @interval.filename, :controls => true, :height => 270, :width => 480 %></p>
 	</div>
-	
+
+
 	<div class="grid_4 show_subintervals">
-		<p>test text sub</p>
+<!--insert Winny's subinterval html-->
+		<p>This is where the subinterval snippets will be.</p>
 	</div>
 
-	<div class="grid_3 show_tags">
-		<p>test text</p>
+	<div class="show_tags"><!-- float:right, width:198px, margin-right:10px in css -->
+		
+		<div class="show_tags_header">
+			<h1>Tags:</h1>
+			<h2 class="show_tags_add_button">Add</h2>
+		</div>
+		
+		<div class="show_tags_selected">
+<!-- this shows the tags currently applied to the interval SHOULD BE CHECKED-->
+			<input type="checkbox"> Selected Tags </br>
+			<input type="checkbox"> Selected Tags </br>
+			<input type="checkbox"> Selected Tags </br>
+			<input type="checkbox"> Selected Tags </br>
+			<input type="checkbox"> Selected Tags </br>
+			<input type="checkbox"> Selected Tags </br>
+			<input type="checkbox"> Selected Tags </br>
+			<input type="checkbox"> Selected Tags </br>
+			<input type="checkbox"> Selected Tags </br>
+			<input type="checkbox"> Selected Tags </br>
+			<input type="checkbox"> Selected Tags </br>
+			<input type="checkbox"> Selected Tags </br>
+			<input type="checkbox"> Selected Tags </br>
+			<input type="checkbox"> Selected Tags </br>
+			<input type="checkbox"> Selected Tags </br>
+			<input type="checkbox"> Selected Tags </br>
+			<input type="checkbox"> Selected Tags </br>
+			<input type="checkbox"> Selected Tags </br>
+			<input type="checkbox"> Selected Tags </br>
+			<input type="checkbox"> Selected Tags </br>
+			<input type="checkbox"> Selected Tags </br>
+			<input type="checkbox"> Selected Tags </br>
+			<input type="checkbox"> Selected Tags </br>
+			<input type="checkbox"> Selected Tags </br>
+			<input type="checkbox"> Selected Tags </br>
+			<input type="checkbox"> Selected Tags </br>
+
+		</div>
+		
+		<div class="show_tags_add">
+<!-- here user adds tags to the interval-->
+			<p>Phenomena:</p>
+			<form>
+				<select class="tags_menu">
+					<option selected="selected"></option>
+					<option>Costumes</option>
+					<option>Distributed Memory</option>
+					<option>Imagery</option>
+					<option>Marking</option>
+					<option>Props</option>
+					<option>Riffing</option>
+					<option>Sketching</option>
+					<option>Sonification</option>
+					<option>Structuring</option>
+					<option>Visualization</option>
+				</select>
+			</form>
+			
+			<p>People:</p>
+			<form>
+				<select class="tags_menu">
+					<option selected="selected"></option>
+					<option>Wayne</option>
+					<option>Odette</option>
+					<option>Alexander</option>
+					<option>Agnes</option>
+					<option>Anna</option>
+					<option>Antoine</option>
+					<option>Catarina</option>
+					<option>Daniela</option>
+					<option>Davide</option>
+					<option>Jessica</option>
+					<option>Louise</option>
+					<option>Michael</option>
+					<option>Paolo</option>
+				</select>
+			</form>
+			
+			<p>Misc:</p>
+			<form>
+				<select class="tags_menu">
+					<option selected="selected"></option>
+					<option>list of misc.</option>
+				</select>
+			</form>
+			</p>
+			
+			<h2 class="tags_add_button">Submit</h2> </br>
+			
+			<h3>OR</h3>
+			
+			<h2 class="tags_go_new_button">Add New Tag</h2>
+
+									
+		</div>
+		
+		<div class="tags_add_new">
+			<p>New Tag:</p>
+			<input type="text" />
+			
+			<p>Description:</p>
+			<textarea rows="6" cols="20"></textarea>
+		
+			<h2 class="tags_add_new_button">Submit</h2>
+		</div>
+		
 	</div>
-	
+
 	<div class="clear"></div>
 
-
-	<div class="grid_16 space">
-	</div>
-	<div class="clear"></div>
-	
 	<br style="clear:both"/>
 	<% end %>
 
 </div>
+
 

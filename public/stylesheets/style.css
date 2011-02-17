@@ -500,90 +500,142 @@ input[type=search] {
 /***********************************/
 /* Style adjustments for show.html */
 
-	
+/****Row 1 - start****/
 .show_metadata {
 	background: #383838;
 	padding: 8px;
-	height: 63px;
+	height: 60px;
 	margin-bottom: 13px;
 }
 
-
 .show_metadata h1 {
 	margin-right: 50px;
-	display: block;
+	font-size: 14pt;
 }
 
-.show_subintervals {
-	border-left: solid 20px white;
-	background: #666666;
-	height: 270px;
+.show_metadata2 {
+	background: #383838;
+	padding: 8px;
+	padding-left: 1px;
+	height: 60px;
+	margin-bottom: 13px;
+	text-align: right;
 }
 
-
-
-.show_tags {
-	border: solid 1px #666666;
-	height: 150px;
-	width: 198px;
-	margin-right: 10px;
-	float: right;
-}
-
-
-.tags_alpha {
-	position: right;
-}
-
-.tags button#selected {
-	background: #00CCFF; /*light blue*/
-	border: 3px groove #00FFFF; /*darker light blue*/
-	padding: 2px;
-	width: 90px;
-	height: 22px;
-	margin: 6px;
-	font-style: normal;
-}
-
-.tags #pendingthis  {
-	background: #00CCFF; /*light blue*/
-	border: 3px dashed #00FFFF; /*darker light blue*/
-	padding: 2px;
-	width: 90px;
-	height: 22px;
-	margin: 6px;
-	font-style: normal;
-}
-
-.tags button {
-	background: #999999; /*light grey*/
-	border: 3px double #888888; /*darker light grey*/
-	padding: 2px;
-	width: 90px;
-	height: 22px;
-	margin: 6px;
-	font-style: italic;
-	font-size: 12px;
-}
-
-.tags #pendingother {
-	background: #999999;  /*light grey*/
-	border: 3px dashed #CCCCCC;
-	padding: 2px;
-	width: 90px;
-	height: 22px;
-	margin: 6px;
-	font-style: italics;
-}
-
-.space {
-	height: 20px;
-}
-
-.video div p {
+/****Row 2 - start****/
+.show_video_player p {
 	border: 2px;
 	text-align: left;
 }
+
+/*Show the subintervals Widget (Winny)*/
+/*placeholder in Jin's copy */
+.show_subintervals {
+	border-left: solid 20px #2F2F2F;
+	background: #383838;
+	height: 270px;
+}
+
+/*Tags Widget*/
+.show_tags {
+	border: solid 1px #383838;
+	background: #383838;
+	height: 253px;
+	width: 182px;
+	margin-right: 10px;
+	float: right;
+	padding: 8px;
+}
+
+.show_tags h1 {
+	font-size: 18px;
+	color: #0297C1;
+	float: left;
+	width: 40px;
+	height: 15px;
+	border: solid 3px #383838;
+	margin: 2px;
+	display: inline;
+}
+
+.show_tags h2 {  /*the buttons*/
+	float: right;
+	/*width: 45px;*/
+	height: 14px;
+	background-color: #0297C1;
+	color: #383838;
+	border: solid 2px #0297C1;
+	outline: solid 1px #66FFFF;
+	text-align: center;
+	margin: 3px;
+}
+
+.show_tags_selected { /*container*/
+	border: solid 2px #383838;
+	margin-top: 32px;
+	padding: 2px;
+	height: 215px;
+	overflow: auto;
+}
+
+.show_tags_add {  /*container*/
+	display: none;
+	border: solid 2px #383838;
+	margin-top: 35px;
+	padding: 2px;
+	height: 211px;
+}
+
+.show_tags_add p {
+	font-size: 12px;
+	margin-top: 3px;
+}
+
+.tags_menu {
+	width: 162px;
+	margin-left: 10px;
+	margin-bottom: 8px;
+}
+
+.show_tags_add h3 {
+	margin-top: 15px;
+	margin-left: 150px;
+	margin-bottom: 5px;
+}
+
+.tags_add_new {
+	display: none; /*container*/
+	border: solid 2px #383838;
+	margin-top: 35px;
+	padding: 2px;
+	height: 211px;
+}
+
+.tags_add_new p {
+	font-size: 12px;
+	margin-top: 3px;
+}
+
+.tags_add_new input {
+	width: 157px;
+	margin-left: 10px;
+}
+
+.tags_add_new textarea {
+	margin-left: 10px;
+	margin-bottom: 8px;
+}
+
+
+
+/****Row 3 - start****/
+/*create subinterval widget (Winny)*/
+
+
+/****Row 4 - start****/
+/*Favorite/Queue/Add to ToolBar (Michael)*/
+
+
 
 /* end style adjustments for show.html */
 /***************************************/
