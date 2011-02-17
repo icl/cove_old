@@ -37,6 +37,6 @@ $(document).ready(function(){
 			$("#definition_"+name.replace(" ", "_")).trigger("goaway");
 		});
 	$(".definition_holder").live("goaway",function(){
-		$(this).fadeOut("slow");
+		$(this).fadeOut("fast");
 	});
 });
