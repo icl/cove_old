@@ -1,12 +1,28 @@
 <div class="interval_show">
 
+	 <%= simple_form_for @interval do |f| %>
+	 
 
 
-	<div class="grid_16 video_show_title">
-		<h1>Video ID</h1>
+	<div class="grid_5 show_metadata">
+		<div>
+			<h1>ID #: <%= @interval.session_type %></h1> <!--Session Type-->
+			<h2><%= @interval.phrase_name %></h2>
+			<h2><%= @interval.phrase_type %></h2>
+			<h2><%= @interval.task_name %></h2>
+		</div>
 	</div>
+	
+		<div class="grid_3 show_camera_angle">
+		<div class="cam_angle">
+			<%= image_for_camera_angle @interval.camera_angle %>
+		</div>
+	</div>
+	
+	<div class="grid_8">
+	</div>
+	
 	<div class="clear"></div>
-
 
 
 	<div class="grid_8 video">
@@ -15,75 +31,23 @@
 		</div>
 	</div>
 	
-	
-	<%= simple_form_for @interval do |f| %>
-	<div class="grid_4 camera_angle_map">
-		<div class="cam_angle">
-			<%= image_for_camera_angle @interval.camera_angle %>
-		</div>
-		<div class="show_meta_data">
-			<h1><%= @interval.session_type %></h1> <!--Session Type-->
-			<h1><%= @interval.phrase_name %></h1>
-			<h1><%= @interval.phrase_type %></h1>
-			<h1><%= @interval.task_name %></h1>
-	
-			<!--button here to expand? -->
-			<h2>Session <%= @interval.session_number %></h2>
-			<h2><%= @interval.start_time.strftime("%F") %></h2>
-			<h2><%= @interval.start_time.strftime("%T") %></h2>
-			<h2><%= @interval.duration_string %></h2>
-			<h2><%= @interval.filename %></h2> <!--filename-->
-		</div>
+	<div class="grid_4 show_subintervals">
+		<p>test text sub</p>
 	</div>
 
-	<div class="grid_4 tags">
-		<button type="button" id="selected">Marking</button>
-		<button type="button" id="selected">Sonification</button>
-		<button type="button" id="pendingthis">Pending Example</button>
-		<button type="button" id="selected">Visualization</button>
-
-		<button type="button">Costumes</button>
-		<button type="button">Distributed Memory</button>
-		<button type="button">Imagery</button>
-		<button type="button">Props</button>
-		<button type="button">Riffing</button>
-		<button type="button">Sketching</button>
-		<button type="button">Structuring</button>
-		<button type="button" id="pendingother">Pending Example2</button>
-
+	<div class="show_tags">
+		<p>test text</p>
 	</div>
+	
 	<div class="clear"></div>
-	
-		<br style="clear:both"/>
-	<% end %>
-	<div class="clear"></div>
-	
-	
-
-	
-	
-	
-	<div class="grid_16 search_add_show_tags" align=RIGHT>
-		<button type="button" id="show_tags_add">Add</button>
-		<input type"text" value="Search/Add tag"></input>
-	</div>
-	
-	
-
-	
-
 
 
 	<div class="grid_16 space">
 	</div>
 	<div class="clear"></div>
 	
-
-
-
-
-
-
+	<br style="clear:both"/>
+	<% end %>
 
 </div>
 

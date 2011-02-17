@@ -495,40 +495,40 @@ input[type=search] {
   font-style: italic;
 }
 
-.camera_angle_map {
-	
-	width:300px;
-}
 
-.tag_box {
-	width:500px;
-	float:left;
-}
 
 /***********************************/
 /* Style adjustments for show.html */
 
-.Edit {
-	margin-bottom: 10px;
-}
-
-.video_show_title {
-	display: inline;
-	color: #0297C1;
-	font-size: 16pt;
-	margin-bottom: 10px;
-}
 	
+.show_metadata {
+	background: #666666;
+	padding: 6px;
+	height: 63px;
+}
 
-.show_meta_data h1 {
+
+.show_metadata h1 {
 	margin-right: 50px;
 	display: block;
 }
 
-.show_meta_data h2 {
-	margin-right: 40px;
-	display: block;
+.show_subintervals {
+	border-left: solid 20px white;
+	background: #666666;
+	height: 270px;
 }
+
+
+
+.show_tags {
+	border: solid 1px #666666;
+	height: 150px;
+	width: 198px;
+	margin-right: 10px;
+	float: right;
+}
+
 
 .tags_alpha {
 	position: right;
