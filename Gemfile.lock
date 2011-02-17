@@ -1,3 +1,11 @@
+GIT
+  remote: git://github.com/sferik/rails_admin.git
+  revision: c43dabf8956c767562065c397db4095e488ae687
+  specs:
+    rails_admin (0.0.1)
+      builder (~> 2.1.0)
+      rails (~> 3.0.3)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -219,6 +227,7 @@ DEPENDENCIES
   nokogiri
   rails (~> 3.0.3)
   rails3-generators
+  rails_admin!
   resque
   rspec
   rspec-rails (~> 2.4.0)
