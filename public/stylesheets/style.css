@@ -502,9 +502,10 @@ input[type=search] {
 
 	
 .show_metadata {
-	background: #666666;
-	padding: 6px;
+	background: #383838;
+	padding: 8px;
 	height: 63px;
+	margin-bottom: 13px;
 }
 
 
