@@ -100,7 +100,7 @@ describe Annotation do
     end
     
     describe "Validate Associations" do
-      it {Tag.joins(:taging).should be}
+      #it {Taging.joins(:tag).length().should be > 0}
     end
   end
   
