@@ -565,17 +565,14 @@ div#tag_checkboxes label {
 	margin-bottom: 20px;
 }
 
-.video_snippit_wrapper{
-	float:right;
-	height:60px;
+.video_snippit{
+	border-left:10px solid #2F2F2F;
+	height:260px;
 	background:#383838;
 	border-top:1px solid white;
 	border-bottom: 1px solid white;
 }
 
-.video_snippet_wrapper h2{
-	color:#EC8723;
-}
 
 .interval_time_background{
 	margin:10px;
@@ -598,9 +595,8 @@ div#tag_checkboxes label {
 
 .create_interval_button{
 	margin-top:20px;
-	float:right;
 	height:30px;
-	width:110px;
+	width:130px;
 	border:transparent;
 	opacity:1;
 	background:#EC8723;
@@ -613,16 +609,14 @@ div#tag_checkboxes label {
 }
 
 .mark_button {
-    float: left;
-    display:block;
     text-align: center;
 }
 
 .markstart {
     margin-top:10px;
     margin-left: 20px;
-	height:40px;
-	width:50px;
+	height:30px;
+	width:90px;
 	opacity:1;
 	background:#00CC00;
 	color:white; 
@@ -630,16 +624,23 @@ div#tag_checkboxes label {
 }
 
 .mark_button input{
-    width: 100px;
+    width: 70px;
     position: relative;
     
+}
+
+.mark_start_time, .mark_end_time{
+	background:black;
+	height:40px;
+	width:100px;
+	color:white;
 }
 
 .markend {
 	margin-top:10px;
     margin-left: 20px;
-	height:40px;
-	width:50px;
+	height:30px;
+	width:90px;
 	opacity:1;
 	background:#FF3333;
 	color:white; 
@@ -658,7 +659,7 @@ div#tag_checkboxes label {
 
 .interval_form {
 	border-left:1px solid white;
-    margin-top: 10px;
+    margin-top: 5px;
     background: #383838;
    	height:auto;
     padding: 10px;
