@@ -1,21 +1,24 @@
-VideoJS.DOMReady(function(){
+$(document).ready(function(){
       
-  var myPlayer = VideoJS.setup('cove-video-player',{
+  var videoPlayer = VideoJS.setup('cove-video-player',{
+//    offset: 30,
     controlsHiding: false
   });
 
   $("button.markstart").click(function(){
-    myPlayer.markSnippetStart();
-    $('#snippet_offset').value = myPlayer.snippetStart();
+    videoPlayer.markSnippetStart();
+    return false;
   });
   $("button.markend").click(function(){
-    myPlayer.markSnippetEnd();
-    $('#snippet_duration').value = myPlayer.snippetDuration();
+    videoPlayer.markSnippetEnd();
+    return false;
   });
  
   $('#new_snippet').submit(function(){
-    $('#snippet_offset').value = myPlayer.snippetStart();
-    $('#snippet_duration').value = myPlayer.snippetDuration();
+    $('#snippet_offset').val( videoPlayer.snippetStart() );
+    $('#snippet_duration').val( videoPlayer.snippetDuration() );
+
+    return true;
   });  
 });
 

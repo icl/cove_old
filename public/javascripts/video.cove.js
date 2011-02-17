@@ -59,7 +59,7 @@ var VideoJS = JRClass.extend({
     };
     // Override default options with global options
     if (typeof VideoJS.options == "object") { _V_.merge(this.options, VideoJS.options); }
-    // Override default & global options with options specific to this player
+    // Override deefault & global options with options specific to this player
     if (typeof setOptions == "object") { _V_.merge(this.options, setOptions); }
     // Override preload & autoplay with video attributes
     if (this.getPreloadAttribute() !== undefined) { this.options.preload = this.getPreloadAttribute(); }
@@ -809,6 +809,7 @@ VideoJS.player.extend({
   addVideoListener: function(type, fn){ _V_.addListener(this.video, type, fn.rEvtContext(this)); },
 
   play: function(){
+    if (this.currentTime() < 0) this.currentTime(0);
     this.video.play();
     return this;
   },
@@ -823,22 +824,28 @@ VideoJS.player.extend({
 
   currentTime: function(seconds){
     if (seconds !== undefined) {
-      try { this.video.currentTime = seconds; }
+      try { this.video.currentTime = this.offset() + seconds; }
       catch(e) { this.warning(VideoJS.warnings.videoNotReady); }
       this.values.currentTime = seconds;
       return this;
     }
-    return this.video.currentTime;
+    return this.video.currentTime - this.offset();
   },
   onCurrentTimeUpdate: function(fn){
     this.currentTimeListeners.push(fn);
   },
 
-  duration: function(){
-    return this.video.duration;
+
+  // COVE play snippets
+  offset: function(){
+    return this.options.offset !== undefined ? this.options.offset : 0;
   },
   
-  // COVE snippets
+  duration: function(){
+    return this.options.duration !== undefined ? this.options.duration : this.video.duration;
+  },
+  
+  // COVE select snippets
   markSnippetStart: function() {
     this.snippetStart(this.currentTime());
   },
@@ -856,6 +863,9 @@ VideoJS.player.extend({
     if (seconds !== undefined) {
       this.values.snippetEnd = seconds;
       this.updateSnippetSelectionBars();
+    }
+    if (this.values.snippetEnd == undefined || this.values.snippetEnd < this.snippetStart()) {
+      this.values.snippetEnd = this.duration();
     }
     return this.values.snippetEnd;
   },
@@ -974,10 +984,7 @@ VideoJS.player.extend({
     this.positionAll();
   },
 
-  onError: function(fn){ this.addVideoListener("error", fn); return this; },
-  onEnded: function(fn){
-    this.addVideoListener("ended", fn); return this;
-  }
+  onError: function(fn){ this.addVideoListener("error", fn); return this; }
 });
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -988,6 +995,7 @@ VideoJS.player.extend({
 /* Player Behaviors - How VideoJS reacts to what the video is doing.
 ================================================================================ */
 VideoJS.player.newBehavior("player", function(player){
+    this.activateEndListeners();
     this.onError(this.playerOnVideoError);
     // Listen for when the video is played
     this.onPlay(this.playerOnVideoPlay);
@@ -1002,6 +1010,8 @@ VideoJS.player.newBehavior("player", function(player){
     this.trackBuffered();
     // Buffer Full
     this.onBufferedUpdate(this.isBufferFull);
+    // COVE snippets
+    this.onCurrentTimeUpdate(this.stopIfSnippetEnded);
   },{
     playerOnVideoError: function(event){
       this.log(event);
@@ -1064,7 +1074,31 @@ VideoJS.player.newBehavior("player", function(player){
       this.each(this.resizeListeners, function(listener){
         (listener.context(this))();
       });
+    },
+
+    /* COVE: Ended tracking -------------------------------------------------------------- */
+    endListeners: [],
+    onEnded: function(fn){
+      this.endListeners.push(fn);
+    },
+    triggerEndListeners: function(){
+      this.each(this.endListeners, function(listener){
+        (listener.context(this))();
+      });
+    },
+    activateEndListeners: function(){
+        this.addVideoListener("ended", this.triggerEndListeners);
+    },
+
+    // COVE snippets
+    stopIfSnippetEnded: function(){
+      if (this.currentTime() >= this.duration()) {
+        this.pause();
+        this.currentTime(this.duration());
+        this.triggerEndListeners();
+      }
     }
+    
   }
 );
 /* Mouse Over Video Reporter Behaviors - i.e. Controls hiding based on mouse location
@@ -1242,8 +1276,10 @@ VideoJS.player.newBehavior("snippetSelectionBar", function(element){
     updateSnippetSelectionBars: function(newTime){
       var currentTime = (newTime !== undefined) ? newTime : this.currentTime();
       var left = this.snippetStart() / this.duration();
-      var validEnd = this.snippetEnd() !== undefined && this.snippetEnd() > this.snippetStart();
-      var right = 1 - (validEnd ? this.snippetEnd() : currentTime) / this.duration();        
+      // This would make snippet selection end track play
+      //var validEnd = this.snippetEnd() !== undefined && this.snippetEnd() > this.snippetStart();
+      //var right = 1 - (validEnd ? this.snippetEnd() : currentTime) / this.duration();        
+      var right = 1 - this.snippetEnd() / this.duration();
       
       if (isNaN(left)) return;
       this.each(this.snippetSelectionBars, function(bar){
