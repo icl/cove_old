@@ -664,6 +664,97 @@ div#video div p {
 /***************************************/
 
 
+/***********************************/
+/* Style sheet for collections/index.html */
+.collections_title {
+	margin-top: 20px;
+	font-size: 14pt;
+	color: gold;
+}
+
+.sortable_collection a { text-decoration: none; }
+
+.sortable_collection li {
+	height: 50px; 
+	border: 1px; 
+	border-style: solid; 
+	border-color:silver;
+	list-style: none;
+}
+
+.collection_cont {
+    margin:20px 0px;
+    padding:20px 0px;
+	background: #383838; 
+	border-top: 2px solid gray; 
+	border-bottom: 2px solid gray; 
+	clear: both; 
+}
+
+.collection_box, .collection_box_date {
+    height: 40px;
+    background: #2f2f2f;
+    text-align: center;
+    padding: 5px 0px;
+}
+
+.collection_box span {
+    display: block;
+    color: #ffd700;
+    font-size: 1em;
+    font-weight: bold;
+    /* text-transform: uppercase; */
+    padding: 2px 0px;
+}
+
+/* end style adjustments for collections */
+/***********************************/
+
+
+/***********************************/
+/* Style sheet for dropdown add widget */
+
+	ul.dropdown {
+		position: absolute;
+		width: 200px;
+		margin: 0;
+        padding: .3em;
+	}
+
+	ul.dropdown li{
+		
+		float: none;
+		list-style: none;
+	}
+	
+	ul.dropdown li a{
+        display: block;
+        background-color: #b88080;
+        border: 1px solid #b88080;
+        padding: .5em;
+        text-decoration: none;
+	}
+		
+	ul.dropdown li a:hover{
+        background-color: #333;
+        color: #fff;
+	}
+	
+	
+	ul.dropdown li ul.vdrop{
+		display: none;
+		position: inherit;
+        padding: 0;
+	}
+	
+	ul.dropdown li:hover ul.vdrop{
+		display: block;
+	}	
+
+/* end style adjustments for dropdown add */
+/***********************************/
+
+
 
 /*
  * Media queries for responsive design
