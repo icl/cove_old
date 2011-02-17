@@ -1,4 +1,4 @@
-class Definition < ActiveRecord:Base
+class Definition < ActiveRecord::Base
 
 =begin
   modding code from Paul Panarease's interval import. Pratik Commented it
@@ -7,7 +7,7 @@ class Definition < ActiveRecord:Base
     Dir.foreach("tmp/definitions/") do |file|  #for each file in tmp definitions
       
       if file =~ /[^(\.|\.\.)].*csv$/  #check if its a CSV file
-        note_file = File.new("tmp/notes/#{file}") #save file in temp variable
+        note_file = File.new("tmp/definitions/#{file}") #save file in temp variable
         notes = FasterCSV.new(note_file, #throw CSV file at FasterCSV tool
           :headers => true,
           :header_converters => [lambda {|h| h.gsub(/Term/, 'term').gsub(/Type/, 'type').gsub(/Definition/, 'definition')}, :symbol],
@@ -17,33 +17,24 @@ class Definition < ActiveRecord:Base
 
         #converts notes to a usable format
         notes.convert do |field, info|
-          case info.header
-            when :term
-              #field.gsub(/\.(mov|m4v)/,'')
-              puts "Found term."
-            when :definition
-              #/^[A-Za-z\s]+(\d+)/.match(field)[1]
-              puts "Found definition."
-            when :type
-              puts "Found type."
-            else
-              field.to_s
-          end # End |case| block
+	      field.to_s
         end # End |do| block
         
 
         #puts notes inside the db, NEEDS TO BE MODDED FOR PHENOMENON!
         notes.each do |row|
-          def_type = row.get_the_type
+          def_type = row[:type]
           case def_type
-            when 'Phenomenon'|'phenomenon'|'phenomena'|'Phenomena'
-              stored_phen = Phenomenon.find_by_name(row.get_the_term.generalize)
+            when "Phenomenon"
+              stored_phen = Phenomenon.find_by_name(row[:term])
               if stored_phen == nil
                 new_phen = Phenomenon.new
-                new_phen.name = row.get_the_term
-                new_phen.description = row.get_the_definition
+                new_phen.name = row[:term]
+                new_phen.description = row[:definition]
+		new_phen.save
               else
-                stored_phen.description = row.get_the_definition
+                stored_phen.description = row[:definition]
+		stored_phen.save
               end
             else
               puts "Unrecognized term. create new tag type then try again."
@@ -51,15 +42,9 @@ class Definition < ActiveRecord:Base
         end #end |do row|
 
 
-          #raw_data = row.to_hash.reject {|k,v| !Interval.column_names.index(k.to_s)}
-          #data={}
-          #raw_data.each{|k,v| data[k]=v.strip rescue data[k]=v }
-          #interval = Interval.new(data)
-          #interval.save
-        
-        #if !Dir.exists?('log/notes') # Doesn't work for some reason. Directory needs to be created manually
-        #  Dir.mkdir('log/notes')
-        #end
+        if !File.directory?('log/definitions') # Doesn't work for some reason. Directory needs to be created manually
+          Dir.mkdir('log/definitions')
+        end
         
         #move file to new store
         File.move("tmp/definitions/#{file}","log/definitions/#{file}.imported_at_#{Time.now.strftime("%Y%m%d%H%M")}")
