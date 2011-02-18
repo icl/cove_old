@@ -4,7 +4,8 @@ $(document).ready(function(){
 	var offY = 10;
 	var zindex_inc = 1000;
 	$(".define_me")
-		.live("mouseenter", function(e){
+		.live("mouseenter lookup", function(e){
+			$(this).css("background-color", "red");
 			var name = $(this).text();
 			hoverstatus[name] = 1;
 			if($("#definition_"+name.replace(" ", "_")).length){
