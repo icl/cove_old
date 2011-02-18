@@ -846,3 +846,44 @@ div#video div p {
   p, h2, h3 { orphans: 3; widows: 3; }
   h2, h3{ page-break-after: avoid; }
 }
+
+/* Project Page */
+div.project_container li.inline {
+   display: inline;
+   list-style-type: none;
+   margin: 10px 20px 10px 0px;
+}
+
+div.project_container h2 {
+   font-size: 2em;
+   color: #00fa9a;
+   padding: 0px 0px 5px 0px;
+}
+
+div.project_container h3 {
+   font-size: 1.5em;
+   color: #666;
+   padding: 10px 0px 5px 0px;
+}
+
+div.project_container h3 span {
+   font-size: 0.7em;
+}
+
+div.project_container .vid-title {
+   font-weight: bold;
+   padding: 10px 0px 5px 0px;
+}
+
+div.project_container .vid-comment {
+   padding: 10px 0px 5px 0px;
+}
+
+div#vid-cont {
+	background: #999;
+    padding: 10px 0px;
+    color: #000;
+}
+
+div.project_container .left-arw {border-color:transparent #00fa9a transparent transparent;}
+div.project_container .right-arw {border-color:transparent transparent transparent #00fa9a;}

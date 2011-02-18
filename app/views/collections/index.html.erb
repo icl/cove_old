@@ -2,7 +2,7 @@
 	<% @collections.each do |collection| %>
 		<div class="grid_16 alpha collection_container">
 			
-			<p class="grid_16" style="margin-top: 20px; font-size: 14pt; color: gold;"><%= collection.name %></p>
+			<p class="grid_16" style="margin-top: 20px;"><%= link_to collection.name, collection, :style => "font-size: 14pt; color: gold; text-decoration: none;" %></p>
 				<div class="grid_16"><%= collection.description %></div>
 			
 			<% if !collection.intervals.blank?%>

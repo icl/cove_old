@@ -1,48 +1,4 @@
-<style>
-
-li.inline {
-   display: inline;
-   list-style-type: none;
-   margin: 10px 20px 10px 0px;
-}
-
-h2 {
-   font-size: 2em;
-   color: #00fa9a;
-   padding: 0px 0px 5px 0px;
-}
-
-h3 {
-   font-size: 1.5em;
-   color: #666;
-   padding: 10px 0px 5px 0px;
-}
-
-h3 span {
-   font-size: 0.7em;
-}
-
-.vid-title {
-   font-weight: bold;
-   padding: 10px 0px 5px 0px;
-}
-
-.vid-comment {
-   padding: 10px 0px 5px 0px;
-}
-
-#vid-cont {
-	background: #999;
-        padding: 10px 0px;
-   color: #000;
-}
-
-.left-arw {border-color:transparent #00fa9a transparent transparent;}
-.right-arw {border-color:transparent transparent transparent #00fa9a;}
-
-</style>
-
-<div class="container_16">
+<div class="container_16 project_container">
 <% if user_signed_in? %>
    <% if @project %>
       <% if @project.user_id == current_user.id %>
@@ -99,21 +55,17 @@ h3 span {
 	<!-- end .grid_6 -->
 	<div class="clear"></div>
 	<div class="grid_1">
-		<p>
-<div class="left-arw" style="margin:10px;float:left;border-width:15px; border-style:solid;width:0px;height:0px;line-height:0px;"><!-- --></div>
-		</p>
+		<div class="left-arw" style="margin:10px;float:left;border-width:15px; border-style:solid;width:0px;height:0px;line-height:0px;"><!-- --></div>
 	</div>
 	<!-- end .grid_1 -->
 	<div class="grid_14" style="text-align:center;">
 		<h3>
-		   History Queue (coming soon)</span>	
+		   <span>History Queue (coming soon)</span>	
 		</h3>
 	</div>
 	<!-- end .grid_16 -->
 	<div class="grid_1">
-		<p>
-<div class="right-arw" style="margin:10px;float:left;border-width:15px; border-style:solid;width:0px;height:0px;line-height:0px;"><!-- --></div>
-		</p>
+		<div class="right-arw" style="margin:10px;float:left;border-width:15px; border-style:solid;width:0px;height:0px;line-height:0px;"><!-- --></div>
 	</div>
 	<!-- end .grid_1 -->
 	<div class="clear"></div>
@@ -126,12 +78,27 @@ h3 span {
 	</div>
 	<!-- end .grid_1 -->
 	<div class="grid_4">
-		<p>
+		<div>
                    <p class="vid-title">Title of Video</p>
 		   <div style="width: 150px; height: 100px; background: #666;">
                    </div>
                    <p class="vid-comment">Comments for this video</p>
-		</p>
+		</div>
+	</div>
+	<!-- end .grid_4 -->
+	<div class="grid_1">
+		<div>
+		      &nbsp;	
+		</div>
+	</div>
+	<!-- end .grid_1 -->
+	<div class="grid_4">
+		<div>
+                   <p class="vid-title">Title of Video</p>
+		   <div style="width: 150px; height: 100px; background: #666;">
+                   </div>
+                   <p class="vid-comment">Comments for this video</p>
+		</div>
 	</div>
 	<!-- end .grid_4 -->
 	<div class="grid_1">
@@ -141,29 +108,14 @@ h3 span {
 	</div>
 	<!-- end .grid_1 -->
 	<div class="grid_4">
-		<p>
-                   <p class="vid-title">Title of Video</p>
-		   <div style="width: 150px; height: 100px; background: #666;">
-                   </div>
-                   <p class="vid-comment">Comments for this video</p>
-		</p>
-	</div>
-	<!-- end .grid_4 -->
-	<div class="grid_1">
-		<p>
-		      &nbsp;	
-		</p>
-	</div>
-	<!-- end .grid_1 -->
-	<div class="grid_4">
-		<p>
+		<div>
                    <p class="vid-title">Title of Video</p>
 		   <div style="width: 150px; height: 100px; background: #666;">
                    </div>
                    <p class="vid-comment">
                        Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Mauris in urna vitae neque commodo iaculis
                    </p>
-		</p>
+		</div>
 	</div>
 	<!-- end .grid_4 -->
 	<div class="grid_1">

@@ -1,6 +1,10 @@
 class CollectionsController < ApplicationController
   before_filter :authenticate_user!
   
+  def router
+    
+  end
+  
   def index
     @collections = Collection.find_all_by_user_id(current_user.id)
     respond_to do |format|
@@ -9,7 +13,14 @@ class CollectionsController < ApplicationController
   end
   
   def show
-    @collection = Collection.find(params[:id])
+    if request.url =~ /(favorite|queue)/i
+      type = request.url =~ /favorite/i ? "favorites" : "queue"
+      owner = request.url =~ /project/i ? "project" : "user"
+      name = owner + "_" + id.to_s + "_" + type
+      @collection = Collection.find_by_name_and_user_id(name,current_user.id)      
+    else
+      @collection = Collection.find(params[:id])
+    end
   end
 
   def new
@@ -44,7 +55,20 @@ class CollectionsController < ApplicationController
   end
   
   def prioritize_interval #parameters :id => collection_id, :interval => interval_id
-    @collection = Collection.find(params[:id])
+    if request.url =~ /(favorite|queue)/i
+      type = request.url =~ /favorite/i ? "favorites" : "queue"
+      owner = request.url =~ /project/i ? "project" : "user"
+      name = owner + "_" + id.to_s + "_" + type
+      @collection = Collection.find_by_name_and_user_id(name,current_user.id)
+      if @collection.nil?
+        @collection = Collection.new
+        @collection.name = owner + "_" + id.to_s + "_" + type
+        @collection.desc = type.humanize + " for " + owner.humanize
+        @collection.save
+      end
+    else
+      @collection = Collection.find(params[:id])
+    end
     priority_list = YAML.load(@collection.interval_priorities)
     priority = priority_list.select {|k,v| v == params[:interval]}[0][0].to_i rescue nil
     if priority.blank?
@@ -87,7 +111,21 @@ class CollectionsController < ApplicationController
   end
   
   def add
-    @collection = Collection.find(params[:id])
+    if request.url =~ /(favorite|queue)/i
+      type = request.url =~ /favorite/i ? "favorites" : "queue"
+      owner = request.url =~ /project/i ? "project" : "user"
+      name = owner + "_" + id.to_s + "_" + type
+      @collection = Collection.find_by_name_and_user_id(name,current_user.id)
+      if @collection.nil?
+        @collection = Collection.new
+        @collection.name = owner + "_" + id.to_s + "_" + type
+        @collection.desc = type.humanize + " for " + owner.humanize
+        @collection.save
+      end
+    else
+      @collection = Collection.find(params[:id])
+    end
+    
     if @collection.user_id == current_user.id
     # params[:id] = Collection_id, params[:interval] = Interval_id
       @interval = Interval.find_by_id(params[:interval])
@@ -113,7 +151,21 @@ class CollectionsController < ApplicationController
   end
   
   def remove
-    @collection = Collection.find(params[:id])
+    if request.url =~ /(favorite|queue)/i
+      type = request.url =~ /favorite/i ? "favorites" : "queue"
+      owner = request.url =~ /project/i ? "project" : "user"
+      name = owner + "_" + id.to_s + "_" + type
+      @collection = Collection.find_by_name_and_user_id(name,current_user.id)
+      if @collection.nil?
+        @collection = Collection.new
+        @collection.name = owner + "_" + id.to_s + "_" + type
+        @collection.desc = type.humanize + " for " + owner.humanize
+        @collection.save
+      end
+    else
+      @collection = Collection.find(params[:id])
+    end
+
     if @collection.user_id == current_user.id && !@collection.intervals.blank?
     # params[:id] = Collection_id, params[:interval] = Interval_id
       @interval = Interval.find_by_id(params[:interval])
