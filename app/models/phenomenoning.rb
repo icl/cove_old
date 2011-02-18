@@ -1,5 +1,0 @@
-class Phenomenoning < ActiveRecord::Base
-  belongs_to :user
-  belongs_to :interval
-  belongs_to :phenomenon
-end

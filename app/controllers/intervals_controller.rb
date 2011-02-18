@@ -1,6 +1,7 @@
 class IntervalsController < ApplicationController
     before_filter :authenticate_user!
     before_filter :require_nda
+    before_filter :find_interval, :only => [:show, :update, :edit]
     
 	def index
 		@camera_angles = Interval.unique_angles
@@ -15,9 +16,11 @@ class IntervalsController < ApplicationController
   end
 
   def show
-    @interval = Interval.find(params[:id])
-    @tags = Tag.all
-
+    #@tags = Tag.all
+    #@tags = Taging.where :interval_id => @interval.id
+    @tags = @interval.annotations.all(:tag)
+    #@phenomenon = Phenomenoning.where :interval_id => @interval.id
+    @phenomenon = @interval.annotations.all(:phenomenon)
     render "show"
   end
 
@@ -27,7 +30,6 @@ class IntervalsController < ApplicationController
   end
 
   def edit
-    @interval = Interval.find(params[:id])
     render "edit"
   end
 
@@ -42,7 +44,6 @@ class IntervalsController < ApplicationController
   end
 
   def update
-    @interval = Interval.find(params[:id])
     @interval.attributes = {'tag_ids' => []}.merge(params[:interval] || {})
     
     if @interval.update_attributes(params[:interval])
@@ -58,5 +59,10 @@ class IntervalsController < ApplicationController
     @interval = Interval.find(params[:id])
     @interval.destroy
     redirect_to(intervals_url)
+  end
+
+  private
+  def find_interval
+    @interval = Interval.find(params[:id])
   end
 end
