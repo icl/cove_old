@@ -7,7 +7,7 @@ class AnnotationsController < ApplicationController
   end
 
   def create
-    if new_annotation = Annotation.add(:type => params[:type], 
+    if new_annotation = Annotation.add(:type => params[:type].to_sym, 
                     :invterval => @interval, 
                    :user => current_user, :name => params[:name],
                      :opt => params[:opt])

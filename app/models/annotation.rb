@@ -113,7 +113,7 @@ class Annotation
 
     # create the new join model instance.
     new_object = Annotation.join_class_from_symbol(type).new()
-    new_object.send "#{type.to_s}_id=", resource
+    new_object.send "#{type.to_s}_id=", resource.id
     new_object.user_id = user
     new_object.interval_id = interval
     return new_object.save
