@@ -1,6 +1,8 @@
 Cove::Application.routes.draw do
 
-  resources :intervals
+  resources :intervals do
+    resources :annotations
+  end
 
   resources :projects
   
