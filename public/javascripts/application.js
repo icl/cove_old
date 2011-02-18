@@ -2,7 +2,6 @@ $(document).ready(function(){
 	var hoverstatus = [];
 	var offX = 10;
 	var offY = 10;
-	var zindex_inc = 1000;
 	$(".define_me")
 		.live("mouseenter", function(e){
 			var name = $(this).text();
@@ -13,13 +12,7 @@ $(document).ready(function(){
 				$.get(
 					"/definitions/"+name,
 					function(data){
-						var def = $(data)
-							.find(".definition_holder")
-							.first()
-							.prependTo("body")
-							.css("z-index", zindex_inc++)
-							.hide()
-							.attr("id", "definition_"+name.replace(" ", "_"));
+						var def = $(data).find(".definition_holder").first().prependTo("body").hide().attr("id", "definition_"+name.replace(" ", "_"))
 						if(hoverstatus[name]){
 							def
 								.fadeIn("fast")
@@ -46,9 +39,4 @@ $(document).ready(function(){
 	$(".definition_holder").live("goaway",function(){
 		$(this).fadeOut("fast");
 	});
-	
-	$(".fauxselect_button").click(function(){
-		$(this).parent().find(".fauxselect").toggle("blind",{},"fast");
-	});
-	$(".fauxselect").hide();
 });
