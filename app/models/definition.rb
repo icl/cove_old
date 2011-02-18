@@ -17,7 +17,7 @@ class Definition < ActiveRecord::Base
 
         #converts notes to a usable format
         notes.convert do |field, info|
-	      field.to_s
+	        field.to_s
         end # End |do| block
         
 
@@ -31,10 +31,10 @@ class Definition < ActiveRecord::Base
                 new_phen = Phenomenon.new
                 new_phen.name = row[:term]
                 new_phen.description = row[:definition]
-		new_phen.save
+	             	new_phen.save
               else
                 stored_phen.description = row[:definition]
-		stored_phen.save
+	            	stored_phen.save
               end
             else
               puts "Unrecognized term. create new tag type then try again."
