@@ -18,7 +18,7 @@ describe Coding do
   describe "#hockup_code" do
     context "valid name" do
       it "should create the necessary association" do
-        new_coding = Coding.create :name => "Test", :user => @user, :interval => @interval  
+        new_coding = Coding.create :name => "Test", :user => @user, :interval => @interval, :coding_type => "phenomenon"  
         new_coding.should be
         new_coding.code.name.should == "Test"
       end
@@ -29,6 +29,13 @@ describe Coding do
         new_coding.save().should be_false
         Coding.count().should be == 0
       end   
+    end
+    context "code already set" do
+      before(:each) do
+        @new_coding = Coding.create :user => @user, :interval => @interval, :code => @code
+      end
+      it {@new_coding.code.should == @code}
+      it {Coding.count().should be > 0}
     end
   end
 end

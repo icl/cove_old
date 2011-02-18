@@ -9,18 +9,20 @@ class Coding < ActiveRecord::Base
 
   #instance variables to hold the underlying code properties
   attr_accessor :name
-  attr_accessor :type
+  attr_accessor :coding_type
+
+
   before_validation :hookup_code
 
   private 
   # Method that will hook up our coding to the underlying 
-  # code object if one can be found given @name and @type
+  # code object if one can be found given @name and @coding_type
   def hookup_code
     #break out of this function if we already have a code set
     return true if self.code
 
     #if there is not already a code set then go ahead and set it
-    this_code = Code.where(:name => self.name, :type => self.type).first
+    this_code = Code.where(:name => self.name, :coding_type => self.coding_type).first
     if this_code
       self.code = this_code
     else
