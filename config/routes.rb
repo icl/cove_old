@@ -29,8 +29,8 @@ Cove::Application.routes.draw do
   match 'users/:id/queue/add/:interval' => 'collections#add', :as => :add_to_user_queue
   match 'users/:id/queue/remove/:interval' => 'collections#remove', :as => :remove_from_user_queue
   # Collection Router Method (replaces above specific collection routes)
-  #match ':controller/:id/:type/add/:interval' => 'collections#router', :as => :add_to_spec_collection
-  #match ':controller/:id/:type/remove/:interval' => 'collections#router', :as => :remove_from_spec_collection
+  #match ':owner/:id/:type/add/:interval' => 'collections#router', :as => :add_to_spec_collection
+  #match ':ownder/:id/:type/remove/:interval' => 'collections#router', :as => :remove_from_spec_collection
   #match 'projects/:id/:type' => 'collections#router', :as => :project_collections
   #match 'users/:id/:type' => 'collections#router', :as => :user_collections
   

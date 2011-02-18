@@ -48,5 +48,9 @@ class User < ActiveRecord::Base
   def self.user_from_token(token)
     User.where(:invitation_token => token).first
   end
+  
+  def name
+    email
+  end
     
 end

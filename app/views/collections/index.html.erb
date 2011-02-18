@@ -1,8 +1,13 @@
 <% if @collections %>
 	<% @collections.each do |collection| %>
 		<div class="grid_16 alpha collection_container">
-			
-			<p class="grid_16" style="margin-top: 20px;"><%= link_to collection.name, collection, :style => "font-size: 14pt; color: gold; text-decoration: none;" %></p>
+			<% if collection.name =~ /(project|user)_[0-9]+_(favorites|queue)/i %>
+			<% name =  collection.name.split('_') %>
+			<% link = name[2].humanize + " for " + name[0].singularize.camelize.constantize.find(name[1].to_i).name %>
+			<% else %>
+			<% link = collection.name %>
+			<% end %>
+			<p class="grid_16" style="margin-top: 20px;"><%= link_to link, collection, :style => "font-size: 14pt; color: gold; text-decoration: none;" %></p>
 				<div class="grid_16"><%= collection.description %></div>
 			
 			<% if !collection.intervals.blank?%>

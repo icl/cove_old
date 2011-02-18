@@ -2,7 +2,11 @@ class CollectionsController < ApplicationController
   before_filter :authenticate_user!
   
   def router
-    
+    # Collection Router Method (replaces above specific collection routes)
+    #match ':owner/:id/:type/add/:interval' => 'collections#router', :as => :add_to_spec_collection
+    #match ':ownder/:id/:type/remove/:interval' => 'collections#router', :as => :remove_from_spec_collection
+    #match 'projects/:id/:type' => 'collections#router', :as => :project_collections
+    #match 'users/:id/:type' => 'collections#router', :as => :user_collections
   end
   
   def index
@@ -16,10 +20,17 @@ class CollectionsController < ApplicationController
     if request.url =~ /(favorite|queue)/i
       type = request.url =~ /favorite/i ? "favorites" : "queue"
       owner = request.url =~ /project/i ? "project" : "user"
-      name = owner + "_" + id.to_s + "_" + type
-      @collection = Collection.find_by_name_and_user_id(name,current_user.id)      
+      @name = owner + "_" + params[:id].to_s + "_" + type
+      @collection = Collection.find_by_name_and_user_id(@name,current_user.id)
     else
       @collection = Collection.find(params[:id])
+      if @collection.name =~ /(project|user)_[0-9]+_(favorites|queue)/i
+        type = @collection.name =~ /favorite/i ? "favorites" : "queue"
+        owner = @collection.name =~ /project/i ? "projects" : "users"
+        id = @collection.name.split('_')[1]
+        link = '/' + owner + '/' + id.to_s + '/' + type
+        redirect_to(link)
+      end
     end
   end
 
@@ -58,12 +69,13 @@ class CollectionsController < ApplicationController
     if request.url =~ /(favorite|queue)/i
       type = request.url =~ /favorite/i ? "favorites" : "queue"
       owner = request.url =~ /project/i ? "project" : "user"
-      name = owner + "_" + id.to_s + "_" + type
+      name = owner + "_" + params[:id].to_s + "_" + type
       @collection = Collection.find_by_name_and_user_id(name,current_user.id)
       if @collection.nil?
         @collection = Collection.new
-        @collection.name = owner + "_" + id.to_s + "_" + type
+        @collection.name = owner + "_" + params[:id].to_s + "_" + type
         @collection.desc = type.humanize + " for " + owner.humanize
+        @collection.user_id = current_user.id
         @collection.save
       end
     else
@@ -114,12 +126,13 @@ class CollectionsController < ApplicationController
     if request.url =~ /(favorite|queue)/i
       type = request.url =~ /favorite/i ? "favorites" : "queue"
       owner = request.url =~ /project/i ? "project" : "user"
-      name = owner + "_" + id.to_s + "_" + type
+      name = owner + "_" + params[:id].to_s + "_" + type
       @collection = Collection.find_by_name_and_user_id(name,current_user.id)
       if @collection.nil?
         @collection = Collection.new
-        @collection.name = owner + "_" + id.to_s + "_" + type
-        @collection.desc = type.humanize + " for " + owner.humanize
+        @collection.name = owner + "_" + params[:id].to_s + "_" + type
+        @collection.description = type.humanize + " for " + owner.humanize
+        @collection.user_id = current_user.id
         @collection.save
       end
     else
@@ -154,12 +167,13 @@ class CollectionsController < ApplicationController
     if request.url =~ /(favorite|queue)/i
       type = request.url =~ /favorite/i ? "favorites" : "queue"
       owner = request.url =~ /project/i ? "project" : "user"
-      name = owner + "_" + id.to_s + "_" + type
+      name = owner + "_" + params[:id].to_s + "_" + type
       @collection = Collection.find_by_name_and_user_id(name,current_user.id)
       if @collection.nil?
         @collection = Collection.new
-        @collection.name = owner + "_" + id.to_s + "_" + type
-        @collection.desc = type.humanize + " for " + owner.humanize
+        @collection.name = owner + "_" + params[:id].to_s + "_" + type
+        @collection.description = type.humanize + " for " + owner.humanize
+        @collection.user_id = current_user.id
         @collection.save
       end
     else

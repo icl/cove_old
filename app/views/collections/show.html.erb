@@ -1,7 +1,11 @@
-<div class="collection_container grid_16 alpha" id = "<%= @collection.id %>">
-	
+<div class="collection_container grid_16 alpha" id = "<%= @collection.id rescue "unknown" %>">
+<% if @collection %>
+	<% if request.url =~ /(favorite|queue)/i || @collection.name =~ /(project|user)_[0-9]+_(favorites|queue)/i %>
+	<% name =  @collection.name.split('_') %>
+	<div class="grid_16 collections_title"><%= name[2].humanize + " for " + name[0].singularize.camelize.constantize.find(name[1].to_i).name %></div>
+	<% else %>
 	<div class="grid_16 collections_title"><%= @collection.name %></div>
-	
+	<% end %>
 	<div class="grid_16"><%= @collection.description %></div>
 	<% if !@collection.intervals.blank? %>
 	<ul class="grid_16 sortable_collection omega">
@@ -22,4 +26,16 @@
 	<% end %>
 	</ul>
 	<% end %>
+<% else %>
+	<% if request.url =~ /(favorite|queue)/i %>
+	<% name =  @name.split('_') %>
+	<div class="grid_16 collections_title"><%= name[2].humanize + " for " + name[0].singularize.camelize.constantize.find(name[1].to_i).name %></div>
+	<% else %>
+	<div class="grid_16 collections_title">Unknown Collection</div>
+	<% end %>
+	<div class="grid_16">
+		Collection does not have any videos presently. Please add intervals.<br />
+		You can do so from any interval viewing page.
+	</div>
+<% end %>
 </div>
