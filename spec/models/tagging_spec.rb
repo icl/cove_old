@@ -1,4 +1,3 @@
-require "ruby-debug"
 require 'spec_helper'
 
 describe Tagging do
