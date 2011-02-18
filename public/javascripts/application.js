@@ -3,7 +3,7 @@ $(document).ready(function(){
 	var offX = 10;
 	var offY = 10;
 	$(".define_me")
-		.live("mouseenter", function(e){
+		.live("mouseenter lookup", function(e){
 			var name = $(this).text();
 			hoverstatus[name] = 1;
 			if($("#definition_"+name.replace(" ", "_")).length){
