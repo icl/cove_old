@@ -26,11 +26,12 @@ class Definition < ActiveRecord::Base
           def_type = row[:type]
           case def_type
             when "Phenomenon"
-              stored_phen = Phenomenon.find_by_name(row[:term])
+              stored_phen = Code.find_by_name(row[:term])
               if stored_phen == nil
-                new_phen = Phenomenon.new
+                new_phen = Code.new
                 new_phen.name = row[:term]
                 new_phen.description = row[:definition]
+		new_phen.coding_type = "phenomenon"
 		new_phen.save
               else
                 stored_phen.description = row[:definition]

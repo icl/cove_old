@@ -5,9 +5,9 @@ Feature: Check defintion
 	I want to get a definition when I hover over a term
 
 Background:
-	Given the following phenomenon exists:
-		|	name	|	description		|
-		|	riffing	|	Blah de blah riffing	|
+	Given the following code exists:
+		|	name	|	description		|	coding type		|
+		|	riffing	|	Blah de blah riffing	|	phenomenon		|
 	And the following interval exists:
 		|	id	|	phrase type	|
 		|	1	|	riffing		|
