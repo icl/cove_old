@@ -17,8 +17,8 @@ class IntervalsController < ApplicationController
 
   def show
     @tags = @interval.taggings
-    @phenomenon = @interval.taggings.phenomenon
-    @people = @interval.taggings.people
+    @phenomenon = @interval.codings.phenomenon
+    @people = @interval.codings.people
 
     render "show"
   end
