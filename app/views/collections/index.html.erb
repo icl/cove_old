@@ -1,9 +1,11 @@
+<div class="grid_2 prefix_14" ><%= link_to "New Collection", new_collection_path %></div>
 <% if @collections %>
+	<div class="grid_16 alpha" style="font-size: 20pt; color: white; text-decoration: none;">Collections for <%= current_user.name %></div>
 	<% @collections.each do |collection| %>
 		<div class="grid_16 alpha collection_container">
 			<% if collection.name =~ /(project|user)_[0-9]+_(favorites|queue)/i %>
 			<% name =  collection.name.split('_') %>
-			<% link = name[2].humanize + " for " + name[0].singularize.camelize.constantize.find(name[1].to_i).name %>
+			<% link = name[2].humanize + " for " + name[0].humanize + ": " + name[0].singularize.camelize.constantize.find(name[1].to_i).name %>
 			<% else %>
 			<% link = collection.name %>
 			<% end %>

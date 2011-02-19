@@ -60,7 +60,9 @@
 		<ul class="grid_16 main_links">
 			<li class="alpha grid_2"><%= link_to "Home", root_path %></li>
 			<li class="grid_2"><%= link_to "Browse", intervals_path %></li>
-			<div class="search_holder grid_4 push_8">
+			<li class="grid_2"><%= link_to "Collections", collections_path %></li>
+			<li class="grid_2"><%= link_to "Projects", projects_path %></li>
+			<div class="search_holder grid_4 push_4">
 				<%= render "intervals/search" if current_user %>
 			</div>
 		</ul>

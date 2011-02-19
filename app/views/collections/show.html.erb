@@ -1,8 +1,9 @@
-<div class="collection_container grid_16 alpha" id = "<%= @collection.id rescue "unknown" %>">
 <% if @collection %>
-	<% if request.url =~ /(favorite|queue)/i || @collection.name =~ /(project|user)_[0-9]+_(favorites|queue)/i %>
+	<div class="grid_2 prefix_14" ><%= link_to "Edit Collection", edit_collection_path %></div>
+	<div class="collection_container grid_16 alpha" id = "<%= @collection.id %>">
+	<% if request.url =~ /(favorite|queue)/i %>
 	<% name =  @collection.name.split('_') %>
-	<div class="grid_16 collections_title"><%= name[2].humanize + " for " + name[0].singularize.camelize.constantize.find(name[1].to_i).name %></div>
+	<div class="grid_16 collections_title"><%= name[2].humanize + " for " + name[0].humanize + ": " +  name[0].singularize.camelize.constantize.find(name[1].to_i).name %></div>
 	<% else %>
 	<div class="grid_16 collections_title"><%= @collection.name %></div>
 	<% end %>
@@ -27,15 +28,16 @@
 	</ul>
 	<% end %>
 <% else %>
+	<div class="collection_container grid_16 alpha" id="unknown">
 	<% if request.url =~ /(favorite|queue)/i %>
 	<% name =  @name.split('_') %>
-	<div class="grid_16 collections_title"><%= name[2].humanize + " for " + name[0].singularize.camelize.constantize.find(name[1].to_i).name %></div>
+	<div class="grid_16 collections_title"><%= name[2].humanize + " for " + name[0].humanize + ": " + name[0].singularize.camelize.constantize.find(name[1].to_i).name %></div>
 	<% else %>
 	<div class="grid_16 collections_title">Unknown Collection</div>
 	<% end %>
 	<div class="grid_16">
-		Collection does not have any videos presently. Please add intervals.<br />
-		You can do so from any interval viewing page.
+		This collection does not have any videos presently.<br />
+		You can add videos from any interval viewing page.
 	</div>
 <% end %>
 </div>

@@ -1,4 +1,4 @@
-<% if @collection.name =~ /(favorite|queue)/ %>
+<% if @collection.name =~ /(project|user)_[0-9]+_(favorites|queue)/ %>
 	Cannot edit collection for favorites and queues.
 <% else %>
 	<%= simple_form_for(@collection) do |f| %>

@@ -140,21 +140,25 @@ class CollectionsController < ApplicationController
     end
     
     if @collection.user_id == current_user.id
-    # params[:id] = Collection_id, params[:interval] = Interval_id
-      @interval = Interval.find_by_id(params[:interval])
-      if !@collection.intervals.blank?
-        priority = YAML.load(@collection.interval_priorities).keys.sort!{|a,b| a.to_i <=> b.to_i}.last.to_i + 1
-        new_priority = {"#{priority.to_s}" => @interval.id.to_s}
-        new_priorities = YAML.load(@collection.interval_priorities).merge new_priority
+      if !@collection.intervals.collect{|i| i.id.to_s }.include? params[:interval].to_s
+        # params[:id] = Collection_id, params[:interval] = Interval_id
+        @interval = Interval.find_by_id(params[:interval])
+        if !@collection.intervals.blank?
+          priority = YAML.load(@collection.interval_priorities).keys.sort!{|a,b| a.to_i <=> b.to_i}.last.to_i + 1
+          new_priority = {"#{priority.to_s}" => @interval.id.to_s}
+          new_priorities = YAML.load(@collection.interval_priorities).merge new_priority
+        else
+          new_priorities = {'1' => @interval.id.to_s}
+        end
+        @collection.interval_priorities = new_priorities.to_yaml
+        @collection.intervals += [@interval]
+        @collection.save
+        notice = "Interval was added successfully"
       else
-        new_priorities = {'1' => @interval.id.to_s}
+        notice = "Error: Interval is already in collection"
       end
-      @collection.interval_priorities = new_priorities.to_yaml
-      @collection.intervals += [@interval]
-      @collection.save
-      notice = "Interval was added successfully"
     else
-      notice = "Interval was not added to collection: Permission Denied."
+      notice = "Error: Interval was not added to collection: Permission Denied."
     end
     if request.xhr?
       render :text => (notice =~ /error/i) ? "failed" : "success"
@@ -200,7 +204,7 @@ class CollectionsController < ApplicationController
         notice = "Interval does not exist in collection"
       end
     else
-      notice = "Interval was not removed from collection: Permission Denied."
+      notice = "Error: Interval was not removed from collection: Permission Denied."
     end
     if request.xhr?
       render :text => (notice =~ /error/i) ? "failed" : "success"
