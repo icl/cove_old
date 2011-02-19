@@ -16,8 +16,13 @@ class IntervalsController < ApplicationController
   end
 
   def show
-    @tags = Tag.all
-
+    #@tags = Tag.all
+    #@tags = Taging.where :interval_id => @interval.id
+    #@tags = @interval.annotations.all(:tag)
+    @tags = []
+    #@phenomenon = Phenomenoning.where :interval_id => @interval.id
+    #@phenomenon = @interval.annotations.all(:phenomenon)
+    @phenomenon = []
     render "show"
   end
 
