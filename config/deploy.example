@@ -18,14 +18,15 @@ set :db_user, "db_user"
 set :db_password, "secret"
 set :cookie_secret, "secret"
 set :hoptoad_token, "secret"
-set :ga_token, ""
+set :ga_token, "secret"
+set :newrelic_license_key, "secret"
 
 role :app, domain
 role :web, domain
 role :db,  domain, :primary => true
 
-before "deploy:setup", :db, :app
-after "deploy:update_code", "db:symlink", "app:symlink", :bundle
+before "deploy:setup", :db, :app, :newrelic
+after "deploy:update_code", "db:symlink", "app:symlink", "newrelic:symlink", :bundle
 #after "deploy:rollback", :bundle
 
 namespace :deploy do
@@ -140,5 +141,53 @@ namespace :db do
   desc "Migrates to your newest database structure"
   task :migrate do
     run "cd #{current_release} && RAILS_ENV=production rake db:migrate"
+  end
+end
+
+namespace :rewrelic do
+  desc "Creates newrelic yaml in shared path"
+  task :default do
+    newrelic_config = ERB.new <<-EOF
+    common: &default_settings
+      license_key: '#{newrelic_license_key}'
+      app_name: Cove
+      monitor_mode: true
+      developer_mode: false
+      log_level: info
+      ssl: false
+      apdex_t: 0.5
+      capture_params: false
+      transaction_tracer:
+        enabled: true
+        transaction_threshold: apdex_f
+        record_sql: obfuscated
+        stack_trace_threshold: 0.500
+      error_collector:
+        enabled: true
+        capture_source: true    
+        ignore_errors: ActionController::RoutingError
+    development:
+      <<: *default_settings
+      monitor_mode: false
+      developer_mode: true
+    test:
+      <<: *default_settings
+      monitor_mode: false
+    production:
+      <<: *default_settings
+      monitor_mode: true
+    staging:
+      <<: *default_settings
+      monitor_mode: true
+      app_name: Cove (Staging)
+    EOF
+    
+    run "mkdir -p #{shared_path}/config"
+    put newrelic_config.result, "#{shared_path}/config/newrelic.yml"
+  end
+
+  desc "Makes symlink for newrelic yaml" 
+  task :symlink do
+    run "ln -nfs #{shared_path}/config/newrelic.yml #{release_path}/config/newrelic.yml" 
   end
 end
