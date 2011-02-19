@@ -6,6 +6,7 @@ gem 'rails', '~>3.0.3'
 gem 'simple_form'
 gem 'capistrano'
 gem 'fastercsv'
+gem 'newrelic_rpm'
 
 gem "resque", :require => "resque/server"
 
