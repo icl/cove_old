@@ -11,7 +11,9 @@ class Coding < ActiveRecord::Base
   attr_accessor :name
   attr_accessor :coding_type
 
+  # the scopes that will give you the type of coding_type you want
   scope :phenomenon, lambda { joins(:code).where("codes.coding_type = ?", "phenomenon")}
+  scope :people, lambda { joins(:code).where("codes.coding_type = ?", "people")}
 
   before_validation :hookup_code
 
@@ -30,4 +32,5 @@ class Coding < ActiveRecord::Base
       return false
     end
   end
+
 end
