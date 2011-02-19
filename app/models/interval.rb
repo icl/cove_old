@@ -1,5 +1,8 @@
 class Interval < ActiveRecord::Base
   
+  has_many :codings
+  has_many :taggings
+  
 	def end_time
     Time.at(start_time.to_i + duration)
 	end

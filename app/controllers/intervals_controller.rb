@@ -19,10 +19,10 @@ class IntervalsController < ApplicationController
     #@tags = Tag.all
     #@tags = Taging.where :interval_id => @interval.id
     #@tags = @interval.annotations.all(:tag)
-    @tags = []
+    @tags = @interval.taggings
     #@phenomenon = Phenomenoning.where :interval_id => @interval.id
     #@phenomenon = @interval.annotations.all(:phenomenon)
-    @phenomenon = []
+    @phenomenon = @interval.taggings.phenomenon
     render "show"
   end
 
