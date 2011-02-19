@@ -4,6 +4,8 @@ Cove::Application.routes.draw do
     resources :annotations
   end
 
+  resources :definitions
+
   resources :projects
   
   resources :collections
@@ -33,21 +35,22 @@ Cove::Application.routes.draw do
   #match ':ownder/:id/:type/remove/:interval' => 'collections#router', :as => :remove_from_spec_collection
   #match 'projects/:id/:type' => 'collections#router', :as => :project_collections
   #match 'users/:id/:type' => 'collections#router', :as => :user_collections
-  
-  devise_for :users, :path => "/", :path_names => {:sign_in => "login", 
+
+  devise_for :users, :path => "/", :path_names => {:sign_in => "login",
     :sign_out => "logout"}
-  
+
   controller :nda do
     get "/nda" => "nda#index"
     post "/nda" => "nda#create"
   end
-  
+
   resources :invitations, :only => [:edit, :update]
   match 'invitations/' => 'invitations#new'
-  
+
   namespace :admin do
     resources :users, :only => [:index, :new, :create]
   end
-  
+
   root  :to => "intervals#index"
 end
+
