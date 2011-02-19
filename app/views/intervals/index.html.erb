@@ -8,7 +8,7 @@
 		<%= select_tag(:camera_angle, options_for_select(@camera_angles, :selected =>params[:camera_angle]), :include_blank =>true, :class =>"camera_angle")%></p>
 		<p class="grid_2 suffix_1"><%= label_tag :session_type, "Session Type" %></br>
 		<%= select_tag(:session_typ3_id, 
-        options_for_select([@session_types, ["riffing", {:class =>"define_me"}]], :selected =>params[:session_type]), 
+        options_for_select(@session_types, :selected =>params[:session_type]), 
         :include_blank =>true, 
         :class =>"session_type")%></p>
 		<p class="grid_2 suffix_1"><%= label_tag :phrase_type, "Phrase Type" %></br>
