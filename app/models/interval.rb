@@ -121,4 +121,17 @@ class Interval < ActiveRecord::Base
   def annotations
     @annotations ||= Annotation.new :interval_id => self.id
   end
+
+  searchable do
+    #Sunspot Solr stuff
+    #Primary terms
+    text :session_type, :default_boost => 2
+    text :phrase_name, :default_boost => 2
+    text :phrase_type, :default_boost => 2
+    text :alternative_phrase_name, :default_boost => 2
+    
+    #Side terms     
+    text :comments
+    text :camera_angle
+  end
 end
