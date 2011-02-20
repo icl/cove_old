@@ -43,7 +43,8 @@ class Interval < ActiveRecord::Base
 		query = column_names.map{|col| col.to_s}.map{|col| "#{col} LIKE ?"}.join(" OR ")
 		where(query, *args)
 	end
-	
+
+=begin DEPRECATED BY SUNSPOT SOLR	
 	def self.search args
 	  search_conditions = {}
 	  
@@ -57,7 +58,8 @@ class Interval < ActiveRecord::Base
 		query = column_names.map{|col| col.to_s}.map{|col| "#{col} LIKE ?"}.join(" OR ")
 		where(query, *parm).where(search_conditions)
 	end
-	
+=end
+
   has_many :interval_tags, :dependent => :destroy
   has_many :tags, :through => :interval_tags
 
@@ -133,5 +135,12 @@ class Interval < ActiveRecord::Base
     #Side terms     
     text :comments
     text :camera_angle
+  end
+
+  #more sunspot stuff
+  def self.search_with params
+    @search = Interval.search() do
+      keywords(params[:q])
+    end
   end
 end
