@@ -1,5 +1,4 @@
-class Definition < ActiveRecord::Base
-
+class Def_Import
 =begin
   modding code from Paul Panarease's interval import. Pratik Commented it
 =end
