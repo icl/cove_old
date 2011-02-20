@@ -9,6 +9,8 @@ gem 'fastercsv'
 gem 'sunspot', '1.2.rc4'
 gem 'sunspot_rails', '1.2.rc4'
 
+gem 'newrelic_rpm'
+
 gem "resque", :require => "resque/server"
 
 #gem "SystemTimer"
