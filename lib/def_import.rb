@@ -20,7 +20,7 @@ class Def_Import
         end # End |do| block
         
 
-        #puts notes inside the db, NEEDS TO BE MODDED FOR PHENOMENON!
+        #puts notes inside the db, NEEDS TO BE MODDED FOR CODE!
         notes.each do |row|
           def_type = row[:type]
           case def_type
