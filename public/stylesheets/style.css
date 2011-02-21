@@ -684,7 +684,7 @@ div#video div p {
 
 .collection_cont {
     margin:20px 0px;
-    padding:20px 0px;
+    padding:10px 0px;
 	background: #383838; 
 	border-top: 2px solid gray; 
 	border-bottom: 2px solid gray; 
@@ -696,6 +696,15 @@ div#video div p {
     background: #2f2f2f;
     text-align: center;
     padding: 5px 0px;
+}
+
+.collection_box_date span {
+	
+    color: #ffd700;
+    font-size: .95em;
+    font-weight: bold;
+    /* text-transform: uppercase; */
+    padding: 2px 0px;
 }
 
 .collection_box_name {
@@ -723,14 +732,27 @@ div#video div p {
     background: #5e767e;
     color: #000;
  }
+ 
+.collection_thumbnail {
+	width: 120x; height: 50px; background: #ccc;
+}
 
 .collection_box span {
-    display: block;
+    /*display: block;*/
     color: #ffd700;
     font-size: .95em;
     font-weight: bold;
     /* text-transform: uppercase; */
     padding: 2px 0px;
+}
+
+.arrow-collect {
+	border-color: transparent transparent transparent #ffd700;
+	border-style:solid;
+	border-width:20px;
+	width:0;
+	height:0;
+	margin-top: 5px;
 }
 
 /* end style adjustments for collections */
@@ -750,10 +772,19 @@ div#video div p {
 	ul.dropdown li{
 		float: none;
 		list-style: none;
-    	background-color: #999996;
-        font-size: .95em;
-    	font-weight: bold;
         padding: .5em;
+        
+        /* Decorative CSS */
+border-top:#f0f0f0 1px solid;
+    font-family: Arial, Helvetica, sans-serif;
+    text-decoration:none;
+    text-transform:uppercase;
+    color: #000;
+    background: #cccccc;
+ 		font-size: .95em;
+    	font-weight: bold;
+        
+    
 	}
 	
 	ul.dropdown li a{
@@ -778,7 +809,7 @@ div#video div p {
 	}
 	
 	ul.dropdown li ul.vdrop li a{
-		background-color: #C9AA00;
+		background-color: #e6c000;
 	}
 	
 	ul.dropdown li ul.vdrop li a:hover{
