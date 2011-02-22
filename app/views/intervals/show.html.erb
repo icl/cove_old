@@ -2,15 +2,17 @@
 	<script type="text/javascript">
 		$(document).ready(function(){
 			$(".show_tags_add_button").click(function(){
-				//$("div").removeClass(".show_tags_selected");
 				$(".show_tags_add").slideToggle("slow"); 
+				$(".show_tags_selected").remove();
 
 			});
 		});
 
 		$(document).ready(function(){
 			$(".tags_go_new_button").click(function(){
-				$(".tags_add_new").slideToggle("slow"); 
+				$(".tags_add_new").slideToggle("slow");
+				$(".show_tags_add").remove();
+
 
 			});
 		});
