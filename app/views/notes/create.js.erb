@@ -3,5 +3,5 @@ $('.project_note').first().before('<%= escape_javascript note_html %>');
 $('#note_note').val('');
 $('.jsDisabled_note_controls').remove();
 $('.note_slide').hide();
-$('.note_header').show();
-$('.note_spacer').show();
+$('.expandable').css('display','inline');
+$('.note_br').hide();

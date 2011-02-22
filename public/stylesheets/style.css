@@ -922,3 +922,4 @@ div.project_container .right-arw {border-color:transparent transparent transpare
 
 .note_form textarea.text { width: 454px; height: 120px;}
 .note_form input#note_submit { margin-bottom: 10px; float: right; }
+.nobr	{white-space: nowrap;}

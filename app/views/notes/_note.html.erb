@@ -1,11 +1,19 @@
 <% 	if note.note
+		disp = note.note
 		max = note.note.length > 60 ? 60 : note.note.length
 	else 
+		disp = @note.note
 		max = @note.note.lentgth > 60 ? 60 : @note.note.length
 	end %>
 <li class="project_note" style="margin: 5px; padding: 2px; background-color: #777; color: #111;">
-<div class="note_header" style="display:none; background-color: #888;">
-	<div class="note_expand<%= "able" if max == 60 %>" style="width: 450px; display:inline;"><%= note.note[0, max] rescue @note.note[0. max] %><%= "<span style=\"font-size:9px;\">...(click to expand)</span>".html_safe if max == 60 %></div>
+<div class="note_header" style="background-color: #888;">
+	<div class="first note_expand<%= "able" if max == 60 || disp =~ /\n/ %>" style="width: 450px; display:inline;"><%= disp[0, max].gsub(/\n/,'<br class="note_br" />').html_safe %></div>
+	<% if max == 60 %>
+	<div class="note_slide note_expandable" style="display:inline; margin-left: -4px;">
+			<%= "&nbsp;".html_safe if disp[60] == 32 %>
+			<%= disp[60,note.note.length-1].gsub(/\n/,'<br class="note_br" />').html_safe %>
+	</div>
+	<% end %>
 	<div class="note_controls" style="float:right; display:inline; color: #555;">
 	<% if note %>
 		[<%= link_to 'X', [@project, note], :id => note.id, :class => "note_delete", :method => :delete, :style => "color: #CD1A70; text-decoration:none;" %>]
@@ -13,16 +21,7 @@
 		[<%= link_to 'X', [@project, @note], :id => @note.id, :class => "note_delete", :method => :delete, :style => "color: #CD1A70; text-decoration:none;" %>]
 	<% end %>
 	</div>
-</div>
-<div class="note_slide" style="background-color: #888;">
-	<div class="note_spacer" style="display: none;height: 5px; background-color:#777;">&nbsp;</div>
-	<%= note.note rescue @note.note %>
-	<div class="jsDisabled_note_controls" style="float:right; color: #555;">
-	<% if note %>
-		[<%= link_to 'X', [@project, note], :id => note.id, :class => "note_delete", :method => :delete, :style => "color: #CD1A70; text-decoration:none;" %>]
-	<% else %>
-		[<%= link_to 'X', [@project, @note], :id => @note.id, :class => "note_delete", :method => :delete, :style => "color: #CD1A70; text-decoration:none;" %>]
-	<% end %>
-	</div>
+	<%= "<div class=\"note_expandable expandable\" style=\"display:none;\"><span style=\"font-size:9px;\">...(click to expand)</span></div>".html_safe if max == 60 || disp =~ /\n/ %>
+	<%= "<div class=\"note_expandable collapsable\" style=\"display:none;\"><span style=\"font-size:9px;\">(click to hide)</span></div>".html_safe if max == 60 || disp =~ /\n/ %>
 </div>
 </li>
