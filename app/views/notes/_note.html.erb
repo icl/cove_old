@@ -1,0 +1,28 @@
+<% 	if note.note
+		max = note.note.length > 60 ? 60 : note.note.length
+	else 
+		max = @note.note.lentgth > 60 ? 60 : @note.note.length
+	end %>
+<li class="project_note" style="margin: 5px; padding: 2px; background-color: #777; color: #111;">
+<div class="note_header" style="display:none; background-color: #888;">
+	<div class="note_expand<%= "able" if max == 60 %>" style="width: 450px; display:inline;"><%= note.note[0, max] rescue @note.note[0. max] %><%= "<span style=\"font-size:9px;\">...(click to expand)</span>".html_safe if max == 60 %></div>
+	<div class="note_controls" style="float:right; display:inline; color: #555;">
+	<% if note %>
+		[<%= link_to 'X', [@project, note], :id => note.id, :class => "note_delete", :method => :delete, :style => "color: #CD1A70; text-decoration:none;" %>]
+	<% else %>
+		[<%= link_to 'X', [@project, @note], :id => @note.id, :class => "note_delete", :method => :delete, :style => "color: #CD1A70; text-decoration:none;" %>]
+	<% end %>
+	</div>
+</div>
+<div class="note_slide" style="background-color: #888;">
+	<div class="note_spacer" style="display: none;height: 5px; background-color:#777;">&nbsp;</div>
+	<%= note.note rescue @note.note %>
+	<div class="jsDisabled_note_controls" style="float:right; color: #555;">
+	<% if note %>
+		[<%= link_to 'X', [@project, note], :id => note.id, :class => "note_delete", :method => :delete, :style => "color: #CD1A70; text-decoration:none;" %>]
+	<% else %>
+		[<%= link_to 'X', [@project, @note], :id => @note.id, :class => "note_delete", :method => :delete, :style => "color: #CD1A70; text-decoration:none;" %>]
+	<% end %>
+	</div>
+</div>
+</li>

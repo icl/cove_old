@@ -919,3 +919,6 @@ div#vid-cont {
 
 div.project_container .left-arw {border-color:transparent #00fa9a transparent transparent;}
 div.project_container .right-arw {border-color:transparent transparent transparent #00fa9a;}
+
+.note_form textarea.text { width: 454px; height: 120px;}
+.note_form input#note_submit { margin-bottom: 10px; float: right; }

@@ -6,7 +6,9 @@ Cove::Application.routes.draw do
 
   resources :definitions
 
-  resources :projects
+  resources :projects do
+    resources :notes
+  end
   
   resources :collections
   # Collections General Routes

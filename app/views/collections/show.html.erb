@@ -21,7 +21,7 @@
 			<div class="grid_2 collection_box">Camera Angle: <br /><span><%= interval.camera_angle %></span></div>
 			<div class="grid_2 collection_box">Session Type: <br /><span><%= interval.session_type %></span></div>
 			<div class="grid_3 collection_box_date">Session Time:<br /> <%= interval.start_time.strftime("%Y-%m-%d %H:%M") %><br />Duration: <%= interval.duration_string %></div>
-		
+			<div class="grid_1" style="color:#777;"><div style="float: right; padding-top: 15px; font-size: 15px;">[<%= link_to "X", remove_from_collection_path(:interval => interval.id), :id => interval.id, :class => "remove_from_collection", :style => "color: #CD1A70; text-decoration: none;" %>]</div></div>
 		</li>
 		
 	<% end %>

@@ -1,5 +1,6 @@
 class ProjectsController < ApplicationController
   before_filter :authenticate_user!
+  before_filter :require_nda
 
   def index
     @project = Project.all

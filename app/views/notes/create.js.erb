@@ -1,0 +1,7 @@
+<% note_html = render :partial => 'note', :object => @note %>
+$('.project_note').first().before('<%= escape_javascript note_html %>');
+$('#note_note').val('');
+$('.jsDisabled_note_controls').remove();
+$('.note_slide').hide();
+$('.note_header').show();
+$('.note_spacer').show();

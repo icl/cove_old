@@ -1,3 +1,36 @@
+/* Project Notes Functions */
+$('.note_expandable').live('click', function(event) {
+	$(event.target).parents('.project_note').children('.note_slide').slideToggle(200);
+});
+jQuery(function() {
+	jQuery("#new_note").live('submit', function(event){
+		$.ajax({
+			type: 'POST',
+			url: '/projects/' + $('.project_container').attr('id') + '/notes.js',
+			beforeSend: function(xhr) {
+				xhr.setRequestHeader('X-CSRF-Token', $('meta[name=csrf-token]').attr('content'));
+			},
+			data: $(this).serialize()
+		});
+		return false;
+	});
+});
+jQuery(function() {
+	jQuery(".note_delete").live('click', function(event){
+		$.ajax({
+			type: 'DELETE',
+			url: '/projects/' + $('.project_container').attr('id') + '/notes/' + $(event.target).attr('id'),
+			beforeSend: function(xhr) {
+				xhr.setRequestHeader('X-CSRF-Token', $('meta[name=csrf-token]').attr('content'));
+			},
+			success: function() {
+				$(event.target).parents('.project_note').remove();
+			}
+		});
+		return false;
+	});
+});
+/* Collection Prioritizing */
 jQuery(function() {
 	jQuery(".sortable_collection").sortable({
 		distance: 40,
@@ -70,7 +103,30 @@ jQuery(".priority_link").live('click', function(event) {
 	};
 	return false;
 });
-
+jQuery(function() {
+	jQuery("a.remove_from_collection").click(function(event){
+		$.ajax({
+			type: 'DELETE',
+			url: '/collections/' + $('.collection_container').attr('id') + '/remove/' + $(event.target).attr('id'),
+			beforeSend: function(xhr) {
+				xhr.setRequestHeader('X-CSRF-Token', $('meta[name=csrf-token]').attr('content'));
+			},
+			success: function() {
+				$(event.target).parents('.collection_cont').remove();
+				var i = 1;
+				var priority = "priority={";
+				$.each($(".sortable_collection li"),function() {
+					$(this).find(".priority").text(i);
+					i++;
+					priority += "\'" + $(this).find(".priority").text() + "\': \'" + $(this).attr("id") + "\',";
+				});
+			}
+		});
+		event.preventDefault();
+		return false;
+	});
+});
+/* Definition Function */
 $(document).ready(function(){
 	var hoverstatus = [];
 	var offX = 10;

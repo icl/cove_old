@@ -1,4 +1,4 @@
-<div class="container_16 project_container">
+<div class="container_16 project_container" id="<%= @project.id %>" >
 <% if user_signed_in? %>
    <% if @project %>
       <% if @project.user_id == current_user.id %>
@@ -31,7 +31,7 @@
 	<div class="clear"></div>
 	<div class="grid_10">
 		<h3>
-		   Featured Video	
+		   Notes	
 		</h3>
 	</div>
 	<!-- end .grid_10 -->
@@ -42,9 +42,18 @@
 	</div>
 	<div class="clear"></div>
 	<div class="grid_10">
-		<p style="height: 300px;">
-		      In the coming weeks, you will be able to display an video here to inspire and energize you for your project.	
-		</p>
+		<!-->Notes Block<-->
+		<div class="note_form">
+			<%= simple_form_for [@project,Note.new] do |form| %>
+				<%= form.input :note %>
+				<%= form.button :submit %>
+			<% end %>
+		</div>
+		<div class="grid_9 prefix_1">
+			<ul class="note_list" style="list-style-type: none; background-color: #555; padding-top: 2px; padding-bottom: 2px;">
+				<%= render @project.notes.order('created_at DESC') if !@project.notes.blank? %>
+			</ul>
+		</div>
 	</div>
 	<!-- end .grid_10 -->
 	<div class="grid_6">
@@ -54,103 +63,18 @@
 	</div>
 	<!-- end .grid_6 -->
 	<div class="clear"></div>
-	<div class="grid_1">
-		<div class="left-arw" style="margin:10px;float:left;border-width:15px; border-style:solid;width:0px;height:0px;line-height:0px;"><!-- --></div>
-	</div>
-	<!-- end .grid_1 -->
-	<div class="grid_14" style="text-align:center;">
+	<div class="grid_16" style="text-align:center;">
 		<h3>
-		   <span>History Queue (coming soon)</span>	
+		   <span>Video Queues</span>	
 		</h3>
 	</div>
 	<!-- end .grid_16 -->
-	<div class="grid_1">
-		<div class="right-arw" style="margin:10px;float:left;border-width:15px; border-style:solid;width:0px;height:0px;line-height:0px;"><!-- --></div>
-	</div>
-	<!-- end .grid_1 -->
 	<div class="clear"></div>
 </div>
 <div class="container_16" id="vid-cont">
-	<div class="grid_1">
-		<p>
-                   &nbsp;
-		</p>
-	</div>
-	<!-- end .grid_1 -->
-	<div class="grid_4">
-		<div>
-                   <p class="vid-title">Title of Video</p>
-		   <div style="width: 150px; height: 100px; background: #666;">
-                   </div>
-                   <p class="vid-comment">Comments for this video</p>
-		</div>
-	</div>
-	<!-- end .grid_4 -->
-	<div class="grid_1">
-		<div>
-		      &nbsp;	
-		</div>
-	</div>
-	<!-- end .grid_1 -->
-	<div class="grid_4">
-		<div>
-                   <p class="vid-title">Title of Video</p>
-		   <div style="width: 150px; height: 100px; background: #666;">
-                   </div>
-                   <p class="vid-comment">Comments for this video</p>
-		</div>
-	</div>
-	<!-- end .grid_4 -->
-	<div class="grid_1">
-		<p>
-		      &nbsp;	
-		</p>
-	</div>
-	<!-- end .grid_1 -->
-	<div class="grid_4">
-		<div>
-                   <p class="vid-title">Title of Video</p>
-		   <div style="width: 150px; height: 100px; background: #666;">
-                   </div>
-                   <p class="vid-comment">
-                       Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Mauris in urna vitae neque commodo iaculis
-                   </p>
-		</div>
-	</div>
-	<!-- end .grid_4 -->
-	<div class="grid_1">
-		<p>
-                   &nbsp;
-		</p>
-	</div>
-	<!-- end .grid_1 -->
-	<div class="clear"></div>
-	<div class="grid_13">
-		<p>
-                   &nbsp;
-		</p>
-	</div>
-	<!-- end .grid_16 -->
-	<div class="grid_3">
-		<p>
-                   Show more videos 
-		</p>
-	</div>
-	<!-- end .grid_1 -->
-	<div class="clear"></div>
+	<%= render :partial => 'collections' rescue "Missing Collection Partial" %>
 </div>
 <div container="container_16">
-	<div class="grid_16">
-		<h3>
-		   Notes <span>(<%= link_to 'Edit', edit_project_path(@project) %>):</span>	
-		</h3>
-	</div>
-	<!-- end .grid_16 -->
-	<div class="grid_16">
-		<p>
-	           <%= @project.notes %>	
-		</p>
-	</div>
 	<!-- end .grid_16 -->
 	<div class="clear"></div>
 	<div class="grid_16">
@@ -214,3 +138,11 @@
 
 <% end %>
 </div>
+<script>
+jQuery(document).ready(function() {
+	$('.jsDisabled_note_controls').remove();
+	$('.note_slide').hide();
+	$('.note_header').show();
+	$('.note_spacer').show();
+});
+</script>

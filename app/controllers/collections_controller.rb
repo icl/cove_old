@@ -1,5 +1,6 @@
 class CollectionsController < ApplicationController
   before_filter :authenticate_user!
+  before_filter :require_nda
   
   def router
     # Collection Router Method (replaces above specific collection routes)

@@ -8,7 +8,7 @@ class CreateNotes < ActiveRecord::Migration
       t.references :collection
       t.references :note
     end
-    create_table :projects_notes,:id => false do |t|
+    create_table :notes_projects,:id => false do |t|
       t.references :project
       t.references :note
     end
