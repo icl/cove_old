@@ -13,6 +13,13 @@ $(document).ready(function(){
     videoPlayer.markSnippetEnd();
     return false;
   });
+  
+  $('.create_interval_button').click(function(){
+    $(".create_snippet").slideToggle("slow");
+    $(this).toggleClass("active"); 
+    $('.create_interval_button').ide();
+    return false;
+  });
  
   $('#new_snippet').submit(function(event){
     $('#snippet_offset').val( videoPlayer.snippetStart() );
@@ -40,4 +47,5 @@ $(document).ready(function(){
     return true;
   });
 });
+
 

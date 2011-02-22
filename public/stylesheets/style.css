@@ -580,8 +580,6 @@ input[type=search] {
 	text-align: left;
 }
 
-
-
 .video_snippit{
 	border-left: solid 10px #2F2F2F;
 	height: 270px;
@@ -646,11 +644,9 @@ input[type=search] {
 .mark_button input{
 	margin-left:5px;
 	border:transparent;
-	height:27px;
+	height:20px;
     width:70px;
-    
 }
-
 
 .markend {
 	margin-top:10px;
@@ -685,7 +681,7 @@ input[type=search] {
 .interval_form legend{
 	color: #EC8723;
     font-size: 14px;
-    text-align: left;s
+    text-align: left;
 }
 
 .interval_form fieldset{

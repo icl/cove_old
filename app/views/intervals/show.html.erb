@@ -31,7 +31,7 @@
 		<div class="vim-css video-js-box">
 		    <!-- Using the Video for Everybody Embed Code http://camendesign.com/code/video_for_everybody -->
      	<video id="cove-video-player" class="video-js" width="480" height="270" controls>
-	 	<source src="/videos/<%= @interval.filename %>" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"' />
+	 	<source src="http://www.yo-yo.org/mp4/yu3.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"' />
     	 </video>
     	
     	<div>
@@ -58,16 +58,20 @@
 
 	<div class="clear"></div>
 
-	
+	<div class="grid_1 snippet_button">
+    	<%= f.submit "Create Snippet", :class => "create_interval_button" %>
+    </div>
+    <div class="clear"></div>
+    
+	<!-- This is the grid for creating snippet-->
+	<div class="grid_8 create_snippet">
 	<div class="grid_8 mark_button">
 
 	 <button class="markstart">Start Mark</button> or <input type="text" id="start_mark"></input>
    	 <button class="markend">End Mark</button> or <input type="text" id="end_mark"></input>
     </div>
     
-    <div class="grid_4 snippet_button">
-    <%= f.submit "Create Snippet", :class => "create_interval_button" %>
-    </div>
+    
     
 	<% end %>
 
@@ -90,3 +94,4 @@
 	<div class="clear"></div>
 
 </div>
+</>
