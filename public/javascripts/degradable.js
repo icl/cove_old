@@ -1,18 +1,17 @@
 /* Project Notes Functions */
 $('.note_expandable').live('click', function(event) {
+	var fadeTarget = $(event.target).parents('.note_header').children('.note_slide');
+	fadeTarget.fadeToggle(0, function () {
+		if (fadeTarget.css('display') != 'none') {
+			fadeTarget.css('display','inline')
+		}
+	});
 	var brs = $(event.target).parents('.note_header').children('.note_expandable').children('.note_br');
 	if (brs.first().css('display') == 'none') {
 		brs.css('display','inline');
 	} else {
 		brs.css('display','none');
 	}
-	
-	var fadeTarget = $(event.target).parents('.note_header').children('.note_slide');
-	fadeTarget.fadeToggle("fast", function () {
-		if (fadeTarget.css('display') != 'none') {
-			fadeTarget.css('display','inline')
-		}
-	});
 	var collapsable = $(event.target).parents('.note_header').children('.collapsable');
 	collapsable.fadeToggle(0, function () {
 		if (collapsable.css('display') != 'none') {
@@ -43,7 +42,8 @@ jQuery(function() {
 	});
 });
 jQuery(function() {
-	jQuery(".note_delete").live('click', function(event){
+	jQuery(".note_delete").click(function(event){
+		event.preventDefault();
 		$.ajax({
 			type: 'DELETE',
 			url: '/projects/' + $('.project_container').attr('id') + '/notes/' + $(event.target).attr('id'),
@@ -54,7 +54,6 @@ jQuery(function() {
 				$(event.target).parents('.project_note').remove();
 			}
 		});
-		event.preventDefault();
 		return false;
 	});
 });
