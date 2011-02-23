@@ -38,21 +38,21 @@ class Code < ActiveRecord::Base
 
         #puts notes inside the db, NEEDS TO BE MODDED FOR PHENOMENON!
         notes.each do |row|
-          def_type = row[:type]
+          def_type = row[:type].downcase
           #case def_type
            # when "Phenomenon"
-              stored_phen = Code.where(:name => row[:name], :coding_type => row[:type]).first
+              stored_phen = Code.where(:name => row[:name].downcase, :coding_type => row[:type].downcase).first
               if stored_phen == nil
                 new_phen = Code.new
-                new_phen.name = row[:name]
-                new_phen.coding_type = row[:type]
+                new_phen.name = row[:name].downcase
+                new_phen.coding_type = row[:type].downcase
                 new_phen.description = row[:description]
               	new_phen.save
-                puts "fuck 1",new_phen.name," ",new_phen.coding_type," ",new_phen.description
+                #puts "fuck 1","Name:"new_phen.name,"Type:"new_phen.coding_type,"Def:"new_phen.description
               else
                 stored_phen.description = row[:description]
               	stored_phen.save
-                puts "fuck 2"
+                #puts "fuck 2"
               end
             #else
             #  puts "Unrecognized type. create new tag type then try again."
