@@ -721,6 +721,7 @@ div#video div p {
 	border-top: 2px solid gray; 
 	border-bottom: 2px solid gray; 
 	clear: both; 
+	cursor: move;
 }
 
 .collection_box, .collection_box_date {
