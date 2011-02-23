@@ -16,7 +16,7 @@
 						<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Cove</title>
-  <% if ENV['RAILS_ENV'] == 'production' %>
+  <% if Rails.env.production? %>
     <%= javascript_include_tag 'jquery.min.js' %>
     <%= javascript_include_tag 'jquery-ui.min.js' %>
   <% else %>
@@ -26,6 +26,9 @@
   <%= javascript_include_tag 'modernizr-1.6.min.js' %>
   <%= javascript_include_tag 'application.js' %>
   <%= javascript_include_tag "rails.js" %>
+  <% if !Rails.env.test? %>
+  	<%= javascript_include_tag 'degradable.js' %>
+  <% end %>
   <%= stylesheet_link_tag 'style.css' %>
   <%= stylesheet_link_tag '960.css' %>
   <%= stylesheet_link_tag 'style.css'%>

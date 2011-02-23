@@ -54,7 +54,16 @@ class NotesController < ApplicationController
   def destroy
     @note = Note.find(params[:id])
     @note.destroy
-    redirect_to(Project.find(params[:project_id]))
+    respond_to do |format|
+      format.html do
+        if !request.xhr?
+          redirect_to(Project.find(params[:project_id]))
+        else
+          render :nothing => true
+        end
+      end
+      format.js { render :nothing => true }
+    end
   end
   
 end
