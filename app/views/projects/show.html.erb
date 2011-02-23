@@ -42,7 +42,7 @@
 	</div>
 	<div class="clear"></div>
 	<div class="grid_10">
-		<!-->Notes Block<-->
+		<!-- Notes Block -->
 		<div class="note_form">
 			<%= simple_form_for [@project,Note.new] do |form| %>
 				<%= form.input :note %>
@@ -63,20 +63,7 @@
 		</p>
 	</div>
 	<!-- end .grid_6 -->
-	<div class="clear"></div>
-	<div class="grid_16" style="text-align:center;">
-		<h3>
-		   <span>Video Queues</span>	
-		</h3>
-	</div>
-	<!-- end .grid_16 -->
-	<div class="clear"></div>
-</div>
-<div class="container_16" id="vid-cont" style="height: 450px;">
-	<%= render :partial => 'carousel_collections' rescue "Missing Collection Partial" %>
-	<div style="height: 225px;"></div>
-	<%= render :partial => 'slider_collections' rescue "Missing Collection Partial" %>
-</div>
+
 <div container="container_16">
 	<!-- end .grid_16 -->
 	<div class="clear"></div>
@@ -107,6 +94,99 @@
                    <p><%= current_user.email %></p>
 	</div>
 	<!-- end .grid_16 -->
+	
+	<div class="clear"></div>
+	<div class="grid_16 project_container favorite_table">
+		<h3>
+			Favorites
+		</h3>
+		<ul>
+		<li class="grid_3">
+			<img src="http://dummyimage.com/150x100"><a href="#">Interval Title</a><br />
+			Interval Description... <a href="#">See More</a>
+		</li>
+		<li class="grid_3">
+			<img src="http://dummyimage.com/150x100"><a href="#">Interval Title</a><br />
+			Interval Description... <a href="#">See More</a>
+		</li>
+		<li class="grid_3">
+			<img src="http://dummyimage.com/150x100"><a href="#">Interval Title</a><br />
+			Interval Description... <a href="#">See More</a>
+		</li>
+		<li class="grid_3">
+			<img src="http://dummyimage.com/150x100"><a href="#">Interval Title</a><br />
+			Interval Description... <a href="#">See More</a>
+		</li>
+		</ul>
+		<a href="#">See More</a>
+	</div>
+	
+	<div class="clear"></div>
+	<div class="grid_16 project_container">
+		<h3>
+			Queue
+		</h3>
+		<div>
+	<%= render :partial => 'slider_collections' rescue "Missing Collection Partial" %>
+</div>
+	</div>
+	
+	<div class="clear"></div>
+	<div class="grid_16 project_container collection_accordion">
+		<h3>
+			Collections
+		</h3>
+		
+		<ul>
+    <li>
+        <h3>Collection 1</h3>
+        <ul>
+        	<li><a href="#">Interval 1</a></li>
+        	<li><a href="#">Interval 2</a></li>
+        	<li><a href="#">Interval 3</a></li>
+        	<li><a href="#">Interval 4</a></li>
+        	<li><a href="#">Interval 5</a></li>
+        	<li><a href="#">See More Intervals</a></li>
+        </ul>
+    </li>
+    
+    <li>
+        <h3>Collection 2</h3>
+        <ul>
+        	<li><a href="#">Interval 1</a></li>
+        	<li><a href="#">Interval 2</a></li>
+        	<li><a href="#">Interval 3</a></li>
+        	<li><a href="#">Interval 4</a></li>
+        	<li><a href="#">Interval 5</a></li>
+        	<li><a href="#">See More Intervals</a></li>
+        </ul>
+    </li>
+    <li>
+        <h3>Collection 3</h3>
+        <ul>
+        	<li><a href="#">Interval 1</a></li>
+        	<li><a href="#">Interval 2</a></li>
+        	<li><a href="#">Interval 3</a></li>
+        	<li><a href="#">Interval 4</a></li>
+        	<li><a href="#">Interval 5</a></li>
+        	<li><a href="#">See More Intervals</a></li>
+        </ul>
+    </li>
+    <li>
+        <h3>Collection 4</h3>
+        <ul>
+        	<li><a href="#">Interval 1</a></li>
+        	<li><a href="#">Interval 2</a></li>
+        	<li><a href="#">Interval 3</a></li>
+        	<li><a href="#">Interval 4</a></li>
+        	<li><a href="#">Interval 5</a></li>
+        	<li><a href="#">See More Intervals</a></li>
+        </ul>
+    </li>
+</ul>
+		
+	</div>
+	
 	<div class="clear"></div>
 	<div class="grid_15">
 		<p>
