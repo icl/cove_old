@@ -532,33 +532,100 @@ input[type=search] {
 /***********************************/
 /* Style adjustments for show.html */
 
+				/*Notes:  light bg: #383838
+						  font blue: #0297C1
+							height: 40px;
+						margin-bottom: 15px;
+						padding pushes the grid width wise :/ */
+
 /****Row 1 - start****/
-.show_metadata {
-	background: #383838;
-	padding: 8px;
-	height: 60px;
-	margin-bottom: 13px;
+.show_video_header {
+	height: 40px;
+	margin-bottom: 15px;
 }
 
-.show_metadata h1 {
-	margin-right: 50px;
+.show_video_header h1 {
 	font-size: 14pt;
+	color: #0297C1;
 }
 
-.show_metadata2 {
-	background: #383838;
-	padding: 8px;
-	padding-left: 1px;
-	height: 60px;
-	margin-bottom: 13px;
-	text-align: right;
+.show_video_header h2 {
+	font-size: 11pt;
 }
+
+.show_addto_widget {
+	background: #383838;
+	height: 40px;
+	margin-bottom: 15px;
+}
+
+.show_camera_angle {
+	background: #383838;
+	height: 40px;
+	margin-bottom: 15px;
+}
+
 
 /****Row 2 - start****/
+
 .show_video_player p {
-	border: 2px;
-	text-align: left;
+	margin-bottom: 15px;
 }
+
+.show_metadata div.show_mvt_content {
+	border: 5px solid #383838;
+}
+
+.show_metadata div h2 {
+	color: #0297C1;
+	display: inline;
+}
+
+.show_metadata div h3 {  /*buttons*/
+	background: #DDDDDD;
+	border: 1px solid #444444;	
+	color: black;
+	float: right;
+	padding-right: 4px;
+	padding-left: 4px;
+	cursor: pointer;
+}
+
+
+.show_metadata div.show_more_data {
+	border-left: 5px solid #383838;
+	border-right: 5px solid #383838;
+	border-bottom: 5px solid #383838;
+	display: none;
+}
+
+
+
+/****Row 3 - start - Coding Terms****/
+
+.show_codingterms_phen {
+	margin-top: 15px;
+}
+
+.show_codingterms_people {
+	margin-top: 15px;
+}
+
+.show_add_phen_list {
+	display: none;
+	border: 5px solid #383838;
+}
+
+.show_add_people_list {
+	display: none;
+	border: 5px solid #383838;
+}
+
+
+
+
+
+
 
 /*Show the subintervals Widget (Winny)*/
 /*placeholder in Jin's copy */
