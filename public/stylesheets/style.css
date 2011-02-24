@@ -480,6 +480,31 @@ input[type=search] {
 	
 }
 
+.fauxselect_button {
+	border: black .2em solid; 
+	text-align: center;
+	background-color: #999
+}
+
+.fauxselect {
+	margin-left: 0; 
+	position: absolute; 
+	background-color: black; 
+	border: 2px black solid;
+}
+	
+.fauxselect li {	
+		list-style: none; 
+		padding-left: 5px; 
+		padding-right: 5px; 
+		line-height: 1.2; 
+		padding-top: .3em; 
+		padding-bottom: .3em; 
+		margin-top: .2em; 
+		margin-bottom: .2em; 
+		background-color: #333;
+}
+
 
 
 
