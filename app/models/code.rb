@@ -25,7 +25,7 @@ class Code < ActiveRecord::Base
         note_file = File.new("tmp/codings/#{file}") #save file in temp variable
         notes = FasterCSV.new(note_file, #throw CSV file at FasterCSV tool
           :headers => true,
-          :header_converters => [lambda {|h| h.gsub(/Name/, 'name').gsub(/Type/, 'type').gsub(/Description/, 'description')}, :symbol],
+          :header_converters => [:downcase, :symbol],
           :skip_blanks => true,
           :col_sep => ','
         )
