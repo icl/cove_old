@@ -1,3 +1,4 @@
+
 <div class="interval_show">
 
 	 <%= simple_form_for @interval do |f| %>
@@ -33,17 +34,27 @@
      	<video id="cove-video-player" class="video-js" width="480" height="270" controls>
 	 	<source src="http://www.yo-yo.org/mp4/yu.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"' />
     	 </video>
-    	
-    	<div>
-			<p><%= video_tag @interval.filename, :controls => true, :height => 270, :width => 480 %></p>
-		</div>
-    	
     </div>
           <!-- End VideoJS -->
           
 	</div>
 	
-	<div class="grid_4 video_snippit">
+	<div class="grid_8 empty">&nbsp</div>
+	
+	<div class="grid_16 mark_button">
+
+	 <%= form_for([@interval, @interval.snippets.build], :remote => true) do |f| %>
+	 <button class="markstart">Start Mark</button> or <input type="text" id="start_mark"></input>
+   	 <button class="markend">End Mark</button> or <input type="text" id="end_mark"></input>
+    </div>
+    
+   <!-- <div  class="grid_8 snippet_button">
+    <%= f.submit "Create Snippet", :class => "create_interval_button" %>
+    </div>
+    
+	<% end %>--!>
+	
+	<div class="grid_9 video_snippit">
 		<%= render 'intervals/snippets' %>
 		<%= form_for([@interval, @interval.snippets.build]) do |f| %>
 		<%= f.hidden_field(:offset) %>
@@ -51,33 +62,15 @@
 		<% end %>
 	</div>
 
-	 <%= form_for([@interval, @interval.snippets.build], :remote => true) do |f| %>
-
-
-	<div class="grid_3 show_tags"></div>
-
-	<div class="clear"></div>
 
 	
-	<div class="grid_8 mark_button">
-
-	 <button class="markstart">Start Mark</button> or <input type="text" id="start_mark"></input>
-   	 <button class="markend">End Mark</button> or <input type="text" id="end_mark"></input>
-    </div>
-    
-    <div class="grid_4 snippet_button">
-    <%= f.submit "Create Snippet", :class => "create_interval_button" %>
-    </div>
-    
-	<% end %>
-
-
- <div class="grid_8 interval_form">
+ <div class="grid_6 interval_form">
     <fieldset>
-    	<legend>Create Snippet</legend>
+    	<legend>New Snippet</legend>
     	
-    	<p>Title:</p><input type="text" id="interval_title"></input><br/>
-   		<p>Description:</p><textarea cols=37 rows=3 id="interval_description"></textarea>
+    	<p>1. Title:</p><input type="text" id="interval_title"></input><br/>
+   		<p>2. Description:</p><textarea cols=37 rows=5 id="interval_description"></textarea>
+   		<p>3. Select Tags Above</p>
 	</fieldset>   
 	
 	<div class="save_cancel_button">
