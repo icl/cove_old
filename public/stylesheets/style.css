@@ -961,8 +961,21 @@ div#vid-cont {
 div.project_container .left-arw {border-color:transparent #00fa9a transparent transparent;}
 div.project_container .right-arw {border-color:transparent transparent transparent #00fa9a;}
 
-.note_form textarea.text { width: 454px; height: 120px;}
-.note_form input#note_submit { margin-bottom: 10px; float: right; }
+.note_list_container ul {
+	list-style-type: none; 
+	background-color: #555; 
+	padding-top: 2px; 
+	padding-bottom: 2px; 
+	width: 572px; 
+	float:right;
+}
+
+.note_form textarea.text { 
+	width: 572px; 
+	height: 120px;}
+.note_form input#note_submit { 
+	margin-bottom: 10px; 
+	float: right; }
 .nobr	{white-space: nowrap;}
 
 
@@ -978,78 +991,20 @@ div.project_container .right-arw {border-color:transparent transparent transpare
 	display: inline;
 }
 
-/* Collections Dropdown in Projects Page */
-.collection_accordion>ul {
-    margin: 0;
-    padding: 0;
-    list-style:none;
-    width: 500px;
-}
- 
-.collection_accordion>ul>li {
-    display:block;
-    overflow: hidden;
-    margin: 0;
-    padding: 0;
-    list-style:none;
-    height:40px;
-    width: 500px;
- 
-    /* Decorative CSS */
-    background-color:#f0f0f0;
- 
-    /* CSS3 Transition Effect */
-    transition: height 0.5s ease-in-out;
-    -moz-transition: height 0.5s ease-in-out;
-    -webkit-transition: height 0.5s ease-in-out;
-    -o-transition: height 0.5s ease-in-out;
-}
- 
-.collection_accordion>ul>li>h3 {
-    display:block;
-    margin: 0;
-    padding:10px;
-    height:19px;
- 
-    /* Decorative CSS */
-    border-top:#f0f0f0 1px solid;
-    font-family: Arial, Helvetica, sans-serif;
-    text-decoration:none;
-    text-transform:uppercase;
-    color: #000;
-    background: #cccccc;
- 
-    /* CSS3 Gradient Effect */
-    background: -moz-linear-gradient( top, #999999, #cccccc);
-    background: -webkit-gradient(linear, left top, left bottom, from(#999999), to(#cccccc));
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#ff999999, endColorstr=#ffcccccc); /* IE 7 */
-    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#ff999999, endColorstr=#ffcccccc)";   /* IE 8 */
-}
- 
-.collection_accordion>ul>li>div {
-    margin:0;
-    overflow: auto;
-    padding:10px;
-    height:220px;
+.arrow_forward {
+	border-color: transparent transparent transparent #ffd700;
+	border-style:solid;
+	border-width:20px;
+	width:0;
+	height:0;
+	margin-top: 75px;
 }
 
-/* Sets height of the expanded section */
-.collection_accordion>ul>li:hover {
-    height: 140px;
-}
- 
-.collection_accordion:hover>ul>li:hover>h3 {
-    /* Decorative CSS */
-    color:#fff;
-    background: #000000;
- 
-    /* CSS3 Gradient Effect */
-    background: -moz-linear-gradient( top, #454545, #000000); /* FF, Flock */
-    background: -webkit-gradient(linear, left top, left bottom, from(#454545), to(#000000)); /* Safari, Chrome */
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#ff454545, endColorstr=#ff000000); /* IE 5.5 - IE 7 */
-    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#ff454545, endColorstr=#ff000000)";   /* IE 8 */
-}
- 
-.collection_accordion>ul>li>h3:hover {
-    cursor:pointer;
+.arrow_backward {
+	border-color: transparent #ffd700 transparent transparent;
+	border-style:solid;
+	border-width:20px;
+	width:0;
+	height:0;
+	margin-top: 75px;
 }

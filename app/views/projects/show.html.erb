@@ -45,12 +45,12 @@
 		<!-- Notes Block -->
 		<div class="note_form">
 			<%= simple_form_for [@project,Note.new] do |form| %>
-				<%= form.input :note %>
+				<%= form.input :note, :label => false %>
 				<%= form.button :submit %>
 			<% end %>
 		</div>
-		<div class="note_list_container grid_9 prefix_1">
-			<ul class="note_list" style="list-style-type: none; background-color: #555; padding-top: 2px; padding-bottom: 2px;">
+		<div class="note_list_container grid_10">
+			<ul>
 				<%= render @project.notes.order('created_at DESC') if !@project.notes.blank? %>
 			</ul>
 			<a class="expand_all" style="float:right; display:none;">Expand/Collapse All</a>
@@ -61,131 +61,179 @@
 		<p>
 		   <%= @project.desc %> 
 		</p>
-	</div>
-	<!-- end .grid_6 -->
-
-<div container="container_16">
-	<!-- end .grid_16 -->
-	<div class="clear"></div>
-	<div class="grid_16">
+		
 		<h3>
 		   Tags <span>(<%= link_to 'Edit', edit_project_path(@project) %>):</span>	
 		</h3>
-	</div>
-	<!-- end .grid_16 -->
-	<div class="clear"></div>
+		
+		
 	<% if !@project.tags.blank? %>
-	<div class="grid_16">
 		<p>
-                     <ul>
-                          <% @project.tags.each do |t| %>
-                             <li class="inline"><%= t.capitalize %></li>
-                          <% end %>
-                     </ul>
+             <ul>
+             <% @project.tags.each do |t| %>
+             <li class="inline"><%= t.capitalize %></li>
+             <% end %>
+             </ul>
 		</p>
-	</div>
 	<% end %>
-	<!-- end .grid_16 -->
-	<div class="clear"></div>
-	<div class="grid_16">
+
 		<h3>
 		   Owner <span>(<%= link_to 'Edit', edit_project_path(@project) %>):</span>	
 		</h3>
                    <p><%= current_user.email %></p>
+	<!-- end .grid_6 -->
 	</div>
-	<!-- end .grid_16 -->
 	
 	<div class="clear"></div>
 	<div class="grid_16 project_container favorite_table">
 		<h3>
-			Favorites
+			<a href="#">Favorites</a>
 		</h3>
-		<ul>
-		<li class="grid_3">
-			<img src="http://dummyimage.com/150x100"><a href="#">Interval Title</a><br />
-			Interval Description... <a href="#">See More</a>
+		<ul class="grid_16" style="padding-bottom: 40px;">
+		<li class="grid_1">
+			<div class="arrow_backward"></div>
 		</li>
 		<li class="grid_3">
-			<img src="http://dummyimage.com/150x100"><a href="#">Interval Title</a><br />
-			Interval Description... <a href="#">See More</a>
+			MM/DD/YYYY, 00:21 AM<br />
+			<img src="http://dummyimage.com/150x100"><a href="#">Interval Title</a>, (## min)<br />
+			(Camera Angle)<br />
+			[Session Type]<br />
 		</li>
 		<li class="grid_3">
-			<img src="http://dummyimage.com/150x100"><a href="#">Interval Title</a><br />
-			Interval Description... <a href="#">See More</a>
+			MM/DD/YYYY, 00:21 PM<br />
+			<img src="http://dummyimage.com/150x100"><a href="#">Interval Title</a>, (## min)<br />
+			(Camera Angle)<br />
+			[Session Type]<br />
 		</li>
 		<li class="grid_3">
-			<img src="http://dummyimage.com/150x100"><a href="#">Interval Title</a><br />
-			Interval Description... <a href="#">See More</a>
+			MM/DD/YYYY, 00:21 AM<br />
+			<img src="http://dummyimage.com/150x100"><a href="#">Interval Title</a>, (## min)<br />
+			(Camera Angle)<br />
+			[Session Type]<br />
+		</li>
+		<li class="grid_3">
+			MM/DD/YYYY, 00:21 PM<br />
+			<img src="http://dummyimage.com/150x100"><a href="#">Interval Title</a>, (## min)<br />
+			(Camera Angle)<br />
+			[Session Type]<br />
+		</li>
+		<li class="grid_1">
+			<div class="arrow_forward"></div>
 		</li>
 		</ul>
-		<a href="#">See More</a>
-	</div>
+		
 	
-	<div class="clear"></div>
-	<div class="grid_16 project_container">
+	
 		<h3>
-			Queue
+			<a href="#">Queue</a>
 		</h3>
-		<div>
-	<%= render :partial => 'slider_collections' rescue "Missing Collection Partial" %>
+		<ul class="grid_16" style="padding-bottom: 40px;">
+		<li class="grid_1">
+			<div class="arrow_backward"></div>
+		</li>
+		<li class="grid_3">
+			MM/DD/YYYY, 00:21 AM<br />
+			<img src="http://dummyimage.com/150x100"><a href="#">Interval Title</a>, (## min)<br />
+			(Camera Angle)<br />
+			[Session Type]<br />
+		</li>
+		<li class="grid_3">
+			MM/DD/YYYY, 00:21 PM<br />
+			<img src="http://dummyimage.com/150x100"><a href="#">Interval Title</a>, (## min)<br />
+			(Camera Angle)<br />
+			[Session Type]<br />
+		</li>
+		<li class="grid_3">
+			MM/DD/YYYY, 00:21 AM<br />
+			<img src="http://dummyimage.com/150x100"><a href="#">Interval Title</a>, (## min)<br />
+			(Camera Angle)<br />
+			[Session Type]<br />
+		</li>
+		<li class="grid_3">
+			MM/DD/YYYY, 00:21 PM<br />
+			<img src="http://dummyimage.com/150x100"><a href="#">Interval Title</a>, (## min)<br />
+			(Camera Angle)<br />
+			[Session Type]<br />
+		</li>
+		<li class="grid_1">
+			<div class="arrow_forward"></div>
+		</li>
+		</ul>
+		
+				<h3>
+			<a href="#">Collection 1</a>
+		</h3>
+		<ul class="grid_16" style="padding-bottom: 40px;">
+		<li class="grid_1">
+			<div class="arrow_backward"></div>
+		</li>
+		<li class="grid_3">
+			MM/DD/YYYY, 00:21 AM<br />
+			<img src="http://dummyimage.com/150x100"><a href="#">Interval Title</a>, (## min)<br />
+			(Camera Angle)<br />
+			[Session Type]<br />
+		</li>
+		<li class="grid_3">
+			MM/DD/YYYY, 00:21 PM<br />
+			<img src="http://dummyimage.com/150x100"><a href="#">Interval Title</a>, (## min)<br />
+			(Camera Angle)<br />
+			[Session Type]<br />
+		</li>
+		<li class="grid_3">
+			MM/DD/YYYY, 00:21 AM<br />
+			<img src="http://dummyimage.com/150x100"><a href="#">Interval Title</a>, (## min)<br />
+			(Camera Angle)<br />
+			[Session Type]<br />
+		</li>
+		<li class="grid_3">
+			MM/DD/YYYY, 00:21 PM<br />
+			<img src="http://dummyimage.com/150x100"><a href="#">Interval Title</a>, (## min)<br />
+			(Camera Angle)<br />
+			[Session Type]<br />
+		</li>
+		<li class="grid_1">
+			<div class="arrow_forward"></div>
+		</li>
+		</ul>
+		
+				<h3>
+			<a href="#">Collection 2</a>
+		</h3>
+		<ul class="grid_16" style="padding-bottom: 40px;">
+		<li class="grid_1">
+			<div class="arrow_backward"></div>
+		</li>
+		<li class="grid_3">
+			MM/DD/YYYY, 00:21 AM<br />
+			<img src="http://dummyimage.com/150x100"><a href="#">Interval Title</a>, (## min)<br />
+			(Camera Angle)<br />
+			[Session Type]<br />
+		</li>
+		<li class="grid_3">
+			MM/DD/YYYY, 00:21 PM<br />
+			<img src="http://dummyimage.com/150x100"><a href="#">Interval Title</a>, (## min)<br />
+			(Camera Angle)<br />
+			[Session Type]<br />
+		</li>
+		<li class="grid_3">
+			MM/DD/YYYY, 00:21 AM<br />
+			<img src="http://dummyimage.com/150x100"><a href="#">Interval Title</a>, (## min)<br />
+			(Camera Angle)<br />
+			[Session Type]<br />
+		</li>
+		<li class="grid_3">
+			MM/DD/YYYY, 00:21 PM<br />
+			<img src="http://dummyimage.com/150x100"><a href="#">Interval Title</a>, (## min)<br />
+			(Camera Angle)<br />
+			[Session Type]<br />
+		</li>
+		<li class="grid_1">
+			<div class="arrow_forward"></div>
+		</li>
+		</ul>
+		
+	
 </div>
-	</div>
-	
-	<div class="clear"></div>
-	<div class="grid_16 project_container collection_accordion">
-		<h3>
-			Collections
-		</h3>
-		
-		<ul>
-    <li>
-        <h3>Collection 1</h3>
-        <ul>
-        	<li><a href="#">Interval 1</a></li>
-        	<li><a href="#">Interval 2</a></li>
-        	<li><a href="#">Interval 3</a></li>
-        	<li><a href="#">Interval 4</a></li>
-        	<li><a href="#">Interval 5</a></li>
-        	<li><a href="#">See More Intervals</a></li>
-        </ul>
-    </li>
-    
-    <li>
-        <h3>Collection 2</h3>
-        <ul>
-        	<li><a href="#">Interval 1</a></li>
-        	<li><a href="#">Interval 2</a></li>
-        	<li><a href="#">Interval 3</a></li>
-        	<li><a href="#">Interval 4</a></li>
-        	<li><a href="#">Interval 5</a></li>
-        	<li><a href="#">See More Intervals</a></li>
-        </ul>
-    </li>
-    <li>
-        <h3>Collection 3</h3>
-        <ul>
-        	<li><a href="#">Interval 1</a></li>
-        	<li><a href="#">Interval 2</a></li>
-        	<li><a href="#">Interval 3</a></li>
-        	<li><a href="#">Interval 4</a></li>
-        	<li><a href="#">Interval 5</a></li>
-        	<li><a href="#">See More Intervals</a></li>
-        </ul>
-    </li>
-    <li>
-        <h3>Collection 4</h3>
-        <ul>
-        	<li><a href="#">Interval 1</a></li>
-        	<li><a href="#">Interval 2</a></li>
-        	<li><a href="#">Interval 3</a></li>
-        	<li><a href="#">Interval 4</a></li>
-        	<li><a href="#">Interval 5</a></li>
-        	<li><a href="#">See More Intervals</a></li>
-        </ul>
-    </li>
-</ul>
-		
-	</div>
 	
 	<div class="clear"></div>
 	<div class="grid_15">
