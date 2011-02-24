@@ -293,9 +293,8 @@ button {  width: auto; overflow: visible; }
 
 /* Header */
 
-nav.top_nav ul li {
-	display: block;
-	font-size: 12pt;
+.top_nav ul li {
+	font-size: 10pt;
 }
 
 body {
@@ -361,6 +360,7 @@ header h1 {
 
 
 .search_holder {
+	width: 200px;
 	text-align: right;
 }
 
