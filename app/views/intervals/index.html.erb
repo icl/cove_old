@@ -10,7 +10,7 @@
 			<div class="fauxselect_button">Expand</div>
 			<ul class="fauxselect">
 				<% for type in @session_types %>
-					<li class="define_me" <%= link_to type, intervals_path(add_params :session_type => type) %></li>
+					<li class="define_me"><%= link_to type, intervals_path(add_params :session_type => type) %></li>
 				<% end %>
 			</ul>
 		</div>
