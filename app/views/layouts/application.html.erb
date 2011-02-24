@@ -17,6 +17,7 @@
 
   <title>Cove</title>
   <% if ENV['RAILS_ENV'] == 'production' %>
+	<%= hoptoad_javascript_notifier %>
     <%= javascript_include_tag 'jquery.min.js' %>
     <%= javascript_include_tag 'jquery-ui.min.js' %>
   <% else %>
