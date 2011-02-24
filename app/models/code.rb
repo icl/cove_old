@@ -70,4 +70,3 @@ class Code < ActiveRecord::Base
     end # End |Dir.foreach| block
   end # End |def import| block
 end
-end

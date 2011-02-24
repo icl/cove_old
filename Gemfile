@@ -6,12 +6,10 @@ gem 'rails', '~>3.0.3'
 gem 'simple_form'
 gem 'capistrano'
 gem 'fastercsv'
-<<<<<<< HEAD
+
+#necessary for sunspot solr in rails 3
 gem 'sunspot', '1.2.rc4'
 gem 'sunspot_rails', '1.2.rc4'
-=======
-gem 'newrelic_rpm'
->>>>>>> 46263e2dbe4e4563a981b2b7b664f33858440320
 
 gem "resque", :require => "resque/server"
 
@@ -60,3 +58,4 @@ gem 'hoptoad_notifier'
 end
 
 #gem 'mysql2'
+
