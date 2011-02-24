@@ -128,6 +128,7 @@ GEM
     net-ssh (2.1.0)
     net-ssh-gateway (1.0.1)
       net-ssh (>= 1.99.1)
+    newrelic_rpm (2.13.4)
     nokogiri (1.4.4)
     polyglot (0.3.1)
     pr_geohash (1.0.0)
@@ -241,6 +242,7 @@ DEPENDENCIES
   launchy
   mocha
   narray
+  newrelic_rpm
   nokogiri
   rails (~> 3.0.3)
   rails3-generators
