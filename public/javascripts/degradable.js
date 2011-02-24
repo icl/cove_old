@@ -67,7 +67,7 @@ jQuery(function() {
 			$.each($(".sortable_collection li"),function() {
 				$(this).find(".priority").text(i);
 				i++;
-				priority += "\'" + $(this).find(".priority").text() + "\': \'" + $(this).attr("id") + "\',";
+				priority += "\'" + i + "\': \'" + $(this).attr("id") + "\',";
 			});
 			priority += "}"
 			$.ajax({

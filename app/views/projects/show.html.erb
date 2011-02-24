@@ -101,24 +101,20 @@
 			Favorites
 		</h3>
 		<ul>
-		<li class="grid_3">
-			<img src="http://dummyimage.com/150x100"><a href="#">Interval Title</a><br />
-			Interval Description... <a href="#">See More</a>
-		</li>
-		<li class="grid_3">
-			<img src="http://dummyimage.com/150x100"><a href="#">Interval Title</a><br />
-			Interval Description... <a href="#">See More</a>
-		</li>
-		<li class="grid_3">
-			<img src="http://dummyimage.com/150x100"><a href="#">Interval Title</a><br />
-			Interval Description... <a href="#">See More</a>
-		</li>
-		<li class="grid_3">
-			<img src="http://dummyimage.com/150x100"><a href="#">Interval Title</a><br />
-			Interval Description... <a href="#">See More</a>
-		</li>
+			<% if !@favorites.blank? %>
+				<% YAML.load(@favorites.interval_priorities).keys.sort!{|a,b| a.to_i <=> b.to_i}[0,4].each do |priority| %><% interval = Interval.find(YAML.load(@favorites.interval_priorities)[priority.to_s]) %>
+				<li class="grid_3">
+					<img src="http://dummyimage.com/150x100">
+					<%= link_to "FAR#{interval.id.to_s}", interval %><br/>
+					Session <%= interval.session_number %><br />Camera: <%= interval.camera_angle.humanize %><br /> Session Type: <%= interval.session_type.humanize %><br />Date: <%= interval.start_time.strftime('%m/%d/%Y %H:%M') %><br />Duration: <%= interval.duration_string %><br />
+					<%= link_to "See More", interval %>
+				</li>
+				<% end %>
+			<% else %>
+				<li class='grid_15'>There are no favorites for this project yet.</li>
+			<% end %>
 		</ul>
-		<a href="#">See More</a>
+		<br /><%= link_to 'See All Favorites', favorite_intervals_path(@project.id) %>
 	</div>
 	
 	<div class="clear"></div>
@@ -127,8 +123,10 @@
 			Queue
 		</h3>
 		<div>
-	<%= render :partial => 'slider_collections' rescue "Missing Collection Partial" %>
-</div>
+			<div style="height:250px;">
+				<%= render :partial => 'carousel_collections' rescue "Missing Collection Partial" %>
+			</div>
+	</div>
 	</div>
 	
 	<div class="clear"></div>

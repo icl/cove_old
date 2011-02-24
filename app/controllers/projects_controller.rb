@@ -15,6 +15,8 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find(params[:id])
+    @favorites = Collection.find_by_name('project_' + @project.id.to_s + '_favorites')
+    @queue = Collection.find_by_name('project_' + @project.id.to_s + '_queue')
     render "show"
   end
 
