@@ -7,7 +7,8 @@ gem 'simple_form'
 gem 'capistrano'
 gem 'fastercsv'
 
-gem 'newrelic.rpm'
+
+gem 'newrelic_rpm'
 #necessary for sunspot solr in rails 3
 gem 'sunspot', '1.2.rc4'
 gem 'sunspot_rails', '1.2.rc4'
