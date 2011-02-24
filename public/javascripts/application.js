@@ -1,20 +1,32 @@
 $(document).ready(function(){
       
+  
   var videoPlayer = VideoJS.setup('cove-video-player',{
 //    offset: 30,
-    controlsHiding: false
+    controlsHiding: false,
+    controlsAtStart: true,
+    controlsBelow: true
   });
 
   $("button.markstart").click(function(){
     videoPlayer.markSnippetStart();
-    return false;
+    $("#start_mark").val( videoPlayer.snippetStart() );
   });
+  
   $("button.markend").click(function(){
     videoPlayer.markSnippetEnd();
-    return false;
+    $("#end_mark").val( videoPlayer.snippetEnd() );
+  });
+  
+  $("#start_mark").change(function(){
+    videoPlayer.snippetStart(this.value);
+  });
+
+  $("#end_mark").change(function(){
+    videoPlayer.snippetEnd(this.value);
   });
  
-  $('#new_snippet').submit(function(event){
+  $("#new_snippet").submit(function(event){
     $('#snippet_offset').val( videoPlayer.snippetStart() );
     $('#snippet_duration').val( videoPlayer.snippetDuration() );
 
