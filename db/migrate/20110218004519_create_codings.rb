@@ -1,14 +1,14 @@
-class CreateTagings < ActiveRecord::Migration
+class CreateCodings < ActiveRecord::Migration
   def self.up
-    create_table :tagings do |t|
+    create_table :codings do |t|
       t.references :user
       t.references :interval
-      t.references :tag
+      t.references :code
       t.timestamps
     end
   end
 
   def self.down
-    drop_table :tagings
+    drop_table :codings
   end
 end

@@ -6,6 +6,7 @@ gem 'rails', '~>3.0.3'
 gem 'simple_form'
 gem 'capistrano'
 gem 'fastercsv'
+gem 'newrelic_rpm'
 
 gem "resque", :require => "resque/server"
 
@@ -41,7 +42,7 @@ gem 'hoptoad_notifier'
 	gem "autotest"
 	gem 'autotest-rails'
   # gem 'ruby-debug19', :platforms => :mri_19
-  # gem 'ruby-debug', :platforms => :mri_18
+  gem 'ruby-debug', :platforms => :mri_18
 	
   # additional testing gems
 	gem "thin"

@@ -1,8 +1,9 @@
 require "annotation"
 class User < ActiveRecord::Base
-  include Annotatable
-  # Include default devise modules. Others available are:
-  # :token_authenticatable, :confirmable, :lockable and :timeoutable
+  
+  has_many :taggings
+  has_many :codings
+  
   devise :database_authenticatable, 
          :recoverable, :rememberable, :trackable, :validatable
 

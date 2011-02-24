@@ -17,6 +17,7 @@
 
   <title>Cove</title>
   <% if ENV['RAILS_ENV'] == 'production' %>
+	<%= hoptoad_javascript_notifier %>
     <%= javascript_include_tag 'jquery.min.js' %>
     <%= javascript_include_tag 'jquery-ui.min.js' %>
   <% else %>
@@ -44,7 +45,7 @@
 						<li><a class="second logout_link" href="/logout">Logout</a></li>
 						<li><a class="help_link" href="https://cove.tenderapp.com">Help</a></li>
 						<%if current_user.admin %> 
-						<li><a class="admin_link"href="/admin/users/new">Admin</a></li>
+						<li><a class="admin_link"href="/admin">Admin</a></li>
 						<%end%>
 					</ul>
 				</div>
