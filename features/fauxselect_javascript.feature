@@ -18,18 +18,14 @@ Scenario: Making sure the list works to begin with
 
 Scenario: Selecting a session type
 	When I go to the intervals page
-	And I click the fauxselect ".session_type_selector"
 	And I select "a" from the fauxselect ".session_type_selector"
+
 	Then I should see "camera1" within ".display_results"
 	And I should not see "camera2" within ".display_results"
 	And I should see "a" within ".session_type_selector .fauxselect_button"
 
-Scenario: Selecting a session type then selecting "none"
+Scenario: Selecting "none"
 	When I go to the intervals page
-	And I click the fauxselect ".session_type_selector"
-	And I select "a" from the fauxselect ".session_type_selector"
-
-	And I click the fauxselect ".session_type_selector"
 	And I select "none" from the fauxselect ".session_type_selector"
 
 	Then I should see "camera1" within ".display_results"
