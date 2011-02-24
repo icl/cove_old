@@ -25,13 +25,13 @@ $(document).ready(function(){
   });
   
   $('button.cancel').click(function(){
-    $('.create_snippet').slideToggle("fast");
+    $('.create_snippet').slideToggle("slow");
     $('.create_interval_button').show();
     return false;
   });
   
    $('button.save').click(function(){
-    $('.create_snippet').slideToggle("fast");
+    $('.create_snippet').slideToggle("slow");
     $('.create_interval_button').show();
     return false;
   });
