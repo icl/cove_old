@@ -6,7 +6,7 @@ class DefinitionsController < ApplicationController
     @term = Code.find_by_name(params[:id])
     if @term.nil?
     else
-	    @name = @term.id
+	    @name = @term.name
 	    @definition = @term.description
     end
     render 'show'

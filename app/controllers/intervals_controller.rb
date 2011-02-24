@@ -10,7 +10,8 @@ class IntervalsController < ApplicationController
 		@phrase_types = Interval.unique_phrase_types
 		@phrase_names = Interval.unique_phrase_names
 
-    @intervals = Interval.search params
+    search = Interval.search_with params
+    @intervals = search.results
 
     render 'index'
   end
