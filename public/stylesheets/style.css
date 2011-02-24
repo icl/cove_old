@@ -560,8 +560,6 @@ input[type=search] {
 }
 
 .show_camera_angle {
-	background: #383838;
-	height: 40px;
 	margin-bottom: 15px;
 }
 
@@ -607,6 +605,14 @@ input[type=search] {
 	margin-top: 15px;
 }
 
+.show_applied_phen {
+	border: 5px solid #383838;
+}
+
+.show_applied_people {
+	border: 5px solid #383838;
+}
+
 .show_codingterms_people {
 	margin-top: 15px;
 }
@@ -621,119 +627,30 @@ input[type=search] {
 	border: 5px solid #383838;
 }
 
-
-
-
-
-
-
-/*Show the subintervals Widget (Winny)*/
-/*placeholder in Jin's copy */
-.show_subintervals {
-	border-left: solid 20px #2F2F2F;
-	background: #383838;
-	height: 270px;
-}
-
-/*Tags Widget*/
 .show_tags {
-	border: solid 1px #383838;
-	background: #383838;
-	height: 253px;
-	width: 182px;
-	margin-right: 10px;
-	float: right;
-	padding: 8px;
-}
-
-.show_tags h1 {
-	font-size: 18px;
-	color: #0297C1;
-	float: left;
-	width: 40px;
-	height: 15px;
-	border: solid 3px #383838;
-	margin: 2px;
-	display: inline;
-}
-
-.show_tags h2 {  /*the buttons*/
-	float: right;
-	/*width: 45px;*/
-	height: 14px;
-	background-color: #0297C1;
-	color: #383838;
-	border: solid 2px #0297C1;
-	outline: solid 1px #66FFFF;
-	text-align: center;
-	margin: 3px;
-}
-
-.show_tags_selected { /*container*/
-	border: solid 2px #383838;
-	margin-top: 32px;
-	padding: 2px;
-	height: 215px;
-	overflow: auto;
-}
-
-
-.show_tags_add {  /*container*/
-	display: none;
-	border: solid 2px #383838;
-	margin-top: 35px;
-	padding: 2px;
-	height: 211px;
-}
-
-.show_tags_add p {
-	font-size: 12px;
-	margin-top: 3px;
-}
-
-.tags_menu {
-	width: 162px;
-	margin-left: 10px;
-	margin-bottom: 8px;
-}
-
-.show_tags_add h3 {
 	margin-top: 15px;
-	margin-left: 150px;
-	margin-bottom: 5px;
 }
 
-.tags_add_new {
-	display: none; /*container*/
-	border: solid 2px #383838;
-	margin-top: 35px;
-	padding: 2px;
-	height: 211px;
+.show_applied_tags {
+	border: 5px solid #383838;
 }
 
-.tags_add_new p {
-	font-size: 12px;
-	margin-top: 3px;
+.show_tags_create {
+	display: none;
+	border: 5px solid #383838;
 }
 
-.tags_add_new input {
+.show_tags_create input {
 	width: 157px;
-	margin-left: 10px;
+	margin-left: 50px;
 }
 
-.tags_add_new textarea {
-	margin-left: 10px;
-	margin-bottom: 8px;
+.show_tags_create textarea {
+	margin-left: 50px;
 }
-
-
-
-/****Row 3 - start****/
-/*create subinterval widget (Winny)*/
-
 
 /****Row 4 - start****/
-/*Favorite/Queue/Add to ToolBar (Michael)*/
+/*create subinterval widget (Winny)*/
 
 
 

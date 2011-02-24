@@ -19,7 +19,31 @@
 				$(".show_more_data").slideToggle("slow");
 			});
 		});
-	
+		
+		$(document).ready(function(){  //click on add for phenomena
+			$(".show_add_phen_button").click(function(){
+				$(".show_add_phen_list").slideToggle("slow");
+				$(".show_applied_phen").remove();
+				$(".show_codingterms_people").remove();
+				$(".show_applied_people").remove();
+			});
+		});
+		
+		$(document).ready(function(){  //click on add for people
+			$(".show_add_people_button").click(function(){
+				$(".show_add_people_list").slideToggle("slow");
+				$(".show_applied_phen").remove();
+				$(".show_codingterms_phen").remove();
+				$(".show_applied_people").remove();
+			});
+		});
+		
+		$(document).ready(function(){  //click on add for tags
+			$(".show_add_tags_button").click(function(){
+				$(".show_tags_create").slideToggle("slow");
+				$(".show_applied_tags").remove();
+			});
+		});
 	
 	</script>
 </head>
@@ -38,6 +62,7 @@
 	
 	<div class="grid_5 show_addto_widget">
 		<p>Michael's "add to" widget</p>
+<!--INSERT APPLIED ADD TO WIDGET-->
 	</div>
 	
 	<div class="grid_5 show_camera_angle">
@@ -95,6 +120,7 @@
 				<input type="checkbox">Structuring
 				<input type="checkbox">Visualization</br>
 			</form>
+			<h3 class="show_save_phen_button">Save</h3>
 		</div>
 
 		<div class="show_codingterms_people">
@@ -123,124 +149,33 @@
 				<input type="checkbox">Michael</br>
 				<input type="checkbox">Paolo
 			</form>
+			<h3 class="show_save_people_button">Save</h3>
 		</div>
-	
+		
+		<div class="show_tags">
+			<h2>Tags</h2>
+			<h3 class="show_add_tags_button">Add</h3>
+			<div class="show_applied_tags">
+				<p>List of applied tags.<p>
+<!--INSERT APPLIED TAGS-->
+			</div>
+		</div>
+		
+		<div class="show_tags_create">
+			<form>
+				Tag Name:<input type="text"></br>
+				Description:<textarea rows="4" cols="20"></textarea>
+			</form>
+			<h3 class="show_save_people_button">Create</h3>
+
+		</div>
+		
 	<div class="clear"></div>
 	
 	
+<!--INSERT SUBINTERVAL WIDGET-->
 
 
-	<div class="grid_5 show_subintervals">
-<!--insert Winny's subinterval html-->
-		<p>This is where the subinterval snippets will be.</p>
-	</div>
-
-	<div class="show_tags"><!-- float:right, width:198px, margin-right:10px in css -->
-		
-		<div class="show_tags_header">
-			<h1>Tags:</h1>
-			<h2 class="show_tags_add_button">Add</h2>
-		</div>
-		
-		<div class="show_tags_selected">
-<!-- this shows the tags currently applied to the interval SHOULD BE CHECKED-->
-			<input type="checkbox" class="tag_phenomena"> Selected Tags </input> 	</br>
-			<input type="checkbox"> Selected Tags </br>
-			<em><input type="checkbox"> Pending Tag </br></em>
-			<input type="checkbox"> Selected Tags </br>
-			<input type="checkbox"> Selected Tags </br>
-			<input type="checkbox"> Selected Tags </br>
-			<em><input type="checkbox"> Pending Tag </br></em>
-			<input type="checkbox"> Selected Tags </br>
-			<input type="checkbox"> Selected Tags </br>
-			<input type="checkbox"> Selected Tags </br>
-			<input type="checkbox"> Selected Tags </br>
-			<input type="checkbox"> Selected Tags </br>
-			<input type="checkbox"> Selected Tags </br>
-			<input type="checkbox"> Selected Tags </br>
-			<input type="checkbox"> Selected Tags </br>
-			<input type="checkbox"> Selected Tags </br>
-			<input type="checkbox"> Selected Tags </br>
-			<input type="checkbox"> Selected Tags </br>
-			<input type="checkbox"> Selected Tags </br>
-			<input type="checkbox"> Selected Tags </br>
-			<input type="checkbox"> Selected Tags </br>
-			<input type="checkbox"> Selected Tags </br>
-			<input type="checkbox"> Selected Tags </br>
-			<input type="checkbox"> Selected Tags </br>
-			<input type="checkbox"> Selected Tags </br>
-			<input type="checkbox"> Selected Tags </br>
-
-		</div>
-		
-		<div class="show_tags_add">
-<!-- here user adds tags to the interval-->
-			<p>Phenomena:</p>
-
-			
-			<p>People:</p>
-			<form>
-				<select class="tags_menu">
-					<option selected="selected"></option>
-					<option>Wayne</option>
-					<option>Odette</option>
-					<option>Alexander</option>
-					<option>Agnes</option>
-					<option>Anna</option>
-					<option>Antoine</option>
-					<option>Catarina</option>
-					<option>Daniela</option>
-					<option>Davide</option>
-					<option>Jessica</option>
-					<option>Louise</option>
-					<option>Michael</option>
-					<option>Paolo</option>
-				</select>
-			</form>
-			
-			<p>Misc:</p>
-			<form>
-				<select class="tags_menu">
-					<option selected="selected"></option>
-					<option>list of misc.</option>
-				</select>
-			</form>
-			
-			
-			<h2 class="tags_add_button">Submit</h2> </br>
-			
-			<h3>OR</h3>
-			
-			<h2 class="tags_go_new_button">Add New Tag</h2>
-
-									
-		</div>
-		
-			
-		<div class="tags_add_new">
-		
-			<p>Category:</p>
-			<form>
-				<select class="tags_menu">
-					<option selected="selected"></option>
-					<option>Phenomena</option>
-					<option>People</option>
-					<option>Miscellaneous</option>
-				</select>
-			</form>
-			
-			<p>New Tag:</p>
-			<input type="text" />
-			
-			<p>Description:</p>
-			<textarea rows="4" cols="20"></textarea>
-		
-			<h2 class="tags_add_new_button">Submit</h2>
-		</div>
-		
-	</div>
-
-	<div class="clear"></div>
 
 	<br style="clear:both"/>
 	<% end %>
