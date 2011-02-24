@@ -1,10 +1,6 @@
 GIT
   remote: git://github.com/sferik/rails_admin.git
-<<<<<<< HEAD
   revision: 4f3d735bb9971da6d16b050c4d9fced3ba65caf9
-=======
-  revision: bc7ff2772f25826e5343a2423b2cc388383b72ef
->>>>>>> 9e961e12da75f939b8561aae54b3c14a4df4c54c
   specs:
     rails_admin (0.0.1)
       builder (~> 2.1.0)
@@ -82,11 +78,7 @@ GEM
       cucumber (>= 0.8.0)
     culerity (0.2.15)
     daemons (1.1.0)
-<<<<<<< HEAD
     database_cleaner (0.6.4)
-=======
-    database_cleaner (0.6.3)
->>>>>>> 9e961e12da75f939b8561aae54b3c14a4df4c54c
     devise (1.1.7)
       bcrypt-ruby (~> 2.1.2)
       warden (~> 1.0.2)
