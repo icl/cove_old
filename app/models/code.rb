@@ -67,6 +67,7 @@ class Code < ActiveRecord::Base
         #move file to new store
         File.move("tmp/codings/#{file}","log/codings/#{file}.imported_at_#{Time.now.strftime("%Y%m%d%H%M")}")
         
-    end # End |Dir.foreach| block
-  end # End |def import| block
-end
+    end # End if block
+  end # End |Dir.foreach| block
+end # End |def import| block 
+end # End file
