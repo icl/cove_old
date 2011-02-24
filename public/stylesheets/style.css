@@ -649,11 +649,9 @@ input[type=search] {
 .mark_button input{
 	margin-left:5px;
 	border:transparent;
-	height:27px;
+	height:20px;
     width:70px;
-    
 }
-
 
 .markend {
 	margin-top:10px;

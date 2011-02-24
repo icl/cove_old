@@ -9,8 +9,30 @@ $(document).ready(function(){
     videoPlayer.markSnippetStart();
     return false;
   });
+  
   $("button.markend").click(function(){
     videoPlayer.markSnippetEnd();
+    return false;
+  });
+  
+  $(".create_snippet").hide();
+  $('.create_interval_button').click(function(){
+    $(".create_snippet").slideToggle("slow");
+    $('.create_interval_button').hide();
+    $(this).toggleClass("active"); 
+    $('.create_interval_button').ide();
+    return false;
+  });
+  
+  $('button.cancel').click(function(){
+    $('.create_snippet').slideToggle("fast");
+    $('.create_interval_button').show();
+    return false;
+  });
+  
+   $('button.save').click(function(){
+    $('.create_snippet').slideToggle("fast");
+    $('.create_interval_button').show();
     return false;
   });
  
@@ -40,4 +62,5 @@ $(document).ready(function(){
     return true;
   });
 });
+
 

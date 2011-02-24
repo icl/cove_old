@@ -33,7 +33,6 @@
 		    <!-- Using the Video for Everybody Embed Code http://camendesign.com/code/video_for_everybody -->
      	<video id="cove-video-player" class="video-js" width="480" height="270" controls>
 	 	<source src="http://www.yo-yo.org/mp4/yu.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"' />
-    	 </video>
     </div>
           <!-- End VideoJS -->
           
@@ -42,7 +41,6 @@
 	<div class="grid_8 empty">&nbsp</div>
 	
 	<div class="grid_16 mark_button">
-
 	 <%= form_for([@interval, @interval.snippets.build], :remote => true) do |f| %>
 	 <button class="markstart">Start Mark</button> or <input type="text" id="start_mark"></input>
    	 <button class="markend">End Mark</button> or <input type="text" id="end_mark"></input>
@@ -51,7 +49,6 @@
    <!-- <div  class="grid_8 snippet_button">
     <%= f.submit "Create Snippet", :class => "create_interval_button" %>
     </div>
-    
 	<% end %>--!>
 	
 	<div class="grid_9 video_snippit">
@@ -83,3 +80,4 @@
 	<div class="clear"></div>
 
 </div>
+
