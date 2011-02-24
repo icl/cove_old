@@ -5,19 +5,12 @@ Feature: Browse Intervals
 
 Background:
 	Given I am a regular user who is logged in
-	And the following interval exists:
-
-		|	camera angle	|	start time		|	duration		|	session type	| phrase_type |
-		|	Wayne		|	1-1-2001 01:10:00	|	2m32s			|	solo		| shadow|
-	And the following interval exists:
-		|	camera angle	|	start time		|	duration		|	session type	|
-		|	Wayne		|	1-2-2001 01:10:00	|	3m4s			|	duet		|
-	And the following interval exists:
-		|	camera angle	|	start time		|	duration		|	session type	|
-		|	Mirror		|	1-2-2001 01:15:00	|	5m1s			|	trio		|
-	And the following interval exists:
-		|	camera angle	|	start time		|	duration		|	session type	|
-		|	Mirror		|	1-3-2001 01:15:00	|	1m3s			|	quartet		|
+	And the following intervals exist:
+		|	camera angle	|	start time		|	duration		|	session type	|	phrase type	|
+		|	Wayne		|	1-1-2001 01:10:00	|	2m32s			|	solo		|	shadow		|
+		|	Wayne		|	1-2-2001 01:10:00	|	3m4s			|	duet		|	foo		|
+		|	Mirror		|	1-2-2001 01:15:00	|	5m1s			|	trio		|	foo		|
+		|	Mirror		|	1-3-2001 01:15:00	|	1m3s			|	quartet		|	foo		|
 
 Scenario: Go to browse page
 	When I go to the intervals page

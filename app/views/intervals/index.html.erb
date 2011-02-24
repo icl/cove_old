@@ -6,7 +6,7 @@
 		<%= select_tag(:date, options_for_select(@days, :selected =>params[:date]), :include_blank =>true, :class =>"date_filter")%></p>
 		<p class="grid_2 suffix_1"><%= label_tag :camera_angle, "Camera Angle" %></br>
 		<%= select_tag(:camera_angle, options_for_select(@camera_angles, :selected =>params[:camera_angle]), :include_blank =>true, :class =>"camera_angle")%></p>
-		<div class="grid_2 suffix_1"><%= label_tag :session_type, "Session Type" %></br>
+		<div class="grid_2 suffix_1 session_type_selector"><%= label_tag :session_type, "Session Type" %></br>
 			<div class="fauxselect_button" style="border: black .2em solid; text-align: center;background-color: #999"><%= (params[:session_type].nil? || params[:session_type] == "") ? "Click to Select" : params[:session_type] %></div>
 			<ul class="fauxselect" style="margin-left: 0; position: absolute; background-color: black; border: 2px black solid;">
 				<li class="define_me" style="list-style: none; padding-left: 5px; padding-right: 5px; line-height: 1.2; padding-top: .3em; padding-bottom: .3em; margin-top: .2em; margin-bottom: .2em; background-color: #333"><%= link_to "none", intervals_path(add_params :session_type => nil) %></li>

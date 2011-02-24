@@ -75,7 +75,7 @@ $(document).ready(function(){
 	// --------------------------------
 	// Fauxselect Menus
 	// --------------------------------
-	$(".fauxselect_button").live("click", function(){
+	$(".fauxselect_button").live("click openme", function(){
 		$(this).parent().find(".fauxselect").toggle("blind",{},"fast");
 	});
 	$(".fauxselect").hide();
