@@ -26,6 +26,9 @@ module NavigationHelpers
     when /the show\s?page for interval (\d*)/
       url_for(:controller => "intervals", :action => "show", :id => $1)
 
+    when /the admin page/
+      '/admin'
+
     when /the user administration page/
       '/admin/users'
     # Add more mappings here.

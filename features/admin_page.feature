@@ -4,6 +4,7 @@ Feature: Admin Page
   I want to make sure that the admin page is usuable
 
   Scenario: Visiting the Admin Page
-    Given I am an admin user
-    And I click on the "Admin" link 
-    Then I should go to the admin page
+    Given I am an admin user who is logged in
+    And I am on the home page
+    When I follow "Admin"
+    Then I should be on the admin page
