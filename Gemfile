@@ -6,6 +6,7 @@ gem 'rails', '~>3.0.3'
 gem 'simple_form'
 gem 'capistrano'
 gem 'fastercsv'
+
 gem 'sunspot', '1.2.rc4'
 gem 'sunspot_rails', '1.2.rc4'
 
