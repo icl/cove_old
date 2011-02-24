@@ -581,14 +581,17 @@ input[type=search] {
 }
 
 .video_snippit{
-	border-left: solid 10px #2F2F2F;
+	margin-top:10px;
 	height: 270px;
 	background:#383838;
 	
 }
 
+.empty{
+	height:270px;
+}
 
-.interval_time_background{
+/*.interval_time_background{
 	margin:10px;
 	height:60%;
 	width:40%;
@@ -606,10 +609,12 @@ input[type=search] {
 .interval.tags{
 	float:left;
 }
+*/
 
-.snippet_button{
+.snippet_button{	
+	display:hidden;
 	text-align:right;
-	border:10px solid #2F2F2F;
+	border:solid #2F2F2F;
 }
 
 .create_interval_button{
@@ -619,6 +624,13 @@ input[type=search] {
 	opacity:1;
 	background:#EC8723;
 	color:white;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.create_snippet{
+    background: #383838;
+    height: auto;
 }
 
 .create_interval_button:hover{
@@ -633,6 +645,7 @@ input[type=search] {
 
 .markstart {
     margin-top:10px;
+    margin-left: 20px;
 	height:30px;
 	width:90px;
 	opacity:1;
@@ -650,7 +663,7 @@ input[type=search] {
 
 .markend {
 	margin-top:10px;
-	margin-left:83px;
+	margin-left:70px;
 	height:30px;
 	width:90px;
 	opacity:1;
@@ -669,42 +682,62 @@ input[type=search] {
 	background:#FF3333;
 }
 
-.interval_form {
-	border-left:1px solid white;
-    margin-top: 10px;
-    background: #383838;
-   	height:200px;
-    padding: 5px;
+.interval_browse{
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-bottom: 20px;
     display: block;
+    float: left;
+}
+
+.snippet{
+    padding: 10px;
+    width: 450px;
+}
+
+.snippet:hover{
+    opacity: 5;
+    background:#757575;
+}
+
+.snippet p{
+    color: #EC8723;
+    font-size: 14px;
+}
+    
+
+.interval_form {
+	margin-top:10px;
+    background: #383838;
+   	height:270px;
+    float: left;
+    display: inline;
 }
 
 .interval_form legend{
 	color: #EC8723;
-    font-size: 14px;
+    font-size: 20px;
     text-align: left;
+    padding-bottom: 10px;
 }
 
 .interval_form fieldset{
-	margin-top:10px;
 	margin-left:20px;
 }
 
 .interval_form p{
     text-align: left;
+    margin-bottom:3px;
 }
 
 
 .interval_form input{
-	width:420px;
-	margin-bottom:10px;
-}
-
-.interval_form textarea{
-    width: 420px;
-    margin-bottom:10px;
+	width:300px;
+	margin-bottom:7px;
 }
 
 .save_cancel_button{
+	margin-top:10px;
 	text-align:right;
 }
 
@@ -718,7 +751,8 @@ input[type=search] {
 }
 
 .save {
-	margin:10px;
+	margin-left:10px;
+	margin-right:10px;
 	height:30px;
 	width:90px;
 	opacity:1;
@@ -888,7 +922,8 @@ div.search_header{
 	width: 360px;
 }
 
-.search_header #selectors{
+.search_
+er #selectors{
 	margin-top:15px;
 	float:right;
 }

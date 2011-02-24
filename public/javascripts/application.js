@@ -20,21 +20,27 @@ $(document).ready(function(){
     $(".create_snippet").slideToggle("slow");
     $('.create_interval_button').hide();
     $(this).toggleClass("active"); 
-    $('.create_interval_button').ide();
+    $('.create_interval_button').hide();
     return false;
   });
   
   $('button.cancel').click(function(){
-    $('.create_snippet').slideToggle("slow");
+    $('.create_snippet').hide();
     $('.create_interval_button').show();
     return false;
   });
   
    $('button.save').click(function(){
-    $('.create_snippet').slideToggle("slow");
+    $('.create_snippet').hide();
     $('.create_interval_button').show();
     return false;
   });
+  
+  $('.snippet').click(function(){
+    $('.interval_form').hide();
+    return false;
+  });
+    
  
   $('#new_snippet').submit(function(event){
     $('#snippet_offset').val( videoPlayer.snippetStart() );
