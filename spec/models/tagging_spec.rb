@@ -25,4 +25,15 @@ describe Tagging do
       end
     end
   end
+
+  describe ".tags_with_same_name" do
+    before(:each) do
+      @tag = Factory(:tagging)
+      Factory(:tagging)
+    end
+    it "should return 2 instances of tag" do
+      Tagging.count.should == 2
+      Tagging.tags_with_same_name(@tag.id).length().should == 2
+    end
+  end
 end
