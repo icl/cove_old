@@ -15,9 +15,8 @@ class Tagging < ActiveRecord::Base
   #the before hook that will create the necessary underlying tag
   before_validation :hookup_tag
 
-  def self.tags_with_same_name(id)
-    name = Tagging.find(id).tag.name
-    Tagging.joins(:tag).where("tags.name = ?", name)
+  def tags_with_same_name
+    Tagging.joins(:tag).where("tags.name = ?", self.tag.name)
   end
 
 

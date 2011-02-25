@@ -30,10 +30,14 @@ describe Tagging do
     before(:each) do
       @tag = Factory(:tagging)
       Factory(:tagging)
+      @result = @tag.tags_with_same_name
     end
     it "should return 2 instances of tag" do
       Tagging.count.should == 2
-      Tagging.tags_with_same_name(@tag.id).length().should == 2
+      @result.length().should == 2
+    end
+    it "should be in instance of tagging" do
+      @result[0].should be_instance_of(Tagging)
     end
   end
 end
