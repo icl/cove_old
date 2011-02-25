@@ -4,8 +4,17 @@
 	<form class="interval_filters">
 		<p class="grid_2 suffix_1 alpha"><%= label_tag :date, "Date" %></br>
 		<%= select_tag(:date, options_for_select(@days, :selected =>params[:date]), :include_blank =>true, :class =>"date_filter")%></p>
-		<p class="grid_2 suffix_1"><%= label_tag :camera_angle, "Camera Angle" %></br>
-		<%= select_tag(:camera_angle, options_for_select(@camera_angles, :selected =>params[:camera_angle]), :include_blank =>true, :class =>"camera_angle")%></p>
+		<div class="grid_2 suffix_1 camera_angle_selector"><%= label_tag :camera_angle, "Camera Angle" %></br>
+			<div class="fauxselect_button">Expand</div>
+			<ul class="fauxselect">
+				<li class="define_me" ><%= link_to "Any", intervals_path(add_params :camera_angle => nil) %></li>
+				<% for angle in @camera_angles %>
+					<li class="define_me" ><a href="<%= intervals_path(add_params :camera_angle => angle) %>">
+						<%= image_for_camera_angle(angle).nil? ? angle : image_for_camera_angle(angle) %>
+					</a></li>
+				<% end %>
+			</ul>
+		</div>
 		<div class="grid_2 suffix_1 session_type_selector"><%= label_tag :session_type, "Session Type" %></br>
 			<div class="fauxselect_button">Expand</div>
 			<ul class="fauxselect">
