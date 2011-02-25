@@ -1,10 +1,13 @@
 $(document).ready(function(){
 	var hoverstatus = [];
-	var offX = 10;
-	var offY = 10;
+	var offX = 4;
+	var offY = 0;
+	var zindex_inc = 1000;
 	$(".define_me")
 		.live("mouseenter lookup", function(e){
 			var name = $(this).text();
+			var offset = $(this).offset();
+			var width = $(this).width();
 			hoverstatus[name] = 1;
 			if($("#definition_"+name.replace(" ", "_")).length){
 				$("#definition_"+name.replace(" ", "_")).fadeIn("fast");
@@ -12,13 +15,19 @@ $(document).ready(function(){
 				$.get(
 					"/definitions/"+name,
 					function(data){
-						var def = $(data).find(".definition_holder").first().prependTo("body").hide().attr("id", "definition_"+name.replace(" ", "_"))
+						var def = $(data)
+							.find(".definition_holder")
+							.first()
+							.prependTo("body")
+							.css("z-index", zindex_inc++)
+							.hide()
+							.attr("id", "definition_"+name.replace(" ", "_"));
 						if(hoverstatus[name]){
 							def
 								.fadeIn("fast")
 								.css("position", "absolute")
-								.css("top", (e.pageY + offY) + "px")
-								.css("left", (e.pageX + offX) + "px");
+								.css("top", (offset.top + offY) + "px")
+								.css("left", (offset.left + width + offX) + "px");
 						}
 					}
 				);
@@ -26,10 +35,12 @@ $(document).ready(function(){
 		})
 		.live("mousemove", function(e){
 			var name = $(this).text();
+			var offset = $(this).offset();
+			var width = $(this).width();
 			$("#definition_"+name.replace(" ", "_"))
 				.css("position", "absolute")
-				.css("top", (e.pageY + offY) + "px")
-				.css("left", (e.pageX + offX) + "px");
+				.css("top", (offset.top + offY) + "px")
+				.css("left", (offset.left + width + offX) + "px");
 		})
 		.live("mouseleave", function(){
 			var name = $(this).text();
@@ -39,4 +50,9 @@ $(document).ready(function(){
 	$(".definition_holder").live("goaway",function(){
 		$(this).fadeOut("fast");
 	});
+	
+	$(".fauxselect_button").click(function(){
+		$(this).parent().find(".fauxselect").toggle("blind",{},"fast");
+	});
+	$(".fauxselect").hide();
 });
