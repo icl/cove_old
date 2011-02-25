@@ -45,12 +45,12 @@
 		<!-- Notes Block -->
 		<div class="note_form">
 			<%= simple_form_for [@project,Note.new] do |form| %>
-				<%= form.input :note %>
+				<%= form.input :note, :label => false %>
 				<%= form.button :submit %>
 			<% end %>
 		</div>
-		<div class="note_list_container grid_9 prefix_1">
-			<ul class="note_list" style="list-style-type: none; background-color: #555; padding-top: 2px; padding-bottom: 2px;">
+		<div class="note_list_container grid_10">
+			<ul>
 				<%= render @project.notes.order('created_at DESC') if !@project.notes.blank? %>
 			</ul>
 			<a class="expand_all" style="float:right; display:none;">Expand/Collapse All</a>
@@ -61,128 +61,34 @@
 		<p>
 		   <%= @project.desc %> 
 		</p>
-	</div>
-	<!-- end .grid_6 -->
-
-<div container="container_16">
-	<!-- end .grid_16 -->
-	<div class="clear"></div>
-	<div class="grid_16">
+		
 		<h3>
 		   Tags <span>(<%= link_to 'Edit', edit_project_path(@project) %>):</span>	
 		</h3>
-	</div>
-	<!-- end .grid_16 -->
-	<div class="clear"></div>
+		
+		
 	<% if !@project.tags.blank? %>
-	<div class="grid_16">
 		<p>
-                     <ul>
-                          <% @project.tags.each do |t| %>
-                             <li class="inline"><%= t.capitalize %></li>
-                          <% end %>
-                     </ul>
+             <ul>
+             <% @project.tags.each do |t| %>
+             <li class="inline"><%= t.capitalize %></li>
+             <% end %>
+             </ul>
 		</p>
-	</div>
 	<% end %>
-	<!-- end .grid_16 -->
-	<div class="clear"></div>
-	<div class="grid_16">
+
 		<h3>
 		   Owner <span>(<%= link_to 'Edit', edit_project_path(@project) %>):</span>	
 		</h3>
                    <p><%= current_user.email %></p>
-	</div>
-	<!-- end .grid_16 -->
-	
-	<div class="clear"></div>
-	<div class="grid_16 project_container favorite_table">
-		<h3>
-			Favorites
-		</h3>
-		<ul>
-			<% if !@favorites.blank? %>
-				<% YAML.load(@favorites.interval_priorities).keys.sort!{|a,b| a.to_i <=> b.to_i}[0,4].each do |priority| %><% interval = Interval.find(YAML.load(@favorites.interval_priorities)[priority.to_s]) %>
-				<li class="grid_3">
-					<img src="http://dummyimage.com/150x100">
-					<%= link_to "FAR#{interval.id.to_s}", interval %><br/>
-					Session <%= interval.session_number %><br />Camera: <%= interval.camera_angle.humanize %><br /> Session Type: <%= interval.session_type.humanize %><br />Date: <%= interval.start_time.strftime('%m/%d/%Y %H:%M') %><br />Duration: <%= interval.duration_string %><br />
-					<%= link_to "See More", interval %>
-				</li>
-				<% end %>
-			<% else %>
-				<li class='grid_15'>There are no favorites for this project yet.</li>
-			<% end %>
-		</ul>
-		<br /><%= link_to 'See All Favorites', favorite_intervals_path(@project.id) %>
+	<!-- end .grid_6 -->
 	</div>
 	
 	<div class="clear"></div>
-	<div class="grid_16 project_container">
-		<h3>
-			Queue
-		</h3>
-		<div>
-			<div style="height:250px;">
-				<%= render :partial => 'carousel_collections' rescue "Missing Collection Partial" %>
-			</div>
-	</div>
-	</div>
-	
-	<div class="clear"></div>
-	<div class="grid_16 project_container collection_accordion">
-		<h3>
-			Collections
-		</h3>
+	<div class="grid_16 favorite_table">
 		
-		<ul>
-    <li>
-        <h3>Collection 1</h3>
-        <ul>
-        	<li><a href="#">Interval 1</a></li>
-        	<li><a href="#">Interval 2</a></li>
-        	<li><a href="#">Interval 3</a></li>
-        	<li><a href="#">Interval 4</a></li>
-        	<li><a href="#">Interval 5</a></li>
-        	<li><a href="#">See More Intervals</a></li>
-        </ul>
-    </li>
-    
-    <li>
-        <h3>Collection 2</h3>
-        <ul>
-        	<li><a href="#">Interval 1</a></li>
-        	<li><a href="#">Interval 2</a></li>
-        	<li><a href="#">Interval 3</a></li>
-        	<li><a href="#">Interval 4</a></li>
-        	<li><a href="#">Interval 5</a></li>
-        	<li><a href="#">See More Intervals</a></li>
-        </ul>
-    </li>
-    <li>
-        <h3>Collection 3</h3>
-        <ul>
-        	<li><a href="#">Interval 1</a></li>
-        	<li><a href="#">Interval 2</a></li>
-        	<li><a href="#">Interval 3</a></li>
-        	<li><a href="#">Interval 4</a></li>
-        	<li><a href="#">Interval 5</a></li>
-        	<li><a href="#">See More Intervals</a></li>
-        </ul>
-    </li>
-    <li>
-        <h3>Collection 4</h3>
-        <ul>
-        	<li><a href="#">Interval 1</a></li>
-        	<li><a href="#">Interval 2</a></li>
-        	<li><a href="#">Interval 3</a></li>
-        	<li><a href="#">Interval 4</a></li>
-        	<li><a href="#">Interval 5</a></li>
-        	<li><a href="#">See More Intervals</a></li>
-        </ul>
-    </li>
-</ul>
-		
+		<%= render :partial => 'collections' %>
+	
 	</div>
 	
 	<div class="clear"></div>
