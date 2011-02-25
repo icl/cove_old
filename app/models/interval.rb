@@ -145,7 +145,7 @@ class Interval < ActiveRecord::Base
     @search = Interval.search() do
       keywords(params[:search])
       #example URI: ?search=structuring&camera_angle=&session_type=&phrase_type=&phrase_name=
-      #<variable to exclude later> = with <sunspot value>, params[<URL query segment>] if params[<URL query segment>] exists
+      #<variable to exclude later> = with <sunspot value>, params[<URL query segment>] if params[<URL query segment>] exists or not blank 
       cam_ang_filter = with :camera_angle, params[:camera_angle] if !params[:camera_angle].blank?
       session_filter = with :session_type, params[:session_type] if !params[:session_type].blank?
       phrase_filter = with :phrase_type, params[:phrase_type] if !params[:phrase_type].blank?
