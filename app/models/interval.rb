@@ -131,13 +131,18 @@ class Interval < ActiveRecord::Base
     #Sunspot Solr stuff
     #Primary terms
     text :session_type
+    string :session_type
     text :phrase_name
+    string :phrase_name
     text :phrase_type
+    string :phrase_type
     text :alternative_phrase_name
+    string :alternative_phrase_name
     
     #Side terms     
     text :comments
     text :camera_angle
+    string :camera_angle
   end
 
   #more sunspot stuff
