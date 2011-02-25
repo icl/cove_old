@@ -18,6 +18,7 @@
   <title>Cove</title>
   <% if ENV['RAILS_ENV'] == 'production' %>
 	<%= hoptoad_javascript_notifier %>
+
     <%= javascript_include_tag 'jquery.min.js' %>
     <%= javascript_include_tag 'jquery-ui.min.js' %>
   <% else %>
@@ -27,6 +28,9 @@
   <%= javascript_include_tag 'modernizr-1.6.min.js' %>
   <%= javascript_include_tag 'application.js' %>
   <%= javascript_include_tag "rails.js" %>
+  <% if !Rails.env.test? %>
+  	<%= javascript_include_tag 'degradable.js' %>
+  <% end %>
   <%= stylesheet_link_tag 'style.css' %>
   <%= stylesheet_link_tag '960.css' %>
   <%= stylesheet_link_tag 'style.css'%>
@@ -61,7 +65,9 @@
 		<ul class="grid_16 main_links">
 			<li class="alpha grid_2"><%= link_to "Home", root_path %></li>
 			<li class="grid_2"><%= link_to "Browse", intervals_path %></li>
-			<div class="search_holder grid_4 push_8">
+			<li class="grid_2"><%= link_to "Collections", collections_path %></li>
+			<li class="grid_2"><%= link_to "Projects", projects_path %></li>
+			<div class="search_holder grid_4 push_4">
 				<%= render "intervals/search" if current_user %>
 			</div>
 		</ul>

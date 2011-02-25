@@ -1,5 +1,6 @@
 class ProjectsController < ApplicationController
   before_filter :authenticate_user!
+  before_filter :require_nda
 
   def index
     @project = Project.all
@@ -34,6 +35,14 @@ class ProjectsController < ApplicationController
 
   def destroy
     @project = Project.find(params[:id])
+    @project.collections.each do |collection|
+      if collection.name =~ /project_[0-9]+_(favorites|queue)/i
+        collection.destroy
+      else
+        collection.projects = [];
+        collection.save
+      end
+    end
     @project.destroy
     redirect_to(@project, :notice => 'Project was successfully deleted.')
   end
