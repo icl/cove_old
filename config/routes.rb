@@ -2,6 +2,7 @@ Cove::Application.routes.draw do
 
   resources :intervals do
     resources :annotations
+    resources :taggings
   end
 
   resources :definitions

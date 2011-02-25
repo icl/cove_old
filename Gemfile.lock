@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/sferik/rails_admin.git
-  revision: bc7ff2772f25826e5343a2423b2cc388383b72ef
+  revision: 5c5228e2fd9639e84ad5c30770c5ef6f6ef35c63
   specs:
     rails_admin (0.0.1)
       builder (~> 2.1.0)
@@ -79,7 +79,7 @@ GEM
       cucumber (>= 0.8.0)
     culerity (0.2.15)
     daemons (1.1.0)
-    database_cleaner (0.6.3)
+    database_cleaner (0.6.4)
     devise (1.1.7)
       bcrypt-ruby (~> 2.1.2)
       warden (~> 1.0.2)
@@ -196,9 +196,9 @@ GEM
       rubyzip
     shoulda (2.11.3)
     simple_form (1.3.1)
-    sinatra (1.1.2)
+    sinatra (1.1.3)
       rack (~> 1.1)
-      tilt (~> 1.2)
+      tilt (>= 1.2.2, < 2.0)
     sqlite3 (1.3.3)
     sqlite3 (1.3.3-x86-mingw32)
     sqlite3-ruby (1.3.3)
