@@ -1,4 +1,6 @@
 class Interval < ActiveRecord::Base
+
+  has_and_belongs_to_many :collections
   
   has_many :codings
   has_many :taggings
@@ -117,7 +119,7 @@ class Interval < ActiveRecord::Base
         #  Dir.mkdir('log/notes')
         #end
         
-        File.move("tmp/notes/#{file}","log/notes/#{file}.imported_at_#{Time.now.strftime("%Y%m%d%H%M")}")
+       # File.move("tmp/notes/#{file}","log/notes/#{file}.imported_at_#{Time.now.strftime("%Y%m%d%H%M")}")
         
       end # End |if file| block
     end # End |Dir.foreach| block
@@ -132,12 +134,13 @@ class Interval < ActiveRecord::Base
     #Primary terms
     text :session_type
     string :session_type
-    text :phrase_name
     string :phrase_name
-    text :phrase_type
     string :phrase_type
-    text :alternative_phrase_name
     string :alternative_phrase_name
+    text :phrase_name
+    text :phrase_type
+    text :alternative_phrase_name
+
     
     #Side terms     
     text :comments

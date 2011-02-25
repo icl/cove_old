@@ -1,3 +1,4 @@
+/* Definition Function */
 $(document).ready(function(){
 	var hoverstatus = [];
 	var offX = 4;
@@ -56,3 +57,4 @@ $(document).ready(function(){
 	});
 	$(".fauxselect").hide();
 });
+
