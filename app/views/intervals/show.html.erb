@@ -1,54 +1,7 @@
 <head>
-	<script type="text/javascript">
-		$(document).ready(function(){  //
-			$(".show_tags_add_button").click(function(){  //"what you click"
-				$(".show_tags_add").slideToggle("slow"); //"what you want to show after the click"
-				$(".show_tags_selected").remove(); //"replace this"
-			});
-		});
-
-		$(document).ready(function(){
-			$(".tags_go_new_button").click(function(){
-				$(".tags_add_new").slideToggle("slow");
-				$(".show_tags_add").remove();
-			});
-		});
-		
-		$(document).ready(function(){  //show more info
-			$(".show_moreinfo_button").click(function(){
-				$(".show_more_data").slideToggle("slow");
-			});
-		});
-		
-		$(document).ready(function(){  //click on add for phenomena
-			$(".show_add_phen_button").click(function(){
-				$(".show_add_phen_list").slideToggle("slow");
-				$(".show_applied_phen").remove();
-				$(".show_codingterms_people").remove();
-				$(".show_applied_people").remove();
-			});
-		});
-		
-		$(document).ready(function(){  //click on add for people
-			$(".show_add_people_button").click(function(){
-				$(".show_add_people_list").slideToggle("slow");
-				$(".show_applied_phen").remove();
-				$(".show_codingterms_phen").remove();
-				$(".show_applied_people").remove();
-			});
-		});
-		
-		$(document).ready(function(){  //click on add for tags
-			$(".show_add_tags_button").click(function(){
-				$(".show_tags_create").slideToggle("slow");
-				$(".show_applied_tags").remove();
-			});
-		});
-	
+	<script type="text/javascript" src="javascript.js">
 	</script>
 </head>
-
-
 
 <div class="interval_show">
 
@@ -56,7 +9,7 @@
 
 	 <%= simple_form_for @interval do |f| %>
 	 <div class="grid_6 show_video_header">
-		<h1>FAR #?</h1>
+		<h1>FAR #</h1>
 		<h2>Session <%= @interval.session_number %> : <%= @interval.session_type %></h2>
 	</div>
 	
@@ -66,7 +19,9 @@
 	</div>
 	
 	<div class="grid_5 show_camera_angle">
+		<div class="show_angles">
 		<%= image_for_camera_angle @interval.camera_angle %>
+		</div>
 	</div>
 
 	<div class="clear"></div>
@@ -82,7 +37,7 @@
 	
 		<div class="show_more_info">
 			<h2>Video Data</h2>
-			<h3 class="show_moreinfo_button">+</h3>
+			<h3 class="show_moreinfo_button">More</h3>
 		</div>
 		
 		<div class="show_mvt_content">
@@ -98,7 +53,7 @@
 		</div>
 		
 		<div class="show_codingterms_phen">
-			<h2>Phenomena</h2>
+			<h2>Phenomena (3)</h2>
 			<h3 class="show_add_phen_button">Add</h3>
 			<div class="show_applied_phen">
 				<p>List of applied phenomena.<p>
@@ -124,7 +79,7 @@
 		</div>
 
 		<div class="show_codingterms_people">
-			<h2>People</h2>
+			<h2>People (2)</h2>
 			<h3 class="show_add_people_button">Add</h3>
 			<div class="show_applied_people">
 				<p>List of applied people.<p>
@@ -153,7 +108,7 @@
 		</div>
 		
 		<div class="show_tags">
-			<h2>Tags</h2>
+			<h2>Tags (10)</h2>
 			<h3 class="show_add_tags_button">Add</h3>
 			<div class="show_applied_tags">
 				<p>List of applied tags.<p>
@@ -163,8 +118,9 @@
 		
 		<div class="show_tags_create">
 			<form>
-				Tag Name:<input type="text"></br>
-				Description:<textarea rows="4" cols="20"></textarea>
+				<label>Tag Name:</label>
+				<input type="text"></br>
+			<!--Notes:<textarea rows="4" cols="20"></textarea>-->
 			</form>
 			<h3 class="show_save_people_button">Create</h3>
 
@@ -172,9 +128,9 @@
 		
 	<div class="clear"></div>
 	
-	
+	<div class="grid_16 push_0 subintervals">
 <!--INSERT SUBINTERVAL WIDGET-->
-
+	</div>
 
 
 	<br style="clear:both"/>

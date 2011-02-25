@@ -572,11 +572,15 @@ input[type=search] {
 
 .show_metadata div.show_mvt_content {
 	border: 5px solid #383838;
+	background: #383838;
+
 }
 
 .show_metadata div h2 {
 	color: #0297C1;
 	display: inline;
+	background: #383838;
+
 }
 
 .show_metadata div h3 {  /*buttons*/
@@ -595,6 +599,8 @@ input[type=search] {
 	border-right: 5px solid #383838;
 	border-bottom: 5px solid #383838;
 	display: none;
+	background: #383838;
+
 }
 
 
@@ -603,6 +609,8 @@ input[type=search] {
 
 .show_codingterms_phen {
 	margin-top: 15px;
+	background: #383838;
+
 }
 
 .show_applied_phen {
@@ -615,6 +623,8 @@ input[type=search] {
 
 .show_codingterms_people {
 	margin-top: 15px;
+	background: #383838;
+
 }
 
 .show_add_phen_list {
@@ -629,6 +639,8 @@ input[type=search] {
 
 .show_tags {
 	margin-top: 15px;
+	background: #383838;
+
 }
 
 .show_applied_tags {
@@ -642,11 +654,15 @@ input[type=search] {
 
 .show_tags_create input {
 	width: 157px;
-	margin-left: 50px;
+	margin-left: 25px;
 }
 
 .show_tags_create textarea {
-	margin-left: 50px;
+	margin-left: 25px;
+}
+
+.subintervals {
+	background: #383838;
 }
 
 /****Row 4 - start****/

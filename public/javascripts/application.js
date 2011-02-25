@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 
 
 
@@ -7,11 +6,36 @@
 /* JS adjustments for show.html */
 
 
-$(document).ready(function(){
-	$(".show_tags p").click(function(){
-		$("show_tags ul").slideToggle("slow");
-	});
-});
+		$(document).ready(function(){  //show more info
+			$(".show_moreinfo_button").click(function(){
+				$(".show_more_data").slideToggle("slow");
+			});
+		});
+		
+		$(document).ready(function(){  //click on add for phenomena
+			$(".show_add_phen_button").click(function(){
+				$(".show_add_phen_list").slideToggle("slow");
+				$(".show_applied_phen").remove();
+				$(".show_codingterms_people").remove();
+				$(".show_applied_people").remove();
+			});
+		});
+		
+		$(document).ready(function(){  //click on add for people
+			$(".show_add_people_button").click(function(){
+				$(".show_add_people_list").slideToggle("slow");
+				$(".show_applied_phen").remove();
+				$(".show_codingterms_phen").remove();
+				$(".show_applied_people").remove();
+			});
+		});
+		
+		$(document).ready(function(){  //click on add for tags
+			$(".show_add_tags_button").click(function(){
+				$(".show_tags_create").slideToggle("slow");
+				$(".show_applied_tags").remove();
+			});
+		});
 	
 
 
@@ -32,7 +56,8 @@ $(document).ready(function(){
 
 /* end style adjustments for show.html */
 /***************************************/
-=======
+
+
 $(document).ready(function(){
 	var hoverstatus = [];
 	var offX = 10;
@@ -75,4 +100,3 @@ $(document).ready(function(){
 		$(this).fadeOut("fast");
 	});
 });
->>>>>>> 9e961e12da75f939b8561aae54b3c14a4df4c54c
