@@ -8,7 +8,7 @@ Then /^(?:|I )should see (\d+) result(?:|s)$/ do |num|
     if page.respond_to? :should
       page.should have_content(num)
     else
-      assert page.has_content?(text)
+      assert page.has_content?(num)
     end
   end
 end
