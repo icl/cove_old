@@ -117,7 +117,7 @@ class Interval < ActiveRecord::Base
         #  Dir.mkdir('log/notes')
         #end
         
-        File.move("tmp/notes/#{file}","log/notes/#{file}.imported_at_#{Time.now.strftime("%Y%m%d%H%M")}")
+       # File.move("tmp/notes/#{file}","log/notes/#{file}.imported_at_#{Time.now.strftime("%Y%m%d%H%M")}")
         
       end # End |if file| block
     end # End |Dir.foreach| block
