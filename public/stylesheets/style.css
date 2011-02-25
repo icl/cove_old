@@ -724,6 +724,187 @@ div#video div p {
 /***************************************/
 
 
+/***********************************/
+/* Style sheet for collections/index.html */
+.collections_title {
+	margin-top: 20px;
+	font-size: 14pt;
+	color: gold;
+}
+
+.sortable_collection a { text-decoration: none; }
+
+.sortable_collection li {
+	height: 50px; 
+	border: 1px; 
+	border-style: solid; 
+	border-color:silver;
+	list-style: none;
+}
+
+.collection_cont {
+    margin:20px 0px;
+    padding:10px 0px;
+	background: #383838; 
+	border-top: 2px solid gray; 
+	border-bottom: 2px solid gray; 
+	clear: both;
+	cursor: move;
+}
+
+.collection_box, .collection_box_date {
+    height: 40px;
+    background: #2f2f2f;
+    text-align: center;
+    padding: 5px 0px;
+}
+
+.collection_box_date span {
+	
+    color: #ffd700;
+    font-size: .95em;
+    font-weight: bold;
+    /* text-transform: uppercase; */
+    padding: 2px 0px;
+}
+
+.collection_box_name {
+    height: 40px;
+    background: #0297c1;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0px;
+ }
+
+.collection_box_name a {
+    text-decoration: none;
+    color: #fff;
+ }
+
+
+.collection_box_name span {
+    display: block;
+    text-decoration: none;
+    color: #fff;
+    font-size: 2em;
+ }
+
+.collection_box_name:hover {
+    background: #5e767e;
+    color: #000;
+ }
+ 
+.collection_thumbnail {
+	width: 120x; height: 50px; background: #ccc;
+}
+
+.collection_box span {
+    /*display: block;*/
+    color: #ffd700;
+    font-size: .95em;
+    font-weight: bold;
+    /* text-transform: uppercase; */
+    padding: 2px 0px;
+}
+
+.arrow-collect {
+	border-color: transparent transparent transparent #ffd700;
+	border-style:solid;
+	border-width:20px;
+	width:0;
+	height:0;
+	margin-top: 5px;
+}
+
+/* end style adjustments for collections */
+/***********************************/
+
+
+/***********************************/
+/* Style sheet for dropdown add widget */
+
+	ul.dropdown{
+		position: absolute;
+		width: 200px;
+		margin: 0;
+        padding: .3em;
+	}
+
+	ul.dropdown li{
+		float: none;
+		list-style: none;
+        padding: .5em;
+        
+        /* Decorative CSS */
+border-top:#f0f0f0 1px solid;
+    font-family: Arial, Helvetica, sans-serif;
+    text-decoration:none;
+    text-transform:uppercase;
+    color: #000;
+    background: #cccccc;
+ 		font-size: .95em;
+    	font-weight: bold;
+        
+    
+	}
+	
+	ul.dropdown li a{
+        display: block;
+    	background-color: #ffd700;
+        font-size: .95em;
+    	font-weight: bold;
+        border: 1px solid #b88080;
+        padding: .5em;
+        text-decoration: none;
+	}
+		
+	ul.dropdown li a:hover{
+        background-color: #333;
+        color: #fff;
+	}
+	
+	ul.dropdown li ul.vdrop{
+		display: none;
+		position: inherit;
+        padding: 0;
+	}
+	
+	ul.dropdown li ul.vdrop li a{
+		background-color: #e6c000;
+	}
+	
+	ul.dropdown li ul.vdrop li a:hover{
+        background-color: #333;
+	}
+	
+	ul.dropdown li ul.vdrop li a.add{
+        background-color: #ffd700;
+	}
+	
+	ul.dropdown li ul.vdrop li a.add:hover{
+        background-color: #333;
+        color: #fff;        
+	}
+	
+	ul.dropdown li:hover ul.vdrop{
+		display: block;
+	}	
+	
+
+/* end style adjustments for dropdown add */
+/***********************************/
+
+
+/***********************************/
+/* Style sheet for project pages */
+
+.project_fav{
+	
+}
+
+/* end style adjustments for dropdown add */
+/***********************************/
+
 
 /*
  * Media queries for responsive design
@@ -766,4 +947,99 @@ div#video div p {
   @page { margin: 0.5cm; }
   p, h2, h3 { orphans: 3; widows: 3; }
   h2, h3{ page-break-after: avoid; }
+}
+
+/* Project Page */
+div.project_container li.inline {
+   display: inline;
+   list-style-type: none;
+   margin: 10px 20px 10px 0px;
+}
+
+div.project_container h2 {
+   font-size: 2em;
+   color: #00fa9a;
+   padding: 0px 0px 5px 0px;
+}
+
+div.project_container h3 {
+   font-size: 1.5em;
+   color: #666;
+   padding: 10px 0px 5px 0px;
+}
+
+div.project_container h3 span {
+   font-size: 0.7em;
+}
+
+div.project_container .vid-title {
+   font-weight: bold;
+   padding: 10px 0px 5px 0px;
+}
+
+div.project_container .vid-comment {
+   padding: 10px 0px 5px 0px;
+}
+
+div#vid-cont {
+	background: #999;
+    padding: 10px 0px;
+    color: #000;
+}
+
+div.project_container .left-arw {border-color:transparent #00fa9a transparent transparent;}
+div.project_container .right-arw {border-color:transparent transparent transparent #00fa9a;}
+
+.note_list_container ul {
+	list-style-type: none; 
+	background-color: #555; 
+	padding-top: 2px; 
+	padding-bottom: 2px; 
+	width: 572px; 
+	float:right;
+}
+
+.note_form textarea.text { 
+	width: 572px; 
+	height: 120px;}
+.note_form input#note_submit { 
+	margin-bottom: 10px; 
+	float: right; }
+.nobr	{white-space: nowrap;}
+
+.expand_all {
+	cursor: pointer;
+}
+
+
+/* favorites properties in "Projects" Page */
+
+.favorite_table>ul {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+
+.favorite_table>ul>li {
+	display: inline;
+}
+
+.arrow_forward {
+	border-color: transparent transparent transparent #ffd700;
+	border-style:solid;
+	border-width:20px;
+	width:0;
+	height:0;
+	margin-top: 75px;
+	float: right;
+}
+
+.arrow_backward {
+	border-color: transparent #ffd700 transparent transparent;
+	border-style:solid;
+	border-width:20px;
+	width:0;
+	height:0;
+	margin-top: 75px;
+	float: left;
 }

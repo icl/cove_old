@@ -1,0 +1,19 @@
+<% if @collection.name =~ /(project|user)_[0-9]+_(favorites|queue)/ %>
+	Cannot edit collection for favorites and queues.
+<% else %>
+	<%= simple_form_for(@collection) do |f| %>
+	  <%= f.error_notification %>
+
+	  <div class="inputs">
+	    <%= f.input :name %>
+	    <%= f.input :description %>
+		<!--> Add to Projects <-->
+		<!--> Add Collections via autocomplete? <-->
+		<%= f.hidden_field :user_id, :value => current_user.id %>
+	</div>
+
+	  <div class="actions">
+	    <%= f.button :submit %>
+	  </div>
+	<% end %>
+<% end %>
