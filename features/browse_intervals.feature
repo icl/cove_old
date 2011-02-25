@@ -1,3 +1,4 @@
+@selenium
 Feature: Browse Intervals
   In order to find videos that I want to watch
   As a user
@@ -11,9 +12,11 @@ Background:
 		|	Wayne		|	1-2-2001 01:10:00	|	3m4s			|	duet		|	foo		|
 		|	Mirror		|	1-2-2001 01:15:00	|	5m1s			|	trio		|	foo		|
 		|	Mirror		|	1-3-2001 01:15:00	|	1m3s			|	quartet		|	foo		|
+	Then wait for solr
 
 Scenario: Go to browse page
 	When I go to the intervals page
+	Then show me the page
 	Then I should see 4 results
 	And I should see a result with a session type of "solo"
 	And I should see a result with a session type of "duet"
@@ -57,7 +60,6 @@ Scenario: Filter by angle and search
 
 Scenario: Filter by date
 	When I go to the intervals page
-	Then show me the page
 	When I select "01-01-01" from "date"
 	And I press "Update Filters"
 	Then I should see 1 result
