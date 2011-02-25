@@ -131,13 +131,19 @@ class Interval < ActiveRecord::Base
     #Sunspot Solr stuff
     #Primary terms
     text :session_type
+    string :session_type
     text :phrase_name
+    string :phrase_name
     text :phrase_type
+    string :phrase_type
     text :alternative_phrase_name
+    string :alternative_phrase_name
     
     #Side terms     
     text :comments
+    string :comments
     text :camera_angle
+    string :camera_angle
   end
 
   #more sunspot stuff
@@ -150,6 +156,7 @@ class Interval < ActiveRecord::Base
       session_filter = with :session_type, params[:session_type] if !params[:session_type].blank?
       phrase_filter = with :phrase_type, params[:phrase_type] if !params[:phrase_type].blank?
       phrase_nm_filter = with :phrase_name, params[:phrase_name] if !params[:phrase_name].blank?
+      #alt_phrase_filter = with :alternative_phrase_name, params[:phrase_name] if !params[:phrase_name].blank?
     end
   end
 end
