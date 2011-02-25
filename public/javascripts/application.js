@@ -11,19 +11,23 @@ $(document).ready(function(){
   $("button.markstart").click(function(){
     videoPlayer.markSnippetStart();
     $("#start_mark").val( videoPlayer.snippetStart() );
+    return false;
   });
   
   $("button.markend").click(function(){
     videoPlayer.markSnippetEnd();
     $("#end_mark").val( videoPlayer.snippetEnd() );
+    return false;
   });
   
   $("#start_mark").change(function(){
     videoPlayer.snippetStart(this.value);
+    return false;
   });
 
   $("#end_mark").change(function(){
     videoPlayer.snippetEnd(this.value);
+    return false;
   });
  
   $("#new_snippet").submit(function(event){
@@ -49,7 +53,7 @@ $(document).ready(function(){
       },
       dataType: 'text'
     });
-    return true;
+    return false;
   });
 });
 
