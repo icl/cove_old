@@ -74,7 +74,7 @@ class Interval < ActiveRecord::Base
         note_file = File.new("tmp/notes/#{file}")
         notes = FasterCSV.new(note_file,
           :headers => true,
-          :header_converters => [:downcase, :symbol],
+          :header_converters => [lambda {|h| h.gsub(/#/,'number').gsub(/comment/i, 'comments').gsub(/File\sName/i,'filename').gsub(/Type of Session/,"session_type").gsub(/Phrase Name/, 'phrase_name').gsub(/Phrase Tyle/, 'phrase_type')}, :symbol],
           :skip_blanks => true,
           :col_sep => ','
         )
