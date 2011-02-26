@@ -720,7 +720,8 @@ div#video div p {
 	background: #383838; 
 	border-top: 2px solid gray; 
 	border-bottom: 2px solid gray; 
-	clear: both; 
+	clear: both;
+	cursor: move;
 }
 
 .collection_box, .collection_box_date {
@@ -920,7 +921,35 @@ border-top:#f0f0f0 1px solid;
   h2, h3{ page-break-after: avoid; }
 }
 
-/* Project Page */
+/* List Project Page */
+.list_project li.inline {
+   display: inline;
+   list-style-type: none;
+   margin: 10px 20px 10px 0px;
+}
+
+p {
+   line-height: 140%;
+}
+
+h2 {
+   font-size: 1.75em;
+   letter-spacing: 1px; 
+   padding: 20px 0px 5px 0px;
+}
+
+h3 {
+   font-size: 1.5em;
+   color: #00fa9a;
+   padding: 10px 0px 5px 0px;
+}
+
+h3 span {
+   font-size: 0.7em;
+}
+
+
+/* Show Project Page */
 div.project_container li.inline {
    display: inline;
    list-style-type: none;
@@ -961,22 +990,31 @@ div#vid-cont {
 div.project_container .left-arw {border-color:transparent #00fa9a transparent transparent;}
 div.project_container .right-arw {border-color:transparent transparent transparent #00fa9a;}
 
-.note_list_container ul {
+.note_list_container ul.note_list {
 	list-style-type: none; 
 	background-color: #555; 
 	padding-top: 2px; 
 	padding-bottom: 2px; 
-	width: 572px; 
+	width: 580px; 
+	float:right;
+}
+
+.note_list_container a.expand_all {
+	cursor: pointer; 
 	float:right;
 }
 
 .note_form textarea.text { 
 	width: 572px; 
-	height: 120px;}
+	height: 120px;
+}
+	
 .note_form input#note_submit { 
 	margin-bottom: 10px; 
-	float: right; }
+	float: right; 	
+}
 .nobr	{white-space: nowrap;}
+
 
 
 /* favorites properties in "Projects" Page */
@@ -985,6 +1023,7 @@ div.project_container .right-arw {border-color:transparent transparent transpare
 	margin: 0;
 	padding: 0;
 	list-style-type: none;
+	background-color: #666666;
 }
 
 .favorite_table>ul>li {
@@ -997,7 +1036,9 @@ div.project_container .right-arw {border-color:transparent transparent transpare
 	border-width:20px;
 	width:0;
 	height:0;
-	margin-top: 50px;
+	margin-top: 75px;
+	float: right;
+	cursor: pointer;
 }
 
 .arrow_backward {
@@ -1006,5 +1047,7 @@ div.project_container .right-arw {border-color:transparent transparent transpare
 	border-width:20px;
 	width:0;
 	height:0;
-	margin-top: 50px;
+	margin-top: 75px;
+	float: left;
+	cursor: pointer;
 }

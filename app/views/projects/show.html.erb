@@ -49,11 +49,11 @@
 				<%= form.button :submit %>
 			<% end %>
 		</div>
-		<div class="note_list_container grid_10">
-			<ul>
+		<div class="note_list_container prefix_1">
+			<ul class="note_list">
 				<%= render @project.notes.order('created_at DESC') if !@project.notes.blank? %>
 			</ul>
-			<a class="expand_all" style="float:right; display:none;">Expand/Collapse All</a>
+			<a class="expand_all">Expand/Collapse All</a>
 		</div>
 	</div>
 	<!-- end .grid_10 -->
@@ -85,155 +85,11 @@
 	</div>
 	
 	<div class="clear"></div>
-	<div class="grid_16 project_container favorite_table">
-		<h3>
-			<a href="#">Favorites</a>
-		</h3>
-		<ul class="grid_16" style="padding-bottom: 40px;">
-		<li class="grid_1">
-			<div class="arrow_backward"></div>
-		</li>
-		<li class="grid_3">
-			MM/DD/YYYY, 00:21 AM<br />
-			<img src="http://dummyimage.com/150x100"><a href="#">Interval Title</a>, (## min)<br />
-			(Camera Angle)<br />
-			[Session Type]<br />
-		</li>
-		<li class="grid_3">
-			MM/DD/YYYY, 00:21 PM<br />
-			<img src="http://dummyimage.com/150x100"><a href="#">Interval Title</a>, (## min)<br />
-			(Camera Angle)<br />
-			[Session Type]<br />
-		</li>
-		<li class="grid_3">
-			MM/DD/YYYY, 00:21 AM<br />
-			<img src="http://dummyimage.com/150x100"><a href="#">Interval Title</a>, (## min)<br />
-			(Camera Angle)<br />
-			[Session Type]<br />
-		</li>
-		<li class="grid_3">
-			MM/DD/YYYY, 00:21 PM<br />
-			<img src="http://dummyimage.com/150x100"><a href="#">Interval Title</a>, (## min)<br />
-			(Camera Angle)<br />
-			[Session Type]<br />
-		</li>
-		<li class="grid_1">
-			<div class="arrow_forward"></div>
-		</li>
-		</ul>
+	<div class="grid_16 favorite_table">
 		
+		<%= render :partial => 'collections' %>
 	
-	
-		<h3>
-			<a href="#">Queue</a>
-		</h3>
-		<ul class="grid_16" style="padding-bottom: 40px;">
-		<li class="grid_1">
-			<div class="arrow_backward"></div>
-		</li>
-		<li class="grid_3">
-			MM/DD/YYYY, 00:21 AM<br />
-			<img src="http://dummyimage.com/150x100"><a href="#">Interval Title</a>, (## min)<br />
-			(Camera Angle)<br />
-			[Session Type]<br />
-		</li>
-		<li class="grid_3">
-			MM/DD/YYYY, 00:21 PM<br />
-			<img src="http://dummyimage.com/150x100"><a href="#">Interval Title</a>, (## min)<br />
-			(Camera Angle)<br />
-			[Session Type]<br />
-		</li>
-		<li class="grid_3">
-			MM/DD/YYYY, 00:21 AM<br />
-			<img src="http://dummyimage.com/150x100"><a href="#">Interval Title</a>, (## min)<br />
-			(Camera Angle)<br />
-			[Session Type]<br />
-		</li>
-		<li class="grid_3">
-			MM/DD/YYYY, 00:21 PM<br />
-			<img src="http://dummyimage.com/150x100"><a href="#">Interval Title</a>, (## min)<br />
-			(Camera Angle)<br />
-			[Session Type]<br />
-		</li>
-		<li class="grid_1">
-			<div class="arrow_forward"></div>
-		</li>
-		</ul>
-		
-				<h3>
-			<a href="#">Collection 1</a>
-		</h3>
-		<ul class="grid_16" style="padding-bottom: 40px;">
-		<li class="grid_1">
-			<div class="arrow_backward"></div>
-		</li>
-		<li class="grid_3">
-			MM/DD/YYYY, 00:21 AM<br />
-			<img src="http://dummyimage.com/150x100"><a href="#">Interval Title</a>, (## min)<br />
-			(Camera Angle)<br />
-			[Session Type]<br />
-		</li>
-		<li class="grid_3">
-			MM/DD/YYYY, 00:21 PM<br />
-			<img src="http://dummyimage.com/150x100"><a href="#">Interval Title</a>, (## min)<br />
-			(Camera Angle)<br />
-			[Session Type]<br />
-		</li>
-		<li class="grid_3">
-			MM/DD/YYYY, 00:21 AM<br />
-			<img src="http://dummyimage.com/150x100"><a href="#">Interval Title</a>, (## min)<br />
-			(Camera Angle)<br />
-			[Session Type]<br />
-		</li>
-		<li class="grid_3">
-			MM/DD/YYYY, 00:21 PM<br />
-			<img src="http://dummyimage.com/150x100"><a href="#">Interval Title</a>, (## min)<br />
-			(Camera Angle)<br />
-			[Session Type]<br />
-		</li>
-		<li class="grid_1">
-			<div class="arrow_forward"></div>
-		</li>
-		</ul>
-		
-				<h3>
-			<a href="#">Collection 2</a>
-		</h3>
-		<ul class="grid_16" style="padding-bottom: 40px;">
-		<li class="grid_1">
-			<div class="arrow_backward"></div>
-		</li>
-		<li class="grid_3">
-			MM/DD/YYYY, 00:21 AM<br />
-			<img src="http://dummyimage.com/150x100"><a href="#">Interval Title</a>, (## min)<br />
-			(Camera Angle)<br />
-			[Session Type]<br />
-		</li>
-		<li class="grid_3">
-			MM/DD/YYYY, 00:21 PM<br />
-			<img src="http://dummyimage.com/150x100"><a href="#">Interval Title</a>, (## min)<br />
-			(Camera Angle)<br />
-			[Session Type]<br />
-		</li>
-		<li class="grid_3">
-			MM/DD/YYYY, 00:21 AM<br />
-			<img src="http://dummyimage.com/150x100"><a href="#">Interval Title</a>, (## min)<br />
-			(Camera Angle)<br />
-			[Session Type]<br />
-		</li>
-		<li class="grid_3">
-			MM/DD/YYYY, 00:21 PM<br />
-			<img src="http://dummyimage.com/150x100"><a href="#">Interval Title</a>, (## min)<br />
-			(Camera Angle)<br />
-			[Session Type]<br />
-		</li>
-		<li class="grid_1">
-			<div class="arrow_forward"></div>
-		</li>
-		</ul>
-		
-	
-</div>
+	</div>
 	
 	<div class="clear"></div>
 	<div class="grid_15">

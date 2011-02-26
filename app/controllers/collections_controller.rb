@@ -77,6 +77,9 @@ class CollectionsController < ApplicationController
         @collection.name = owner + "_" + params[:id].to_s + "_" + type
         @collection.desc = type.humanize + " for " + owner.humanize
         @collection.user_id = current_user.id
+        if owner =~ /project/
+          @collection.projects += [Project.find(params[:id])]
+        end
         @collection.save
       end
     else
@@ -134,6 +137,9 @@ class CollectionsController < ApplicationController
         @collection.name = owner + "_" + params[:id].to_s + "_" + type
         @collection.description = type.humanize + " for " + owner.humanize
         @collection.user_id = current_user.id
+        if owner =~ /project/
+          @collection.projects += [Project.find(params[:id])]
+        end
         @collection.save
       end
     else
@@ -179,6 +185,9 @@ class CollectionsController < ApplicationController
         @collection.name = owner + "_" + params[:id].to_s + "_" + type
         @collection.description = type.humanize + " for " + owner.humanize
         @collection.user_id = current_user.id
+        if owner =~ /project/
+          @collection.projects += [Project.find(params[:id])]
+        end
         @collection.save
       end
     else
