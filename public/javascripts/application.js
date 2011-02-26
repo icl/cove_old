@@ -8,25 +8,46 @@ $(document).ready(function(){
     controlsBelow: true
   });
 
+  function secondsToString(secs) {
+    var deciseconds = Math.round(secs * 100);
+    var seconds = Math.floor(deciseconds / 100);
+    var minutes = Math.floor(seconds / 60);
+    minutes = (minutes >= 10) ? minutes : "0" + minutes;
+    seconds = Math.floor(seconds % 60);
+    seconds = (seconds >= 10) ? seconds : "0" + seconds;
+    deciseconds = Math.floor(deciseconds % 100);
+    deciseconds = (deciseconds >= 10) ? deciseconds : "0" + deciseconds;
+    return minutes + ":" + seconds + "." + deciseconds;
+  }
+
+  function stringToSeconds(str) {
+    var nums = str.split(":");
+    if (nums.length == 1) return parseFloat( nums[0] );
+    else if (nums.length == 2) return parseInt( nums[0] ) * 60 + parseFloat( nums[1] );
+    else return NaN;
+  }
+
   $("button.markstart").click(function(){
     videoPlayer.markSnippetStart();
-    $("#start_mark").val( videoPlayer.snippetStart() );
+    $("#start_mark").val( secondsToString(videoPlayer.snippetStart()) );
     return false;
   });
   
   $("button.markend").click(function(){
     videoPlayer.markSnippetEnd();
-    $("#end_mark").val( videoPlayer.snippetEnd() );
+    $("#end_mark").val( secondsToString(videoPlayer.snippetEnd()) );
     return false;
   });
   
   $("#start_mark").change(function(){
-    videoPlayer.snippetStart(this.value);
+    videoPlayer.snippetStart( stringToSeconds(this.value) );
+    $(this).val( secondsToString( videoPlayer.snippetStart() ));
     return false;
   });
 
   $("#end_mark").change(function(){
-    videoPlayer.snippetEnd(this.value);
+    videoPlayer.snippetEnd( stringToSeconds(this.value) );
+    $(this).val( secondsToString( videoPlayer.snippetEnd() ));
     return false;
   });
  
