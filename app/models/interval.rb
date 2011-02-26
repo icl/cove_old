@@ -102,7 +102,7 @@ class Interval < ActiveRecord::Base
       	      s.nil? ? 0 : s[1]
       	      s.to_i + m.to_i*60 + h.to_i*60*60
             else
-              field.to_s
+              field.to_s.downcase
           end # End |case| block
         end # End |do| block
         
@@ -110,7 +110,7 @@ class Interval < ActiveRecord::Base
           raw_data = row.to_hash.reject {|k,v| !Interval.column_names.index(k.to_s)}
           data={}
           #takes row data and downcases them so there are not duplicate things
-          raw_data.each{|k,v| data[k]=v.strip.downcase rescue data[k]=v.downcase }
+          raw_data.each{|k,v| data[k]=v.strip rescue data[k]=v }
           interval = Interval.new(data)
           interval.start_time = DateTime.parse(interval.filename.match(/[0-9]{4}(-[0-9]{2}){2}/)[0] + " " + interval.start_time.strftime("%H:%M"))
           interval.save
