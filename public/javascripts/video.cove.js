@@ -838,11 +838,13 @@ VideoJS.player.extend({
 
   // COVE play snippets
   offset: function(){
-    return this.options.offset !== undefined ? this.options.offset : 0;
+    var v = parseInt(this.video.dataset.offset);
+    return isNaN( v ) ? 0 : v;
   },
   
   duration: function(){
-    return this.options.duration !== undefined ? this.options.duration : this.video.duration;
+    var v = parseInt(this.video.dataset.duration);
+    return isNaN( v ) ? this.video.duration : v;
   },
   
   // COVE select snippets
