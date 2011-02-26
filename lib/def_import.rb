@@ -1,5 +1,4 @@
-class Definition < ActiveRecord::Base
-
+class Def_Import
 =begin
   modding code from Paul Panarease's interval import. Pratik Commented it
 =end
@@ -17,11 +16,11 @@ class Definition < ActiveRecord::Base
 
         #converts notes to a usable format
         notes.convert do |field, info|
-	      field.to_s
+	        field.to_s
         end # End |do| block
         
 
-        #puts notes inside the db, NEEDS TO BE MODDED FOR PHENOMENON!
+        #puts notes inside the db, NEEDS TO BE MODDED FOR CODE!
         notes.each do |row|
           def_type = row[:type]
           case def_type
@@ -31,11 +30,11 @@ class Definition < ActiveRecord::Base
                 new_phen = Code.new
                 new_phen.name = row[:term]
                 new_phen.description = row[:definition]
-		new_phen.coding_type = "phenomenon"
-		new_phen.save
+	            	new_phen.coding_type = "phenomenon"
+	            	new_phen.save
               else
                 stored_phen.description = row[:definition]
-		stored_phen.save
+	            	stored_phen.save
               end
             else
               puts "Unrecognized term. create new tag type then try again."

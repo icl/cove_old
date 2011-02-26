@@ -95,16 +95,16 @@
   <%#</ul>%>
 <%#</div>%>
 
-<div id="phenomenon_list"> 
-  <h5> These are the Phenomenon </h5>
-  <ul>
-  <%- @phenomenon.each do |phenom| %>
-    <li> 
-    <%= link_to phenom.phenomenon.name, {:controller => "annotations", :action => "create", :type => "phenomenon", :name => phenom.phenomenon.name}, :method => "post" %>
-    </li>
-  <%- end %> 
-  </ul>
-</div>
+<%#<div id="phenomenon_list"> %>
+  <%#<h5> These are the Phenomenon </h5>%>
+  <%#<ul>%>
+  <%#<%- @phenomenon.each do |phenom| %>%>
+    <%#<li> %>
+    <%#<%= link_to phenom.phenomenon.name, {:controller => "annotations", :action => "create", :type => "phenomenon", :name => phenom.phenomenon.name}, :method => "post" %>%>
+    <%#</li>%>
+  <%#<%- end %> %>
+  <%#</ul>%>
+<%#</div>%>
 <br />
 <div id="add_tag_form_container">
   <h5> Create a new Tag</h5>

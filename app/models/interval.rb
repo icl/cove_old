@@ -2,6 +2,9 @@ class Interval < ActiveRecord::Base
 
   has_and_belongs_to_many :collections
   
+  has_many :codings
+  has_many :taggings
+  
 	def end_time
     Time.at(start_time.to_i + duration)
 	end
@@ -45,7 +48,8 @@ class Interval < ActiveRecord::Base
 		query = column_names.map{|col| col.to_s}.map{|col| "#{col} LIKE ?"}.join(" OR ")
 		where(query, *args)
 	end
-	
+
+=begin DEPRECATED BY SUNSPOT SOLR	
 	def self.search args
 	  search_conditions = {}
 	  
@@ -59,7 +63,8 @@ class Interval < ActiveRecord::Base
 		query = column_names.map{|col| col.to_s}.map{|col| "#{col} LIKE ?"}.join(" OR ")
 		where(query, *parm).where(search_conditions)
 	end
-	
+=end
+
   has_many :interval_tags, :dependent => :destroy
   has_many :tags, :through => :interval_tags
 
@@ -114,7 +119,7 @@ class Interval < ActiveRecord::Base
         #  Dir.mkdir('log/notes')
         #end
         
-        File.move("tmp/notes/#{file}","log/notes/#{file}.imported_at_#{Time.now.strftime("%Y%m%d%H%M")}")
+       # File.move("tmp/notes/#{file}","log/notes/#{file}.imported_at_#{Time.now.strftime("%Y%m%d%H%M")}")
         
       end # End |if file| block
     end # End |Dir.foreach| block
@@ -122,5 +127,35 @@ class Interval < ActiveRecord::Base
 
   def annotations
     @annotations ||= Annotation.new :interval_id => self.id
+  end
+
+  searchable do
+    #Sunspot Solr stuff
+    #Primary terms
+    text :session_type
+    string :session_type
+    string :phrase_name
+    string :phrase_type
+    string :camera_angle
+    text :phrase_name
+    text :phrase_type
+    text :alternative_phrase_name
+    
+    #Side terms     
+    text :comments
+    text :camera_angle
+  end
+
+  #more sunspot stuff
+  def self.search_with params
+    @search = Interval.search() do
+      keywords(params[:search])
+      #example URI: ?search=structuring&camera_angle=&session_type=&phrase_type=&phrase_name=
+      #<variable to exclude later> = with <sunspot value>, params[<URL query segment>] if params[<URL query segment>] exists
+      cam_ang_filter = with :camera_angle, params[:camera_angle] if  !params[:camera_angle].blank?
+      session_filter = with :session_type, params[:session_type] if  !params[:session_type].blank?
+      phrase_filter = with :phrase_type, params[:phrase_type] if     !params[:phrase_type].blank?
+      phrase_nm_filter = with :phrase_name, params[:phrase_name] if  !params[:phrase_name].blank?
+    end
   end
 end

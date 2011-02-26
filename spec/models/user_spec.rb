@@ -1,6 +1,5 @@
 require 'spec_helper'
 
-
 describe User do
   context "validation" do
     it {should validate_presence_of(:email)}
@@ -76,14 +75,5 @@ describe User do
         User.find(@user.id).encrypted_password.should_not == @old_password
       end
     end
-  end
-  
-  
-  context "Adding Annotations" do
-    before(:each) do
-      @user = Factory(:regular_user)
-    end
-    it {@user.should respond_to(:annotations)}
-    it {@user.annotations.should be}
   end
 end

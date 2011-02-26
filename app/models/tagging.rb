@@ -16,13 +16,21 @@ class Tagging < ActiveRecord::Base
   before_validation :hookup_tag
 
 
+  #stupid hack that ethan made
+  def tags_with_same_name
+    Tagging.tags_with_same_name self.tag.name
+  end
+
+  def self.tags_with_same_name a_name
+    Tagging.joins(:tag).where("tags.name = ?", a_name)
+  end
   #This method will check to see if a tag with a given name already exists
   #and if so create the necessary association. If there is no tag available
   #then we shall create it.
   private
   def hookup_tag
-    current_tag = Tag.where(:name => self.name)
-    if tag
+    current_tag = Tag.where(:name => self.name).first
+    if current_tag
       self.tag = current_tag
       return true
     else
