@@ -12,6 +12,7 @@ Background:
 		|	id	|	phrase type	|
 		|	1	|	riffing		|
 	And I am a regular user who is logged in
+	And sunspot commits changes
 
 Scenario: Getting the definition of a term
 	When I go to the intervals page

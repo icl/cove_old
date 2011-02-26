@@ -1,12 +1,21 @@
-
+<div class="container_16">
 <% if user_signed_in? %>
-   <h1 class="grid_16">Creating a project</h1>
+   <div class="grid_15">
+      <h1>Creating a project</h1>
+   </div>
+   <div class="grid_11">
+      <%= link_to 'Back', projects_path %>
+   </div>
+   <div class="clear"></div>
 
    <%= render 'form' %>
 
-   <%= link_to 'Back', projects_path %>
 <% else %>
 
-<p>Please log-in to access the projects.</p>
+   <div class="grid_16">
+<p>Please log-in to access projects.</p>
+   </div>
+   <div class="clear"></div>
 
 <% end %>
+</div>

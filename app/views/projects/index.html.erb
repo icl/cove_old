@@ -1,22 +1,85 @@
-<br class="clear"/>
-<hr />
 
+<style>
 
+li.inline {
+   display: inline;
+   list-style-type: none;
+   margin: 10px 20px 10px 0px;
+}
+
+p {
+   line-height: 140%;
+}
+
+h2 {
+   font-size: 1.75em;
+   letter-spacing: 1px; 
+   padding: 20px 0px 5px 0px;
+}
+
+h3 {
+   font-size: 1.5em;
+   color: #00fa9a;
+   padding: 10px 0px 5px 0px;
+}
+
+h3 span {
+   font-size: 0.7em;
+}
+
+</style>
+
+<div class="container_16">
 <% if @project %>
-<h2>Listing projects:</h2>
-<%= link_to 'New Project', new_project_path %> 
+<div class="grid_11">
+   &nbsp; 
+</div>
+<div class="grid_5">
+<%= link_to 'Create a new project', new_project_path %> 
+</div>
+<div class="clear"></div>
+<div class="grid_2">
+   &nbsp; 
+</div>
+<div class="grid_10">
+<h3>Listing projects:</h3>
+</div>
+<div class="grid_4">
+   &nbsp; 
+</div>
+<div class="clear"></div>
 
-<dl>
 <% @project.each do | project | %>
    <% if project.user_id == current_user.id %>
-      <dt style="margin-top:20px;"><%= link_to project.name, project %></dd>
-      <dd><%= project.desc %></dd>
+<div class="grid_3">
+   &nbsp; 
+</div>
+<div class="grid_10">
+      <h2><%= link_to project.name, project %></h2>
+</div>
+<div class="grid_3">
+   &nbsp; 
+</div>
+<div class="clear"></div>
+<div class="grid_3">
+   &nbsp; 
+</div>
+<div class="grid_10">
+      <p><%= project.desc %></p>
+</div>
+<div class="grid_3">
+   &nbsp; 
+</div>
+<div class="clear"></div>
    <% end %>
 <% end %>
-</dl>
 
 <% else %>
 
-<p>Please log in to see your projects.</p>
+<div class="grid_16">
+<p>Please log in to access projects.</p>
+</div>
+<div class="clear"></div>
 
 <% end %>
+</div>

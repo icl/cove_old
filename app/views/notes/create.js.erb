@@ -1,0 +1,23 @@
+<% note_html = render :partial => 'note', :object => @note %>
+$('.note_list').prepend('<%= escape_javascript note_html %>');
+$('#note_note').val('');
+$('.jsDisabled_note_controls').remove();
+$('.note_slide').hide();
+$('.expandable').css('display','inline');
+$('.note_br').hide();
+jQuery(function() {
+	jQuery(".note_delete").first().click(function(event){
+		event.preventDefault();
+		$.ajax({
+			type: 'DELETE',
+			url: '/projects/' + $('.project_container').attr('id') + '/notes/' + $(event.target).attr('id'),
+			beforeSend: function(xhr) {
+				xhr.setRequestHeader('X-CSRF-Token', $('meta[name=csrf-token]').attr('content'));
+			},
+			success: function() {
+				$(event.target).parents('.project_note').remove();
+			}
+		});
+		return false;
+	});
+});

@@ -1,3 +1,4 @@
+
 <style>
 
 label {
@@ -31,7 +32,7 @@ li.inline {
    </p>
 </div>
 <div class="grid_10">
-<%= f.label :name %>
+    <%= f.label :name %>
 </div>
 </div>
 <div class="grid_3">
@@ -142,8 +143,12 @@ li.inline {
      <% tags = ['sit','dance','jump', 'sing', 'rest'] %>
  
      <%   tags.each do | y | %>
+         <% found = '' %>
+        <% if @project.tags.include?(y) %>
+           <% found = 'checked' %>
+        <% end %>
           <li class="inline">
-             <input type="checkbox" name="project[tags][]" value="<%= y %>"/>
+             <input type="checkbox" name="project[tags][]" value="<%= y %>" <%= found %>/>
              <%= y.capitalize %>
           </li>
      <%   end  %>
@@ -170,7 +175,7 @@ li.inline {
    </p>
 </div>
 <div class="clear"></div>
-<!-- Commented out notes for new notes structure in notes model >
+
 <div class="grid_3">
    <p>
       &nbsp;
@@ -184,8 +189,8 @@ li.inline {
       &nbsp;
    </p>
 </div>
-<-->
 <div class="clear"></div>
+
 <div class="grid_3">
    <p>
       &nbsp;
@@ -201,3 +206,4 @@ li.inline {
 </div>
 <div class="clear"></div>
 <% end %>
+

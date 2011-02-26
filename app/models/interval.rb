@@ -1,4 +1,6 @@
 class Interval < ActiveRecord::Base
+
+  has_and_belongs_to_many :collections
   
   has_many :codings
   has_many :taggings
@@ -117,7 +119,7 @@ class Interval < ActiveRecord::Base
         #  Dir.mkdir('log/notes')
         #end
         
-        File.move("tmp/notes/#{file}","log/notes/#{file}.imported_at_#{Time.now.strftime("%Y%m%d%H%M")}")
+       # File.move("tmp/notes/#{file}","log/notes/#{file}.imported_at_#{Time.now.strftime("%Y%m%d%H%M")}")
         
       end # End |if file| block
     end # End |Dir.foreach| block
@@ -141,6 +143,7 @@ class Interval < ActiveRecord::Base
     
     #Side terms     
     text :comments
+    string :comments
     text :camera_angle
     string :camera_angle
   end
@@ -155,6 +158,7 @@ class Interval < ActiveRecord::Base
       session_filter = with :session_type, params[:session_type] if !params[:session_type].blank?
       phrase_filter = with :phrase_type, params[:phrase_type] if !params[:phrase_type].blank?
       phrase_nm_filter = with :phrase_name, params[:phrase_name] if !params[:phrase_name].blank?
+      #alt_phrase_filter = with :alternative_phrase_name, params[:phrase_name] if !params[:phrase_name].blank?
     end
   end
 end

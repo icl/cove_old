@@ -1,3 +1,4 @@
+/* Definition Function */
 $(document).ready(function(){
 	
 	// --------------------------------
@@ -80,3 +81,4 @@ $(document).ready(function(){
 	});
 	$(".fauxselect").hide();
 });
+

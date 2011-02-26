@@ -1,3 +1,3 @@
-Then /^wait for solr$/ do
+Given /^(?:S|s)unspot commits changes$/ do
 	Sunspot.commit
 end
