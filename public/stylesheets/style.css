@@ -574,6 +574,13 @@ div#video div p {
 /***********************************/
 /* Style adjustments for intervals.index.html */
 
+.thumbnail_box {
+    background: blue;
+    height: 90px;
+}
+.thumbnail_box img {
+}
+
 .browse_cont {
     margin:20px 0px;
     padding:20px 0px;

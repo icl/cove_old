@@ -18,7 +18,11 @@ class IntervalsController < ApplicationController
     @interval = Interval.find(params[:id])
     @tags = Tag.all
 
-    render "show"
+    render "show"  # send back html
+    #respond_with do | format |
+    #  format.html { render "show"}
+    #  format.m4v  { send_file @interval.video_path}
+    #  format.jpg  { send_file @inverval.thumb_path}
   end
 
   def new
