@@ -12,7 +12,7 @@ Background:
 		|	Wayne		|	1-2-2001 01:10:00	|	3m4s			|	duet		|	foo		|
 		|	Mirror		|	1-2-2001 01:15:00	|	5m1s			|	trio		|	foo		|
 		|	Mirror		|	1-3-2001 01:15:00	|	1m3s			|	quartet		|	foo		|
-	Then wait for solr
+	And sunspot commits changes
 
 Scenario: Go to browse page
 	When I go to the intervals page
