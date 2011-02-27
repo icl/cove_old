@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/sferik/rails_admin.git
-  revision: fea8c8e1cb8b2b245cacf56985d4a5c6b67f143dbc7ff2772f25826e5343a2423b2cc388383b72ef
+  revision: 59b7f78e8094d5352c9075af0de6ffe36a464c4b
   specs:
     rails_admin (0.0.1)
       builder (~> 2.1.0)
@@ -38,7 +38,7 @@ GEM
       activemodel (= 3.0.4)
       activesupport (= 3.0.4)
     activesupport (3.0.4)
-    arel (2.0.8)
+    arel (2.0.9)
     autotest (4.4.6)
       ZenTest (>= 4.4.1)
     autotest-rails (4.1.0)
@@ -78,7 +78,7 @@ GEM
       cucumber (>= 0.8.0)
     culerity (0.2.15)
     daemons (1.1.0)
-    database_cleaner (0.6.3)
+    database_cleaner (0.6.4)
     devise (1.1.7)
       bcrypt-ruby (~> 2.1.2)
       warden (~> 1.0.2)
@@ -184,19 +184,19 @@ GEM
       rubyzip
     shoulda (2.11.3)
     simple_form (1.3.1)
-    sinatra (1.1.2)
+    sinatra (1.1.3)
       rack (~> 1.1)
-      tilt (~> 1.2)
+      tilt (>= 1.2.2, < 2.0)
     sqlite3 (1.3.3)
     sqlite3 (1.3.3-x86-mingw32)
     sqlite3-ruby (1.3.3)
       sqlite3 (>= 1.3.3)
     term-ansicolor (1.0.5)
-    thin (1.2.7)
+    thin (1.2.8)
       daemons (>= 1.0.9)
       eventmachine (>= 0.12.6)
       rack (>= 1.0.0)
-    thin (1.2.7-x86-mingw32)
+    thin (1.2.8-x86-mingw32)
       daemons (>= 1.0.9)
       eventmachine (>= 0.12.6)
       rack (>= 1.0.0)

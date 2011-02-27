@@ -2,7 +2,7 @@
 		  <% if snippet.id %>
     			<div class="snippet">
 			  <%= link_to interval_snippet_path(@interval, snippet) do %>
-							<%= snippet.offset.round(2) %>-<%= (snippet.offset + snippet.duration).round(2) %>
+                            <%= snippet.title %>
                           <% end %>
     			</div>
                   <% end %>
