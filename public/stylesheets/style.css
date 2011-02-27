@@ -305,7 +305,7 @@ body {
 
 header {
 	font-size: 12pt;
-	background: #2F2F2F;
+	background: #E5E5E5;
 }
 
 header h1 {
@@ -324,7 +324,7 @@ header h1 {
 }
 
 .user_links ul {
-	background: #383838;
+	background: #E5E5E5;
 	height: 40px;
 	font-size: 10pt;
 	margin-left: 0;
