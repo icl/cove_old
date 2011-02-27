@@ -1,0 +1,3 @@
+%ul.interval_list
+	- @intervals.each do |interval|
+		%li= render :partial => 'interval', :object => interval
