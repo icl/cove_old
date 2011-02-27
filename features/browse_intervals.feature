@@ -1,3 +1,4 @@
+@selenium
 Feature: Browse Intervals
   In order to find videos that I want to watch
   As a user
