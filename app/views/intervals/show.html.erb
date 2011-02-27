@@ -3,7 +3,7 @@
 
 <!-- row 1 -->
 
-	 <%= simple_form_for @interval do |f| %>
+	 <%- simple_form_for @interval do |f| %>
 	 <div class="grid_6 show_video_header">
 		<h1>FAR #</h1>
 		<h2>Session <%= @interval.session_number %> : <%= @interval.session_type %></h2>
@@ -25,21 +25,6 @@
 <!-- row 2 -->
 
 	<div class="grid_16 space">
-		
-<ul class="dropdown">
-	<li>Add to</li>
-	<li><a href="#">+Favorites</a></li>
-	<li><a href="#">+Queue</a></li>
-	<li><a href="#">Collections</a>
-		<ul class="vdrop">
-			<li><a class="add" href="#">+New Collection</a></li>
-			<li><a href="#">Collection alpha</a></li>
-			<li><a href="#">Collection beta</a></li>
-			<li><a href="#">Collection gamma</a></li>
-			<li><a href="#">Collection omega</a></li>
-		</ul>
-	</li>
-</ul>
 		
 	<div class="grid_11 show_video_player">
 		<p><%= video_tag @interval.filename, :controls => true, :height => 360, :width => 640 %></p>

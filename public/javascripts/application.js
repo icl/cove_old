@@ -40,21 +40,6 @@
 	
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* end style adjustments for show.html */
 /***************************************/
 
@@ -115,6 +100,6 @@ $(document).ready(function(){
 	$(".fauxselect_button").click(function(){
 		$(this).parent().find(".fauxselect").toggle("blind",{},"fast");
 	});
-	$(".fauxselect").hide();
+  $(".fauxselect").hide();
 });
 
