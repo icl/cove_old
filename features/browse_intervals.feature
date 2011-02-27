@@ -60,14 +60,14 @@ Scenario: Filter by angle and search
 
 Scenario: Filter by date
 	When I go to the intervals page
-	When I select "01-01-01" from "date"
+	When I select "01-01-01" from "Date"
 	And I press "Update Filters"
 	Then I should see 1 result
 	And I should see a result with a session type of "solo"
 
 Scenario: Filter by date and camera angle
 	When I go to the intervals page
-	And I select "01-02-01" from "date" within "#filters"
+	And I select "01-02-01" from "Date" within "#filters"
 	And I press "Update Filters"
 	And I filter by the camera angle "Mirror"
 	Then I should see 1 result
@@ -75,7 +75,7 @@ Scenario: Filter by date and camera angle
 
 Scenario: Filter by date and camera angle and search
 	When I go to the intervals page
-	And I select "01-02-01" from "date"
+	And I select "01-02-01" from "Date"
 	And I filter by the camera angle "Mirror"
 	And I fill in "search" with "tr" 
 	And I press "Submit" within ".search_box"
