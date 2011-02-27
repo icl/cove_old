@@ -555,80 +555,154 @@ input[type=search] {
   font-style: italic;
 }
 
-.camera_angle_map {
-	
-	width:300px;
-}
 
-.tag_box {
-	width:500px;
-	float:left;
-}
+
 /***********************************/
 /* Style adjustments for show.html */
 
-.Edit {
-	margin-bottom: 10px;
+				/*Notes:  light bg: #383838
+						  font blue: #0297C1
+							height: 40px;
+						margin-bottom: 15px;
+						padding pushes the grid width wise :/ */
+
+/****Row 1 - start****/
+.show_video_header {
+	height: 40px;
+	margin-bottom: 15px;
 }
 
-.interval_show h1 {
-	font-size: 40px;
+.show_video_header h1 {
+	font-size: 14pt;
+	color: #0297C1;
 }
 
-.interval_show strong {
-	font-size: 18px;
+.show_video_header h2 {
+	font-size: 11pt;
 }
 
-div#sessTypePhrase div {
-	border-left: solid 1px #e5e5e6;
-	padding: 5px;
-	height: 90px;
+.show_addto_widget {
+	background: #383838;
+	height: 40px;
+	margin-bottom: 15px;
 }
 
-.info {
-	border-right: solid 1px #e5e5e6;
-	padding: 5px;
-	height: 90px;
+.show_camera_angle {
+	margin-bottom: 15px;
 }
 
-.info h3 {
-	text-align: right;
-	margin-top: 5px;
-	font-size: 20px;
+
+/****Row 2 - start****/
+
+.show_video_player p {
+	margin-bottom: 15px;
 }
 
-.info h4 {
-	text-align: right;
-	margin-top: 5px;
-	font-size: 14px;
+.show_metadata div.show_mvt_content {
+	border: 5px solid #383838;
+	background: #383838;
+
 }
 
-.time {
-	padding: 5px;
-	height: 90px;
-	text-align: center;
+.show_metadata div h2 {
+	color: #0297C1;
+	display: inline;
+	background: #383838;
+
 }
 
-.space {
-	height: 20px;
+.show_metadata div h3 {  /*buttons*/
+	background: #DDDDDD;
+	border: 1px solid #444444;	
+	color: black;
+	float: right;
+	padding-right: 4px;
+	padding-left: 4px;
+	cursor: pointer;
 }
 
-.cam_angle {
-	text-align: center;
+
+.show_metadata div.show_more_data {
+	border-left: 5px solid #383838;
+	border-right: 5px solid #383838;
+	border-bottom: 5px solid #383838;
+	display: none;
+	background: #383838;
+
 }
 
-div#tag_checkboxes label {
-	text-align: left;
+
+
+/****Row 3 - start - Coding Terms****/
+
+.show_codingterms_phen {
+	margin-top: 15px;
+	background: #383838;
+
 }
 
-div#video div p {
-	border: 2px;
-	text-align: center;
+.show_applied_phen {
+	border: 5px solid #383838;
 }
 
-.filename {
-	margin-bottom: 20px;
+.show_applied_people {
+	border: 5px solid #383838;
 }
+
+.show_codingterms_people {
+	margin-top: 15px;
+	background: #383838;
+
+}
+
+.show_add_phen_list {
+	display: none;
+	border: 5px solid #383838;
+}
+
+.show_add_people_list {
+	display: none;
+	border: 5px solid #383838;
+}
+
+.show_tags {
+	margin-top: 15px;
+	background: #383838;
+
+}
+
+.show_applied_tags {
+	border: 5px solid #383838;
+}
+
+.show_tags_create {
+	display: none;
+	border: 5px solid #383838;
+}
+
+.show_tags_create input {
+	width: 157px;
+	margin-left: 25px;
+}
+
+.show_tags_create textarea {
+	margin-left: 25px;
+}
+
+.subintervals {
+	background: #383838;
+}
+
+/****Row 4 - start****/
+/*create subinterval widget (Winny)*/
+
+
+
+/* end style adjustments for show.html */
+/***************************************/
+
+
+
 
 
 /***********************************/
@@ -720,7 +794,7 @@ div#video div p {
 
 
 
-/* end style adjustments for show.html */
+/* end style adjustments for intervals.index.html */
 /***************************************/
 
 
