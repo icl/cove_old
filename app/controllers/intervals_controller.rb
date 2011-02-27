@@ -12,9 +12,9 @@ class IntervalsController < ApplicationController
 		@phrase_names = Interval.unique_phrase_names
 
     #search paradigm for the Intervals
-    search = Interval.search_with params
-    @intervals = search.results
-    @total_count = search.total
+
+    @intervals = Interval.all
+
 
     render 'index'
   end

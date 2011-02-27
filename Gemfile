@@ -7,11 +7,12 @@ gem 'simple_form'
 gem 'capistrano'
 gem 'fastercsv'
 
-
+gem 'meta_search'
+gem 'haml'
+gem 'compass'
 gem 'newrelic_rpm'
 #necessary for sunspot solr in rails 3
-gem 'sunspot', '1.2.rc4'
-gem 'sunspot_rails', '1.2.rc4'
+
 #pagination tool
 gem "will_paginate", "~> 3.0pre2"
 

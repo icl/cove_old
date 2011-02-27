@@ -61,7 +61,3 @@ if defined?(ActiveRecord::Base)
   end
 end
 
-Before do
- Interval.delete_all
- Interval.index
-end

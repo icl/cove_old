@@ -6,14 +6,6 @@ class Code < ActiveRecord::Base
   validates_uniqueness_of :name
   validates_presence_of :coding_type
 
-  #Sunspot Solr Stuff
-  searchable do
-    #primary terms
-    text :name, :default_boost => 2
-    text :description, :default_boost => 2
-    #side terms
-    text :coding_type
-  end
 
 =begin
   modding code from Paul Panarease's interval import. Pratik Commented it
