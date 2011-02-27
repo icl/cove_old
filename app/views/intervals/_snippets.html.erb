@@ -1,9 +1,9 @@
 	        <% @interval.snippets.each do |snippet| %>
 		  <% if snippet.id %>
-    			<div class="snippet">
 			  <%= link_to interval_snippet_path(@interval, snippet) do %>
+    			    <div class="snippet">
                             <%= snippet.title %>
+    			    </div>
                           <% end %>
-    			</div>
                   <% end %>
                 <% end %>

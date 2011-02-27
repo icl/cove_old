@@ -71,7 +71,7 @@ $(document).ready(function(){
   
   $('.snippet').click(function(){
     $('.interval_form').hide();
-    return false;
+//    return false;
   });
     
  
