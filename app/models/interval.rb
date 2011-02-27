@@ -164,7 +164,7 @@ class Interval < ActiveRecord::Base
       phrase_filter = with :phrase_type, params[:phrase_type] if !params[:phrase_type].blank?
       phrase_nm_filter = with :phrase_name, params[:phrase_name] if !params[:phrase_name].blank?
       #alt_phrase_filter = with :alternative_phrase_name, params[:phrase_name] if !params[:phrase_name].blank?
-      #date_filter = with :start_time, params[:start_time] if !params[:start_time].blank?
+      date_filter = with :start_time, params[:start_time] if !params[:start_time].blank?
 
       #will paginate helper      
       paginate :page => params[:page], :per_page => 10
