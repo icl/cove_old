@@ -24,7 +24,7 @@ class Interval < ActiveRecord::Base
 	end
 	
 	def self.unique_days
-		find(:all, :select => "start_time", :order => "start_time").map{|int| [int.day, int.start_time ]}.uniq
+		find(:all, :select => "start_time", :order => "start_time").map{|int| [int.day]}.uniq
 	end
 
 	def self.unique_angles
@@ -102,13 +102,14 @@ class Interval < ActiveRecord::Base
       	      s.nil? ? 0 : s[1]
       	      s.to_i + m.to_i*60 + h.to_i*60*60
             else
-              field.to_s
+              field.to_s.downcase
           end # End |case| block
         end # End |do| block
         
         notes.each do |row|
           raw_data = row.to_hash.reject {|k,v| !Interval.column_names.index(k.to_s)}
           data={}
+          #takes row data and downcases them so there are not duplicate things
           raw_data.each{|k,v| data[k]=v.strip rescue data[k]=v }
           interval = Interval.new(data)
           interval.start_time = DateTime.parse(interval.filename.match(/[0-9]{4}(-[0-9]{2}){2}/)[0] + " " + interval.start_time.strftime("%H:%M"))
@@ -136,26 +137,37 @@ class Interval < ActiveRecord::Base
     string :session_type
     string :phrase_name
     string :phrase_type
-    string :camera_angle
+    string :alternative_phrase_name
     text :phrase_name
     text :phrase_type
     text :alternative_phrase_name
+
+    #date / time search
+    date :start_time
     
     #Side terms     
     text :comments
+    string :comments
     text :camera_angle
+    string :camera_angle
   end
 
   #more sunspot stuff
   def self.search_with params
     @search = Interval.search() do
+      #@total_count = total
       keywords(params[:search])
       #example URI: ?search=structuring&camera_angle=&session_type=&phrase_type=&phrase_name=
-      #<variable to exclude later> = with <sunspot value>, params[<URL query segment>] if params[<URL query segment>] exists
-      cam_ang_filter = with :camera_angle, params[:camera_angle] if  !params[:camera_angle].blank?
-      session_filter = with :session_type, params[:session_type] if  !params[:session_type].blank?
-      phrase_filter = with :phrase_type, params[:phrase_type] if     !params[:phrase_type].blank?
-      phrase_nm_filter = with :phrase_name, params[:phrase_name] if  !params[:phrase_name].blank?
+      #<variable to exclude later> = with <sunspot value>, params[<URL query segment>] if params[<URL query segment>] exists or not blank 
+      cam_ang_filter = with :camera_angle, params[:camera_angle] if !params[:camera_angle].blank?
+      session_filter = with :session_type, params[:session_type] if !params[:session_type].blank?
+      phrase_filter = with :phrase_type, params[:phrase_type] if !params[:phrase_type].blank?
+      phrase_nm_filter = with :phrase_name, params[:phrase_name] if !params[:phrase_name].blank?
+      #alt_phrase_filter = with :alternative_phrase_name, params[:phrase_name] if !params[:phrase_name].blank?
+      #date_filter = with :start_time, params[:start_time] if !params[:start_time].blank?
+
+      #will paginate helper      
+      paginate :page => params[:page], :per_page => 10
     end
   end
 end

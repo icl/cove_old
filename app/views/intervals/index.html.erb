@@ -4,20 +4,44 @@
 	<form class="interval_filters">
 		<p class="grid_2 suffix_1 alpha"><%= label_tag :date, "Date" %></br>
 		<%= select_tag(:date, options_for_select(@days, :selected =>params[:date]), :include_blank =>true, :class =>"date_filter")%></p>
-		<p class="grid_2 suffix_1"><%= label_tag :camera_angle, "Camera Angle" %></br>
-		<%= select_tag(:camera_angle, options_for_select(@camera_angles, :selected =>params[:camera_angle]), :include_blank =>true, :class =>"camera_angle")%></p>
-		<div class="grid_2 suffix_1"><%= label_tag :session_type, "Session Type" %></br>
-			<div class="fauxselect_button">Expand</div>
+		<div class="grid_2 suffix_1 camera_angle_selector"><%= label_tag :camera_angle, "Camera Angle" %></br>
+			<div class="fauxselect_button"><%= params[:camera_angle].blank? ? "Click to Select" : params[:camera_angle] %></div>
 			<ul class="fauxselect">
+				<li class="define_me" ><%= link_to "Any", intervals_path(add_params :camera_angle => nil) %></li>
+				<% for angle in @camera_angles %>
+					<li class="define_me" ><a href="<%= intervals_path(add_params :camera_angle => angle) %>">
+						<%= image_for_camera_angle(angle).nil? ? angle : image_for_camera_angle(angle) %>
+					</a></li>
+				<% end %>
+			</ul>
+		</div>
+		<div class="grid_2 suffix_1 session_type_selector"><%= label_tag :session_type, "Session Type" %></br>
+			<div class="fauxselect_button"><%= params[:session_type].blank? ? "Click to Select" : params[:session_type] %></div>
+			<ul class="fauxselect">
+				<li class="define_me" ><%= link_to "Any", intervals_path(add_params :session_type => nil) %></li>
 				<% for type in @session_types %>
 					<li class="define_me" ><%= link_to type, intervals_path(add_params :session_type => type) %></li>
 				<% end %>
 			</ul>
 		</div>
-		<p class="grid_2 suffix_1"><%= label_tag :phrase_type, "Phrase Type" %></br>
-		<%= select_tag(:phrase_type, options_for_select(@phrase_types, :selected =>params[:phrase_type]), :include_blank =>true, :class =>"phrase_type")%></p>
-		<p class="grid_2 "><%= label_tag :phrase_name, "Phrase Name" %></br>
-		<%= select_tag(:phrase_name, options_for_select(@phrase_names, :selected =>params[:phrase_name]), :include_blank =>true, :class =>"phrase_name")%></p>
+		<div class="grid_2 suffix_1 phrase_type_selector"><%= label_tag :phrase_type, "Phrase Type" %></br>
+			<div class="fauxselect_button"><%= params[:phrase_type].blank? ? "Click to Select" : params[:phrase_type] %></div>
+			<ul class="fauxselect">
+				<li class="define_me" ><%= link_to "Any", intervals_path(add_params :phrase_type => nil) %></li>
+				<% for type in @phrase_types %>
+					<li class="define_me" ><%= link_to type, intervals_path(add_params :phrase_type => type) %></li>
+				<% end %>
+			</ul>
+		</div>
+		<div class="grid_2 suffix_1 phrase_name_selector"><%= label_tag :phrase_name, "Phrase Name" %></br>
+			<div class="fauxselect_button"><%= params[:phrase_name].blank? ? "Click to Select" : params[:phrase_name] %></div>
+			<ul class="fauxselect">
+				<li class="define_me" ><%= link_to "Any", intervals_path(add_params :phrase_name => nil) %></li>
+				<% for name in @phrase_names %>
+					<li class="define_me" ><%= link_to name, intervals_path(add_params :phrase_name => name) %></li>
+				<% end %>
+			</ul>
+		</div>
 		<%= hidden_field_tag :search, params[:search]%></br>
 		<div class= "grid_2 omega filters_submit">
 		<input type="submit" value="Update Filters"/>
@@ -27,7 +51,7 @@
 </div>
 
 
-<p class="grid_16 filter_results">There are <span id="resultcount"><%= @intervals.size %></span> results.</p>
+<p class="grid_16 filter_results">Now showing <span id="paginatecount"><%= @intervals.size %></span> of <span id="resultcount"><%= @total_count %></span> results. <%= will_paginate @intervals %></p>
 
 
 
@@ -61,6 +85,7 @@
       <br class="clear">
    </ol> 
      <% end %>
+   <%= will_paginate @intervals %>
 <div class="clear"></div>
 		<% if @intervals.empty? %>
 				<h1>There were no videos found with these filter options.</h1>
