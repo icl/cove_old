@@ -10,6 +10,7 @@ gem 'fastercsv'
 gem 'meta_search'
 gem 'haml'
 gem 'compass'
+gem 'kaminari'
 gem 'newrelic_rpm'
 #necessary for sunspot solr in rails 3
 
