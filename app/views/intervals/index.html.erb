@@ -51,7 +51,7 @@
 </div>
 
 
-<p class="grid_16 filter_results">There are <span id="resultcount"><%= @intervals.size %></span> results.</p>
+<p class="grid_16 filter_results">Now showing <span id="paginatecount"><%= @intervals.size %></span> of <span id="resultcount"><%= @total_count %></span> results. <%= will_paginate @intervals %></p>
 
 
 
@@ -85,6 +85,7 @@
       <br class="clear">
    </ol> 
      <% end %>
+   <%= will_paginate @intervals %>
 <div class="clear"></div>
 		<% if @intervals.empty? %>
 				<h1>There were no videos found with these filter options.</h1>

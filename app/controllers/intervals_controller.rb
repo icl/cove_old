@@ -14,6 +14,7 @@ class IntervalsController < ApplicationController
     #search paradigm for the Intervals
     search = Interval.search_with params
     @intervals = search.results
+    @total_count = search.total
 
     render 'index'
   end

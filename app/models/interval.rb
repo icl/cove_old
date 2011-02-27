@@ -143,7 +143,7 @@ class Interval < ActiveRecord::Base
     text :alternative_phrase_name
 
     #date / time search
-    string :start_time
+    date :start_time
     
     #Side terms     
     text :comments
@@ -155,6 +155,7 @@ class Interval < ActiveRecord::Base
   #more sunspot stuff
   def self.search_with params
     @search = Interval.search() do
+      #@total_count = total
       keywords(params[:search])
       #example URI: ?search=structuring&camera_angle=&session_type=&phrase_type=&phrase_name=
       #<variable to exclude later> = with <sunspot value>, params[<URL query segment>] if params[<URL query segment>] exists or not blank 
@@ -164,6 +165,9 @@ class Interval < ActiveRecord::Base
       phrase_nm_filter = with :phrase_name, params[:phrase_name] if !params[:phrase_name].blank?
       #alt_phrase_filter = with :alternative_phrase_name, params[:phrase_name] if !params[:phrase_name].blank?
       #date_filter = with :start_time, params[:start_time] if !params[:start_time].blank?
+
+      #will paginate helper      
+      paginate :page => params[:page], :per_page => 10
     end
   end
 end
