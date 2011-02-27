@@ -2,6 +2,7 @@ Feature: User creates section in interval
 	In order to quickly skip to certain parts of an interval
 	As a user
 	I want to be able section off intervals with specific tags
+	And be able to access them voluntarily
 
 Background:
 	Given I am a logged-in user
@@ -15,6 +16,7 @@ Scenario: Creating a new section
 	Given I see I the create interval button on the right of the video player
 	When I click on the create interval button
 	Then I should see a form come under the video player
+	And the create interval button dissapears
 
 Scenario: Starting mark
 	Given I see the creating interval form

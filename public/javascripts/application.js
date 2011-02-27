@@ -50,6 +50,30 @@ $(document).ready(function(){
     $(this).val( secondsToString( videoPlayer.snippetEnd() ));
     return false;
   });
+  
+  $('.interval_form').hide();
+  $('.create_interval_button').click(function(){
+    $('.interval_form').show("slide", {direction: "left"}, 1000);
+    return false;
+  });
+  
+  $('button.cancel').click(function(){
+    $('.interval_form').hide("slide", {direction: "left"}, 1000);
+    $('.create_interval_button').show();
+    return false;
+  });
+  
+   $('button.save').click(function(){
+    $('.interval_form').hide("slide", {direction: "left"}, 1000);
+    $('.create_interval_button').show();
+    return false;
+  });
+  
+  $('.snippet').click(function(){
+    $('.interval_form').hide();
+    return false;
+  });
+    
  
   $("#new_snippet").submit(function(event){
     $('#snippet_offset').val( videoPlayer.snippetStart() );
@@ -66,7 +90,7 @@ $(document).ready(function(){
         xhr.setRequestHeader("Accept",'text/html');
       },
       success: function(data) {
-        $('#snippet_list').html(data);
+        $('.interval_browse').html(data);
         setTimeout( function() { jQuery(".noticeSuccessful").fadeTo(1000,0); }, 6000);
         setTimeout( function() { jQuery(".noticeErrors").fadeTo(1000,0); }, 30000);
         clearTimeout();
@@ -77,4 +101,5 @@ $(document).ready(function(){
     return false;
   });
 });
+
 
