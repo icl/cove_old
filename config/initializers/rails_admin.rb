@@ -1,5 +1,5 @@
 RailsAdmin.config do |config|
-  config.excluded_models.push( Coding, Tagging, Questioning, Commenting)
+  config.excluded_models.push( Coding, Tagging )
 
 end
 
