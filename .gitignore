@@ -24,6 +24,7 @@ solr/data
 .bundle
 db/*.sqlite3
 log/*.log
+log/*.lck
 tmp/**/*
 public/archive
 public/archive/*
