@@ -12,9 +12,8 @@ class IntervalsController < ApplicationController
 		@phrase_names = Interval.unique_phrase_names
 
     #search paradigm for the Intervals
-
-    @intervals = Interval.all
-
+    @search = Interval.search(params[:search])
+    @intervals = @search.all
 
     render 'index'
   end
