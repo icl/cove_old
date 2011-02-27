@@ -299,7 +299,7 @@ button {  width: auto; overflow: visible; }
 
 body {
 	color: #FFFFFF;
-	background: #2F2F2F;
+	background: #E5E5E5;
 }
 
 
@@ -711,7 +711,6 @@ input[type=search] {
 .browse_cont {
     margin:20px 0px;
     padding:20px 0px;
-	background: #383838; 
 	border-top: 2px solid gray; 
 	border-bottom: 2px solid gray; 
 	clear: both; 
