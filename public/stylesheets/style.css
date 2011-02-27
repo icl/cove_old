@@ -365,7 +365,7 @@ header h1 {
 }
 
 .content {
-	min-height: 650px;
+	min-height: 50px;
 }
 
 footer h5 {
