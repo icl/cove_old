@@ -157,6 +157,15 @@ class Interval < ActiveRecord::Base
     @search = Interval.search() do
       #@total_count = total
       keywords(params[:search])
+
+      #REALLY REALLY NAUGHTY AND BAD FIX FOR DATE!!! PRATIK IS A BAD MAN
+      if !params[:date].blank?
+        badthingtodo = params[:date]
+        if badthingtodo.length != 10
+          badthingtodo[5] = "-20"
+        end
+      end
+
       #example URI: ?search=structuring&camera_angle=&session_type=&phrase_type=&phrase_name=
       #<variable to exclude later> = with <sunspot value>, params[<URL query segment>] if params[<URL query segment>] exists or not blank 
       cam_ang_filter = with :camera_angle, params[:camera_angle] if !params[:camera_angle].blank?
@@ -164,7 +173,7 @@ class Interval < ActiveRecord::Base
       phrase_filter = with :phrase_type, params[:phrase_type] if !params[:phrase_type].blank?
       phrase_nm_filter = with :phrase_name, params[:phrase_name] if !params[:phrase_name].blank?
       #alt_phrase_filter = with :alternative_phrase_name, params[:phrase_name] if !params[:phrase_name].blank?
-      date_filter = with :start_time, params[:date] if !params[:date].blank?
+      date_filter = with :start_time, badthingtodo if !params[:date].blank?
 
       #will paginate helper      
       paginate :page => params[:page], :per_page => 10
