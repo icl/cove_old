@@ -1,40 +1,32 @@
+<head>
+	<script type="text/javascript" src="javascript.js">
+	</script>
+</head>
+
 <div class="interval_show">
 
-	<div class="grid_1 Edit">
-		<%= link_to 'Edit', edit_interval_path(@interval) %> 
-	</div>
-	<div class="grid_15">
-		<%= link_to 'Back', intervals_path %>
-	</div>
-	<div class="clear"></div>
+<!-- row 1 -->
 
-
-	<div class="grid_5" id="sessTypePhrase">
-		<div>
-			<h1 class="define_me session_type"><%= @interval.session_type %></h1> <!--Session Type-->
-			<strong>Phrase: <span class="define_me phrase_name"><%= @interval.phrase_name %></span></strong> <br/>
-			<strong>Type: <span class="define_me phrase_type"><%= @interval.phrase_type %></span></strong>
-		</div>
+	 <%= simple_form_for @interval do |f| %>
+	 <div class="grid_6 show_video_header">
+		<h1>FAR #</h1>
+		<h2>Session <%= @interval.session_number %> : <%= @interval.session_type %></h2>
 	</div>
 	
-	<%= simple_form_for @interval do |f| %>
-	<div class="grid_6" id="camera_angle_map">
-		<div class="cam_angle">
-			<%= image_for_camera_angle @interval.camera_angle %>
-		</div>
+	<div class="grid_5 show_addto_widget">
+		<p>Michael's "add to" widget</p>
+<!--INSERT APPLIED ADD TO WIDGET-->
 	</div>
 	
-	<div class="grid_5 more_info">
-		<div class="info">
-			<h3>Session <%= @interval.session_number %></h3>
-			<h3><%= @interval.start_time.strftime("%F") %></h3> <!-- Date-->
-			<h4>Length: <%= @interval.duration_string %></h4>
+	<div class="grid_5 show_camera_angle">
+		<div class="show_angles">
+		<%= image_for_camera_angle @interval.camera_angle %>
 		</div>
 	</div>
-<br style="clear:both"/>
-	<% end %>
+
 	<div class="clear"></div>
 
+<!-- row 2 -->
 
 	<div class="grid_16 space">
 		
@@ -53,66 +45,113 @@
 	</li>
 </ul>
 		
+	<div class="grid_11 show_video_player">
+		<p><%= video_tag @interval.filename, :controls => true, :height => 360, :width => 640 %></p>
 	</div>
-	<div class="clear"></div>
 	
-
-	<div class="grid_16" id="video">
-		<div>
-			<p><%= video_tag @interval.filename, :controls => true, :height => 270, :width => 480 %></p>
+	
+	<div class="grid_5 show_metadata">
+	
+		<div class="show_more_info">
+			<h2>Video Data</h2>
+			<h3 class="show_moreinfo_button">More</h3>
 		</div>
-	</div>
-	<div class="clear"></div>
-
-
-	<div class="grid_16 time">
-		<div class="time">
-			<h4><%= @interval.start_time.strftime("%T") %> ------------------------------------------------------------------------------------------</h4>
+		
+		<div class="show_mvt_content">
+			<h4><%= @interval.phrase_name %></h4>
+			<h4><%= @interval.phrase_type %></h4>
+			<h4><%= @interval.task_name %></h4>
 		</div>
+		
+		<div class="show_more_data">
+			<h4><%= @interval.start_time.strftime("%F") %></h4> <!--date-->
+			<h4>Time: <%= @interval.start_time.strftime("%T") %></h4>
+			<h4><%= @interval.duration_string %></h4>
+		</div>
+		
+		<div class="show_codingterms_phen">
+			<h2>Phenomena (3)</h2>
+			<h3 class="show_add_phen_button">Add</h3>
+			<div class="show_applied_phen">
+				<p>List of applied phenomena.<p>
+<!--INSERT APPLIED PHENOMENA TERMS-->
+			</div>
+		</div>
+		
+		<div class="show_add_phen_list">
+			<h2>Add Phenomena</h2></br>
+			<form>
+				<input type="checkbox">Costumes
+				<input type="checkbox">Distributed Memory</br>
+				<input type="checkbox">Imagery     
+				<input type="checkbox">Marking</br>
+				<input type="checkbox">Props
+				<input type="checkbox">Riffing</br>
+				<input type="checkbox">Sketching
+				<input type="checkbox">Sonification</br>
+				<input type="checkbox">Structuring
+				<input type="checkbox">Visualization</br>
+			</form>
+			<h3 class="show_save_phen_button">Save</h3>
+		</div>
+
+		<div class="show_codingterms_people">
+			<h2>People (2)</h2>
+			<h3 class="show_add_people_button">Add</h3>
+			<div class="show_applied_people">
+				<p>List of applied people.<p>
+<!--INSERT APPLIED PEOPLE TERMS-->
+			</div>
+		</div>
+
+		<div class="show_add_people_list">
+			<h2>Add People</h2></br>
+			<form>
+				<input type="checkbox">Wayne
+				<input type="checkbox">Odette
+				<input type="checkbox">Alexander </br>
+				<input type="checkbox">Agnes
+				<input type="checkbox">Anna
+				<input type="checkbox">Antoine</br>
+				<input type="checkbox">Catarina
+				<input type="checkbox">Daniela
+				<input type="checkbox">Davide</br>
+				<input type="checkbox">Jessica
+				<input type="checkbox">Louise
+				<input type="checkbox">Michael</br>
+				<input type="checkbox">Paolo
+			</form>
+			<h3 class="show_save_people_button">Save</h3>
+		</div>
+		
+		<div class="show_tags">
+			<h2>Tags (10)</h2>
+			<h3 class="show_add_tags_button">Add</h3>
+			<div class="show_applied_tags">
+				<p>List of applied tags.<p>
+<!--INSERT APPLIED TAGS-->
+			</div>
+		</div>
+		
+		<div class="show_tags_create">
+			<form>
+				<label>Tag Name:</label>
+				<input type="text"></br>
+			<!--Notes:<textarea rows="4" cols="20"></textarea>-->
+			</form>
+			<h3 class="show_save_people_button">Create</h3>
+
+		</div>
+		
+	<div class="clear"></div>
+	
+	<div class="grid_16 push_0 subintervals">
+<!--INSERT SUBINTERVAL WIDGET-->
 	</div>
-	<div class="clear"></div>
-	
 
-	<div class="grid_16 space">
-	</div>
-	<div class="clear"></div>
-	
 
-	<div class="grid_16 filename">
-	<h3>File: <%= @interval.filename %></h3> <!--filename-->
-	<div class="clear"></div>
-	
+	<br style="clear:both"/>
+	<% end %>
 
-</div>
-<%#<div id="tag_list"> %>
-  <%#<h5> These are all the existing tags </h5>%>
-  <%#<ul>%>
-  <%# @tags.each do |taging| %>
-    <%#<li>%>
-    <%# link_to taging.tag.name, {:controller => "annotations", :action => "create", :interval_id => @interval.id, :type => "tag", :name => taging.tag.name}, :method => "post"%>
-    <%#</li>%>
-<%# end %>
-  <%#</ul>%>
-<%#</div>%>
-
-<%#<div id="phenomenon_list"> %>
-  <%#<h5> These are the Phenomenon </h5>%>
-  <%#<ul>%>
-  <%#<%- @phenomenon.each do |phenom| %>%>
-    <%#<li> %>
-    <%#<%= link_to phenom.phenomenon.name, {:controller => "annotations", :action => "create", :type => "phenomenon", :name => phenom.phenomenon.name}, :method => "post" %>%>
-    <%#</li>%>
-  <%#<%- end %> %>
-  <%#</ul>%>
-<%#</div>%>
-<br />
-<div id="add_tag_form_container">
-  <h5> Create a new Tag</h5>
-  <%= form_tag({:action => "create",:controller => "annotations", :interval_id => @interval.id}, :method => "post") do %>
-    <%= text_field_tag :name %>
-    <%= hidden_field_tag "type", :value  => "tag" %>
-    <%= submit_tag "Create Tag" %>
-  <%- end %>
-</div>
 
 </div>
