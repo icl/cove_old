@@ -10,11 +10,18 @@ class IntervalsController < ApplicationController
   end
 
   def show
-    @tags = @interval.taggings
-    @phenomenon = @interval.codings.phenomenon
-    @people = @interval.codings.people
+    @applied_tags= @interval.taggings
 
-    render "show"
+    @unapplied_phenomenon = Code.phenomenon.unapplied(@interval.id)
+    @applied_phenomenon = @interval.codings.phenomenon
+
+    @applied_people = @interval.codings.people
+    @unapplied_people = Code.people.unapplied(@interval.id)
+
+    respond_to do |format|
+      format.html {  render "show"}
+      format.m4v { send_file(@interval.filename, :type => 'video/mp4', :disposition => 'inline', :url_based_filename => true) }
+    end
   end
 
   def new

@@ -4,9 +4,14 @@ Feature: interval show
   so that I can perform my basic tasks as an ethnographer
 
   Background: 
+		Given I am a regular user who is logged in
     Given an interval exists
-
-  Scenario: user visits the show page
+    Given there has been a tag applied to the interval
     When I visit the interval show page
+    
+  Scenario: Basic title Scenario
     Then I should see the title of the interval
+
+  Scenario: Tag list
+    Then I should see all the applied tags
     

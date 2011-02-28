@@ -6,6 +6,10 @@ class Code < ActiveRecord::Base
   validates_uniqueness_of :name
   validates_presence_of :coding_type
 
+  scope :phenomenon, lambda{where(:coding_type => "phenomenon")}
+  scope :people, lambda{where(:coding_type => "people")}
+
+  scope :unapplied, lambda {|interval_id| joins(:codings).where("codings.interval_id <> ?", interval_id)}
 
 =begin
   modding code from Paul Panarease's interval import. Pratik Commented it

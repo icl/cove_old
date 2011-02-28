@@ -11,11 +11,11 @@ class Coding < ActiveRecord::Base
   attr_accessor :name
   attr_accessor :coding_type
 
-  # the scopes that will give you the type of coding_type you want
-  scope :phenomenon, lambda { joins(:code).where("codes.coding_type = ?", "phenomenon")}
-  scope :people, lambda { joins(:code).where("codes.coding_type = ?", "people")}
 
   before_validation :hookup_code
+
+  scope :phenomenon, lambda {joins(:code).where("codes.coding_type = ?", "phenomenon")}
+  scope :people, lambda {joins(:code).where("codes.coding_type = ?", "people")}
 
   private 
   # Method that will hook up our coding to the underlying 

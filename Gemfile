@@ -40,7 +40,7 @@ gem 'hoptoad_notifier'
   # gem 'fakefs', :require => 'fakefs/safe'
 	gem 'rails3-generators'
 	gem "rspec"
-	gem "rspec-rails", "~> 2.4.0"
+	gem "rspec-rails"
 	gem 'email_spec'
 	gem "capybara"
 	gem "cucumber"
