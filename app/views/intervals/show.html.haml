@@ -7,6 +7,8 @@
   = video_tag interval_path(@interval.id, :format => :m4v), :controls => true, :height => 400, :width => 950
 
 %div.grid_16#tag_container
+  %h4
+    ="Tags(#{@applied_tags.length})"
   %ul
     -if !@applied_tags.blank?
       -for tagging in @applied_tags
@@ -17,11 +19,11 @@
 
 .grid_16#phenomenon_container
   %h4
-    Phenomenon
+    ="Phenomenon(#{@applied_phenomenon.length})"
   = display_coding_term(@applied_phenomenon, @unapplied_phenomenon)
 
 .grid_16#people_container
   %h4
-    People
+    ="People(#{@applied_people.length})"
   = display_coding_term(@applied_people, @unapplied_people)
     
