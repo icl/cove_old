@@ -16,8 +16,10 @@ class IntervalsController < ApplicationController
     @phenomenon = Coding.phenomenon
     @applied_phenomenon = @interval.codings.phenomenon
     @people = @interval.codings.people
-
-    render "show"
+    respond_to do |format|
+      format.html {  render "show"}
+      format.m4v { send_file('/Users/ethan/Desktop/2010-09-13_Wayne_12-00-43+00-07-41_Session3.m4v', :type => 'video/mp4', :disposition => 'inline', :url_based_filename => true) }
+    end
   end
 
   def new
