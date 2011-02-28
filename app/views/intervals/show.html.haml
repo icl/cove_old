@@ -18,15 +18,17 @@
 .grid_16#phenomenon_container
   %h4
     Phenomenon
-  %ul
-    -if !@applied_phenomenon.blank?
-      -for item in @applied_phenomenon
-        %li.phenomenon.applied
-          =item.code.name
-    -if !@unapplied_phenomenon.blank?
-      -for item in @unapplied_phenomenon
-        %li.phenomenon.unapplied
-          =item.code.name
+  = display_coding_term(@applied_phenomenon, @unapplied_phenomenon)
+  -#%ul
+    -#-if !@applied_phenomenon.blank?
+      -#-for item in @applied_phenomenon
+        -#%li.phenomenon.applied
+          -#=item.code.name
+    -#-if !@unapplied_phenomenon.blank?
+      -#-for item in @unapplied_phenomenon
+        -#%li.phenomenon.unapplied
+          -#=item.code.name
+
         
        
       

@@ -22,4 +22,15 @@ module ApplicationHelper
     hash = Digest::MD5.hexdigest(email)
     image_src = "http://www.gravatar.com/avatar/#{hash}"
   end
+
+  def display_coding_term(applied, unapplied)
+    html = "<ul>"
+    applied.each do |term|
+      html << %Q[<li class="code applied"> #{term.code.name} </li>]
+    end
+    unapplied.each do |term|
+      html << %Q[<li class="code unapplied"> #{term.code.name} </li>]
+    end
+    html << "</ul>"
+  end
 end
