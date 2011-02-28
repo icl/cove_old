@@ -4,6 +4,7 @@ Feature: interval show
   so that I can perform my basic tasks as an ethnographer
 
   Background: 
+		Given I am a regular user who is logged in
     Given an interval exists
 
   Scenario: user visits the show page
