@@ -20,6 +20,7 @@ class Interval < ActiveRecord::Base
   has_many :codings
   has_many :taggings
   has_many :tags, :through => :taggings
+
   def self.search args
 	  search_conditions = {}
 
@@ -36,6 +37,15 @@ class Interval < ActiveRecord::Base
   
   def self.search_columns
     ['session_type', 'phrase_type', 'camera_angle', 'tags.name']
+  end
+  
+  def self.filters
+    filters = []
+    filters <<  ['camera_angle', unique_angles]
+    filters << ['session_type', unique_session_types]
+    filters << ['phrase_type', unique_phrase_types]
+    filters << ['phrase_name' , unique_phrase_names]
+    filters
   end
   
 	def end_time
@@ -57,23 +67,23 @@ class Interval < ActiveRecord::Base
 	end
 	
 	def self.unique_days
-		find(:all, :select => "start_time", :order => "start_time").map{|int| [int.day]}.uniq
+		find(:all, :select => "start_time", :order => "start_time").map{|int| [int.day]}.uniq.compact
 	end
 
 	def self.unique_angles
-		return group(:camera_angle).collect { |interval| interval.camera_angle}
+		 group(:camera_angle).collect { |interval| interval.camera_angle}.compact
 	end
 	
 	def self.unique_phrase_types
-	  return group(:phrase_type).collect { |interval| interval.phrase_type}
+	  return group(:phrase_type).collect { |interval| interval.phrase_type}.compact
 	end
 	
 	def self.unique_phrase_names
-	  return group(:phrase_name).collect { |interval| interval.phrase_name}
+	  return group(:phrase_name).collect { |interval| interval.phrase_name}.compact
 	end
 
   def self.unique_session_types
-    return group(:session_type).collect { |interval| interval.session_type}
+    return group(:session_type).collect { |interval| interval.session_type}.compact
   end
 
 

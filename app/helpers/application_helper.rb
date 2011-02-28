@@ -9,7 +9,7 @@ module ApplicationHelper
     end
     return raw(html)
   end
-  def add_params params_to_add
+  def add_params params_to_add={}
 	  new_p = params.dup
 	  new_p.delete(:page)
 	  new_p.delete(:auth)

@@ -4,7 +4,7 @@ class IntervalsController < ApplicationController
     before_filter :find_interval, :only => [:show, :update, :edit]
     
 	def index
-
+    @filters = Interval.filters
     @intervals = Interval.search(params)
     render 'index'
   end
