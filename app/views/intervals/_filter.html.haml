@@ -1,0 +1,6 @@
+.grid_2.suffix_1
+	%h1.filter_title
+		%ul
+			- filter.each do |type|
+				%li.define_me
+					= link_to type, intervals_path(add_params :camera_angle => type)
