@@ -19,6 +19,19 @@ class Interval < ActiveRecord::Base
   
   has_many :codings
   has_many :taggings
+  has_many :tags, :through => :taggings
+  def self.search params
+    if params[:query]
+      search_query = Interval.search_columns.collect { | column | "#{column} like :query" }.join(' OR ')
+      joins('LEFT JOIN "taggings" ON "intervals"."id" = "taggings"."interval_id" LEFT JOIN "tags" ON "tags"."id" = "taggings"."tag_id"').where(search_query, :query => "%#{params[:query]}%")
+    else
+      order(:id)
+    end
+  end
+  
+  def self.search_columns
+    ['session_type', 'phrase_type', 'camera_angle', 'tags.name']
+  end
   
 	def end_time
     Time.at(start_time.to_i + duration)

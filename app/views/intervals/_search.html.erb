@@ -1,7 +1,7 @@
 <div class="search_box">
-<%= form_for @search, :as => :search, :html => {:method => :get} do |f| %>
+<%= form_tag '/',   :method => 'get' %>
 
-<%= f.text_field :camera_angle_or_session_type_or_phrase_type_or_phrase_name_contains,  :id => 'search_box', :type => 'search'  %>
-<%= f.submit :value => 'Search' %>
-<% end %>
+<%= text_field_tag :query , params[:query], :id => 'search_box', :type => 'search'  %>
+<%= submit_tag 'Search' %>
+</form>
 </div>

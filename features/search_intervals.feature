@@ -11,7 +11,11 @@ Feature: Search for an interval
 			|	Wayne		|	1-2-2001 01:10:00	|	3m4s			|	duet		| light |
 			|	Mirror		|	1-2-2001 01:15:00	|	5m1s			|	trio		| stuff |
 			|	Mirror		|	1-3-2001 01:15:00	|	1m3s			|	quartet		| lantern |
-@javascript
+
+	Scenario: No search terms
+		When I am on the intervals page
+		Then I should see "Wayne" within ".interval_list"
+
 	Scenario: Search for a camera angle
 		When I am on the intervals page
 		And I fill in "search_box" with "Mirror"

@@ -711,8 +711,6 @@ input[type=search] {
 .browse_cont {
     margin:20px 0px;
     padding:20px 0px;
-	border-top: 2px solid gray; 
-	border-bottom: 2px solid gray; 
 	clear: both; 
 	}
  .browse_box, .browse_box_date {
