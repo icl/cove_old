@@ -10,19 +10,17 @@ class IntervalsController < ApplicationController
 		@phrase_types = Interval.unique_phrase_types
 		@phrase_names = Interval.unique_phrase_names
 
-    @intervals = Interval.search params
+    search = Interval.search_with params
+    @intervals = search.results
 
     render 'index'
   end
 
   def show
-    #@tags = Tag.all
-    #@tags = Taging.where :interval_id => @interval.id
-    #@tags = @interval.annotations.all(:tag)
-    @tags = []
-    #@phenomenon = Phenomenoning.where :interval_id => @interval.id
-    #@phenomenon = @interval.annotations.all(:phenomenon)
-    @phenomenon = []
+    @tags = @interval.taggings
+    @phenomenon = @interval.codings.phenomenon
+    @people = @interval.codings.people
+
     render "show"
   end
 
@@ -55,8 +53,6 @@ class IntervalsController < ApplicationController
     end
   end
 
-  # DELETE /intervals/1
-  # DELETE /intervals/1.xml
   def destroy
     @interval = Interval.find(params[:id])
     @interval.destroy

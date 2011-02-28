@@ -42,18 +42,18 @@
 	</div>
 	<div class="clear"></div>
 	<div class="grid_10">
-		<!-->Notes Block<-->
+		<!-- Notes Block -->
 		<div class="note_form">
 			<%= simple_form_for [@project,Note.new] do |form| %>
-				<%= form.input :note %>
+				<%= form.input :note, :label => false %>
 				<%= form.button :submit %>
 			<% end %>
 		</div>
-		<div class="note_list_container grid_9 prefix_1">
-			<ul class="note_list" style="list-style-type: none; background-color: #555; padding-top: 2px; padding-bottom: 2px;">
+		<div class="note_list_container prefix_1">
+			<ul class="note_list">
 				<%= render @project.notes.order('created_at DESC') if !@project.notes.blank? %>
 			</ul>
-			<a class="expand_all" style="float:right; display:none;">Expand/Collapse All</a>
+			<a class="expand_all">Expand/Collapse All</a>
 		</div>
 	</div>
 	<!-- end .grid_10 -->
@@ -61,50 +61,36 @@
 		<p>
 		   <%= @project.desc %> 
 		</p>
-	</div>
-	<!-- end .grid_6 -->
-	<div class="clear"></div>
-	<div class="grid_16" style="text-align:center;">
-		<h3>
-		   <span>Video Queues</span>	
-		</h3>
-	</div>
-	<!-- end .grid_16 -->
-	<div class="clear"></div>
-</div>
-<div class="container_16" id="vid-cont" style="height: 150px;">
-	<%= render :partial => 'carousel_collections' rescue "Missing Collection Partial" %>
-</div>
-<div container="container_16">
-	<!-- end .grid_16 -->
-	<div class="clear"></div>
-	<div class="grid_16">
+		
 		<h3>
 		   Tags <span>(<%= link_to 'Edit', edit_project_path(@project) %>):</span>	
 		</h3>
-	</div>
-	<!-- end .grid_16 -->
-	<div class="clear"></div>
+		
+		
 	<% if !@project.tags.blank? %>
-	<div class="grid_16">
 		<p>
-                     <ul>
-                          <% @project.tags.each do |t| %>
-                             <li class="inline"><%= t.capitalize %></li>
-                          <% end %>
-                     </ul>
+             <ul>
+             <% @project.tags.each do |t| %>
+             <li class="inline"><%= t.capitalize %></li>
+             <% end %>
+             </ul>
 		</p>
-	</div>
 	<% end %>
-	<!-- end .grid_16 -->
-	<div class="clear"></div>
-	<div class="grid_16">
+
 		<h3>
 		   Owner <span>(<%= link_to 'Edit', edit_project_path(@project) %>):</span>	
 		</h3>
                    <p><%= current_user.email %></p>
+	<!-- end .grid_6 -->
 	</div>
-	<!-- end .grid_16 -->
+	
+	<div class="clear"></div>
+	<div class="grid_16 favorite_table">
+		
+		<%= render :partial => 'collections' %>
+	
+	</div>
+	
 	<div class="clear"></div>
 	<div class="grid_15">
 		<p>

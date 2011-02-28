@@ -67,7 +67,7 @@ jQuery(function() {
 			$.each($(".sortable_collection li"),function() {
 				$(this).find(".priority").text(i);
 				i++;
-				priority += "\'" + $(this).find(".priority").text() + "\': \'" + $(this).attr("id") + "\',";
+				priority += "\'" + i + "\': \'" + $(this).attr("id") + "\',";
 			});
 			priority += "}"
 			$.ajax({
@@ -153,8 +153,7 @@ jQuery(function() {
 		return false;
 	});
 });
-/* Infinite Carousel Code */
-
+/* Infinite Carousel Code by Remy Sharp http://jqueryfordesigners.com */
 $.fn.infiniteCarousel = function () {
 
     function repeat(str, num) {
@@ -211,14 +210,15 @@ $.fn.infiniteCarousel = function () {
             return false;
         }
         
-        $wrapper.after('<a class="arrow back">&lt;</a><a class="arrow forward">&gt;</a>');
+        $(this, '.wrapper').prepend('<a class="arrow_backward">&nbsp;</a>');
+		$(this, '.wrapper').append('<a class="arrow_forward">&nbsp;</a>');
         
         // 5. Bind to the forward and back buttons
-        $('a.back', this).click(function () {
+        $('a.arrow_backward', this).click(function () {
             return gotoPage(currentPage - 1);                
         });
         
-        $('a.forward', this).click(function () {
+        $('a.arrow_forward', this).click(function () {
             return gotoPage(currentPage + 1);
         });
         

@@ -2,14 +2,6 @@ class CollectionsController < ApplicationController
   before_filter :authenticate_user!
   before_filter :require_nda
   
-  def router
-    # Collection Router Method (replaces above specific collection routes)
-    #match ':owner/:id/:type/add/:interval' => 'collections#router', :as => :add_to_spec_collection
-    #match ':ownder/:id/:type/remove/:interval' => 'collections#router', :as => :remove_from_spec_collection
-    #match 'projects/:id/:type' => 'collections#router', :as => :project_collections
-    #match 'users/:id/:type' => 'collections#router', :as => :user_collections
-  end
-  
   def index
     @collections = Collection.find_all_by_user_id(current_user.id)
     respond_to do |format|
@@ -77,6 +69,9 @@ class CollectionsController < ApplicationController
         @collection.name = owner + "_" + params[:id].to_s + "_" + type
         @collection.desc = type.humanize + " for " + owner.humanize
         @collection.user_id = current_user.id
+        if owner =~ /project/
+          @collection.projects += [Project.find(params[:id])]
+        end
         @collection.save
       end
     else
@@ -134,6 +129,9 @@ class CollectionsController < ApplicationController
         @collection.name = owner + "_" + params[:id].to_s + "_" + type
         @collection.description = type.humanize + " for " + owner.humanize
         @collection.user_id = current_user.id
+        if owner =~ /project/
+          @collection.projects += [Project.find(params[:id])]
+        end
         @collection.save
       end
     else
@@ -179,6 +177,9 @@ class CollectionsController < ApplicationController
         @collection.name = owner + "_" + params[:id].to_s + "_" + type
         @collection.description = type.humanize + " for " + owner.humanize
         @collection.user_id = current_user.id
+        if owner =~ /project/
+          @collection.projects += [Project.find(params[:id])]
+        end
         @collection.save
       end
     else

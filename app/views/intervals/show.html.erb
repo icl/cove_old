@@ -37,6 +37,22 @@
 
 
 	<div class="grid_16 space">
+		
+<ul class="dropdown">
+	<li>Add to</li>
+	<li><a href="#">+Favorites</a></li>
+	<li><a href="#">+Queue</a></li>
+	<li><a href="#">Collections</a>
+		<ul class="vdrop">
+			<li><a class="add" href="#">+New Collection</a></li>
+			<li><a href="#">Collection alpha</a></li>
+			<li><a href="#">Collection beta</a></li>
+			<li><a href="#">Collection gamma</a></li>
+			<li><a href="#">Collection omega</a></li>
+		</ul>
+	</li>
+</ul>
+		
 	</div>
 	<div class="clear"></div>
 	
@@ -79,16 +95,16 @@
   <%#</ul>%>
 <%#</div>%>
 
-<div id="phenomenon_list"> 
-  <h5> These are the Phenomenon </h5>
-  <ul>
-  <%- @phenomenon.each do |phenom| %>
-    <li> 
-    <%= link_to phenom.phenomenon.name, {:controller => "annotations", :action => "create", :type => "phenomenon", :name => phenom.phenomenon.name}, :method => "post" %>
-    </li>
-  <%- end %> 
-  </ul>
-</div>
+<%#<div id="phenomenon_list"> %>
+  <%#<h5> These are the Phenomenon </h5>%>
+  <%#<ul>%>
+  <%#<%- @phenomenon.each do |phenom| %>%>
+    <%#<li> %>
+    <%#<%= link_to phenom.phenomenon.name, {:controller => "annotations", :action => "create", :type => "phenomenon", :name => phenom.phenomenon.name}, :method => "post" %>%>
+    <%#</li>%>
+  <%#<%- end %> %>
+  <%#</ul>%>
+<%#</div>%>
 <br />
 <div id="add_tag_form_container">
   <h5> Create a new Tag</h5>

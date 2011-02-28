@@ -2,12 +2,15 @@ Cove::Application.routes.draw do
 
   resources :intervals do
     resources :annotations
+    resources :taggings
   end
 
   resources :definitions
 
   resources :projects do
     resources :notes
+    resources :favorites, :controller => 'collections'
+    resources :queue, :controller => 'collections'
   end
   
   resources :collections
@@ -19,12 +22,12 @@ Cove::Application.routes.draw do
   # Project specific Collection Routes
   match 'projects/:id/add/:collection' => 'projects#add_collection', :as => :add_collection
   match 'projects/:id/remove/:collection' => 'projects#remove_collection', :as => :remove_collection
-  match 'projects/:id/favorites' => 'collections#show', :as => :favorite_intervals
-  match 'projects/:id/favorites/add/:interval' => 'collections#add', :as => :add_to_project_favorites
-  match 'projects/:id/favorites/remove/:interval' => 'collections#remove', :as => :remove_from_project_favorites
-  match 'projects/:id/queue' => 'collections#show', :as => :interval_queue
-  match 'projects/:id/queue/add/:interval' => 'collections#add', :as => :add_to_project_queue
-  match 'projects/:id/queue/remove/:interval' => 'collections#remove', :as => :remove_from_project_queue
+  #match 'projects/:id/favorites' => 'collections#show', :as => :favorite_intervals
+  #match 'projects/:id/favorites/add/:interval' => 'collections#add', :as => :add_to_project_favorites
+  #match 'projects/:id/favorites/remove/:interval' => 'collections#remove', :as => :remove_from_project_favorites
+  #match 'projects/:id/queue' => 'collections#show', :as => :interval_queue
+  #match 'projects/:id/queue/add/:interval' => 'collections#add', :as => :add_to_project_queue
+  #match 'projects/:id/queue/remove/:interval' => 'collections#remove', :as => :remove_from_project_queue
   # User specific Collection Routes
   match 'users/:id/favorites' => 'collections#show', :as => :user_favorites
   match 'users/:id/favorites/add/:interval' => 'collections#add', :as => :add_to_user_favorites
@@ -32,11 +35,6 @@ Cove::Application.routes.draw do
   match 'users/:id/queue' => 'collections#show', :as => :user_queue
   match 'users/:id/queue/add/:interval' => 'collections#add', :as => :add_to_user_queue
   match 'users/:id/queue/remove/:interval' => 'collections#remove', :as => :remove_from_user_queue
-  # Collection Router Method (replaces above specific collection routes)
-  #match ':owner/:id/:type/add/:interval' => 'collections#router', :as => :add_to_spec_collection
-  #match ':ownder/:id/:type/remove/:interval' => 'collections#router', :as => :remove_from_spec_collection
-  #match 'projects/:id/:type' => 'collections#router', :as => :project_collections
-  #match 'users/:id/:type' => 'collections#router', :as => :user_collections
 
   devise_for :users, :path => "/", :path_names => {:sign_in => "login",
     :sign_out => "logout"}
