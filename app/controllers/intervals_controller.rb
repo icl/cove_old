@@ -10,10 +10,9 @@ class IntervalsController < ApplicationController
   end
 
   def show
-    @tags = Tag.all()
     @applied_tags= @interval.taggings
 
-    @unapplied_phenomenon = Code.phenomenon.unapplied
+    @unapplied_phenomenon = Code.phenomenon.unapplied(@interval.id)
     @applied_phenomenon = @interval.codings.phenomenon
 
     @applied_people = Code.people
