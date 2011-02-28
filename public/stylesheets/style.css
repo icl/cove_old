@@ -1025,6 +1025,9 @@ div.project_container .right-arw {border-color:transparent transparent transpare
 	padding-bottom: 2px; 
 	width: 580px; 
 	float:right;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
 }
 
 .note_list_container a.expand_all {
@@ -1042,7 +1045,9 @@ div.project_container .right-arw {border-color:transparent transparent transpare
 	float: right; 	
 }
 .nobr	{white-space: nowrap;}
-
+.note_expandable {
+	cursor: pointer;
+}
 
 
 /* favorites properties in "Projects" Page */
@@ -1079,4 +1084,70 @@ div.project_container .right-arw {border-color:transparent transparent transpare
 	float: left;
 
 	cursor: pointer;
+}
+
+.project_row_div {
+	height: 40px; 
+	text-align: center;
+	border: solid 1px white;
+	padding: 5px 0px;	
+	margin-right: -1px;
+}
+
+.project_row {
+	padding: 20px 0px;
+	border-top: solid 2px gray;
+	border-bottom: solid 2px gray;
+	height: 40px; 
+	background-color: #383838; 
+}
+
+.project_collection {
+	background-color: #444;
+	margin-top: 15px;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+}
+
+.project_collection h3 {
+	margin-left: 15px;
+}
+
+.infiniteCarousel {
+  width: 940px;
+  position: relative;
+}
+
+.infiniteCarousel .wrapper {
+  width: 800px; /* .infiniteCarousel width - (.wrapper margin-left + .wrapper margin-right) */
+  overflow: auto;
+  min-height: 225px;
+  margin: 0 70px;
+  position: absolute;
+  top: 0;
+  background-color: #555;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+}
+
+.infiniteCarousel .wrapper ul {
+  width: 9999px;
+  list-style-image:none;
+  list-style-position:outside;
+  list-style-type:none;
+  margin:0;
+  padding:0;
+  position: absolute;
+  top: 0;
+}
+
+.infiniteCarousel ul li {
+  display:block;
+  float:left;
+  padding: 0px 20px; /* smaller padding between items */
+  padding-top: 5px;
+  height: 200px;
+  width: 160px;
 }
