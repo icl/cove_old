@@ -8,5 +8,5 @@ Feature: interval show
 
   Scenario: user visits the show page
     When I visit the interval show page
-    Then I should see the title of the of the interval
-
+    Then I should see the title of the interval
+    
