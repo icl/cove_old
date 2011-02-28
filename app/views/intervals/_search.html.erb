@@ -1,7 +1,7 @@
 <div class="search_box">
-<%= simple_form_for @search, :as => :search, :html => {:method => :get} do |f| %>
+<%= form_for @search, :as => :search, :html => {:method => :get} do |f| %>
 
-<%= f.input :camera_angle_contains, :as => :search, :label => false, :input_html => { :id => 'search_box' } %>
+<%= f.text_field :camera_angle_or_session_type_or_phrase_type_or_phrase_name_contains,  :id => 'search_box', :type => 'search'  %>
 <%= f.submit :value => 'Search' %>
 <% end %>
 </div>
