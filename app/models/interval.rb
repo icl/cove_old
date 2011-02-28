@@ -52,23 +52,23 @@ class Interval < ActiveRecord::Base
 	end
 	
 	def self.unique_days
-		find(:all, :select => "start_time", :order => "start_time").map{|int| [int.day]}.uniq.compact!
+		find(:all, :select => "start_time", :order => "start_time").map{|int| [int.day]}.uniq.compact
 	end
 
 	def self.unique_angles
-		return group(:camera_angle).collect { |interval| interval.camera_angle}.compact!
+		 group(:camera_angle).collect { |interval| interval.camera_angle}.compact
 	end
 	
 	def self.unique_phrase_types
-	  return group(:phrase_type).collect { |interval| interval.phrase_type}.compact!
+	  return group(:phrase_type).collect { |interval| interval.phrase_type}.compact
 	end
 	
 	def self.unique_phrase_names
-	  return group(:phrase_name).collect { |interval| interval.phrase_name}.compact!
+	  return group(:phrase_name).collect { |interval| interval.phrase_name}.compact
 	end
 
   def self.unique_session_types
-    return group(:session_type).collect { |interval| interval.session_type}.compact!
+    return group(:session_type).collect { |interval| interval.session_type}.compact
   end
 
 	def self.lame_search(v)
