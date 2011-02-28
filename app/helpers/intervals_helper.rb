@@ -14,6 +14,8 @@ module IntervalsHelper
         image_tag "wayne.png"
       when /Rear 1/
         image_tag "rear1.png"
+      else
+	nil
     end
   end
 end
