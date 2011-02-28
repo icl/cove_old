@@ -15,6 +15,8 @@ class IntervalsController < ApplicationController
 
     @phenomenon = Coding.phenomenon
     @applied_phenomenon = @interval.codings.phenomenon
+
+    @applied_people = Code.people
     @people = @interval.codings.people
 
     render "show"

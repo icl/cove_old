@@ -20,10 +20,10 @@
     -if !@applied_phenomenon.blank?
       -for coding in @applied_phenomenon
         -if @phenomenon.include?(coding.code)
-          %li.tag.applied
+          %li.phenomenon.applied
             =coding.code.name
         -else
-          %li.tag.unapplied
+          %li.phenomenon.unapplied
             =coding.code.name
         
     -else
