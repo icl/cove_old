@@ -1,0 +1,24 @@
+$applied_color : #C96C7C;
+
+
+.interaction_container ul li{
+  list-style: none;
+  float: left;
+}
+
+.code, .tag{
+  width: 180px;
+  height: 30px;
+  margin: 5px;
+  text-align: center;
+  padding-top: 15px;
+  color: black;
+}
+
+.applied{
+  background-color: $applied_color;
+}
+.unapplied{
+  background-color: ($applied_color - 100);
+}
+  
