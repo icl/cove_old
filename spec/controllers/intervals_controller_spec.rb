@@ -4,6 +4,17 @@ describe IntervalsController do
   before(:each) do
     sign_in_as :regular_user
   end
+
+  describe "GET 'show'" do
+    before(:each) do
+      @interval = Factory(:interval)
+      @interval.taggings << Factory(:tagging)
+      get :show, :id => @interval.id
+    end
+    it {should respond_with(:success)}
+    it {should render_template('show')}
+    it {assigns[:applied_tags].should == @interval.taggings}
+  end
     
   describe "GET 'new'" do
     before(:each) do

@@ -1,2 +1,19 @@
 %h3.grid_5#title
   Place Holder Title 
+%div.grid_16.meta_info_container
+  This is going to be the meta data
+
+%div.grid_16#video_container
+  = video_tag @interval.filename, :controls => true, :height => 400, :width => 950
+
+%div.grid_16#tag_container
+  %ul
+    -if !@applied_tags.blank?
+      -for tag in @applied_tags
+        -if @tags.include?(tag)
+          %li.general_tag.applied_tags
+        -else
+          %li.general_tag.unapplied_tags
+
+    -else
+      An Error with tagging occured
