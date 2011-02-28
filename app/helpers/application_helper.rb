@@ -32,5 +32,6 @@ module ApplicationHelper
       html << %Q[<li class="code unapplied"> #{term.code.name} </li>]
     end
     html << "</ul>"
+    return html.html_safe
   end
 end
