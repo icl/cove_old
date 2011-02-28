@@ -20,13 +20,18 @@ class Interval < ActiveRecord::Base
   has_many :codings
   has_many :taggings
   has_many :tags, :through => :taggings
-  def self.search params
-    if params[:query]
-      search_query = Interval.search_columns.collect { | column | "#{column} like :query" }.join(' OR ')
-      joins('LEFT JOIN "taggings" ON "intervals"."id" = "taggings"."interval_id" LEFT JOIN "tags" ON "tags"."id" = "taggings"."tag_id"').where(search_query, :query => "%#{params[:query]}%")
-    else
-      order(:id)
-    end
+  def self.search args
+	  search_conditions = {}
+
+	  search_conditions[:camera_angle] = args[:camera_angle] unless args[:camera_angle].blank?
+	  search_conditions[:session_type] = args[:session_type] unless args[:session_type].blank?
+	  search_conditions[:phrase_type] = args[:phrase_type] unless args[:phrase_type].blank?
+	  search_conditions[:phrase_name] = args[:phrase_name] unless args[:phrase_name].blank?
+	  search_conditions[:start_time] = Time.parse(args[:date]).beginning_of_day..Time.parse(args[:date]).end_of_day unless args[:date].blank?
+
+	  query = args[:query].blank? ? [] : Interval.search_columns.collect{|col| "#{col} LIKE :query"}.join(" OR ")
+
+	  includes(:tags).where(query, :query => "%#{args[:query]}%").where(search_conditions)
   end
   
   def self.search_columns
@@ -71,27 +76,6 @@ class Interval < ActiveRecord::Base
     return group(:session_type).collect { |interval| interval.session_type}
   end
 
-	def self.lame_search(v)
-		args = [].fill("%#{v}%", 0, column_names.size)
-		query = column_names.map{|col| col.to_s}.map{|col| "#{col} LIKE ?"}.join(" OR ")
-		where(query, *args)
-	end
-
-=begin DEPRECATED BY SUNSPOT SOLR	
-	def self.search args
-	  search_conditions = {}
-	  
-	  search_conditions[:camera_angle] = args[:camera_angle] unless args[:camera_angle].blank?
-	  search_conditions[:session_type] = args[:session_type] unless args[:session_type].blank?
-	  search_conditions[:phrase_type] =  args[:phrase_type]  unless args[:phrase_type].blank?
-	  search_conditions[:phrase_name] =  args[:phrase_name]  unless args[:phrase_name].blank?
-	  search_conditions[:start_time] =  Time.parse(args[:date]).beginning_of_day..Time.parse(args[:date]).end_of_day  unless args[:date].blank?
-	  
-	  parm = [].fill("%#{args[:search]}%", 0, column_names.size)
-		query = column_names.map{|col| col.to_s}.map{|col| "#{col} LIKE ?"}.join(" OR ")
-		where(query, *parm).where(search_conditions)
-	end
-=end
 
 
   def self.import!
