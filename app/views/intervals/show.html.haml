@@ -19,21 +19,9 @@
   %h4
     Phenomenon
   = display_coding_term(@applied_phenomenon, @unapplied_phenomenon)
-  -#%ul
-    -#-if !@applied_phenomenon.blank?
-      -#-for item in @applied_phenomenon
-        -#%li.phenomenon.applied
-          -#=item.code.name
-    -#-if !@unapplied_phenomenon.blank?
-      -#-for item in @unapplied_phenomenon
-        -#%li.phenomenon.unapplied
-          -#=item.code.name
 
-        
-       
-      
-    
 .grid_16#people_container
   %h4
     People
+  = display_coding_term(@applied_people, @unapplied_people)
     
