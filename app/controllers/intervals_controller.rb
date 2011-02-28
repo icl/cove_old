@@ -13,7 +13,7 @@ class IntervalsController < ApplicationController
     @tags = Tag.all()
     @applied_tags= @interval.taggings
 
-    @phenomenon = Coding.phenomenon
+    @unapplied_phenomenon = Code.phenomenon.unapplied
     @applied_phenomenon = @interval.codings.phenomenon
 
     @applied_people = Code.people

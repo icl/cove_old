@@ -16,17 +16,22 @@
       An Error with tagging occured
 
 .grid_16#phenomenon_container
+  %h4
+    Phenomenon
   %ul
     -if !@applied_phenomenon.blank?
-      -for coding in @applied_phenomenon
-        -if @phenomenon.include?(coding.code)
-          %li.phenomenon.applied
-            =coding.code.name
-        -else
-          %li.phenomenon.unapplied
-            =coding.code.name
+      -for item in @applied_phenomenon
+        %li.phenomenon.applied
+          =item.code.name
+    -if !@unapplied_phenomenon.blank?
+      -for item in @unapplied_phenomenon
+        %li.phenomenon.unapplied
+          =item.code.name
         
-    -else
-      An Error with Coding occured
-     
+       
+      
+    
+.grid_16#people_container
+  %h4
+    People
     
