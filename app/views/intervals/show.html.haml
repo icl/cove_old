@@ -10,13 +10,8 @@
   %ul
     -if !@applied_tags.blank?
       -for tagging in @applied_tags
-        -if @tags.include?(tagging.tag)
-          %li.tag.applied_tags
-            =tagging.tag.name
-        -else
-          %li.tag.unapplied_tags
-            =tagging.tag.name
-
+        %li.tag.applied
+          =tagging.tag.name
     -else
       An Error with tagging occured
 
@@ -25,10 +20,10 @@
     -if !@applied_phenomenon.blank?
       -for coding in @applied_phenomenon
         -if @phenomenon.include?(coding.code)
-          %li.tag.applied_tags
+          %li.tag.applied
             =coding.code.name
         -else
-          %li.tag.unapplied_tags
+          %li.tag.unapplied
             =coding.code.name
         
     -else
