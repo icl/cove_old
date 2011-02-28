@@ -20,7 +20,7 @@ class IntervalsController < ApplicationController
     @people = @interval.codings.people
     respond_to do |format|
       format.html {  render "show"}
-      format.m4v { send_file('/Users/ethan/Desktop/2010-09-13_Wayne_12-00-43+00-07-41_Session3.m4v', :type => 'video/mp4', :disposition => 'inline', :url_based_filename => true) }
+      format.m4v { send_file(@interval.filename, :type => 'video/mp4', :disposition => 'inline', :url_based_filename => true) }
     end
   end
 
