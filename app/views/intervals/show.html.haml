@@ -9,11 +9,24 @@
 %div.grid_16#tag_container
   %ul
     -if !@applied_tags.blank?
-      -for tag in @applied_tags
-        -if @tags.include?(tag)
-          %li.general_tag.applied_tags
-        -else
-          %li.general_tag.unapplied_tags
-
+      -for tagging in @applied_tags
+        %li.tag.applied
+          =tagging.tag.name
     -else
       An Error with tagging occured
+
+.grid_16#phenomenon_container
+  %ul
+    -if !@applied_phenomenon.blank?
+      -for coding in @applied_phenomenon
+        -if @phenomenon.include?(coding.code)
+          %li.phenomenon.applied
+            =coding.code.name
+        -else
+          %li.phenomenon.unapplied
+            =coding.code.name
+        
+    -else
+      An Error with Coding occured
+     
+    
