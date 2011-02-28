@@ -1,4 +1,5 @@
-= render :partial => 'filter', :object => @camera_angles
+- @filters.each do |filter|
+	= render :partial => 'filter', :object => filter
 
 %ul.interval_list
 	- @intervals.each do |interval|
