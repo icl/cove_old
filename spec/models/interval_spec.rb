@@ -50,20 +50,27 @@ describe Interval do
 			result.should == everything
 		end
 	end
-	describe "duration_string" do
+	context "accessor functions" do
 		before(:each) do
-			@interval = Interval.new(:duration => 12060)
+			@interval = Interval.new(
+				:start_time => DateTime.parse("May 3 1988 4:55 AM"),
+				:duration => 12060
+			)
 		end
-		it "returns a HHhMMm string" do
-			@interval.duration_string.should == "03h21m"
+		describe "duration_string" do
+			it "returns a HHhMMm string" do
+				@interval.duration_string.should == "03h21m"
+			end
 		end
-	end
-	describe "day" do
-		before(:each) do
-			@interval = Interval.new(:start_time => DateTime.parse("May 3 1988 4:55 AM"))
+		describe "day" do
+			it "returns a stringy day" do
+				@interval.day.should == "05-03-88"
+			end
 		end
-		it "returns a stringy day" do
-			@interval.day.should == "05-03-88"
+		describe "start_time_of_day" do
+			it "returns a stringy time of day" do
+				@interval.start_time_of_day.should == " 4:55 AM"
+			end
 		end
 	end
 end
