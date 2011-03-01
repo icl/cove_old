@@ -799,8 +799,8 @@ input[type=search] {
 /* Style sheet for collections/index.html */
 .collections_title {
 	margin-top: 20px;
-	font-size: 14pt;
-	color: gold;
+	font-size: 28pt;
+	color: #0297c1;
 }
 
 .sortable_collection a { text-decoration: none; }
@@ -809,14 +809,14 @@ input[type=search] {
 	height: 50px; 
 	border: 1px; 
 	border-style: solid; 
-	border-color:silver;
+	border-color:#2f2f2f;
 	list-style: none;
 }
 
 .collection_cont {
     margin:20px 0px;
     padding:10px 0px;
-	background: #383838; 
+	background: #BBB; 
 	border-top: 2px solid gray; 
 	border-bottom: 2px solid gray; 
 	clear: both;
@@ -825,14 +825,14 @@ input[type=search] {
 
 .collection_box, .collection_box_date {
     height: 40px;
-    background: #2f2f2f;
+    background: #CCC;
     text-align: center;
     padding: 5px 0px;
 }
 
 .collection_box_date span {
 	
-    color: #ffd700;
+    color: #0297C1;
     font-size: .95em;
     font-weight: bold;
     /* text-transform: uppercase; */
@@ -871,7 +871,7 @@ input[type=search] {
 
 .collection_box span {
     /*display: block;*/
-    color: #ffd700;
+    color: #0297C1;
     font-size: .95em;
     font-weight: bold;
     /* text-transform: uppercase; */
@@ -1039,7 +1039,7 @@ h2 {
 
 h3 {
    font-size: 1.5em;
-   color: #00fa9a;
+   color: #0297C1;
    padding: 10px 0px 5px 0px;
 }
 
@@ -1057,7 +1057,7 @@ div.project_container li.inline {
 
 div.project_container h2 {
    font-size: 2em;
-   color: #00fa9a;
+   color: #0297C1;
    padding: 0px 0px 5px 0px;
 }
 
@@ -1091,7 +1091,7 @@ div.project_container .right-arw {border-color:transparent transparent transpare
 
 .note_list_container ul.note_list {
 	list-style-type: none; 
-	background-color: #555; 
+	background-color: #AAA; 
 	padding-top: 2px; 
 	padding-bottom: 2px; 
 	width: 580px; 
@@ -1100,6 +1100,8 @@ div.project_container .right-arw {border-color:transparent transparent transpare
 	-moz-border-radius: 4px;
 	border-radius: 4px;
 }
+
+.note_header { background-color: #CCC; }
 
 .note_list_container a.expand_all {
 	cursor: pointer; 
@@ -1120,6 +1122,21 @@ div.project_container .right-arw {border-color:transparent transparent transpare
 	cursor: pointer;
 }
 
+.project_note {
+	margin: 5px; padding: 2px; background-color: #777; color: #111;
+}
+
+.note_slide {
+	 display:inline; margin-left: -4px;
+}
+
+.note_controls {
+	float:right; display:inline; color: #555;
+}
+
+div.note_header .first{
+	width: 450px; display:inline;
+}
 
 /* favorites properties in "Projects" Page */
 
@@ -1161,8 +1178,11 @@ div.project_container .right-arw {border-color:transparent transparent transpare
 	height: 40px; 
 	text-align: center;
 	border: solid 1px white;
-	padding: 5px 0px;	
+	padding: 5px 0px;
+	margin-top: -6px;	
 	margin-right: -1px;
+	color: #333;
+	background-color: #CCC;
 }
 
 .project_row {
@@ -1170,11 +1190,11 @@ div.project_container .right-arw {border-color:transparent transparent transpare
 	border-top: solid 2px gray;
 	border-bottom: solid 2px gray;
 	height: 40px; 
-	background-color: #383838; 
+	background-color: #AAA; 
 }
 
 .project_collection {
-	background-color: #444;
+	background-color: #BBB;
 	margin-top: 15px;
 	-webkit-border-radius: 4px;
 	-moz-border-radius: 4px;
@@ -1197,7 +1217,7 @@ div.project_container .right-arw {border-color:transparent transparent transpare
   margin: 0 70px;
   position: absolute;
   top: 0;
-  background-color: #555;
+  background-color: #CCC;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
@@ -1221,4 +1241,5 @@ div.project_container .right-arw {border-color:transparent transparent transpare
   padding-top: 5px;
   height: 200px;
   width: 160px;
+  color: black;
 }

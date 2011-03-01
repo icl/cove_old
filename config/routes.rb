@@ -9,8 +9,6 @@ Cove::Application.routes.draw do
 
   resources :projects do
     resources :notes
-    resources :favorites, :controller => 'collections'
-    resources :queue, :controller => 'collections'
   end
   
   resources :collections
@@ -22,12 +20,12 @@ Cove::Application.routes.draw do
   # Project specific Collection Routes
   match 'projects/:id/add/:collection' => 'projects#add_collection', :as => :add_collection
   match 'projects/:id/remove/:collection' => 'projects#remove_collection', :as => :remove_collection
-  #match 'projects/:id/favorites' => 'collections#show', :as => :favorite_intervals
-  #match 'projects/:id/favorites/add/:interval' => 'collections#add', :as => :add_to_project_favorites
-  #match 'projects/:id/favorites/remove/:interval' => 'collections#remove', :as => :remove_from_project_favorites
-  #match 'projects/:id/queue' => 'collections#show', :as => :interval_queue
-  #match 'projects/:id/queue/add/:interval' => 'collections#add', :as => :add_to_project_queue
-  #match 'projects/:id/queue/remove/:interval' => 'collections#remove', :as => :remove_from_project_queue
+  match 'projects/:id/favorites' => 'collections#show', :as => :favorite_intervals
+  match 'projects/:id/favorites/add/:interval' => 'collections#add', :as => :add_to_project_favorites
+  match 'projects/:id/favorites/remove/:interval' => 'collections#remove', :as => :remove_from_project_favorites
+  match 'projects/:id/queue' => 'collections#show', :as => :interval_queue
+  match 'projects/:id/queue/add/:interval' => 'collections#add', :as => :add_to_project_queue
+  match 'projects/:id/queue/remove/:interval' => 'collections#remove', :as => :remove_from_project_queue
   # User specific Collection Routes
   match 'users/:id/favorites' => 'collections#show', :as => :user_favorites
   match 'users/:id/favorites/add/:interval' => 'collections#add', :as => :add_to_user_favorites

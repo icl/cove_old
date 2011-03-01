@@ -3,7 +3,7 @@ class ProjectsController < ApplicationController
   before_filter :require_nda
 
   def index
-    @projects = nil # Project.all
+    @projects = Project.all
     render "index"
   end
 
