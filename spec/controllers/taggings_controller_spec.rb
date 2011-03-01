@@ -3,6 +3,8 @@ require 'spec_helper'
 describe TaggingsController do
   before(:each) do
     @interval = Factory(:interval)
+    @user = Factory(:admin_user)
+    sign_in @user
   end
   describe "POST 'create'" do
     context "succeeded in saving to db" do
@@ -19,7 +21,7 @@ describe TaggingsController do
 
     context "failed to save tag" do
       before(:each) do
-        post :create, :format => :json, :interval_id => @interval
+        post :create, :format => :json, :interval_id => @interval, :tagging => {:name => nil}
       end
       it {should respond_with 422}
     end

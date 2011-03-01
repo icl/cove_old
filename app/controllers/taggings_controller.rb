@@ -4,6 +4,7 @@ class TaggingsController < ApplicationController
     @interval = Interval.find(params[:interval_id])
     @new_tag = Tagging.new(params[:tagging])
     @new_tag.interval = @interval
+    @new_tag.user = current_user
     @new_tag.save
     respond_with(@new_tag, :location => interval_path(params[:interval_id]))
   end
