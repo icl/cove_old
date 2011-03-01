@@ -6,7 +6,9 @@
 %div.grid_16#video_container
   = video_tag interval_path(@interval.id, :format => :m4v), :controls => true, :height => 400, :width => 950
 
-%div.grid_16#tag_container
+%div.grid_16#tag_container.interaction_container
+  %h4
+    ="Tags(#{@applied_tags.length})"
   %ul
     -if !@applied_tags.blank?
       -for tagging in @applied_tags
@@ -15,18 +17,13 @@
     -else
       An Error with tagging occured
 
-.grid_16#phenomenon_container
-  %ul
-    -if !@applied_phenomenon.blank?
-      -for coding in @applied_phenomenon
-        -if @phenomenon.include?(coding.code)
-          %li.phenomenon.applied
-            =coding.code.name
-        -else
-          %li.phenomenon.unapplied
-            =coding.code.name
-        
-    -else
-      An Error with Coding occured
-     
+.grid_16#phenomenon_container.interaction_container
+  %h4
+    ="Phenomenon(#{@applied_phenomenon.length})"
+  = display_coding_term(@applied_phenomenon, @unapplied_phenomenon)
+
+.grid_16#people_container.interaction_container
+  %h4
+    ="People(#{@applied_people.length})"
+  = display_coding_term(@applied_people, @unapplied_people)
     
