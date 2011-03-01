@@ -111,7 +111,7 @@ describe Interval do
 		end
 		describe "unique_days" do
 			it "returns the unique days" do
-				Interval.unique_days.should == ["04-03-89", "03-03-90"]
+				Interval.unique_days.should == ["03-04-89", "03-03-90"]
 			end
 		end
 		describe "unique_angles" do
