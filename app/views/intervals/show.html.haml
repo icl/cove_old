@@ -26,4 +26,15 @@
   %h4
     ="People(#{@applied_people.length})"
   = display_coding_term(@applied_people, @unapplied_people)
+
+:javascript
+  jQuery(document).ready(function()
+    $("#tag_container").delegate(".tag", "click", function(){
+      alert("I was clicked");
+    });
+
+    $("#people_container, #phenomenon_container").delegate(".code", "click", function(){
+      alert("I was clicked");
+    });
+  })
     
