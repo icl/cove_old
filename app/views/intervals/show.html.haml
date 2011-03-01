@@ -19,20 +19,18 @@
       -for tagging in @applied_tags
         %li.tag.applied
           =tagging.tag.name
-    -else
-      An Error with tagging occured
 
 
 
 .grid_16#phenomenon_container.interaction_container
   %h4
     ="Phenomenon(#{@applied_phenomenon.length})"
-  = display_coding_term(@applied_phenomenon, @unapplied_phenomenon)
+  = display_coding_term(@applied_phenomenon, @all_phenomenon)
 
 .grid_16#people_container.interaction_container
   %h4
     ="People(#{@applied_people.length})"
-  = display_coding_term(@applied_people, @unapplied_people)
+  = display_coding_term(@applied_people, @all_people)
 
 :javascript
   jQuery(document).ready(function(){
@@ -48,8 +46,9 @@
       $("body").append('<div class="flash alert"> Your Tag could not be submitted at this time </div>');  
     });
 
-    $("#new_tag_form").bind("ajax:success", function(){
+    $("#new_tag_form").bind("ajax:success", function(data, status, xhr){
       $("body").append('<div class="flash notice"> Your Tag has been added </div>');  
+      console.log(status);
     });
     
   })

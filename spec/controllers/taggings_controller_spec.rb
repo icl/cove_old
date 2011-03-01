@@ -9,13 +9,13 @@ describe TaggingsController do
   describe "POST 'create'" do
     context "succeeded in saving to db" do
       before(:each) do
-        Tagging.any_instance.expects(:save).returns(true)
-        post :create, :format => :json, :interval_id => @interval
+        post :create, :format => :json, :interval_id => @interval, 
+          :tagging => {:name => "test"}
       end
       it {should respond_with 201}
       it "should return the new object in the json body" do
         returned_json = JSON.parse(response.body)
-        returned_json["tagging"].should be
+        returned_json["codeName"].should be
       end
     end
 
