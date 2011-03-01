@@ -45,6 +45,8 @@ class Interval < ActiveRecord::Base
     filters << ['session_type', unique_session_types]
     filters << ['phrase_type', unique_phrase_types]
     filters << ['phrase_name' , unique_phrase_names]
+    filters << ['start_time', unique_days]
+    filters << ['people', ['Wayne', 'Oddette']]
     filters
   end
   
@@ -59,11 +61,11 @@ class Interval < ActiveRecord::Base
   end
 
 	def day
-		read_attribute(:start_time).strftime("%d-%m-%y")
+		start_time.strftime("%d-%m-%y") if start_time
 	end
 
 	def start_time_of_day
-		read_attribute(:start_time).strftime("%I:%M %p")
+		start_time.strftime("%I:%M %p") if start_time
 	end
 	
 	def self.unique_days
@@ -87,7 +89,7 @@ class Interval < ActiveRecord::Base
   end
 
   def path_prefix
-    return APP_CONFIG['file_path']
+    return File.join(Rails.root, 'private')
   end
   
   def sprite_file

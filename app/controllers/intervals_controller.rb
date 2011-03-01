@@ -11,11 +11,14 @@ class IntervalsController < ApplicationController
 
   def show
     @applied_tags= @interval.taggings
-    @unapplied_phenomenon = Code.phenomenon.unapplied(@interval.id)
+
+    #@unapplied_phenomenon = Code.phenomenon.unapplied(@interval.id)
     @applied_phenomenon = @interval.codings.phenomenon
+    @all_phenomenon = Code.phenomenon.all
 
     @applied_people = @interval.codings.people
-    @unapplied_people = Code.people.unapplied(@interval.id)
+    @all_people = Code.people.all
+    #@unapplied_people = Code.people.unapplied(@interval.id)
 
     respond_to do |format|
       format.sprite { send_file(@interval.sprite_file, :type => 'image/jpeg', :disposition => 'inline', :url_based_filename => true) }

@@ -11,7 +11,7 @@ class Tagging < ActiveRecord::Base
 
   #instance variables that will hold the name of the underlying tag info
   attr_accessor :name
-
+  validates_presence_of :name
   #the before hook that will create the necessary underlying tag
   before_validation :hookup_tag
 

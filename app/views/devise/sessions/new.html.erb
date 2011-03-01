@@ -1,7 +1,6 @@
-<div class="login_form grid_16" background="cove_logo.gif">
+<div class="login_form grid_16">
 
 <h1>Sign In Below</h1>
-<br>
 <br>
 
 <%=form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
@@ -16,19 +15,11 @@
 
     <br><p><%= f.check_box :remember_me %> <%= f.label :remember_me %></p></br>
   <% end -%>
+  <%= render :partial => "devise/shared/links" %>
 
 
 
   <br><p><%= f.submit "Sign In" %></p></br>
 <% end %>
-
-</div>
-
-<div class="grid_3">
-	
-	<br>
-	<br>
-
-<%= render :partial => "devise/shared/links" %>
 
 </div>
