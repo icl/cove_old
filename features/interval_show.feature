@@ -7,6 +7,7 @@ Feature: interval show
 		Given I am a regular user who is logged in
     Given an interval exists
     Given there has been a tag applied to the interval
+    Given There has been a phenomenon applied
     When I visit the interval show page
     
   Scenario: Basic title Scenario
@@ -14,4 +15,7 @@ Feature: interval show
 
   Scenario: Tag list
     Then I should see all the applied tags
+
+  Scenario: Phenomenon List
+    Then I should see all the applied phenomenon
     
