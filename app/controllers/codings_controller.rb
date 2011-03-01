@@ -1,16 +1,21 @@
-class TaggingsController < ApplicationController
+class CodingsController < ApplicationController
+  before_filter :authenticate_user!
+  before_filter :require_nda
   respond_to :html, :json
   def create
     @interval = Interval.find(params[:interval_id])
-    @new_tag = Tagging.new(params[:tagging])
-    @new_tag.interval = @interval
-    @new_tag.user = current_user
-    if @new_tag.save
+    @new_coding = Coding.new(params[:coding])
+    @new_coding.interval = @interval
+    @new_coding.user = current_user
+    if @new_coding.save
       respond_with do |format|
         format.html {redirect_to interval_path(params[:interval_id])}
         format.json do
           render :json => {"status" => "success", 
-            "tagName" => @new_tag.tag.name, "tagging" => @new_tag.to_json}, :status => 201
+            "codeName" => @new_coding.code.name, 
+            "codeID" => @new_coding.code.id,
+            "codeType" => @new_coding.code.coding_type,
+            "coding" => @new_coding.to_json}, :status => 201
         end
       end
     else
@@ -24,7 +29,7 @@ class TaggingsController < ApplicationController
   end
 
   def show
-    @tags = Tagging.tags_with_same_name(params[:id])
-    respond_with(@tags)  
+    @code = Coding.find(params[:id])
+    respond_with(@code)  
   end
 end

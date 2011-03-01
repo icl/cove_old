@@ -1,0 +1,34 @@
+@import "compass";
+$applied_color : #C96C7C;
+
+
+.interaction_container ul li{
+  list-style: none;
+  float: left;
+}
+
+.code, .tag{
+  width: 180px;
+  height: 30px;
+  margin: 5px;
+  text-align: center;
+  padding-top: 15px;
+  color: black;
+}
+
+.applied{
+  background-color: $applied_color;
+}
+.unapplied{
+  background-color: ($applied_color - 100);
+}
+  
+#tagging_name{
+  width: 400px;
+  height: 20px;
+  font-size: 18pt;
+  @include border-radius(5px);
+  border: 1px solid black;
+  padding: 5px;
+}
+

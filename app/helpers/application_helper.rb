@@ -23,13 +23,15 @@ module ApplicationHelper
     image_src = "http://www.gravatar.com/avatar/#{hash}"
   end
 
-  def display_coding_term(applied, unapplied)
+  def display_coding_term(applied=[], all=[])
     html = "<ul>"
     applied.each do |term|
-      html << %Q[<li class="code applied"> #{term.code.name} </li>]
+      if all.delete(term.code)
+        html << %Q[<li class="code applied" data-codingType="#{term.code.coding_type}" data-rails_object_id="#{term.code.id}"> #{term.code.name} </li>]
+      end
     end
-    unapplied.each do |term|
-      html << %Q[<li class="code unapplied"> #{term.code.name} </li>]
+    all.each do |term|
+      html << %Q[<li class="code unapplied" data-codingType= "#{term.coding_type}" data-rails_object_id="#{term.id}"> #{term.name} </li>]
     end
     html << "</ul>"
     return html.html_safe

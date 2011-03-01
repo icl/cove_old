@@ -1,14 +1,16 @@
- <ol class="browse_cont">
-<li class="grid_2 browse_box_name"><%= link_to raw("Session <span>")+interval.id.to_s()+raw("</span>"), interval %></span></li> 
-      <li class="grid_3"><div style="width: 160px; height: 90px; background: #ccc;">&nbsp;</div></li> 
-      <li class="grid_2 browse_box">Camera Angle <span><%= interval.camera_angle %></span></li> 
-      <li class="grid_2 browse_box">Session Type <span class="define_me"><%= interval.session_type  %></span></li> 
+<ul class="browse_cont">
+	  <li class="grid_2 browse_box_name"><%= link_to raw("Session <span>")+interval.id.to_s()+raw("</span>"), interval %></span></li> 
+      <li class="grid_3 thumbnail_box" id="thumb_<%= interval.id.to_s() %>" data-interval="<%= interval.id.to_s() %>">
+         <img src ="<%=interval_path(:id => interval.id, :format => :jpg) %>" width ="160" height ="90" />
+      </li>
+      <li class="grid_2 browse_box"><h4>Camera Angle</h4><span><%= interval.camera_angle %></span></li> 
+      <li class="grid_2 browse_box"><h4>Session Type</h4> <span class="define_me"><%= interval.session_type  %></span></li> 
       <li class="grid_2 browse_box_date">
 		<% if !interval.start_time.blank?%>
 		<%= interval.start_time.strftime("%A") %>
 		<span><b>
 		<%= interval.start_time.strftime("%b") %> 
-		<%= interval.start_time.strftime("%d") %>,</b>
+		<%= interval.start_time.strftime("%d") %></b>
 		<%= interval.start_time.strftime("%Y") %>
 		</span>
 		<%= interval.start_time.strftime("%I")%> :
@@ -26,4 +28,4 @@
       </li> 
       <li class="grid_1"><%= link_to raw("<div class=\"arrow\"></div>"), interval %></li>
       <br class="clear">
-   </ol> 
+</ul> 
