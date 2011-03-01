@@ -40,5 +40,14 @@ describe Interval do
 			result = Interval.search(:query => "aa", :phrase_name => "pc")
 			result.length.should == 1
 		end
+		it "returns nothing when appropriate" do
+			result = Interval.search(:query => "akjlnsdlfknasldfkjnalsdjkfnalsdjf")
+			result.length.should == 0
+		end
+		it "returns everything when given no search parameters" do
+			result = Interval.search({})
+			everything = Interval.all()
+			result.should == everything
+		end
 	end
 end
