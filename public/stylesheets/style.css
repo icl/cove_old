@@ -294,27 +294,44 @@ button {  width: auto; overflow: visible; }
 /* Header */
 
 .top_nav ul li {
+	display: inline;
+	line-height:1.5em;
 	font-size: 10pt;
+	margin-left: 10px;
+	margin-right: 20px;
+}
+
+.top_nav li {
+	margin-top: 5px;
+}
+
+a {
+	text-decoration: none !important;
+}
+
+a, a:visited, a:active {
+	text-decoration: none;
 }
 
 body {
-	color: #888888;
-	background: #E5E5E5;
+	color: #gray;
+	background: #EEEEEE;
 }
 
 
 header {
 	font-size: 12pt;
-	background: #E5E5E5;
+	background: #EEEEEE;
 }
 
 header h1 {
 	font-size: 36pt;
-	color: #FFFFFF;
+	color: #gray;
 }
 
 .logo {
-	margin-top: 10px;
+	margin-left: 10px;
+	margin-top: 5px;
 }
 
 .user_avatar img {
@@ -324,7 +341,7 @@ header h1 {
 }
 
 .user_links ul {
-	background: #E5E5E5;
+	background: #EEE;
 	height: 40px;
 	font-size: 10pt;
 	margin-left: 0;
@@ -339,7 +356,7 @@ header h1 {
 .user_links ul li {
 	margin-left: 0;
 	padding: 0px 7px;
-	border-left: 2px solid gray;
+	border-left: 1px solid gray;
 	list-style: none;
 	display: block;
 	float: left;
@@ -358,6 +375,18 @@ header h1 {
 	
 }
 
+.main_links {
+	border-top: 2px solid #d2d2d2;
+	margin-bottom: 10px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	background: #F4F4F4;
+}
+
+.search_form {
+	margin-right: 10px;
+	float: right;
+}
 
 .search_holder {
 	width: 200px;
@@ -365,18 +394,19 @@ header h1 {
 }
 
 .content {
-	min-height: 50px;
+	min-height: 500px;
 }
 
 footer h5 {
-	color: #FFFFFF;
+	color: #gray;
 }
 
 .copyright {
 	text-align: right;
 }
 
-.login_form {
+.login_form h1{
+	margin-top: 20px;
 }
 
 .login_form h1 {

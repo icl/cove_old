@@ -1,7 +1,6 @@
-<div class="search_box">
-<%= form_tag intervals_path(),   :method => 'get' %>
+<%= form_tag intervals_path(),   :method => 'get', :class => 'search_form' %>
 
 <%= text_field_tag :query , params[:query], :id => 'search_box', :type => 'search'  %>
 <%= submit_tag 'Search', :name => nil %>
 </form>
-</div>
+
