@@ -15,7 +15,7 @@ describe IntervalsController do
     it {should render_template('show')}
     it {assigns[:applied_tags].should == @interval.taggings}
     it {assigns[:applied_phenomenon].should == @interval.codings.phenomenon}
-    it {assigns[:unapplied_phenomenon].should == Code.unapplied(@interval.id).phenomenon}
+    it {assigns[:all_phenomenon].should == Code.unapplied(@interval.id).phenomenon}
   end
     
   describe "GET 'new'" do

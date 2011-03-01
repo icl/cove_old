@@ -1,44 +1,7 @@
 /* Definition Function */
 
-
-
-
 /***********************************/
 /* JS adjustments for show.html */
-
-
-		$(document).ready(function(){  //show more info
-			$(".show_moreinfo_button").click(function(){
-				$(".show_more_data").slideToggle("slow");
-			});
-		});
-		
-		$(document).ready(function(){  //click on add for phenomena
-			$(".show_add_phen_button").click(function(){
-				$(".show_add_phen_list").slideToggle("slow");
-				$(".show_applied_phen").remove();
-				$(".show_codingterms_people").remove();
-				$(".show_applied_people").remove();
-			});
-		});
-		
-		$(document).ready(function(){  //click on add for people
-			$(".show_add_people_button").click(function(){
-				$(".show_add_people_list").slideToggle("slow");
-				$(".show_applied_phen").remove();
-				$(".show_codingterms_phen").remove();
-				$(".show_applied_people").remove();
-			});
-		});
-		
-		$(document).ready(function(){  //click on add for tags
-			$(".show_add_tags_button").click(function(){
-				$(".show_tags_create").slideToggle("slow");
-				$(".show_applied_tags").remove();
-			});
-		});
-	
-
 
 /* end style adjustments for show.html */
 /***************************************/
@@ -138,7 +101,30 @@ $(document).ready(function(){
     });
 
     $("#people_container, #phenomenon_container").delegate(".code", "click", function(){
-      alert("I was clicked");
+      var name = $(this).text().trim();
+      var coding_type = $(this).attr("data-codingType");
+      $.ajax({
+        url: document.URL + "/codings.json",
+        type: 'POST',
+        dateType: 'JSON',
+        data: {"coding": {"name":name, "coding_type":coding_type}},
+        beforeSend: function(xhr) {
+          xhr.setRequestHeader('X-CSRF-Token', $('meta[name=csrf-token]').attr('content'));
+        },
+        failure:function(){
+          $("body").append('<div class="flash alert"> Your Tag could not be submitted at this time </div>');
+        },
+        success: function(data, status, xhr){
+          console.log(data);
+          console.log(status);
+          console.log(xhr);
+          var new_phenomenon = $.parseJSON(xhr.responseText);
+          console.log(new_phenomenon);
+
+          //change the color of the tag
+
+        }
+      });
     });
 
     $("#new_tag_form").bind("ajax:error", function(){
@@ -147,7 +133,7 @@ $(document).ready(function(){
 
     $("#new_tag_form").bind("ajax:success", function(data, xhr, status){
       $("body").append('<div class="flash notice"> Your Tag has been added </div>');  
-      var newTagName = xhr["tagName"]
+      var newTagName = xhr["tagName"];
       console.log("tag successfully added" + newTagName);
 
       //append the new tag to the tag list

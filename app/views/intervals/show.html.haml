@@ -28,11 +28,18 @@
 
 .grid_16#phenomenon_container.interaction_container
   %h4
-    ="Phenomenon(#{@applied_phenomenon.length})"
+    Phenomenon(
+    %span#phenomena_count
+      =@applied_phenomenon.length
+    )
+    
   = display_coding_term(@applied_phenomenon, @all_phenomenon)
 
 .grid_16#people_container.interaction_container
   %h4
-    ="People(#{@applied_people.length})"
+    People(
+    %span#people_count
+      =@applied_people.length
+    )
   = display_coding_term(@applied_people, @all_people)
 

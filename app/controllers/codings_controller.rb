@@ -1,4 +1,6 @@
 class CodingsController < ApplicationController
+  before_filter :authenticate_user!
+  before_filter :require_nda
   respond_to :html, :json
   def create
     @interval = Interval.find(params[:interval_id])
@@ -10,7 +12,9 @@ class CodingsController < ApplicationController
         format.html {redirect_to interval_path(params[:interval_id])}
         format.json do
           render :json => {"status" => "success", 
-            "codeName" => @new_coding.code.name, "tagging" => @new_coding.to_json}, :status => 201
+            "codeName" => @new_coding.code.name, 
+            "codeID" => @new_coding.code.id,
+            "coding" => @new_coding.to_json}, :status => 201
         end
       end
     else

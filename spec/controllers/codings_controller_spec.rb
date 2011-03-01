@@ -17,12 +17,14 @@ describe CodingsController do
       it "should return the new object in the json body" do
         returned_json = JSON.parse(response.body)
         returned_json["codeName"].should be
+        returned_json["codeID"].should be
+        returned_json["coding"].should be
       end
     end
 
     context "failed to save tag" do
       before(:each) do
-        post :create, :format => :json, :interval_id => @interval, :tagging => {:name => nil}
+        post :create, :format => :json, :interval_id => @interval, :coding=> {:name => nil}
       end
       it {should respond_with 422}
     end
