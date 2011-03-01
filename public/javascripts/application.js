@@ -40,21 +40,6 @@
 	
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* end style adjustments for show.html */
 /***************************************/
 
@@ -139,7 +124,7 @@ $(document).ready(function(){
 	$(".fauxselect_button").live("click openme", function(){
 		$(this).parent().find(".fauxselect").toggle("blind",{},"fast");
 	});
-	$(".fauxselect").hide();
+  $(".fauxselect").hide();
 });
 
 
