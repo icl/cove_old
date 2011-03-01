@@ -19,5 +19,6 @@ Factory(:tagging, :name => "Sonification")
 Factory(:tagging, :name => "Imagery")
 Factory(:tagging, :name => "Props")
 
-interval = Factory(:interval,  :taggings => [marking, riffing, sketching])
+#create the interval factory
+interval = Factory(:interval, :taggings => [marking, riffing, sketching])
 
