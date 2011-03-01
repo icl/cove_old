@@ -33,7 +33,7 @@
     
     $('.thumbnail_box').live('mouseover', function(event) {        
         if( !$(this).hasClass("thumb_loaded")) {
-            this.style.backgroundImage="url(/thumbs/large_2010-11-01_Wayne_LabanTheatre_12-54-47_Session1_sprite.jpg)";
+            this.style.backgroundImage="url(/thumbs/2010-10-27_Wayne_12-07-28_Session1_sprite.jpg)";
             $(this).addClass("thumb_loaded");
         }
         //console.warn("entering thumbnail box handler");
