@@ -9,6 +9,9 @@
 %div.grid_16#tag_container.interaction_container
   %h4
     ="Tags(#{@applied_tags.length})"
+  %div.tag_form
+    -form_for @tag , :as => :tagging, :url => interval_taggings_path(@interval, :format => :json)  do |f|
+      =f.text_field :name
   %ul
     -if !@applied_tags.blank?
       -for tagging in @applied_tags
@@ -16,6 +19,8 @@
           =tagging.tag.name
     -else
       An Error with tagging occured
+
+
 
 .grid_16#phenomenon_container.interaction_container
   %h4
@@ -28,7 +33,7 @@
   = display_coding_term(@applied_people, @unapplied_people)
 
 :javascript
-  jQuery(document).ready(function()
+  jQuery(document).ready(function(){
     $("#tag_container").delegate(".tag", "click", function(){
       alert("I was clicked");
     });
