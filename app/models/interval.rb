@@ -55,21 +55,21 @@ class Interval < ActiveRecord::Base
 	end
 	
 	def duration_string
-	  hours = (duration / (60*60)).floor
+		hours = (duration / (60*60)).floor
 		minutes = ((duration - hours*60*60)/60).floor
 		sprintf("%02dh%02dm", hours, minutes)
-  end
+	end
 
 	def day
-		start_time.strftime("%d-%m-%y") if start_time
+		start_time.strftime("%m-%d-%y") if start_time
 	end
 
 	def start_time_of_day
-		start_time.strftime("%I:%M %p") if start_time
+		start_time.strftime("%l:%M %p") if start_time
 	end
 	
 	def self.unique_days
-		find(:all, :select => "start_time", :order => "start_time").map{|int| [int.day]}.uniq.compact
+		find(:all, :select => "start_time", :order => "start_time").map{|int| int.day}.uniq.compact
 	end
 
 	def self.unique_angles
@@ -84,9 +84,9 @@ class Interval < ActiveRecord::Base
 	  return group(:phrase_name).collect { |interval| interval.phrase_name}.compact
 	end
 
-  def self.unique_session_types
-    return group(:session_type).collect { |interval| interval.session_type}.compact
-  end
+	def self.unique_session_types
+		return group(:session_type).collect { |interval| interval.session_type}.compact
+	end
 
   def path_prefix
     return File.join(Rails.root, 'private')
