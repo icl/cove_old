@@ -42,7 +42,9 @@
 <body>
 	<header class="container_16">
 			<%if current_user %>
-			<%= link_to image_tag("cove_logo.gif", :class=> "grid_2 logo"), root_path%>
+			<div class= "logo grid_2">
+			<%= link_to image_tag("cove_logo.gif", :class=> "logo_image grid_2"), root_path%>
+			</div>
 				<div class="grid_14 user_links">
 					<ul>
 						<li class="first user_avatar"><%=image_tag gravatar_url_for "ethan.soutar.rau@gmail.com"%></li>
@@ -55,7 +57,7 @@
 					</ul>
 				</div>
 			
-				<nav class="top_nav container_16">
+				<nav class="top_nav">
 					<ul class="grid_16 main_links">
 						<li class=><%= link_to "Home", root_path %></li>
 						<li class=><%= link_to "Browse", intervals_path %></li>
