@@ -294,27 +294,44 @@ button {  width: auto; overflow: visible; }
 /* Header */
 
 .top_nav ul li {
-	font-size: 10pt;
+	display: inline;
+	line-height:1.5em;
+	font-size: 11pt;
+	margin-left: 10px;
+	margin-right: 20px;
+}
+
+.top_nav li {
+	margin-top: 5px;
+}
+
+a {
+	text-decoration: none !important;
+}
+
+a, a:visited, a:active {
+	text-decoration: none;
 }
 
 body {
-	color: #888888;
-	background: #E5E5E5;
+	color: #gray;
+	background: #EEEEEE;
 }
 
 
 header {
 	font-size: 12pt;
-	background: #E5E5E5;
+	background: #EEEEEE;
 }
 
 header h1 {
 	font-size: 36pt;
-	color: #FFFFFF;
+	color: #gray;
 }
 
 .logo {
-	margin-top: 10px;
+	margin-left: 9px;
+	margin-top: 5px;
 }
 
 .user_avatar img {
@@ -324,10 +341,11 @@ header h1 {
 }
 
 .user_links ul {
-	background: #E5E5E5;
+	background: #EEE;
 	height: 40px;
 	font-size: 10pt;
 	margin-left: 0;
+	margin-right: 5px;
 	padding-top: 10px;
 	padding-bottom: 10px;
 	display: inline;
@@ -339,7 +357,7 @@ header h1 {
 .user_links ul li {
 	margin-left: 0;
 	padding: 0px 7px;
-	border-left: 2px solid gray;
+	border-left: 1px solid gray;
 	list-style: none;
 	display: block;
 	float: left;
@@ -358,6 +376,18 @@ header h1 {
 	
 }
 
+.main_links {
+	border-top: 2px solid #d2d2d2;
+	margin-bottom: 10px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	background: #E0E0E0;
+}
+
+.search_form {
+	margin-right: 10px;
+	float: right;
+}
 
 .search_holder {
 	width: 200px;
@@ -365,18 +395,19 @@ header h1 {
 }
 
 .content {
-	min-height: 50px;
+	min-height: 500px;
 }
 
 footer h5 {
-	color: #FFFFFF;
+	color: #gray;
 }
 
 .copyright {
 	text-align: right;
 }
 
-.login_form {
+.login_form h1{
+	margin-top: 20px;
 }
 
 .login_form h1 {
@@ -458,7 +489,7 @@ input[type=search] {
 .definition_holder {
 	max-height: 400px;
 	max-width: 200px;
-	background: #383838;
+	background: rgba(56,56,56, .9);
 	border: 1px solid gray;
 	display: block;
 	overflow: auto;
@@ -473,6 +504,7 @@ input[type=search] {
 }
 
 .definition_holder p {
+	color: white;
 	margin-top: 10px;
 	margin-bottom: 10px;
 	margin-left: 5px;
@@ -760,19 +792,21 @@ input[type=search] {
 /* Style adjustments for intervals.index.html */
 
 .browse_cont {
+	background: #E0E0E0;
     margin:20px 0px;
     padding:20px 0px;
-	clear: both; 
+	clear: both;
+	 list-style-type: none; 
 	}
  .browse_box, .browse_box_date {
     height: 80px;
-    background: #2f2f2f;
+    background: #5E5E5E;
     text-align: center;
     padding: 5px 0px;
  }
  .browse_box span {
     display: block;
-    color: #ffd700;
+    color: white;
     font-size: 1.1em;
     font-weight: bold;
     /* text-transform: uppercase; */
@@ -780,7 +814,7 @@ input[type=search] {
  }
  .browse_box_date span {
     display: block;
-    color: #ffd700;
+    color: white;
     font-size: 1.1em;
     font-weight: bold;
     /* text-transform: uppercase; */
@@ -801,7 +835,6 @@ input[type=search] {
     margin-bottom: 7px;
  }
  ul.browse_box_ul li.alt {
-    background: #999;
     text-align: center;
     padding: 2px 0px;
  }
@@ -831,7 +864,7 @@ input[type=search] {
     color: #000;
  }
 .arrow {
-	border-color: transparent transparent transparent #ffd700;
+	border-color: transparent transparent transparent #0297C1;
 	border-style:solid;
 	border-width:20px;
 	width:0;
@@ -839,6 +872,14 @@ input[type=search] {
 	margin-top: 25px;
 }
 
+.interval_list {
+	 list-style-type: none;
+}
+
+.browse_box h4 {
+	font-size: 10px;
+	color: white;
+}
 
 
 

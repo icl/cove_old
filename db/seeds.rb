@@ -10,6 +10,7 @@ Factory(:regular_user)
 Factory(:admin_user)
 Factory(:first_time_user)
 
+
 marking = Factory(:tagging, :name => "Marking")
 riffing = Factory(:tagging, :name => "Riffing")
 sketching = Factory(:tagging, :name => "Sketching")
@@ -20,4 +21,5 @@ Factory(:tagging, :name => "Imagery")
 Factory(:tagging, :name => "Props")
 
 interval = Factory(:interval,  :taggings => [marking, riffing, sketching])
+
 
