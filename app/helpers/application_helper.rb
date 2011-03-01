@@ -23,7 +23,7 @@ module ApplicationHelper
     image_src = "http://www.gravatar.com/avatar/#{hash}"
   end
 
-  def display_coding_term(applied, unapplied)
+  def display_coding_term(applied=[], unapplied=[])
     html = "<ul>"
     applied.each do |term|
       html << %Q[<li class="code applied"> #{term.code.name} </li>]
