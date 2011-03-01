@@ -4,27 +4,24 @@ class IntervalsController < ApplicationController
     before_filter :find_interval, :only => [:show, :update, :edit]
     
 	def index
-    #fields of the filters
-		@camera_angles = Interval.unique_angles
-		@days = Interval.unique_days
-		@session_types = Interval.unique_session_types
-		@phrase_types = Interval.unique_phrase_types
-		@phrase_names = Interval.unique_phrase_names
-
-    #search paradigm for the Intervals
-    search = Interval.search_with params
-    @intervals = search.results
-    @total_count = search.total
-
+    @filters = Interval.filters
+    @intervals = Interval.search(params)
     render 'index'
   end
 
   def show
-    @tags = @interval.taggings
-    @phenomenon = @interval.codings.phenomenon
-    @people = @interval.codings.people
+    @applied_tags= @interval.taggings
 
-    render "show"
+    @unapplied_phenomenon = Code.phenomenon.unapplied(@interval.id)
+    @applied_phenomenon = @interval.codings.phenomenon
+
+    @applied_people = @interval.codings.people
+    @unapplied_people = Code.people.unapplied(@interval.id)
+
+    respond_to do |format|
+      format.html {  render "show"}
+      format.m4v { send_file(@interval.filename, :type => 'video/mp4', :disposition => 'inline', :url_based_filename => true) }
+    end
   end
 
   def new
