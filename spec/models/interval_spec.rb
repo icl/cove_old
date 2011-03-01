@@ -58,4 +58,12 @@ describe Interval do
 			@interval.duration_string.should == "03h21m"
 		end
 	end
+	describe "day" do
+		before(:each) do
+			@interval = Interval.new(:start_time => DateTime.parse("May 3 1988 4:55 AM"))
+		end
+		it "returns a stringy day" do
+			@interval.day.should == "05-03-88"
+		end
+	end
 end

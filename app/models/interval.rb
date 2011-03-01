@@ -61,7 +61,7 @@ class Interval < ActiveRecord::Base
 	end
 
 	def day
-		start_time.strftime("%d-%m-%y") if start_time
+		start_time.strftime("%m-%d-%y") if start_time
 	end
 
 	def start_time_of_day
