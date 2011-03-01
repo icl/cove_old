@@ -84,9 +84,9 @@ class Interval < ActiveRecord::Base
 	  return group(:phrase_name).collect { |interval| interval.phrase_name}.compact
 	end
 
-  def self.unique_session_types
-    return group(:session_type).collect { |interval| interval.session_type}.compact
-  end
+	def self.unique_session_types
+		return group(:session_type).collect { |interval| interval.session_type}.compact
+	end
 
 
 

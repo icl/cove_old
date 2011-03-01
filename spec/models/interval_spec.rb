@@ -80,4 +80,59 @@ describe Interval do
 			end
 		end
 	end
+	context "lists of unique things" do
+		before(:each) do
+			testIntervals = [
+				{
+					:start_time => DateTime.parse("March 3 1990 1:33 PM PST"),
+					:camera_angle => "cc",
+					:phrase_name => "pna",
+					:phrase_type => "pta",
+					:session_type => "sta",
+				},
+				{
+					:start_time => DateTime.parse("March 3 1990 2:33 PM PST"),
+					:camera_angle => "cb",
+					:phrase_name => "pnb",
+					:phrase_type => "ptb",
+					:session_type => "stb",
+				},
+				{
+					:start_time => DateTime.parse("March 4 1989 2:33 PM PST"),
+					:camera_angle => "ca",
+					:phrase_name => "pnb",
+					:phrase_type => "ptb",
+					:session_type => "stb",
+				},
+			]
+			testIntervals.each { | properties |
+				Interval.new(properties).save()
+			}
+		end
+		describe "unique_days" do
+			it "returns the unique days" do
+				Interval.unique_days.should == ["04-03-89", "03-03-90"]
+			end
+		end
+		describe "unique_angles" do
+			it "returns the unique camera_angles" do
+				Interval.unique_angles.should == ["ca", "cb", "cc"]
+			end
+		end
+		describe "unique_phrase_types" do
+			it "returns the unqiue phrase types" do
+				Interval.unique_phrase_types.should == ["pta", "ptb"]
+			end
+		end
+		describe "unique_phrase_names" do
+			it "returns the unique phrase names" do
+				Interval.unique_phrase_names.should == ["pna", "pnb"]
+			end
+		end
+		describe "unique_session_types" do
+			it "returns the unique session types" do
+				Interval.unique_session_types.should == ["sta", "stb"]
+			end
+		end
+	end
 end
