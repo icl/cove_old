@@ -916,6 +916,12 @@ input[type=search] {
 	font-size: 14px;
 }
 
+a.destroy_collection {
+	color: #CD1A70;
+	float: right;
+	text-decoration: none;
+}
+
 /* end style adjustments for collections */
 /***********************************/
 
