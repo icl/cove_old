@@ -14,6 +14,7 @@ class CodingsController < ApplicationController
           render :json => {"status" => "success", 
             "codeName" => @new_coding.code.name, 
             "codeID" => @new_coding.code.id,
+            "codeType" => @new_coding.code.coding_type,
             "coding" => @new_coding.to_json}, :status => 201
         end
       end

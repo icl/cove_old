@@ -122,7 +122,13 @@ $(document).ready(function(){
           console.log(new_phenomenon);
 
           //change the color of the tag
+          
+          var list_element = $("data-rails_object_id[" + new_phenomenon["dataID"] + "]");
+          list_element.removeClass("unapplied").addClass("applied");
 
+          //update the count
+          var count = $("#" + new_phenomenon['codeType'] + "_count");
+          count.text(parseInt(count.text()) + 1);
         }
       });
     });

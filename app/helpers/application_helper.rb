@@ -31,7 +31,7 @@ module ApplicationHelper
       end
     end
     all.each do |term|
-      html << %Q[<li class="code unapplied" data-codingType= "#{term.coding_type}" data-rails_object_id="#{term.id}"> #{term.name} </li>]
+      html << %Q[<li class="code unapplied" data-codingType= "#{term.coding_type}" data-rails_object_id="#{term.code.id}"> #{term.name} </li>]
     end
     html << "</ul>"
     return html.html_safe
