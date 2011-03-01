@@ -7,7 +7,7 @@
 	end %>
 <li class="project_note">
 <div class="note_header">
-	<div class="first note_expand<%= "able" if max == 60 || disp =~ /\n/ %>"><%= disp[0, max].gsub(/\n/,'<br class="note_br" />').html_safe %></div>
+	<div class="first_note note_expand<%= "able" if max == 60 || disp =~ /\n/ %>"><%= disp[0, max].gsub(/\n/,'<br class="note_br" />').html_safe %></div>
 	<% if max == 60 %>
 	<div class="note_slide note_expandable">
 			<%= "&nbsp;".html_safe if disp[60] == 32 %>

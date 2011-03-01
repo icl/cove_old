@@ -1,4 +1,6 @@
-<%= simple_form_for(@project) do |form| %>
-	
-	
+<%= simple_form_for @project do |form| %>
+	<%= form.input :name %>
+	<%= form.input :desc, :label => "Description" %>
+	<%= form.hidden_field :user_id, :value => current_user.id %>	
+	<%= form.submit 'Submit' %>
 <% end %>

@@ -806,11 +806,18 @@ input[type=search] {
 .sortable_collection a { text-decoration: none; }
 
 .sortable_collection li {
-	height: 50px; 
+	height: 110px; 
 	border: 1px; 
 	border-style: solid; 
 	border-color:#2f2f2f;
 	list-style: none;
+	margin: 20px 0px;
+	background-color: #BBB;
+	cursor: move;
+}
+
+.collection_sortable {
+	margin-top: 30px;
 }
 
 .collection_cont {
@@ -820,14 +827,13 @@ input[type=search] {
 	border-top: 2px solid gray; 
 	border-bottom: 2px solid gray; 
 	clear: both;
-	cursor: move;
 }
 
 .collection_box, .collection_box_date {
-    height: 40px;
+    height: 90px;
+	margin: 10px;
     background: #CCC;
     text-align: center;
-    padding: 5px 0px;
 }
 
 .collection_box_date span {
@@ -840,11 +846,11 @@ input[type=search] {
 }
 
 .collection_box_name {
-    height: 40px;
+    height: 90px;
     background: #0297c1;
     color: #fff;
     text-align: center;
-    padding: 5px 0px;
+	margin-top: 10px;
  }
 
 .collection_box_name a {
@@ -866,7 +872,7 @@ input[type=search] {
  }
  
 .collection_thumbnail {
-	width: 120x; height: 50px; background: #ccc;
+	width: 160px; height: 90px; background: #999; margin-top: 10px;
 }
 
 .collection_box span {
@@ -878,13 +884,36 @@ input[type=search] {
     padding: 2px 0px;
 }
 
+.collection_box .content,
+.collection_box_name .content,
+.collection_box_date .content {
+	margin-top: 20px;
+}
+
 .arrow-collect {
 	border-color: transparent transparent transparent #ffd700;
 	border-style:solid;
 	border-width:20px;
 	width:0;
 	height:0;
-	margin-top: 5px;
+	margin-top: 35px;
+}
+
+.collection_controls {
+	margin-right: -20px;
+	color:#777;
+	float: right; 
+	padding-top: 45px; 
+	font-size: 15px;
+}
+
+
+.collection_description {
+	padding-left: 25px;
+	color: #444;
+	font-weight: 600;
+	margin-bottom: 10px;
+	font-size: 14px;
 }
 
 /* end style adjustments for collections */
@@ -1134,7 +1163,7 @@ div.project_container .right-arw {border-color:transparent transparent transpare
 	float:right; display:inline; color: #555;
 }
 
-div.note_header .first{
+.first_note{
 	width: 450px; display:inline;
 }
 
@@ -1172,6 +1201,10 @@ div.note_header .first{
 	float: left;
 
 	cursor: pointer;
+}
+
+.project_form_header {
+	padding-bottom: 12px;
 }
 
 .project_row_div {

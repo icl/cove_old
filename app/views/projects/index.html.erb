@@ -36,7 +36,9 @@
 <% else %>
 
 <h2>You have no projects.</h2>
-<div>Please click <%= link_to 'here', new_project_path %> to create a new project</div>
+<div class="project_form_header">Please create a new project.</div>
+
+<%= render :partial => 'form' %>
 
 <% end %>
 </div>

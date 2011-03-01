@@ -13,15 +13,15 @@
 	
 		<% YAML.load(@collection.interval_priorities).keys.sort!{|a,b| a.to_i <=> b.to_i}.each do |priority| %><% interval = Interval.find(YAML.load(@collection.interval_priorities)[priority.to_s]) %>
 		
-		<li id="<%= interval.id %>" class="ui-state-default interval_row collection_cont">
-			<div class="grid_1">
+		<li id="<%= interval.id %>" class="ui-state-default interval_row">
+			<div class="grid_1 collection_sortable">
 				<%= link_to "∧", prioritize_interval_path(:id => @collection.id, :interval => interval.id, :direction => 'up'), :class => "priority_link", :direction => "up", :id => interval.id %><br />--<br /><%= link_to "∨", prioritize_interval_path(:id => @collection.id, :interval => interval.id, :direction => 'down'), :class => "priority_link", :direction => "down" %>
 			</div>
-			<div class="grid_2 collection_box_name">Session <br /><span><%= interval.session_number.to_s %></span></div>
-			<div class="grid_2 collection_thumbnail">&nbsp;</div>
-			<div class="grid_2 collection_box">Camera Angle: <br /><span><%= interval.camera_angle %></span></div>
-			<div class="grid_2 collection_box">Session Type: <br /><span><%= interval.session_type %></span></div>
-			<div class="grid_2 collection_box_date">
+			<div class="grid_2 collection_box_name"><div class="content">Session <br /><span><%= interval.session_number.to_s %></span></div></div>
+			<div class="grid_3 collection_thumbnail">&nbsp;</div>
+			<div class="grid_2 collection_box"><div class="content">Camera Angle: <br /><span><%= interval.camera_angle %></span></div></div>
+			<div class="grid_2 collection_box"><div class="content">Session Type: <br /><span><%= interval.session_type %></span></div></div>
+			<div class="grid_2 collection_box_date"><div class="content">
 				<span><%= interval.start_time.strftime("%A") %>
 				<%= interval.start_time.strftime("%b") %>
 				<%= interval.start_time.strftime("%d") %>,
@@ -30,10 +30,9 @@
 				<%= interval.start_time.strftime("%I")%> :
 				<%= interval.start_time.strftime("%M")%> 
 				<%= interval.start_time.strftime("%p")%>
-			</div>
-			<div class="grid_2 collection_box">Duration:<br /> <span><%= interval.duration_string %></span></div>
-			<div class="grid_1"><%= link_to raw("<div class=\"arrow-collect\"></div>"), interval %></div>
-			<div class="grid_1" style="color:#777;"><div style="float: right; padding-top: 15px; font-size: 15px;">[<%= link_to "X", remove_from_collection_path(:interval => interval.id), :id => interval.id, :class => "remove_from_collection", :style => "color: #CD1A70; text-decoration: none;" %>]</div></div>
+			</div></div>
+			<div class="grid_2 collection_box"><div class="content">Duration:<br /> <span><%= interval.duration_string %></span></div></div>
+			<div class="grid_1"><div class="collection_controls">[<%= link_to "X", remove_from_collection_path(:interval => interval.id), :id => interval.id, :class => "remove_from_collection", :style => "color: #CD1A70; text-decoration: none;" %>]</div><%= link_to raw("<div class=\"arrow-collect\"></div>"), interval %></div>
 		</li>
 		
 	<% end %>

@@ -66,17 +66,17 @@
 		   Tags <span>(<%= link_to 'Edit', edit_project_path(@project) %>):</span>	
 		</h3>
 		
-		
-	<% if !@project.tags.blank? %>
-		<p>
-             <ul>
-             <% @project.tags.each do |t| %>
-             <li class="inline"><%= t.capitalize %></li>
-             <% end %>
-             </ul>
-		</p>
-	<% end %>
-
+		<!-->
+		<%# if !@project.tags.blank? %>
+			<p>
+             	<ul>
+             		<%# @project.tags.each do |t| %>
+             		<li class="inline"><%#= t.capitalize %></li>
+             		<%# end %>
+             	</ul>
+			</p>
+		<%# end %>
+		<-->
 		<h3>
 		   Owner <span>(<%= link_to 'Edit', edit_project_path(@project) %>):</span>	
 		</h3>

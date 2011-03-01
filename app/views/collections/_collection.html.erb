@@ -3,11 +3,13 @@
 <h3>
 	<% if collection.name =~ /project_[0-9]+_(favorite|queue)/i %>
 	<% name =  collection.name.split('_') %>
-	<%= link_to  name[2].humanize, collection %>
-	<% else %>
-	<%= link_to "Collection: " + collection.name.humanize, collection %>
+	<% link = name[2].humanize + " for " + name[0].humanize + ": " + name[0].singularize.camelize.constantize.find(name[1].to_i).name %>
+		<% else %>
+	<% link = collection.name.humanize %>
 	<% end %>
+	<%= link_to link, collection %>
 </h3>
+<div class="collection_description"><%= collection.description %></div>
 <div class="carousel_container" style="height:240px; padding-bottom: 20px;">
 	<div class="infiniteCarousel">
 	  <div class="wrapper">

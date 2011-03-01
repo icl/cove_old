@@ -4,6 +4,9 @@ class ProjectsController < ApplicationController
 
   def index
     @projects = Project.all
+    if @projects.nil?
+      @project = Project.new
+    end
     render "index"
   end
 
