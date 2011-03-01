@@ -6,7 +6,7 @@ Feature: Search for an interval
 	Background:
 		Given I am a regular user who is logged in
 		And the following intervals exists:
-			|	camera angle	|	start time		|	duration		|	session type	|	phrasw_type	|
+			|	camera angle	|	start time		|	duration		|	session type	|	phrase_type	|
 			|	Wayne		|	1-1-2001 01:10:00	|	2m32s			|	solo		|	shadow		|
 			|	Wayne		|	1-2-2001 01:10:00	|	3m4s			|	duet		|	light		|
 			|	Mirror		|	1-2-2001 01:15:00	|	5m1s			|	trio		|	stuff		|
