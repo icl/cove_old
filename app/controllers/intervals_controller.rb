@@ -18,8 +18,10 @@ class IntervalsController < ApplicationController
     @unapplied_people = Code.people.unapplied(@interval.id)
 
     respond_to do |format|
+      format.sprite { send_file(@interval.sprite_file, :type => 'image/jpeg', :disposition => 'inline', :url_based_filename => true) }
+      format.jpg { send_file(@interval.thumbnail_file, :type => 'image/jpeg', :disposition => 'inline', :url_based_filename => true) }
       format.html {  render "show"}
-      format.m4v { send_file(@interval.filename, :type => 'video/mp4', :disposition => 'inline', :url_based_filename => true) }
+      format.m4v { send_file(@interval.video_file, :type => 'video/mp4', :disposition => 'inline', :url_based_filename => true) }
     end
 
   end

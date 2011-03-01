@@ -1,7 +1,7 @@
  <ol class="browse_cont">
 <li class="grid_2 browse_box_name"><%= link_to raw("Session <span>")+interval.id.to_s()+raw("</span>"), interval %></span></li> 
-      <li class="grid_3 thumbnail_box" id="thumb_<%= interval.id.to_s() %>">
-         <img src ="/thumbs/thumb1.jpg" width ="160" height ="90" />
+      <li class="grid_3 thumbnail_box" id="thumb_<%= interval.id.to_s() %>" data-interval="<%= interval.id.to_s() %>">
+         <img src ="<%=interval_path(:id => interval.id, :format => :jpg) %>" width ="160" height ="90" />
       </li> 
       <li class="grid_2 browse_box">Camera Angle <span><%= interval.camera_angle %></span></li> 
       <li class="grid_2 browse_box">Session Type <span class="define_me"><%= interval.session_type  %></span></li> 

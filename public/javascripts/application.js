@@ -11,13 +11,25 @@
         changeSpriteWindow(this);
     });
     
-    $('.thumbnail_box').live('mouseover', function(event) {        
+    $('.thumbnail_box').live('mouseover', function(event) {      
         if( !$(this).hasClass("thumb_loaded")) {
-            this.style.backgroundImage="url(/thumbs/2010-10-27_Wayne_12-07-28_Session1_sprite.jpg)";
+            //this.style.backgroundImage="url(/thumbs/2010-10-27_Wayne_12-07-28_Session1_sprite.jpg)";
+            var id = $(this).attr('data-interval');
+            this.style.backgroundImage="url(/intervals/"+ id +".sprite)";
             $(this).addClass("thumb_loaded");
+            
+            // TODO: Make this "delay mask" less sketchy!
+            // MASKING SPRITE LOAD DELAY
+            var target = this;
+            setTimeout( function(){ $(target).children("img").hide(); } , 100);
+            //$(this).children("img").hide();
         }
-        $(this).children("img").hide();
     });
+    
+    // TODO: Make this "delay mask" less sketchy!
+    // immediately invoke thumbnails after page load
+    $(document).ready(function(){$('.thumbnail_box').trigger('mouseover')});
+    
 /* end Thumbnail fast scrub */    
 
 /***********************************/
