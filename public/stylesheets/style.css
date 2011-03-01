@@ -296,7 +296,7 @@ button {  width: auto; overflow: visible; }
 .top_nav ul li {
 	display: inline;
 	line-height:1.5em;
-	font-size: 10pt;
+	font-size: 11pt;
 	margin-left: 10px;
 	margin-right: 20px;
 }
@@ -489,7 +489,7 @@ input[type=search] {
 .definition_holder {
 	max-height: 400px;
 	max-width: 200px;
-	background: #383838;
+	background: rgba(56,56,56, .9);
 	border: 1px solid gray;
 	display: block;
 	overflow: auto;
@@ -504,6 +504,7 @@ input[type=search] {
 }
 
 .definition_holder p {
+	color: white;
 	margin-top: 10px;
 	margin-bottom: 10px;
 	margin-left: 5px;
