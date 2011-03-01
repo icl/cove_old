@@ -5,7 +5,8 @@ class IntervalsController < ApplicationController
     
 	def index
     @filters = Interval.filters
-    @intervals = Interval.search(params)
+    @intervals = Interval.search(params).page params[:page]
+
     render 'index'
   end
 
