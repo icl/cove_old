@@ -142,3 +142,37 @@ $(document).ready(function(){
 	$(".fauxselect").hide();
 });
 
+
+
+// -------------------------------------------------------------------
+// Javascript for tagging
+// -------------------------------------------------------------------
+  jQuery(document).ready(function(){
+    $("#tag_container").delegate(".tag", "click", function(){
+      alert("I was clicked");
+    });
+
+    $("#people_container, #phenomenon_container").delegate(".code", "click", function(){
+      alert("I was clicked");
+    });
+
+    $("#new_tag_form").bind("ajax:error", function(){
+      $("body").append('<div class="flash alert"> Your Tag could not be submitted at this time </div>');  
+    });
+
+    $("#new_tag_form").bind("ajax:success", function(data, xhr, status){
+      $("body").append('<div class="flash notice"> Your Tag has been added </div>');  
+      var newTagName = xhr["tagName"]
+      console.log("tag successfully added" + newTagName);
+
+      //append the new tag to the tag list
+      $("#tag_list").append('<li class="tag applied">' + newTagName + '</li>');
+
+      //update the tag count
+      var current_value = $("#tag_count");
+      console.log(current_value.text());
+      current_value.text(parseInt(current_value.text()) + 1);
+
+    });
+    
+  });
