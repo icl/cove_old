@@ -15,7 +15,7 @@ describe TaggingsController do
       it {should respond_with 201}
       it "should return the new object in the json body" do
         returned_json = JSON.parse(response.body)
-        returned_json["codeName"].should be
+        returned_json["tagName"].should be
       end
     end
 
