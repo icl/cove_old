@@ -27,11 +27,11 @@ module ApplicationHelper
     html = "<ul>"
     applied.each do |term|
       if all.delete(term.code)
-        html << %Q[<li class="code applied"> #{term.code.name} </li>]
+        html << %Q[<li class="code applied" data-codingType="#{term.code.coding_type}" data-rails_object_id="#{term.code.id}"> #{term.code.name} </li>]
       end
     end
     all.each do |term|
-      html << %Q[<li class="code unapplied"> #{term.name} </li>]
+      html << %Q[<li class="code unapplied" data-codingType= "#{term.coding_type}" data-rails_object_id="#{term.id}"> #{term.name} </li>]
     end
     html << "</ul>"
     return html.html_safe
