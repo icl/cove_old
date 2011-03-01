@@ -1,3 +1,4 @@
+@import "compass";
 $applied_color : #C96C7C;
 
 
@@ -22,3 +23,12 @@ $applied_color : #C96C7C;
   background-color: ($applied_color - 100);
 }
   
+#tagging_name{
+  width: 400px;
+  height: 20px;
+  font-size: 18pt;
+  @include border-radius(5px);
+  border: 1px solid black;
+  padding: 5px;
+}
+
