@@ -69,7 +69,7 @@ class Interval < ActiveRecord::Base
 	end
 	
 	def self.unique_days
-		find(:all, :select => "start_time", :order => "start_time").map{|int| [int.day]}.uniq.compact
+		find(:all, :select => "start_time", :order => "start_time").map{|int| int.day}.uniq.compact
 	end
 
 	def self.unique_angles
