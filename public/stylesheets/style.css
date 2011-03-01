@@ -794,6 +794,12 @@ input[type=search] {
 /***********************************/
 /* Style adjustments for intervals.index.html */
 
+.thumbnail_box {
+    height: 90px;
+}
+.thumbnail_box img {
+}
+
 .browse_cont {
 	background: #E0E0E0;
     margin:20px 0px;

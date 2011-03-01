@@ -88,7 +88,20 @@ class Interval < ActiveRecord::Base
 		return group(:session_type).collect { |interval| interval.session_type}.compact
 	end
 
+  def path_prefix
+    return File.join(Rails.root, 'private')
+  end
+  
+  def sprite_file
+    return File.join(path_prefix, "sprites", %Q[#{filename.chomp(".m4v")}_sprite.jpg]) if filename
+  end
+  def thumbnail_file
+    return File.join(path_prefix, "thumbs" , %Q[#{filename.chomp(".m4v")}_thumb.jpg]) if filename
+  end
 
+  def video_file
+    return File.join(path_prefix, "videos",filename) if filename
+  end
 
   def self.import!
     Dir.foreach("tmp/notes/") do |file|

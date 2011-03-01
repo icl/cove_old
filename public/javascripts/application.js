@@ -1,8 +1,71 @@
-/* Definition Function */
+/* Thumbnail fast scrub */    
+    function changeSpriteWindow(obj){
+        //TODO: figure out how to grab misc 10 pixel additional margin
+        var extra_margin =10;
+        var newY = (event.clientX-($(obj).position().left)-extra_margin)*90;
+        var position = "0px " + newY + "px "
+        obj.style.backgroundPosition = position;
+    }
+    
+    $('.thumbnail_box').live('mousemove', function(event) {
+        changeSpriteWindow(this);
+    });
+    
+    $('.thumbnail_box').live('mouseover', function(event) {      
+        if( !$(this).hasClass("thumb_loaded")) {
+            //this.style.backgroundImage="url(/thumbs/2010-10-27_Wayne_12-07-28_Session1_sprite.jpg)";
+            var id = $(this).attr('data-interval');
+            this.style.backgroundImage="url(/intervals/"+ id +".sprite)";
+            $(this).addClass("thumb_loaded");
+            
+            // TODO: Make this "delay mask" less sketchy!
+            // MASKING SPRITE LOAD DELAY
+            var target = this;
+            setTimeout( function(){ $(target).children("img").hide(); } , 100);
+            //$(this).children("img").hide();
+        }
+    });
+    
+    // TODO: Make this "delay mask" less sketchy!
+    // immediately invoke thumbnails after page load
+    $(document).ready(function(){$('.thumbnail_box').trigger('mouseover')});
+    
+/* end Thumbnail fast scrub */    
 
 /***********************************/
 /* JS adjustments for show.html */
 
+		$(document).ready(function(){  //show more info
+			$(".show_moreinfo_button").click(function(){
+				$(".show_more_data").slideToggle("slow");
+			});
+		});
+		
+		$(document).ready(function(){  //click on add for phenomena
+			$(".show_add_phen_button").click(function(){
+				$(".show_add_phen_list").slideToggle("slow");
+				$(".show_applied_phen").remove();
+				$(".show_codingterms_people").remove();
+				$(".show_applied_people").remove();
+			});
+		});
+		
+		$(document).ready(function(){  //click on add for people
+			$(".show_add_people_button").click(function(){
+				$(".show_add_people_list").slideToggle("slow");
+				$(".show_applied_phen").remove();
+				$(".show_codingterms_phen").remove();
+				$(".show_applied_people").remove();
+			});
+		});
+		
+		$(document).ready(function(){  //click on add for tags
+			$(".show_add_tags_button").click(function(){
+				$(".show_tags_create").slideToggle("slow");
+				$(".show_applied_tags").remove();
+			});
+		});
+	
 /* end style adjustments for show.html */
 /***************************************/
 
