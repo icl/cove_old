@@ -55,10 +55,10 @@ class Interval < ActiveRecord::Base
 	end
 	
 	def duration_string
-	  hours = (duration / (60*60)).floor
+		hours = (duration / (60*60)).floor
 		minutes = ((duration - hours*60*60)/60).floor
 		sprintf("%02dh%02dm", hours, minutes)
-  end
+	end
 
 	def day
 		start_time.strftime("%d-%m-%y") if start_time

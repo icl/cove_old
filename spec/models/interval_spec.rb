@@ -50,4 +50,12 @@ describe Interval do
 			result.should == everything
 		end
 	end
+	describe "duration_string" do
+		before(:each) do
+			@interval = Interval.new(:duration => 12060)
+		end
+		it "returns a HHhMMm string" do
+			@interval.duration_string.should == "03h21m"
+		end
+	end
 end
