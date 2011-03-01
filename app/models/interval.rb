@@ -93,14 +93,14 @@ class Interval < ActiveRecord::Base
   end
   
   def sprite_file
-    return File.join(path_prefix, "sprites", %Q[#{filename.chomp(".m4v")}_sprite.jpg])
+    return File.join(path_prefix, "sprites", %Q[#{filename.chomp(".m4v")}_sprite.jpg]) if filename
   end
   def thumbnail_file
-    return File.join(path_prefix, "thumbs" , %Q[#{filename.chomp(".m4v")}_thumb.jpg])
+    return File.join(path_prefix, "thumbs" , %Q[#{filename.chomp(".m4v")}_thumb.jpg]) if filename
   end
 
   def video_file
-    return File.join(path_prefix, "videos",filename)
+    return File.join(path_prefix, "videos",filename) if filename
   end
 
   def self.import!
