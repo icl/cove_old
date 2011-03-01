@@ -66,11 +66,7 @@
 			});
 		});
 	
-<<<<<<< HEAD
-=======
 
-
->>>>>>> breakin_things
 /* end style adjustments for show.html */
 /***************************************/
 
