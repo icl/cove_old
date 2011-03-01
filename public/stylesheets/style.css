@@ -296,7 +296,7 @@ button {  width: auto; overflow: visible; }
 .top_nav ul li {
 	display: inline;
 	line-height:1.5em;
-	font-size: 11pt;
+	font-size: 10pt;
 	margin-left: 10px;
 	margin-right: 20px;
 }
@@ -545,6 +545,7 @@ input[type=search] {
 
 
 .filter ul {
+	margin-right:75px;
 }
 
 
@@ -563,14 +564,16 @@ input[type=search] {
 }
 
 .nav ul {
+	background: white;
 	position:absolute;
 	width:125px;
-	top:23px;
+	top:18px;
 	display:none;
 	z-index: 500;
 }
 
 .nav li ul a {
+	margin-left:10px;
 	width:125px;
 	float:left;
 }
