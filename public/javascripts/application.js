@@ -122,8 +122,9 @@ $(document).ready(function(){
           console.log(new_phenomenon);
 
           //change the color of the tag
-          
-          var list_element = $("data-rails_object_id[" + new_phenomenon["dataID"] + "]");
+          var query_string = '[data-rails_object_id = "' + new_phenomenon["codeID"] + '"]';
+          console.log(query_string);
+          var list_element = $('[data-rails_object_id="' + new_phenomenon["codeID"] + '"]');
           list_element.removeClass("unapplied").addClass("applied");
 
           //update the count
