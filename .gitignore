@@ -34,3 +34,5 @@ application.yml
 public/stylesheets/scaffold.css
 .eprj
 public/videos
+public/stylesheets/compiled
+.autotest
