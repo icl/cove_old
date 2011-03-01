@@ -9,7 +9,7 @@ module ApplicationHelper
     end
     return raw(html)
   end
-  def add_params params_to_add
+  def add_params params_to_add={}
 	  new_p = params.dup
 	  new_p.delete(:page)
 	  new_p.delete(:auth)
@@ -21,5 +21,17 @@ module ApplicationHelper
   def gravatar_url_for email 
     hash = Digest::MD5.hexdigest(email)
     image_src = "http://www.gravatar.com/avatar/#{hash}"
+  end
+
+  def display_coding_term(applied, unapplied)
+    html = "<ul>"
+    applied.each do |term|
+      html << %Q[<li class="code applied"> #{term.code.name} </li>]
+    end
+    unapplied.each do |term|
+      html << %Q[<li class="code unapplied"> #{term.code.name} </li>]
+    end
+    html << "</ul>"
+    return html.html_safe
   end
 end

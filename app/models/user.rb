@@ -1,8 +1,9 @@
 require "annotation"
 class User < ActiveRecord::Base
-  include Annotatable
-  # Include default devise modules. Others available are:
-  # :token_authenticatable, :confirmable, :lockable and :timeoutable
+  
+  has_many :taggings
+  has_many :codings
+  
   devise :database_authenticatable, 
          :recoverable, :rememberable, :trackable, :validatable
 
@@ -47,6 +48,10 @@ class User < ActiveRecord::Base
   
   def self.user_from_token(token)
     User.where(:invitation_token => token).first
+  end
+  
+  def name
+    email
   end
     
 end

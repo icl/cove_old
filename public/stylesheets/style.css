@@ -293,20 +293,19 @@ button {  width: auto; overflow: visible; }
 
 /* Header */
 
-nav.top_nav ul li {
-	display: block;
-	font-size: 12pt;
+.top_nav ul li {
+	font-size: 10pt;
 }
 
 body {
-	color: #FFFFFF;
-	background: #2F2F2F;
+	color: #888888;
+	background: #E5E5E5;
 }
 
 
 header {
 	font-size: 12pt;
-	background: #2F2F2F;
+	background: #E5E5E5;
 }
 
 header h1 {
@@ -325,7 +324,7 @@ header h1 {
 }
 
 .user_links ul {
-	background: #383838;
+	background: #E5E5E5;
 	height: 40px;
 	font-size: 10pt;
 	margin-left: 0;
@@ -361,11 +360,12 @@ header h1 {
 
 
 .search_holder {
+	width: 200px;
 	text-align: right;
 }
 
 .content {
-	min-height: 650px;
+	min-height: 50px;
 }
 
 footer h5 {
@@ -374,6 +374,9 @@ footer h5 {
 
 .copyright {
 	text-align: right;
+}
+
+.login_form {
 }
 
 .login_form h1 {
@@ -419,8 +422,7 @@ input[type=search] {
 }
 
 .interval_filters p {
-	padding-right: 20px;
-	float: left;
+
 }
 
 .date_filter {
@@ -449,6 +451,64 @@ input[type=search] {
 	font-size: 14pt;
 	color: gold;
 }
+
+
+/* styles for glossary popups */
+
+.definition_holder {
+	max-height: 400px;
+	max-width: 200px;
+	background: #383838;
+	border: 1px solid gray;
+	display: block;
+	overflow: auto;
+}
+
+.definition_holder h1 {
+	color: #0297C1;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	margin-left: 5px;
+	
+}
+
+.definition_holder p {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	margin-left: 5px;
+	margin-right: 20px;
+	
+}
+
+.fauxselect_button {
+	border: black .2em solid; 
+	text-align: center;
+	background-color: #999
+}
+
+.fauxselect {
+	margin-left: 0; 
+	position: absolute; 
+	background-color: black; 
+	border: 2px black solid;
+}
+	
+.fauxselect li {	
+		list-style: none; 
+		padding-left: 5px; 
+		padding-right: 5px; 
+		line-height: 1.2; 
+		padding-top: .3em; 
+		padding-bottom: .3em; 
+		margin-top: .2em; 
+		margin-bottom: .2em; 
+		background-color: #333;
+}
+
+
+
+
+
 
 /* Thanks to Ryan Bates: http://railscasts.com/episodes/234-simple-form */
 
@@ -495,80 +555,154 @@ input[type=search] {
   font-style: italic;
 }
 
-.camera_angle_map {
-	
-	width:300px;
-}
 
-.tag_box {
-	width:500px;
-	float:left;
-}
+
 /***********************************/
 /* Style adjustments for show.html */
 
-.Edit {
-	margin-bottom: 10px;
+				/*Notes:  light bg: #383838
+						  font blue: #0297C1
+							height: 40px;
+						margin-bottom: 15px;
+						padding pushes the grid width wise :/ */
+
+/****Row 1 - start****/
+.show_video_header {
+	height: 40px;
+	margin-bottom: 15px;
 }
 
-.interval_show h1 {
-	font-size: 40px;
+.show_video_header h1 {
+	font-size: 14pt;
+	color: #0297C1;
 }
 
-.interval_show strong {
-	font-size: 18px;
+.show_video_header h2 {
+	font-size: 11pt;
 }
 
-div#sessTypePhrase div {
-	border-left: solid 1px #e5e5e6;
-	padding: 5px;
-	height: 90px;
+.show_addto_widget {
+	background: #383838;
+	height: 40px;
+	margin-bottom: 15px;
 }
 
-.info {
-	border-right: solid 1px #e5e5e6;
-	padding: 5px;
-	height: 90px;
+.show_camera_angle {
+	margin-bottom: 15px;
 }
 
-.info h3 {
-	text-align: right;
-	margin-top: 5px;
-	font-size: 20px;
+
+/****Row 2 - start****/
+
+.show_video_player p {
+	margin-bottom: 15px;
 }
 
-.info h4 {
-	text-align: right;
-	margin-top: 5px;
-	font-size: 14px;
+.show_metadata div.show_mvt_content {
+	border: 5px solid #383838;
+	background: #383838;
+
 }
 
-.time {
-	padding: 5px;
-	height: 90px;
-	text-align: center;
+.show_metadata div h2 {
+	color: #0297C1;
+	display: inline;
+	background: #383838;
+
 }
 
-.space {
-	height: 20px;
+.show_metadata div h3 {  /*buttons*/
+	background: #DDDDDD;
+	border: 1px solid #444444;	
+	color: black;
+	float: right;
+	padding-right: 4px;
+	padding-left: 4px;
+	cursor: pointer;
 }
 
-.cam_angle {
-	text-align: center;
+
+.show_metadata div.show_more_data {
+	border-left: 5px solid #383838;
+	border-right: 5px solid #383838;
+	border-bottom: 5px solid #383838;
+	display: none;
+	background: #383838;
+
 }
 
-div#tag_checkboxes label {
-	text-align: left;
+
+
+/****Row 3 - start - Coding Terms****/
+
+.show_codingterms_phen {
+	margin-top: 15px;
+	background: #383838;
+
 }
 
-div#video div p {
-	border: 2px;
-	text-align: center;
+.show_applied_phen {
+	border: 5px solid #383838;
 }
 
-.filename {
-	margin-bottom: 20px;
+.show_applied_people {
+	border: 5px solid #383838;
 }
+
+.show_codingterms_people {
+	margin-top: 15px;
+	background: #383838;
+
+}
+
+.show_add_phen_list {
+	display: none;
+	border: 5px solid #383838;
+}
+
+.show_add_people_list {
+	display: none;
+	border: 5px solid #383838;
+}
+
+.show_tags {
+	margin-top: 15px;
+	background: #383838;
+
+}
+
+.show_applied_tags {
+	border: 5px solid #383838;
+}
+
+.show_tags_create {
+	display: none;
+	border: 5px solid #383838;
+}
+
+.show_tags_create input {
+	width: 157px;
+	margin-left: 25px;
+}
+
+.show_tags_create textarea {
+	margin-left: 25px;
+}
+
+.subintervals {
+	background: #383838;
+}
+
+/****Row 4 - start****/
+/*create subinterval widget (Winny)*/
+
+
+
+/* end style adjustments for show.html */
+/***************************************/
+
+
+
 
 
 /***********************************/
@@ -584,9 +718,6 @@ div#video div p {
 .browse_cont {
     margin:20px 0px;
     padding:20px 0px;
-	background: #383838; 
-	border-top: 2px solid gray; 
-	border-bottom: 2px solid gray; 
 	clear: both; 
 	}
  .browse_box, .browse_box_date {
@@ -667,9 +798,190 @@ div#video div p {
 
 
 
-/* end style adjustments for show.html */
+/* end style adjustments for intervals.index.html */
 /***************************************/
 
+
+/***********************************/
+/* Style sheet for collections/index.html */
+.collections_title {
+	margin-top: 20px;
+	font-size: 14pt;
+	color: gold;
+}
+
+.sortable_collection a { text-decoration: none; }
+
+.sortable_collection li {
+	height: 50px; 
+	border: 1px; 
+	border-style: solid; 
+	border-color:silver;
+	list-style: none;
+}
+
+.collection_cont {
+    margin:20px 0px;
+    padding:10px 0px;
+	background: #383838; 
+	border-top: 2px solid gray; 
+	border-bottom: 2px solid gray; 
+	clear: both;
+	cursor: move;
+}
+
+.collection_box, .collection_box_date {
+    height: 40px;
+    background: #2f2f2f;
+    text-align: center;
+    padding: 5px 0px;
+}
+
+.collection_box_date span {
+	
+    color: #ffd700;
+    font-size: .95em;
+    font-weight: bold;
+    /* text-transform: uppercase; */
+    padding: 2px 0px;
+}
+
+.collection_box_name {
+    height: 40px;
+    background: #0297c1;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0px;
+ }
+
+.collection_box_name a {
+    text-decoration: none;
+    color: #fff;
+ }
+
+
+.collection_box_name span {
+    display: block;
+    text-decoration: none;
+    color: #fff;
+    font-size: 2em;
+ }
+
+.collection_box_name:hover {
+    background: #5e767e;
+    color: #000;
+ }
+ 
+.collection_thumbnail {
+	width: 120x; height: 50px; background: #ccc;
+}
+
+.collection_box span {
+    /*display: block;*/
+    color: #ffd700;
+    font-size: .95em;
+    font-weight: bold;
+    /* text-transform: uppercase; */
+    padding: 2px 0px;
+}
+
+.arrow-collect {
+	border-color: transparent transparent transparent #ffd700;
+	border-style:solid;
+	border-width:20px;
+	width:0;
+	height:0;
+	margin-top: 5px;
+}
+
+/* end style adjustments for collections */
+/***********************************/
+
+
+/***********************************/
+/* Style sheet for dropdown add widget */
+
+	ul.dropdown{
+		position: absolute;
+		width: 200px;
+		margin: 0;
+        padding: .3em;
+	}
+
+	ul.dropdown li{
+		float: none;
+		list-style: none;
+        padding: .5em;
+        
+        /* Decorative CSS */
+border-top:#f0f0f0 1px solid;
+    font-family: Arial, Helvetica, sans-serif;
+    text-decoration:none;
+    text-transform:uppercase;
+    color: #000;
+    background: #cccccc;
+ 		font-size: .95em;
+    	font-weight: bold;
+        
+    
+	}
+	
+	ul.dropdown li a{
+        display: block;
+    	background-color: #ffd700;
+        font-size: .95em;
+    	font-weight: bold;
+        border: 1px solid #b88080;
+        padding: .5em;
+        text-decoration: none;
+	}
+		
+	ul.dropdown li a:hover{
+        background-color: #333;
+        color: #fff;
+	}
+	
+	ul.dropdown li ul.vdrop{
+		display: none;
+		position: inherit;
+        padding: 0;
+	}
+	
+	ul.dropdown li ul.vdrop li a{
+		background-color: #e6c000;
+	}
+	
+	ul.dropdown li ul.vdrop li a:hover{
+        background-color: #333;
+	}
+	
+	ul.dropdown li ul.vdrop li a.add{
+        background-color: #ffd700;
+	}
+	
+	ul.dropdown li ul.vdrop li a.add:hover{
+        background-color: #333;
+        color: #fff;        
+	}
+	
+	ul.dropdown li:hover ul.vdrop{
+		display: block;
+	}	
+	
+
+/* end style adjustments for dropdown add */
+/***********************************/
+
+
+/***********************************/
+/* Style sheet for project pages */
+
+.project_fav{
+	
+}
+
+/* end style adjustments for dropdown add */
+/***********************************/
 
 
 /*
@@ -713,4 +1025,99 @@ div#video div p {
   @page { margin: 0.5cm; }
   p, h2, h3 { orphans: 3; widows: 3; }
   h2, h3{ page-break-after: avoid; }
+}
+
+/* Project Page */
+div.project_container li.inline {
+   display: inline;
+   list-style-type: none;
+   margin: 10px 20px 10px 0px;
+}
+
+div.project_container h2 {
+   font-size: 2em;
+   color: #00fa9a;
+   padding: 0px 0px 5px 0px;
+}
+
+div.project_container h3 {
+   font-size: 1.5em;
+   color: #666;
+   padding: 10px 0px 5px 0px;
+}
+
+div.project_container h3 span {
+   font-size: 0.7em;
+}
+
+div.project_container .vid-title {
+   font-weight: bold;
+   padding: 10px 0px 5px 0px;
+}
+
+div.project_container .vid-comment {
+   padding: 10px 0px 5px 0px;
+}
+
+div#vid-cont {
+	background: #999;
+    padding: 10px 0px;
+    color: #000;
+}
+
+div.project_container .left-arw {border-color:transparent #00fa9a transparent transparent;}
+div.project_container .right-arw {border-color:transparent transparent transparent #00fa9a;}
+
+.note_list_container ul {
+	list-style-type: none; 
+	background-color: #555; 
+	padding-top: 2px; 
+	padding-bottom: 2px; 
+	width: 572px; 
+	float:right;
+}
+
+.note_form textarea.text { 
+	width: 572px; 
+	height: 120px;}
+.note_form input#note_submit { 
+	margin-bottom: 10px; 
+	float: right; }
+.nobr	{white-space: nowrap;}
+
+.expand_all {
+	cursor: pointer;
+}
+
+
+/* favorites properties in "Projects" Page */
+
+.favorite_table>ul {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+
+.favorite_table>ul>li {
+	display: inline;
+}
+
+.arrow_forward {
+	border-color: transparent transparent transparent #ffd700;
+	border-style:solid;
+	border-width:20px;
+	width:0;
+	height:0;
+	margin-top: 75px;
+	float: right;
+}
+
+.arrow_backward {
+	border-color: transparent #ffd700 transparent transparent;
+	border-style:solid;
+	border-width:20px;
+	width:0;
+	height:0;
+	margin-top: 75px;
+	float: left;
 }
