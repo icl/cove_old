@@ -13,3 +13,8 @@ Then /^(?:|I )should not see the element "([^"]*)"$/ do |selector|
 		assert page.has_no_selector?(selector)
 	end
 end
+
+require "selenium-webdriver"
+When /^(?:|I )look up the definition for "([^"]*)"$/ do |selector|
+	page.driver.browser.execute_script %Q{ $("#{selector}").trigger("lookup"); }
+end
