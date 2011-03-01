@@ -739,19 +739,21 @@ input[type=search] {
 /* Style adjustments for intervals.index.html */
 
 .browse_cont {
+	background: #F4F4F4;
     margin:20px 0px;
     padding:20px 0px;
-	clear: both; 
+	clear: both;
+	 list-style-type: none; 
 	}
  .browse_box, .browse_box_date {
     height: 80px;
-    background: #2f2f2f;
+    background: #5E5E5E;
     text-align: center;
     padding: 5px 0px;
  }
  .browse_box span {
     display: block;
-    color: #ffd700;
+    color: white;
     font-size: 1.1em;
     font-weight: bold;
     /* text-transform: uppercase; */
@@ -759,7 +761,7 @@ input[type=search] {
  }
  .browse_box_date span {
     display: block;
-    color: #ffd700;
+    color: white;
     font-size: 1.1em;
     font-weight: bold;
     /* text-transform: uppercase; */
@@ -780,7 +782,6 @@ input[type=search] {
     margin-bottom: 7px;
  }
  ul.browse_box_ul li.alt {
-    background: #999;
     text-align: center;
     padding: 2px 0px;
  }
@@ -810,7 +811,7 @@ input[type=search] {
     color: #000;
  }
 .arrow {
-	border-color: transparent transparent transparent #ffd700;
+	border-color: transparent transparent transparent #0297C1;
 	border-style:solid;
 	border-width:20px;
 	width:0;
@@ -818,6 +819,14 @@ input[type=search] {
 	margin-top: 25px;
 }
 
+.interval_list {
+	 list-style-type: none;
+}
+
+.browse_box h4 {
+	font-size: 10px;
+	color: white;
+}
 
 
 
