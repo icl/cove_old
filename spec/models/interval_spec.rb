@@ -53,7 +53,7 @@ describe Interval do
 	context "accessor functions" do
 		before(:each) do
 			@interval = Interval.new(
-				:start_time => DateTime.parse("May 3 1988 4:55 AM"),
+				:start_time => DateTime.parse("May 3 1988 4:55 AM PST"),
 				:duration => 12060
 			)
 		end
@@ -70,6 +70,13 @@ describe Interval do
 		describe "start_time_of_day" do
 			it "returns a stringy time of day" do
 				@interval.start_time_of_day.should == " 4:55 AM"
+			end
+		end
+		describe "end_time" do
+			it "returns the end time of the interval as a Time" do
+				end_time = @interval.end_time
+				end_time.class.should == Time
+				end_time.should == Time.parse("May 3 1988 8:16 AM PST")
 			end
 		end
 	end
