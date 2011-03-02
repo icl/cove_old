@@ -41,10 +41,11 @@
 
 <body>
 	<header class="container_16">
-
-		<%= link_to image_tag("cove_logo.gif", :class=> "grid_3 logo"), root_path%>
 			<%if current_user %>
-				<div class="grid_13 user_links">
+			<div class= "logo grid_2">
+			<%= link_to image_tag("cove_logo.gif", :class=> "logo_image grid_2"), root_path%>
+			</div>
+				<div class="grid_14 user_links">
 					<ul>
 						<li class="first user_avatar"><%=image_tag gravatar_url_for "ethan.soutar.rau@gmail.com"%></li>
 						<li><%=current_user.email%></li>
@@ -55,28 +56,29 @@
 						<%end%>
 					</ul>
 				</div>
+			
+				<nav class="top_nav">
+					<ul class="grid_16 main_links">
+						<li class=><%= link_to "Home", root_path %></li>
+						<li class=><%= link_to "Browse", intervals_path %></li>
+						<li class=><%= link_to "Collections", collections_path %></li>
+						<li class=><%= link_to "Projects", projects_path %></li>
+						<li class="search_holder">
+							<%= render "intervals/search" if current_user %>
+						</li>
+					</ul>
+					<br style="clear:both"/>
+
+				</nav>
+				
 			<%else%>
+			
+			<%= link_to image_tag("cove_logo.gif", :class=> "grid_4 logo"), root_path%>
 			
 			
 			<%end%>
 		<br style="clear: both"/>
 	</header>
-	
-	<nav class="top_nav container_16">
-		<hr class="grid_16"/>
-		<ul class="grid_16 main_links">
-			<li class="alpha grid_2"><%= link_to "Home", root_path %></li>
-			<li class="grid_2"><%= link_to "Browse", intervals_path %></li>
-			<li class="grid_2"><%= link_to "Collections", collections_path %></li>
-			<li class="grid_2"><%= link_to "Projects", projects_path %></li>
-			<div class="search_holder grid_4 push_4">
-				<%= render "intervals/search" if current_user %>
-			</div>
-		</ul>
-		<hr class="grid_16"/>
-		<br style="clear:both"/>
-		
-	</nav>
 	
 <div class="content container_16">
 	<%= display_flash %>
