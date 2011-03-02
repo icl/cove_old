@@ -165,10 +165,12 @@ $(document).ready(function(){
     });
 
     $("#new_tag_form").bind("ajax:success", function(data, xhr, status){
+      $(".flash").remove();
       $("body").append('<div class="flash notice"> Your Tag has been added </div>');  
+
       var newTagName = xhr["tagName"];
       console.log("tag successfully added" + newTagName);
-
+    
       //append the new tag to the tag list
       $("#tag_list").append('<li class="tag applied">' + newTagName + '</li>');
 
@@ -176,7 +178,9 @@ $(document).ready(function(){
       var current_value = $("#tag_count");
       console.log(current_value.text());
       current_value.text(parseInt(current_value.text()) + 1);
-
+      
+      //$("#tagging_name").trigger("blur");
+      $("#tagging_name").attr("value", "");
     });
     
   });
