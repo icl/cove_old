@@ -9,7 +9,9 @@
 	<% end %>
 	<%= link_to link, collection %>
 </h3>
-<%= link_to "Destroy Collection", collection, :method => :delete, :class => "destroy_collection" %>
+<% if collection.name =~ /project_[0-9]+_(favorite|queue)/i %><% else %>
+<%= link_to "Delete Collection", collection, :method => :delete, :class => "destroy_collection" %>
+<% end %>
 <div class="collection_description"><%= collection.description %></div>
 <% if !collection.intervals.blank?%>
 <div class="carousel_container" style="height:240px; padding-bottom: 20px;">

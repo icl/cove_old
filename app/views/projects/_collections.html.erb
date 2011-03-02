@@ -8,6 +8,7 @@
 	<%= link_to "Collection: " + collection.name.humanize, collection %>
 	<% end %>
 </h3>
+<% if !collection.intervals.blank?%>
 <div class="carousel_container" style="height:240px; padding-bottom: 20px;">
 	<div class="infiniteCarousel">
 	  <div class="wrapper">
@@ -28,8 +29,8 @@
 	  </div>
 	</div>
 </div>
-</div>
+<% else %>
+	<div>There are no videos in this collection.</div>
 <% end %>
-<% if @project.collections.blank? %>
-	<div class='grid_15'>There are no videos in the<br /> queue for this project yet.</li>
+</div>
 <% end %>

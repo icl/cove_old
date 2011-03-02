@@ -219,7 +219,7 @@ class CollectionsController < ApplicationController
     @collection = Collection.find(params[:id])
     @collection.destroy
     respond_to do |format|
-      format.html { redirect_to(collections_url) }
+      format.html { redirect_to(collections_url, :notice => 'Collection was successfully deleted.') }
     end
   end
   

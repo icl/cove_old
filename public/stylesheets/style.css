@@ -1224,6 +1224,10 @@ div.project_container .right-arw {border-color:transparent transparent transpare
 	background-color: #E5E5E5;
 }
 
+.new_project_link {
+	float: right;
+}
+
 .project_row {
 	padding: 20px 0px;
 	border-top: solid 2px gray;
@@ -1233,7 +1237,7 @@ div.project_container .right-arw {border-color:transparent transparent transpare
 }
 
 .project_collection {
-	background-color: #C5C5C5;
+	background-color: #C8C8C8;
 	margin-top: 15px;
 	-webkit-border-radius: 4px;
 	-moz-border-radius: 4px;
