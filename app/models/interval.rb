@@ -68,10 +68,6 @@ class Interval < ActiveRecord::Base
 	def day
 		start_time.strftime("%m-%d-%y") if start_time
 	end
-
-	def start_time_of_day
-		start_time.strftime("%l:%M %p") if start_time
-	end
 	
 	def self.unique_days
 		find(:all, :select => "start_time", :order => "start_time").map{|int| int.day}.uniq.compact
