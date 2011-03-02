@@ -18,22 +18,19 @@ Feature: Search for an interval
 
 	Scenario: Search for a camera angle
 		When I am on the intervals page
-		And I fill in "search_box" with "Mirror"
-		And I press "Search"
+		And I search for "Mirror"
 		Then I should see "Mirror" within ".interval_list"
 		And I should not see "Wayne" within ".interval_list"
 
 	Scenario: Search for a session type
 		When I am on the intervals page
-		And I fill in "search_box" with "trio"
-		And I press "Search"
+		And I search for "trio"
 		Then I should see "trio" within ".interval_list"
 		And I should not see "quartet" within ".interval_list"
 		
 	Scenario: Search for a phrase type
 		When I am on the intervals page
-		And I fill in "search_box" with "light"
-		And I press "Search"
+		And I search for "light"
 		Then I should see "light" within ".interval_list"
 		And I should not see "shadow" within ".interval_list"
 		
