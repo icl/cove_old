@@ -1202,10 +1202,6 @@ border-top:#f0f0f0 1px solid;
     padding: 10px 0px 5px 0px;
 }
 
-.project_collection h3 a {
-	font-size: 1.75em;
-}
-
 /* Show Project Page */
 div.project_container li.inline {
    display: inline;
@@ -1220,12 +1216,6 @@ div.project_container h2 {
 }
 
 div.project_container h3 {
-   font-size: 1.5em;
-   color: #666;
-   padding: 10px 0px 5px 0px;
-}
-
-div.project_container h3 a {
    font-size: 1.5em;
    color: #666;
    padding: 10px 0px 5px 0px;
