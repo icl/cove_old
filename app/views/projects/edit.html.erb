@@ -1,21 +1,13 @@
 <div class="container_16">
-
-<div class="grid_15">
-   <h1>
-      Editting a project
-   </h1>
-</div>
-<div class="grid_1">
-   <h1>
-      <%= link_to 'Back', projects_path %>
-   </h1>
-</div>
-<div class="clear"></div>
-
+	<div class="grid_15 project_form_header">
+	   <h1>
+	      Editting a project
+	   </h1>
+	</div>
     <% if @project %>
        <% if user_signed_in? %>
           <% if @project.user_id == current_user.id %>
-                <%= render 'form-edit' %>
+                <%= render :partial => 'form' %>
           <% else %>
              <div class="grid_15">
                 <p>You do not have permission to edit this project</p>
