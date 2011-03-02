@@ -165,4 +165,7 @@ class Interval < ActiveRecord::Base
     @annotations ||= Annotation.new :interval_id => self.id
   end
 
+  #kaminari
+  paginates_per 10
+
 end

@@ -3,5 +3,7 @@
 		= render :partial => 'filter', :object => filter
 
 %ul.interval_list.grid_16
+	= paginate @intervals
 	- @intervals.each do |interval|
-		%li= render :partial => 'interval', :object => interval
+		= render :partial => 'interval', :object => interval
+	= paginate @intervals
