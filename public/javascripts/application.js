@@ -43,6 +43,7 @@ $(document).ready(function(){
 	var offY = 0;
 	var zindex_inc = 1000;
 	var delay = 200;
+	var timeoutdelay = 20*1000;
 	$(".define_me")
 		.live("mouseenter lookup", function(e){
 			var name = $(this).text();
@@ -97,6 +98,11 @@ $(document).ready(function(){
 				.css("position", "absolute")
 				.css("top", (offset.top + offY) + "px")
 				.css("left", (offset.left + width + offX) + "px");
+			$(this).stopTime(name+"_timeout");
+			$(this).oneTime(timeoutdelay, name+"_timeout", function(){
+				hoverstatus[name] = 0;
+				$("#definition_"+name.replace(" ", "_")).trigger("goaway");
+			});
 		})
 		.live("mouseleave", function(){
 			var name = $(this).text();
