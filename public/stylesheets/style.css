@@ -1022,7 +1022,13 @@ a.destroy_collection {
 	float: right;
 	text-decoration: none;
 }
+.collection_interval_time {
+	width: 160px; text-align: center;
+}
 
+.image_placeholder {
+	height:90px; width: 160px; background-color: gray;
+}
 /* end style adjustments for collections */
 /***********************************/
 
@@ -1347,6 +1353,10 @@ div.project_container .right-arw {border-color:transparent transparent transpare
 
 .project_collection h3 {
 	margin-left: 15px;
+}
+
+.carousel_container {
+	height:240px; padding-bottom: 20px;
 }
 
 .infiniteCarousel {

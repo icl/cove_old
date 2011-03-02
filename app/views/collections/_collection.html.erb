@@ -14,14 +14,14 @@
 <% end %>
 <div class="collection_description"><%= collection.description %></div>
 <% if !collection.intervals.blank?%>
-<div class="carousel_container" style="height:240px; padding-bottom: 20px;">
+<div class="carousel_container">
 	<div class="infiniteCarousel">
 	  <div class="wrapper">
 	    <ul>
 				<% YAML.load(collection.interval_priorities).keys.sort!{|a,b| a.to_i <=> b.to_i}.each do |priority| %><% interval = Interval.find(YAML.load(collection.interval_priorities)[priority.to_s]) %>
 				<li>
-					<div style="width: 160px; text-align: center;"><%=raw interval.start_time.strftime('%b %d, %Y &nbsp;&nbsp;&nbsp;&nbsp; %I:%M %p') %></div>
-					<img src ="<%=interval_path(:id => interval.id, :format => :jpg) %>" width ="160" height ="90" />
+					<div class="collection_interval_time"><%=raw interval.start_time.strftime('%b %d, %Y &nbsp;&nbsp;&nbsp;&nbsp; %I:%M %p') %></div>
+					<div class="image_placeholder"><img src="<%=interval_path(:id => interval.id, :format => :jpg) %>" width ="160" height ="90" /></div>
 					<%= link_to "FAR#{interval.id.to_s}", interval %><br/>
 					Duration: <%= interval.duration_string %><br />
 					Session <%= interval.session_number %><br />
