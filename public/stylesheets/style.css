@@ -1170,23 +1170,23 @@ border-top:#f0f0f0 1px solid;
    margin: 10px 20px 10px 0px;
 }
 
-p {
+.list_project p {
    line-height: 140%;
 }
 
-h2 {
+.list_project h2 {
    font-size: 1.75em;
    letter-spacing: 1px; 
    padding: 20px 0px 5px 0px;
 }
 
-h3 {
+.list_project h3 {
    font-size: 1.5em;
    color: #0297C1;
    padding: 10px 0px 5px 0px;
 }
 
-h3 span {
+.list_project h3 span {
    font-size: 0.7em;
 }
 
