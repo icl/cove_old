@@ -14,7 +14,6 @@ Background:
 
 Scenario: Go to browse page
 	When I go to the intervals page
-	Then show me the page
 	Then I should see a result with a session type of "solo"
 	And  I should see a result with a session type of "duet"
 	And  I should see a result with a session type of "trio"
