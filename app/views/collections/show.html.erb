@@ -18,7 +18,7 @@
 				<%= link_to "∧", prioritize_interval_path(:id => @collection.id, :interval => interval.id, :direction => 'up'), :class => "priority_link", :direction => "up", :id => interval.id %><br />--<br /><%= link_to "∨", prioritize_interval_path(:id => @collection.id, :interval => interval.id, :direction => 'down'), :class => "priority_link", :direction => "down" %>
 			</div>
 			<div class="grid_2 collection_box_name"><div class="content">Session <br /><span><%= interval.session_number.to_s %></span></div></div>
-			<div class="grid_3 collection_thumbnail">&nbsp;</div>
+			<img src ="<%=interval_path(:id => interval.id, :format => :jpg) %>" width ="160" height ="90" />
 			<div class="grid_2 collection_box"><div class="content">Camera Angle: <br /><span><%= interval.camera_angle %></span></div></div>
 			<div class="grid_2 collection_box"><div class="content">Session Type: <br /><span><%= interval.session_type %></span></div></div>
 			<div class="grid_2 collection_box_date"><div class="content">
