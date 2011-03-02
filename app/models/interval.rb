@@ -28,7 +28,6 @@ class Interval < ActiveRecord::Base
 	  search_conditions[:session_type] = args[:session_type] unless args[:session_type].blank?
 	  search_conditions[:phrase_type] = args[:phrase_type] unless args[:phrase_type].blank?
 	  search_conditions[:phrase_name] = args[:phrase_name] unless args[:phrase_name].blank?
-	  search_conditions[:start_time] = Time.parse(args[:date]).beginning_of_day..Time.parse(args[:date]).end_of_day unless args[:date].blank?
 
     unless args[:start_time].blank?
       (m, d, y) = args[:start_time].split("-")
