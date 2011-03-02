@@ -18,7 +18,7 @@
 
 <% @projects.each do | project | %>
    <% if project.user_id == current_user.id %>
-	<div class="project_row">
+	<div class="project_row grid_16">
 	<div class="grid_3 project_row_div" > <!--> Give this the interval row treatment <-->
     	<h2 style="padding:0px; padding-top:4px;"><%= link_to project.name, project %></h2>
 	</div>

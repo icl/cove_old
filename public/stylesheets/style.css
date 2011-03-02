@@ -1021,6 +1021,7 @@ a.destroy_collection {
 	color: #CD1A70;
 	float: right;
 	text-decoration: none;
+	padding-right: 10px;
 }
 .collection_interval_time {
 	width: 160px; text-align: center;
