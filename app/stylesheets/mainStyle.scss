@@ -32,11 +32,17 @@ $applied_color :#D2D2D2;
 }
   
 #tagging_name{
-  width: 400px;
+  width: 220px;
   height: 20px;
   font-size: 18pt;
   @include border-radius(5px);
   border: 1px solid black;
   padding: 5px;
 }
+
+#adding_shit_to_videos{
+  height: 360px;
+  overflow:scroll;
+}
+  
 

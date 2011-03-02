@@ -34,7 +34,6 @@ class Interval < ActiveRecord::Base
       st = Time.gm(y,m,d)
       search_conditions[:start_time] = st.beginning_of_day..st.end_of_day
     end
-    
 
 	  query = args[:query].blank? ? [] : Interval.search_columns.collect{|col| "#{col} LIKE :query"}.join(" OR ")
 
