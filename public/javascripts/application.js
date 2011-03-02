@@ -122,9 +122,9 @@ $(document).ready(function(){
 // Javascript for tagging
 // -------------------------------------------------------------------
   jQuery(document).ready(function(){
-    $("#tag_container").delegate(".tag", "click", function(){
-      alert("I was clicked");
-    });
+    //$("#tag_container").delegate(".tag", "click", function(){
+      //alert("I was clicked");
+    //});
 
     $("#people_container, #phenomenon_container").delegate(".code", "click", function(){
       var name = $(this).text().trim();
