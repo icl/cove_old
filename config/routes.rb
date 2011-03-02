@@ -2,7 +2,8 @@ Cove::Application.routes.draw do
 
   resources :intervals do
     resources :annotations
-    resources :taggings
+    resources :taggings, :only => [:show, :create]
+    resources :codings, :only => [:show, :create]
   end
 
   resources :definitions
