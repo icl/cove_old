@@ -100,7 +100,7 @@ class Interval < ActiveRecord::Base
   end
 
   def video_file
-    return File.join(path_prefix, "videos",filename) if filename
+    return File.join(path_prefix, "videos",filename + '.m4v') if filename
   end
 
   def self.import!
