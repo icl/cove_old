@@ -1,0 +1,38 @@
+%div.grid_5#tag_container.interaction_container
+  %h4
+    -#="Tags(#{@applied_tags.length})"
+    Tags(
+    %span#tag_count
+      =@applied_tags.length
+    )
+  %div.tag_form
+    %p
+      Enter the name of the tag you wish to create or select one of the tags listed below
+    -form_for @tag , :as => :tagging, :url => interval_taggings_path(@interval, :format => :json), :remote => true, :html => {:id => "new_tag_form"}  do |f|
+      =f.text_field :name
+  %ul#tag_list
+    -if !@applied_tags.blank?
+      -for tagging in @applied_tags
+        %li.tag.applied
+          =tagging.tag.name
+
+
+
+.grid_5#phenomenon_container.interaction_container
+  %h4
+    Phenomenon(
+    %span#phenomenon_count
+      =@applied_phenomenon.length
+    )
+    
+  = display_coding_term(@applied_phenomenon, @all_phenomenon)
+
+.grid_5#people_container.interaction_container
+  %h4
+    People(
+    %span#people_count
+      =@applied_people.length
+    )
+  = display_coding_term(@applied_people, @all_people)
+
+

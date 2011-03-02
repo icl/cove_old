@@ -144,7 +144,7 @@ $(document).ready(function(){
           xhr.setRequestHeader('X-CSRF-Token', $('meta[name=csrf-token]').attr('content'));
         },
         failure:function(){
-          $("#tag_container").append('<div class="flash alert"> Your Tag could not be submitted at this time </div>');
+          $("#tag_container").prepend('<div class="flash alert"> Your Tag could not be submitted at this time </div>');
         },
         success: function(data, status, xhr){
           console.log(data);
@@ -170,7 +170,7 @@ $(document).ready(function(){
     });
 
     $("#new_tag_form").bind("ajax:error", function(){
-      $("#tag_container").append('<div class="flash alert"> Your Tag could not be submitted at this time </div>');  
+      $("#tag_container").prepend('<div class="flash alert"> Your Tag could not be submitted at this time </div>');  
     });
 
     $("#new_tag_form").bind("ajax:success", function(data, xhr, status){
