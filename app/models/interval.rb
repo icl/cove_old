@@ -30,6 +30,13 @@ class Interval < ActiveRecord::Base
 	  search_conditions[:phrase_name] = args[:phrase_name] unless args[:phrase_name].blank?
 	  search_conditions[:start_time] = Time.parse(args[:date]).beginning_of_day..Time.parse(args[:date]).end_of_day unless args[:date].blank?
 
+    unless args[:start_time].blank?
+      (m, d, y) = args[:start_time].split("-")
+      st = Time.gm(y,m,d)
+      search_conditions[:start_time] = st.beginning_of_day..st.end_of_day
+    end
+    
+
 	  query = args[:query].blank? ? [] : Interval.search_columns.collect{|col| "#{col} LIKE :query"}.join(" OR ")
 
 	  includes(:tags).where(query, :query => "%#{args[:query]}%").where(search_conditions)
