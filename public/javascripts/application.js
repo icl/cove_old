@@ -138,7 +138,7 @@ $(document).ready(function(){
           xhr.setRequestHeader('X-CSRF-Token', $('meta[name=csrf-token]').attr('content'));
         },
         failure:function(){
-          $("body").append('<div class="flash alert"> Your Tag could not be submitted at this time </div>');
+          $("#tag_container").append('<div class="flash alert"> Your Tag could not be submitted at this time </div>');
         },
         success: function(data, status, xhr){
           console.log(data);
@@ -156,12 +156,15 @@ $(document).ready(function(){
           //update the count
           var count = $("#" + new_phenomenon['codeType'] + "_count");
           count.text(parseInt(count.text()) + 1);
+
+          //display a flash
+          $("#tag_container").prepend('<div class="flash notice"> Your Coding has been added </div>');
         }
       });
     });
 
     $("#new_tag_form").bind("ajax:error", function(){
-      $("body").append('<div class="flash alert"> Your Tag could not be submitted at this time </div>');  
+      $("#tag_container").append('<div class="flash alert"> Your Tag could not be submitted at this time </div>');  
     });
 
     $("#new_tag_form").bind("ajax:success", function(data, xhr, status){
