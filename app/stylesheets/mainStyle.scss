@@ -17,6 +17,10 @@ $applied_color :#D2D2D2;
   //@include box-shadow();
   color: black;
   cursor:pointer;
+  overflow: hidden;
+}
+.tag{
+  cursor: auto;
 }
 
 .applied{
