@@ -166,7 +166,7 @@ $(document).ready(function(){
 
     $("#new_tag_form").bind("ajax:success", function(data, xhr, status){
       $(".flash").remove();
-      $("body").append('<div class="flash notice"> Your Tag has been added </div>');  
+      $("#tag_container").prepend('<div class="flash notice"> Your Tag has been added </div>');  
 
       var newTagName = xhr["tagName"];
       console.log("tag successfully added" + newTagName);
