@@ -1,5 +1,5 @@
 <% @project.collections.each do |collection| %>
-<div class="project_collection">
+<div class="project_collection grid_16">
 <h3>
 	<% if collection.name =~ /project_[0-9]+_(favorite|queue)/i %>
 	<% name =  collection.name.split('_') %>
