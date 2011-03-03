@@ -193,3 +193,33 @@ $(document).ready(function(){
     });
     
   });
+
+
+
+// ------------------------------------------------------------
+// Javascript for client side filtering of phenomenon and people
+//-------------------------------------------------------------
+  var filterResults = function(value, elements){
+    //var elements = $("#phenomenon_container ul li");
+    for(var i = 0; i < elements.length; i ++){
+      var element = $(elements[i]);
+      var element_text = element.text();
+      element_text = element_text.toLowerCase();
+      if (element_text.indexOf(value.toLowerCase()) == -1){
+        element.hide();
+      }
+      else{
+        element.show();
+      }
+    }
+  };
+
+  jQuery(document).ready(function(){
+    $('.coding_filter').keyup(function () {
+      filterResults($(this).attr("value"), $(this).parent().find('ul li'));
+    });
+    $('.coding_filter').blur(function() {
+      $(this).attr('value', '');
+      $(this).parent().find('ul li').show();
+    });
+  });  

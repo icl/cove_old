@@ -25,6 +25,7 @@
       =@applied_phenomenon.length
     )
     
+  %input.coding_filter#phenom_filter{:type => "text"}
   = display_coding_term(@applied_phenomenon, @all_phenomenon)
 
 .grid_5#people_container.interaction_container
@@ -33,6 +34,7 @@
     %span#people_count
       =@applied_people.length
     )
+  %input.coding_filter#people_filter{:type => "text"}
   = display_coding_term(@applied_people, @all_people)
 
 
