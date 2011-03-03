@@ -75,19 +75,19 @@ class Interval < ActiveRecord::Base
 	end
 
 	def self.unique_angles
-		 group(:camera_angle).collect { |interval| interval.camera_angle}.compact
+		Code.camera_angle.map{|c| c.name}.sort
 	end
 	
 	def self.unique_phrase_types
-	  return group(:phrase_type).collect { |interval| interval.phrase_type}.compact
+		Code.phrase_type.map{|c| c.name}.sort
 	end
 	
 	def self.unique_phrase_names
-	  return group(:phrase_name).collect { |interval| interval.phrase_name}.compact
+		Code.phrase_name.map{|c| c.name}.sort
 	end
 
 	def self.unique_session_types
-		return group(:session_type).collect { |interval| interval.session_type}.compact
+		Code.session_type.map{|c| c.name}.sort
 	end
 
   def path_prefix
