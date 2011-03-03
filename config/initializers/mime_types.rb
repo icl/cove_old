@@ -5,3 +5,5 @@
 # Mime::Type.register_alias "text/html", :iphone
 
 Mime::Type.register "video/mp4", :m4v
+Mime::Type.register "image/jpeg", :jpg
+Mime::Type.register "image/jpeg", :sprite

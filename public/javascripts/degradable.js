@@ -153,8 +153,7 @@ jQuery(function() {
 		return false;
 	});
 });
-/* Infinite Carousel Code */
-
+/* Infinite Carousel Code by Remy Sharp http://jqueryfordesigners.com */
 $.fn.infiniteCarousel = function () {
 
     function repeat(str, num) {

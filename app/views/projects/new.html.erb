@@ -1,21 +1,6 @@
 <div class="container_16">
-<% if user_signed_in? %>
-   <div class="grid_15">
+   <div class="grid_15 project_form_header">
       <h1>Creating a project</h1>
    </div>
-   <div class="grid_11">
-      <%= link_to 'Back', projects_path %>
-   </div>
-   <div class="clear"></div>
-
-   <%= render 'form' %>
-
-<% else %>
-
-   <div class="grid_16">
-<p>Please log-in to access projects.</p>
-   </div>
-   <div class="clear"></div>
-
-<% end %>
+   <%= render :partial => 'form' %>
 </div>

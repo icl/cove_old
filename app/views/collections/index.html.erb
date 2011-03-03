@@ -1,42 +1,7 @@
-<div class="grid_2 prefix_14" ><%= link_to "New Collection", new_collection_path %></div>
+<div class="grid_3 prefix_13" ><%= link_to "Create a New Collection", new_collection_path %></div>
+<h2 class="collection_header">Collections</h2>
 <% if @collections %>
-	<div class="grid_16 alpha" style="font-size: 20pt; color: white; text-decoration: none;">Collections for <%= current_user.name %></div>
-	<% @collections.each do |collection| %>
-		<div class="grid_16 alpha collection_container">
-			<% if collection.name =~ /(project|user)_[0-9]+_(favorites|queue)/i %>
-			<% name =  collection.name.split('_') %>
-			<% link = name[2].humanize + " for " + name[0].humanize + ": " + name[0].singularize.camelize.constantize.find(name[1].to_i).name %>
-			<% else %>
-			<% link = collection.name %>
-			<% end %>
-			<p class="grid_16" style="margin-top: 20px;"><%= link_to link, collection, :style => "font-size: 14pt; color: gold; text-decoration: none;" %></p>
-				<div class="grid_16"><%= collection.description %></div>
-			<% if !collection.intervals.blank?%>
-			<% YAML.load(collection.interval_priorities).keys.sort!{|a,b| a.to_i <=> b.to_i}.each do |priority| %><% interval = Interval.find(YAML.load(collection.interval_priorities)[priority.to_s]) %>
-				<div class="grid_16 omega collection_cont" style="border: 1px; border-style: solid; border-color:silver;">
-
-			<div class="grid_2 collection_box_name">Session <br /><span><%= interval.session_number.to_s %></span></div>
-			<div class="grid_2 collection_thumbnail">&nbsp;</div>
-			<div class="grid_2 collection_box">Camera Angle: <br /><span><%= interval.camera_angle %></span></div>
-			<div class="grid_2 collection_box">Session Type: <br /><span><%= interval.session_type %></span></div>
-			<div class="grid_3 collection_box_date">
-				<span><%= interval.start_time.strftime("%A") %>
-				<%= interval.start_time.strftime("%b") %>
-				<%= interval.start_time.strftime("%d") %>,
-				<%= interval.start_time.strftime("%Y") %>
-				</span><br />
-				<%= interval.start_time.strftime("%I")%> :
-				<%= interval.start_time.strftime("%M")%> 
-				<%= interval.start_time.strftime("%p")%>
-			</div>
-			<div class="grid_2 collection_box">Duration:<br /> <span><%= interval.duration_string %></span></div>
-			<div class="grid_1"><%= link_to raw("<div class=\"arrow-collect\"></div>"), interval %></div>
-							
-				</div>
-			<% end %>
-			<% end %>
-		</div>
-	<% end %>
+	<%= render :partial => 'collection' %>
 <% else %>
 	You have no collections!
 <% end %>

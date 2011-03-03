@@ -6,4 +6,8 @@ class Project < ActiveRecord::Base
    serialize :tags
    has_and_belongs_to_many :collections
    has_and_belongs_to_many :notes
+   
+  validates_presence_of :name
+ 	validates_presence_of :desc
+ 	
 end
