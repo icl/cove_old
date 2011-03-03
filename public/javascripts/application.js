@@ -193,3 +193,20 @@ $(document).ready(function(){
     });
     
   });
+
+
+
+// ------------------------------------------------------------
+// Javascript for client side filtering of phenomenon and people
+//-------------------------------------------------------------
+  var filterResults = function(value){
+    var elements = $("phenomenon_container ul li");
+    for (var i=0; i <<elements.length; i++) {
+      var pointless = "blah";
+    }
+  };
+  jQuery(document).ready(function(){
+    $("#phenom_filter").bind("keyup", function(){
+      filterResults($(this).attr("value"));
+    });
+  });  
