@@ -70,6 +70,30 @@ class Interval < ActiveRecord::Base
 		start_time.strftime("%m-%d-%y") if start_time
 	end
 
+	def camera_angle
+		t = codes.camera_angle[0]
+		t.nil? ? "" : t.name
+	end
+	def session_number
+		t = codes.session_number[0]
+		t.nil? ? "" : t.name
+	end
+	def session_type
+		t = codes.session_type[0]
+		t.nil? ? "" : t.name
+	end
+	def phrase_type
+		t = codes.phrase_type[0]
+		t.nil? ? "" : t.name
+	end
+	def phrase_name
+		t = codes.phrase_name[0]
+		t.nil? ? "" : t.name
+	end
+	def task_name
+		t = codes.task_name[0]
+		t.nil? ? "" : t.name
+	end
 	
 	def self.unique_days
 		find(:all, :select => "start_time", :order => "start_time").map{|int| int.day}.uniq.compact
