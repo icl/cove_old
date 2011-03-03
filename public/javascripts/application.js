@@ -221,4 +221,8 @@ $(document).ready(function(){
       $("#phenomenon_container ul li").show();
       $(this).attr("value", "");
     });
+    
+    $('#people_filter').keyup(function(){
+      filterResults($(this).attr("value"), $('#people_container ul li'));
+    });
   });  
