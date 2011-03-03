@@ -19,6 +19,10 @@ Scenario: Go to browse page
 	And  I should see a result with a session type of "trio"
 	And  I should see a result with a session type of "quartet"
 
+Scenario: See number of results
+  When I go to the intervals page
+  Then I should see "Now showing 4 of 4 intervals."
+
 Scenario: Filter by phrase type
 	When I go to the intervals page
 	And I filter by the phrase type "shadow"
@@ -42,6 +46,8 @@ Scenario: Search
 	And  I should not see a result with a session type of "solo"
 	And  I should not see a result with a session type of "duet"
 	And  I should not see a result with a session type of "quartet"
+
+  And  I should see "Now showing 1 of 1 intervals."
 	
 Scenario: Search and filter by angle
 	When I go to the intervals page
