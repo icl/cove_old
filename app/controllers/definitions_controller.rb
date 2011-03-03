@@ -4,7 +4,7 @@ class DefinitionsController < ApplicationController
 
   def show
     @term = Code.find_by_name(params[:id].downcase)
-    if @term.nil?
+    if @term.nil? || @term.description.blank?
     else
 	    @name = @term.name
 	    @definition = @term.description
