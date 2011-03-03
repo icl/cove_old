@@ -153,10 +153,12 @@ class Interval < ActiveRecord::Base
           interval.start_time = DateTime.parse(interval.filename.match(/[0-9]{4}(-[0-9]{2}){2}/)[0] + " " + interval.start_time.strftime("%H:%M"))
           interval.save
 
-	  raw_data.each{|k,v|
+	  blacklist = [:duration, :start_time, :filename]
+	  raw_data.keys.reject{|k| blacklist.include?(k)}.each do |k|
+		v = raw_data[k]
 		Code.new(:name=>v, :coding_type=>k.to_s).save
 		interval.codings << Coding.create(:name => v, :coding_type=>k.to_s, :user_id=>1)
-	  }
+	  end
 
         end
         
