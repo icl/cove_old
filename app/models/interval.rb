@@ -18,6 +18,7 @@ class Interval < ActiveRecord::Base
   has_and_belongs_to_many :collections
   
   has_many :codings
+  has_many :codes, :through => :codings
   has_many :taggings
   has_many :tags, :through => :taggings
 
@@ -29,12 +30,12 @@ class Interval < ActiveRecord::Base
 	  search_conditions[:phrase_type] = args[:phrase_type] unless args[:phrase_type].blank?
 	  search_conditions[:phrase_name] = args[:phrase_name] unless args[:phrase_name].blank?
 
-    unless args[:start_time].blank?
-      (m, d, y) = args[:start_time].split("-")
-      st = Time.gm(y,m,d)
-      search_conditions[:start_time] = st.beginning_of_day..st.end_of_day
-    end
-
+	  unless args[:start_time].blank?
+		  (m, d, y) = args[:start_time].split("-")
+		  st = Time.gm(y,m,d)
+		  search_conditions[:start_time] = st.beginning_of_day..st.end_of_day
+	  end
+    
 	  query = args[:query].blank? ? [] : Interval.search_columns.collect{|col| "#{col} LIKE :query"}.join(" OR ")
 
 	  includes(:tags).where(query, :query => "%#{args[:query]}%").where(search_conditions)

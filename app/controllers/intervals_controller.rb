@@ -3,6 +3,8 @@ class IntervalsController < ApplicationController
     before_filter :require_nda
     before_filter :find_interval, :only => [:show, :update, :edit]
     
+    respond_to :html
+    respond_to :m4v, :sprite, :jpg, :only => [:show]
 	def index
     @filters = Interval.filters
     all = Interval.search(params)
@@ -16,18 +18,15 @@ class IntervalsController < ApplicationController
   def show
     @applied_tags= @interval.taggings
 
-    #@unapplied_phenomenon = Code.phenomenon.unapplied(@interval.id)
-    @applied_phenomenon = @interval.codings.phenomenon
-    @all_phenomenon = Code.phenomenon.all
+    @applied_phenomenon = @interval.codes.phenomenon
+    @all_phenomenon = Code.phenomenon.all()
 
-    @applied_people = @interval.codings.people
-    @all_people = Code.people.all
-    #@unapplied_people = Code.people.unapplied(@interval.id)
+    @applied_people = @interval.codes.people
+    @all_people = Code.people.all()
 
-    respond_to do |format|
+    respond_with(@interval) do |format|
       format.sprite { send_sprite }
       format.jpg { send_thumbnail }
-      format.html {  render "show"}
       format.m4v { send_video}
     end
 

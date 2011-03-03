@@ -14,11 +14,11 @@ $applied_color :#D2D2D2;
   text-align: center;
   padding-top: 5px;
   @include border-radius(3px);
-  //@include box-shadow();
   color: black;
   cursor:pointer;
   overflow: hidden;
 }
+
 .tag{
   cursor: auto;
 }

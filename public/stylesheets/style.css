@@ -1180,7 +1180,14 @@ border-top:#f0f0f0 1px solid;
    padding: 20px 0px 5px 0px;
 }
 
-.list_project h3 {
+.list_project h3,
+.project_collection h3 {
+   font-size: 1.5em;
+   color: #0297C1;
+   padding: 10px 0px 5px 0px;
+}
+
+.list_project h3 a{
    font-size: 1.5em;
    color: #0297C1;
    padding: 10px 0px 5px 0px;
@@ -1190,6 +1197,10 @@ border-top:#f0f0f0 1px solid;
    font-size: 0.7em;
 }
 
+.collection_header {
+	font-size: 2em;
+    padding: 10px 0px 5px 0px;
+}
 
 /* Show Project Page */
 div.project_container li.inline {
