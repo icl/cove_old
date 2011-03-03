@@ -205,7 +205,7 @@ $(document).ready(function(){
       var element = $(elements[i]);
       var element_text = element.text();
       element_text = element_text.toLowerCase();
-      if (element_text.indexOf(value) == -1){
+      if (element_text.indexOf(value.toLowerCase()) == -1){
         element.hide();
       }
       else{
