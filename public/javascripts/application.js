@@ -4,7 +4,9 @@
 
 
 /***********************************/
-/* JS adjustments for show.html */
+/* JS adjustments for show.html 
+
+OUT - not using javascript in release.
 
 
 		$(document).ready(function(){  //show more info
@@ -37,7 +39,7 @@
 				$(".show_applied_tags").remove();
 			});
 		});
-	
+
 
 
 /* end style adjustments for show.html */
