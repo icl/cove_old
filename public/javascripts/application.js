@@ -213,16 +213,13 @@ $(document).ready(function(){
       }
     }
   };
+
   jQuery(document).ready(function(){
-    $("#phenom_filter").bind("keyup", function(){
-      filterResults($(this).attr("value"), $("#phenomenon_container ul li"));
+    $('.coding_filter').keyup(function () {
+      filterResults($(this).attr("value"), $(this).parent().find('ul li'));
     });
-    $("#phenom_filter").blur(function(){
-      $("#phenomenon_container ul li").show();
-      $(this).attr("value", "");
-    });
-    
-    $('#people_filter').keyup(function(){
-      filterResults($(this).attr("value"), $('#people_container ul li'));
+    $('.coding_filter').blur(function() {
+      $(this).attr('value', '');
+      $(this).parent().find('ul li').show();
     });
   });  
