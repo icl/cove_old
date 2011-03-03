@@ -142,15 +142,22 @@ class Interval < ActiveRecord::Base
               field.to_s.downcase
           end # End |case| block
         end # End |do| block
-        
+
         notes.each do |row|
           raw_data = row.to_hash.reject {|k,v| !Interval.column_names.index(k.to_s)}
           data={}
           #takes row data and downcases them so there are not duplicate things
           raw_data.each{|k,v| data[k]=v.strip rescue data[k]=v }
+
           interval = Interval.new(data)
           interval.start_time = DateTime.parse(interval.filename.match(/[0-9]{4}(-[0-9]{2}){2}/)[0] + " " + interval.start_time.strftime("%H:%M"))
           interval.save
+
+	  raw_data.each{|k,v|
+		Code.new(:name=>v, :coding_type=>k.to_s).save
+		interval.codings << Coding.create(:name => v, :coding_type=>k.to_s, :user_id=>1)
+	  }
+
         end
         
         #if !Dir.exists?('log/notes') # Doesn't work for some reason. Directory needs to be created manually
