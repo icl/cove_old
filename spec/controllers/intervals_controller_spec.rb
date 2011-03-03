@@ -14,8 +14,10 @@ describe IntervalsController do
     it {should respond_with(:success)}
     it {should render_template('show')}
     it {assigns[:applied_tags].should == @interval.taggings}
-    it {assigns[:applied_phenomenon].should == @interval.codings.phenomenon}
-    it {assigns[:all_phenomenon].should == Code.unapplied(@interval.id).phenomenon}
+    it {assigns[:all_people].should == Code.people.all()}
+    it {assigns[:applied_people].should == @interval.codes.people}
+    it {assigns[:applied_phenomenon].should == @interval.codes.phenomenon}
+    it {assigns[:all_phenomenon].should == Code.phenomenon.all()}
   end
     
   describe "GET 'new'" do

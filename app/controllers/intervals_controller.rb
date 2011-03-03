@@ -16,13 +16,11 @@ class IntervalsController < ApplicationController
   def show
     @applied_tags= @interval.taggings
 
-    #@unapplied_phenomenon = Code.phenomenon.unapplied(@interval.id)
-    @applied_phenomenon = @interval.codings.phenomenon
-    @all_phenomenon = Code.phenomenon.all
+    @applied_phenomenon = @interval.codes.phenomenon
+    @all_phenomenon = Code.phenomenon.all()
 
-    @applied_people = @interval.codings.people
-    @all_people = Code.people.all
-    #@unapplied_people = Code.people.unapplied(@interval.id)
+    @applied_people = @interval.codes.people
+    @all_people = Code.people.all()
 
     respond_to do |format|
       format.sprite { send_sprite }
