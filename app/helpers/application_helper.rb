@@ -26,8 +26,8 @@ module ApplicationHelper
   def display_coding_term(applied=[], all=[])
     html = "<ul>"
     applied.each do |term|
-      if all.delete(term.code)
-        html << %Q[<li class="code applied" data-codingType="#{term.code.coding_type}" data-rails_object_id="#{term.code.id}"> #{term.code.name} </li>]
+      if all.delete(term)
+        html << %Q[<li class="code applied" data-codingType="#{term.coding_type}" data-rails_object_id="#{term.id}"> #{term.name} </li>]
       end
     end
     all.each do |term|
