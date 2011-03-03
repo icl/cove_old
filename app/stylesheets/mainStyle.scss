@@ -42,7 +42,8 @@ $applied_color :#D2D2D2;
 
 #adding_shit_to_videos{
   height: 360px;
-  overflow:scroll;
+  overflow-y:scroll;
+  overflow-x:hidden;
 }
   
 
