@@ -24,11 +24,10 @@ class Interval < ActiveRecord::Base
 
   def self.search args
 	  search_conditions = {}
-
 	  search_conditions[:camera_angle] = args[:camera_angle] unless args[:camera_angle].blank?
 	  search_conditions[:session_type] = args[:session_type] unless args[:session_type].blank?
-	  search_conditions[:phrase_type] = args[:phrase_type] unless args[:phrase_type].blank?
-	  search_conditions[:phrase_name] = args[:phrase_name] unless args[:phrase_name].blank?
+	  search_conditions[:phrase_type]  = args[:phrase_type]  unless args[:phrase_type].blank?
+	  search_conditions[:phrase_name]  = args[:phrase_name]  unless args[:phrase_name].blank?
 
     unless args[:start_time].blank?
       (m, d, y) = args[:start_time].split("-")
@@ -173,14 +172,14 @@ class Interval < ActiveRecord::Base
           data={}
           #takes row data and downcases them so there are not duplicate things
           raw_data.each{|k,v| data[k]=v.strip rescue data[k]=v }
+	  blacklist = [:duration, :start_time, :filename]
 
-          interval = Interval.new(data)
+          interval = Interval.new(data.reject{|k,v| !blacklist.include?(k)})
           interval.start_time = DateTime.parse(interval.filename.match(/[0-9]{4}(-[0-9]{2}){2}/)[0] + " " + interval.start_time.strftime("%H:%M"))
           interval.save
 
-	  blacklist = [:duration, :start_time, :filename]
-	  raw_data.keys.reject{|k| blacklist.include?(k)}.each do |k|
-		v = raw_data[k]
+	  data.keys.reject{|k| blacklist.include?(k)}.each do |k|
+		v = data[k]
 		Code.new(:name=>v, :coding_type=>k.to_s).save
 		interval.codings << Coding.create(:name => v, :coding_type=>k.to_s, :user_id=>1)
 	  end
