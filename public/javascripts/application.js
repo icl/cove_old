@@ -199,8 +199,8 @@ $(document).ready(function(){
 // ------------------------------------------------------------
 // Javascript for client side filtering of phenomenon and people
 //-------------------------------------------------------------
-  var filterResults = function(value){
-    var elements = $("#phenomenon_container ul li");
+  var filterResults = function(value, elements){
+    //var elements = $("#phenomenon_container ul li");
     for(var i = 0; i < elements.length; i ++){
       var element = $(elements[i]);
       var element_text = element.text();
@@ -215,7 +215,7 @@ $(document).ready(function(){
   };
   jQuery(document).ready(function(){
     $("#phenom_filter").bind("keyup", function(){
-      filterResults($(this).attr("value"));
+      filterResults($(this).attr("value"), $("#phenomenon_container ul li"));
     });
     $("#phenom_filter").blur(function(){
       $("#phenomenon_container ul li").show();
