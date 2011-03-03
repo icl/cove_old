@@ -21,3 +21,6 @@ Factory(:tagging, :name => "Props")
 
 interval = Factory(:interval,  :taggings => [marking, riffing, sketching])
 
+100.times do
+  Factory(:code,:name => ActiveSupport::SecureRandom.base64(8),  :coding_type => "phenomenon")
+end
