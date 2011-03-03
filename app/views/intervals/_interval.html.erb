@@ -4,7 +4,7 @@
          <!--><img src ="<%=interval_path(:id => interval.id, :format => :jpg) %>" width ="160" height ="90" /><-->
       </li>
       <li class="grid_2 browse_box"><h4>Camera Angle</h4><span><%= interval.camera_angle %></span></li> 
-      <li class="grid_2 browse_box"><h4>Session Type</h4> <span class="define_me"><%= interval.session_type  %></span></li> 
+      <li class="grid_2 browse_box"><h4>Session Type</h4> <span class="session_type define_me"><%= interval.session_type  %></span></li> 
       <li class="grid_2 browse_box_date">
 		<% if !interval.start_time.blank?%>
 		<%= interval.start_time.strftime("%A") %>

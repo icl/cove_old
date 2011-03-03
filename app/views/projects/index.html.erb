@@ -1,85 +1,44 @@
-
-<style>
-
-li.inline {
-   display: inline;
-   list-style-type: none;
-   margin: 10px 20px 10px 0px;
-}
-
-p {
-   line-height: 140%;
-}
-
-h2 {
-   font-size: 1.75em;
-   letter-spacing: 1px; 
-   padding: 20px 0px 5px 0px;
-}
-
-h3 {
-   font-size: 1.5em;
-   color: #00fa9a;
-   padding: 10px 0px 5px 0px;
-}
-
-h3 span {
-   font-size: 0.7em;
-}
-
-</style>
-
-<div class="container_16">
-<% if @project %>
+<div class="container_16 list_project">
+<% if !@projects.blank? %>
 <div class="grid_11">
    &nbsp; 
 </div>
 <div class="grid_5">
-<%= link_to 'Create a new project', new_project_path %> 
+<%= link_to 'Create a new project', new_project_path, :class => "new_project_link" %> 
 </div>
 <div class="clear"></div>
-<div class="grid_2">
-   &nbsp; 
-</div>
+
 <div class="grid_10">
-<h3>Listing projects:</h3>
-</div>
-<div class="grid_4">
+		<h3>Listing projects:</h3>
+	</div>
+<div class="grid_6">
    &nbsp; 
 </div>
 <div class="clear"></div>
 
-<% @project.each do | project | %>
+<% @projects.each do | project | %>
    <% if project.user_id == current_user.id %>
-<div class="grid_3">
-   &nbsp; 
-</div>
-<div class="grid_10">
-      <h2><%= link_to project.name, project %></h2>
-</div>
-<div class="grid_3">
-   &nbsp; 
-</div>
-<div class="clear"></div>
-<div class="grid_3">
-   &nbsp; 
-</div>
-<div class="grid_10">
-      <p><%= project.desc %></p>
-</div>
-<div class="grid_3">
-   &nbsp; 
-</div>
-<div class="clear"></div>
-   <% end %>
+	<div class="project_row grid_16">
+	<div class="grid_3 project_row_div" > <!--> Give this the interval row treatment <-->
+    	<h2 style="padding:0px; padding-top:4px;"><%= link_to project.name, project %></h2>
+	</div>
+	<div class="grid_3 project_row_div">
+		<div style="padding: 12px 0px;">Owner: <strong><%= current_user.email %></strong></div>
+	</div>
+	<div class="grid_10 project_row_div">
+		<div style="padding: 12px 0px;">Description: <%= project.desc[0, project.desc.length > 60 ? 60 : project.desc.length] %><%= "..." if project.desc.length > 60 %></div>
+	</div>
+	</div>
+	<div class="clear"></div>
+	<% end %>
 <% end %>
 
 <% else %>
 
-<div class="grid_16">
-<p>Please log in to access projects.</p>
-</div>
-<div class="clear"></div>
+<h2>You have no projects.</h2>
+<div class="project_form_header">Please create a new project.</div>
+
+<%= render :partial => 'form' %>
 
 <% end %>
 </div>

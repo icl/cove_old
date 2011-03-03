@@ -43,6 +43,7 @@ $(document).ready(function(){
 	var offY = 0;
 	var zindex_inc = 1000;
 	var delay = 200;
+	var timeoutdelay = 20*1000;
 	$(".define_me")
 		.live("mouseenter lookup", function(e){
 			var name = $(this).text();
@@ -97,6 +98,11 @@ $(document).ready(function(){
 				.css("position", "absolute")
 				.css("top", (offset.top + offY) + "px")
 				.css("left", (offset.left + width + offX) + "px");
+			$(this).stopTime(name+"_timeout");
+			$(this).oneTime(timeoutdelay, name+"_timeout", function(){
+				hoverstatus[name] = 0;
+				$("#definition_"+name.replace(" ", "_")).trigger("goaway");
+			});
 		})
 		.live("mouseleave", function(){
 			var name = $(this).text();
@@ -122,9 +128,9 @@ $(document).ready(function(){
 // Javascript for tagging
 // -------------------------------------------------------------------
   jQuery(document).ready(function(){
-    $("#tag_container").delegate(".tag", "click", function(){
-      alert("I was clicked");
-    });
+    //$("#tag_container").delegate(".tag", "click", function(){
+      //alert("I was clicked");
+    //});
 
     $("#people_container, #phenomenon_container").delegate(".code", "click", function(){
       var name = $(this).text().trim();
@@ -138,7 +144,7 @@ $(document).ready(function(){
           xhr.setRequestHeader('X-CSRF-Token', $('meta[name=csrf-token]').attr('content'));
         },
         failure:function(){
-          $("body").append('<div class="flash alert"> Your Tag could not be submitted at this time </div>');
+          $("#tag_container").append('<div class="flash alert"> Your Tag could not be submitted at this time </div>');
         },
         success: function(data, status, xhr){
           console.log(data);
@@ -156,19 +162,24 @@ $(document).ready(function(){
           //update the count
           var count = $("#" + new_phenomenon['codeType'] + "_count");
           count.text(parseInt(count.text()) + 1);
+
+          //display a flash
+          $("#tag_container").prepend('<div class="flash notice"> Your Coding has been added </div>');
         }
       });
     });
 
     $("#new_tag_form").bind("ajax:error", function(){
-      $("body").append('<div class="flash alert"> Your Tag could not be submitted at this time </div>');  
+      $("#tag_container").append('<div class="flash alert"> Your Tag could not be submitted at this time </div>');  
     });
 
     $("#new_tag_form").bind("ajax:success", function(data, xhr, status){
-      $("body").append('<div class="flash notice"> Your Tag has been added </div>');  
+      $(".flash").remove();
+      $("#tag_container").prepend('<div class="flash notice"> Your Tag has been added </div>');  
+
       var newTagName = xhr["tagName"];
       console.log("tag successfully added" + newTagName);
-
+    
       //append the new tag to the tag list
       $("#tag_list").append('<li class="tag applied">' + newTagName + '</li>');
 
@@ -176,7 +187,9 @@ $(document).ready(function(){
       var current_value = $("#tag_count");
       console.log(current_value.text());
       current_value.text(parseInt(current_value.text()) + 1);
-
+      
+      //$("#tagging_name").trigger("blur");
+      $("#tagging_name").attr("value", "");
     });
     
   });
