@@ -4,7 +4,7 @@ describe CodingsController do
   before(:each) do
     @interval = Factory(:interval)
     @user = Factory(:admin_user)
-    Factory(:code, :name => "test")
+    @code = Factory(:code, :name => "test")
     sign_in @user
   end
   describe "POST 'create'" do
@@ -16,9 +16,9 @@ describe CodingsController do
       it {should respond_with 201}
       it "should return the new object in the json body" do
         returned_json = JSON.parse(response.body)
-        returned_json["codeName"].should be
-        returned_json["codeID"].should be
-        returned_json["coding"].should be
+        returned_json["codeName"].should == "test"
+        returned_json["codeID"].should == @code.id
+        returned_json["coding"].should == Coding.first.to_json
       end
     end
 
@@ -27,6 +27,10 @@ describe CodingsController do
         post :create, :format => :json, :interval_id => @interval, :coding=> {:name => nil}
       end
       it {should respond_with 422}
+      it "should return failure status as json" do
+        returned_json = JSON.parse(response.body)
+        returned_json["status"].should == "failure"
+      end
     end
   end
 

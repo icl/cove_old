@@ -4,17 +4,17 @@ class CodingsController < ApplicationController
   respond_to :html, :json
   def create
     @interval = Interval.find(params[:interval_id])
-    @new_coding = Coding.new(params[:coding])
-    @new_coding.interval = @interval
+    @new_coding = @interval.codings.create(params[:coding])
     @new_coding.user = current_user
     if @new_coding.save
+      code = @new_coding.code
       respond_with do |format|
         format.html {redirect_to interval_path(params[:interval_id])}
         format.json do
           render :json => {"status" => "success", 
-            "codeName" => @new_coding.code.name, 
-            "codeID" => @new_coding.code.id,
-            "codeType" => @new_coding.code.coding_type,
+            "codeName" => code.name, 
+            "codeID" => code.id,
+            "codeType" => code.coding_type,
             "coding" => @new_coding.to_json}, :status => 201
         end
       end
