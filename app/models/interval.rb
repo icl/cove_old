@@ -69,25 +69,26 @@ class Interval < ActiveRecord::Base
 	def day
 		start_time.strftime("%m-%d-%y") if start_time
 	end
+
 	
 	def self.unique_days
 		find(:all, :select => "start_time", :order => "start_time").map{|int| int.day}.uniq.compact
 	end
 
 	def self.unique_angles
-		Code.camera_angle.map{|c| c.name}.sort
+		Code.camera_angle.order("name DESC").map{|c| c.name}
 	end
 	
 	def self.unique_phrase_types
-		Code.phrase_type.map{|c| c.name}.sort
+		Code.phrase_type.order("name DESC").map{|c| c.name}
 	end
 	
 	def self.unique_phrase_names
-		Code.phrase_name.map{|c| c.name}.sort
+		Code.phrase_name.order("name DESC").map{|c| c.name}
 	end
 
 	def self.unique_session_types
-		Code.session_type.map{|c| c.name}.sort
+		Code.session_type.order("name DESC").map{|c| c.name}
 	end
 
   def path_prefix
