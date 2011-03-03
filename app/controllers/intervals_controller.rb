@@ -24,7 +24,7 @@ class IntervalsController < ApplicationController
     @applied_people = @interval.codes.people
     @all_people = Code.people.all()
 
-    respond_with do |format|
+    respond_with(@interval) do |format|
       format.sprite { send_sprite }
       format.jpg { send_thumbnail }
       format.m4v { send_video}
