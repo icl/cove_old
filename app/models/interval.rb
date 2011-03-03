@@ -23,25 +23,29 @@ class Interval < ActiveRecord::Base
   has_many :tags, :through => :taggings
 
   def self.search args
-	  search_conditions = {}
-	  search_conditions[:camera_angle] = args[:camera_angle] unless args[:camera_angle].blank?
-	  search_conditions[:session_type] = args[:session_type] unless args[:session_type].blank?
-	  search_conditions[:phrase_type]  = args[:phrase_type]  unless args[:phrase_type].blank?
-	  search_conditions[:phrase_name]  = args[:phrase_name]  unless args[:phrase_name].blank?
+	  search_params = [:camera_angle, :session_type, :phrase_type, :phrase_name]
 
-    unless args[:start_time].blank?
-      (m, d, y) = args[:start_time].split("-")
-      st = Time.gm(y,m,d)
-      search_conditions[:start_time] = st.beginning_of_day..st.end_of_day
-    end
+	  intersect_us = []
+
+	  search_params.reject{|p| args[p].blank?}.each do |param|
+		intersect_us << includes(:codes).where("codes.coding_type".to_sym => param.to_s, "codes.name".to_sym => args[param])
+	  end
+
+	  unless args[:start_time].blank?
+		  (m, d, y) = args[:start_time].split("-")
+		  st = Time.gm(y,m,d)
+		  search_conditions[:start_time] = st.beginning_of_day..st.end_of_day
+	  end
 
 	  query = args[:query].blank? ? [] : Interval.search_columns.collect{|col| "#{col} LIKE :query"}.join(" OR ")
 
-	  includes(:tags).where(query, :query => "%#{args[:query]}%").where(search_conditions)
+	  intersect_us << includes(:tags).includes(:codes).where(query, :query => "%#{args[:query]}%")
+
+	  intersect_us.reduce(intersect_us[0], :&)
   end
   
   def self.search_columns
-    ['session_type', 'phrase_type', 'camera_angle', 'tags.name']
+    ['codes.name', 'tags.name']
   end
   
   def self.filters
