@@ -21,4 +21,11 @@ describe Code do
       Code.unapplied(@new_interval.id).should == Code.all()
     end
   end
+
+  describe "scope phenomenon" do
+    it "should return all the phenomenon" do
+      Code.phenomenon().should == Code.where(:coding_type => "phenomenon")
+    end
+
+  end
 end
