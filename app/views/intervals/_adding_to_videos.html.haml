@@ -5,7 +5,7 @@
     %span#tag_count
       =@applied_tags.length
     )
-  %div.tag_form
+  %div.tag_form.grid_4
     %p
       Enter the name of the tag you wish to create or select one of the tags listed below
     -form_for @tag , :as => :tagging, :url => interval_taggings_path(@interval, :format => :json), :remote => true, :html => {:id => "new_tag_form"}  do |f|
@@ -25,6 +25,7 @@
       =@applied_phenomenon.length
     )
     
+  %input#phenom_filter{:type => "text"}
   = display_coding_term(@applied_phenomenon, @all_phenomenon)
 
 .grid_5#people_container.interaction_container
