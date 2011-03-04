@@ -191,6 +191,14 @@ $(document).ready(function(){
       //$("#tagging_name").trigger("blur");
       $("#tagging_name").attr("value", "");
     });
+
+    $("#tagging_name").blur(function() {
+      $(this).attr("value", "Enter New Tag");
+    });
+
+    $('#tagging_name').focus(function() {
+      $(this).attr("value", "");
+    });
     
   });
 
@@ -222,4 +230,7 @@ $(document).ready(function(){
       $(this).attr('value', '');
       $(this).parent().find('ul li').show();
     });
+
+    $("video").bind("loadstart", alert("the video is loading"));
+    $("video").bind("error", alert("there was an error loading the video"));
   });  
