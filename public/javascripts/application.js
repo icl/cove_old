@@ -231,6 +231,4 @@ $(document).ready(function(){
       $(this).parent().find('ul li').show();
     });
 
-    $("video").bind("loadstart", alert("the video is loading"));
-    $("video").bind("error", alert("there was an error loading the video"));
   });  
