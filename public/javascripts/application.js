@@ -1,9 +1,9 @@
 /* Thumbnail fast scrub */    
     function changeSpriteWindow(obj){
-        //TODO: figure out how to grab misc 10 pixel additional margin
+        // TODO: figure out how to grab misc 10 pixel additional margin
         var extra_margin =10;
-        var newY = (event.clientX-($(obj).position().left)-extra_margin)*90;
-        var position = "0px " + newY + "px "
+        var newX = (event.clientX-($(obj).position().left)-extra_margin)*160;
+        var position = newX +"px 0px"
         obj.style.backgroundPosition = position;
     }
     
