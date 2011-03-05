@@ -1,12 +1,9 @@
 $(document).ready(function(){
-      
-  
-  var videoPlayer = VideoJS.setup('cove-video-player',{
+
+//  var videoPlayer = VideoJS.setup('cove-video-player',{
 //    offset: 30,
-    controlsHiding: false,
-    controlsAtStart: true,
-    controlsBelow: true
-  });
+//    controlsHiding: false
+//  }); 
 
   function secondsToString(secs) {
     var deciseconds = Math.round(secs * 100);
@@ -49,30 +46,47 @@ $(document).ready(function(){
     videoPlayer.snippetEnd( stringToSeconds(this.value) );
     $(this).val( secondsToString( videoPlayer.snippetEnd() ));
     return false;
-  });
+  }); 
   
+  /* Billy's javascript */
+  
+  $('.snippet_info').hide();
   $('.interval_form').hide();
+  $('.mark_buttons').hide();
+  
   $('.create_interval_button').click(function(){
-    $('.interval_form').show("slide", {direction: "left"}, 1000);
+    $('.create_interval_button').hide();
+    $('.mark_buttons').show("slide", {direction: "left"}, 2000);
+    $('.interval_form').show("slide", {direction: "left"}, 2050);
+    $('.snippet_info').hide();
     return false;
   });
   
   $('button.cancel').click(function(){
-    $('.interval_form').hide("slide", {direction: "left"}, 1000);
+    $('.interval_form').hide("slide", {direction: "left"}, 500);
+    $('.mark_buttons').hide("slide", {direction: "left"}, 500);
     $('.create_interval_button').show();
     return false;
   });
   
-   $('button.save').click(function(){
-    $('.interval_form').hide("slide", {direction: "left"}, 1000);
-    $('.create_interval_button').show();
-    return false;
-  });
+  $('.snippet_edit').hide();
   
   $('.snippet').click(function(){
     $('.interval_form').hide();
-//    return false;
+    $('.snippet_info').show();
+    $('.create_interval_button').show();
+    $('.interval_browse').show();
+    $('.mark_buttons').hide("slide", {direction: "left"}, 500);
+    return false;
   });
+  
+  $('button.delete').click(function(){
+    $('.snippet_info').hide();
+    $('.create_interval_button').show();
+    return false;
+  });
+  
+  /* End Billy's js */
     
  
   $("#new_snippet").submit(function(event){
@@ -135,7 +149,6 @@ $(document).ready(function(){
     $(document).ready(function(){$('.thumbnail_box').trigger('mouseover')});
     
 /* end Thumbnail fast scrub */    
-
 
 $(document).ready(function(){
 	
@@ -227,7 +240,6 @@ $(document).ready(function(){
 });
 
 
-
 // -------------------------------------------------------------------
 // Javascript for tagging
 // -------------------------------------------------------------------
@@ -305,8 +317,6 @@ $(document).ready(function(){
     });
     
   });
-
-
 
 // ------------------------------------------------------------
 // Javascript for client side filtering of phenomenon and people
