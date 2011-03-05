@@ -1,0 +1,10 @@
+.filter_bar.grid_16.define_me
+  - @filters.each do |filter|
+    = render :partial => 'filter', :object => filter
+
+%ul.interval_list.grid_16
+  = "Now showing " + @num_shown + " of " + @num_results + " intervals."  
+  = paginate @intervals
+  - @intervals.each do |interval|
+    = render :partial => 'interval', :object => interval
+  = paginate @intervals

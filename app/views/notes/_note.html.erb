@@ -1,0 +1,27 @@
+<% 	if note.note
+		disp = note.note
+		max = note.note.length > 60 ? 60 : note.note.length
+	else 
+		disp = @note.note
+		max = @note.note.lentgth > 60 ? 60 : @note.note.length
+	end %>
+<li class="project_note">
+<div class="note_header">
+	<div class="first_note note_expand<%= "able" if max == 60 || disp =~ /\n/ %>"><%= disp[0, max].gsub(/\n/,'<br class="note_br" />').html_safe %></div>
+	<% if max == 60 %>
+	<div class="note_slide note_expandable">
+			<%= "&nbsp;".html_safe if disp[60] == 32 %>
+			<%= disp[60,note.note.length-1].gsub(/\n/,'<br class="note_br" />').html_safe %>
+	</div>
+	<% end %>
+	<div class="note_controls">
+	<% if note %>
+		[<%= link_to 'X', [@project, note], :id => note.id, :class => "note_delete", :method => :delete, :style => "color: #CD1A70; text-decoration:none;" %>]
+	<% else %>
+		[<%= link_to 'X', [@project, @note], :id => @note.id, :class => "note_delete", :method => :delete, :style => "color: #CD1A70; text-decoration:none;" %>]
+	<% end %>
+	</div>
+	<%= "<div class=\"note_expandable expandable\" style=\"display:none;\"><span style=\"font-size:9px;\">...(click to expand)</span></div>".html_safe if max == 60 || disp =~ /\n/ %>
+	<%= "<div class=\"note_expandable collapsable\" style=\"display:none;\"><span style=\"font-size:9px;\">(click to hide)</span></div>".html_safe if max == 60 || disp =~ /\n/ %>
+</div>
+</li>

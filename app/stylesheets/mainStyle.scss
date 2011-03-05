@@ -1,0 +1,49 @@
+@import "compass";
+$applied_color :#D2D2D2;
+
+
+.interaction_container ul li{
+  list-style: none;
+  float: left;
+}
+
+.code, .tag{
+  width: 100px;
+  height: 20px;
+  margin: 5px;
+  text-align: center;
+  padding-top: 5px;
+  @include border-radius(3px);
+  color: black;
+  cursor:pointer;
+  overflow: hidden;
+}
+
+.tag{
+  cursor: auto;
+}
+
+.applied{
+  background-color: ($applied_color - 100);
+  color: white;
+}
+.unapplied{
+  background-color: $applied_color;
+}
+  
+#tagging_name{
+  width: 220px;
+  height: 20px;
+  font-size: 18pt;
+  @include border-radius(5px);
+  border: 1px solid black;
+  padding: 5px;
+}
+
+#adding_shit_to_videos{
+  height: 360px;
+  overflow-y:scroll;
+  overflow-x:hidden;
+}
+  
+

@@ -1,0 +1,7 @@
+<div class="grid_3 prefix_13" ><%= link_to "Create a New Collection", new_collection_path %></div>
+<h2 class="collection_header">Collections</h2>
+<% if @collections %>
+	<%= render :partial => 'collection' %>
+<% else %>
+	You have no collections!
+<% end %>

@@ -10,14 +10,17 @@ Factory(:regular_user)
 Factory(:admin_user)
 Factory(:first_time_user)
 
-marking = Factory(:tag, :name => "Marking")
-riffing = Factory(:tag, :name => "Riffing")
-sketching = Factory(:tag, :name => "Sketching")
-Factory(:tag, :name => "Distributed Memory")
-Factory(:tag, :name => "Costumes")
-Factory(:tag, :name => "Sonification")
-Factory(:tag, :name => "Imagery")
-Factory(:tag, :name => "Props")
+marking = Factory(:tagging, :name => "Marking")
+riffing = Factory(:tagging, :name => "Riffing")
+sketching = Factory(:tagging, :name => "Sketching")
+Factory(:tagging, :name => "Distributed Memory")
+Factory(:tagging, :name => "Costumes")
+Factory(:tagging, :name => "Sonification")
+Factory(:tagging, :name => "Imagery")
+Factory(:tagging, :name => "Props")
 
-interval = Factory(:interval, :tags => [marking, riffing, sketching])
+interval = Factory(:interval,  :taggings => [marking, riffing, sketching])
 
+100.times do
+  Factory(:code,:name => ActiveSupport::SecureRandom.base64(8),  :coding_type => "phenomenon")
+end

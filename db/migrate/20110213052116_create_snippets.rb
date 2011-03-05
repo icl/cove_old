@@ -4,8 +4,8 @@ class CreateSnippets < ActiveRecord::Migration
       t.references :interval
       t.string :title
       t.string :description
-      t.decimal :offset
-      t.decimal :duration
+      t.decimal :offset, :scale => 2
+      t.decimal :duration, :scale => 2
 
       t.timestamps
     end

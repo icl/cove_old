@@ -1,28 +1,24 @@
 Factory.define :tag, :class => Tag do |f|
-  #f.description "No description."
+  f.description "This is a test tag."
   f.name "Test"
 end
 
-Factory.define :taging, :class => Taging do |f|
-  f.user do
-    if User.where(:email => "user@test.com").first
-      User.where(:email => "user@test.com").first
-    else
-      Factory(:regular_user)
-    end
-  end
+Factory.define :tagging, :class => Tagging do |f|
+  f.name "Test"
   f.interval do
     if Interval.first
       Interval.first
     else
-      Factory(:interval)
+      Factory :interval
     end
   end
-  f.tag do
-    if Tag.first
-      Tag.first
+
+  f.user do
+    if User.first
+      User.first
     else
-      Factory(:tag)
+      Factory :regular_user
     end
   end
 end
+

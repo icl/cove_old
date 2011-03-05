@@ -1,10 +1,8 @@
-<div class="search_box">
-<form action="/intervals" method="get">
-<input type="search" results=3 placeholder="Search..." name="search" value="<%= params[:search] %>">
-<input type="submit" id="global_search_submit" value="Submit" />
-<%= hidden_field_tag :camera_angle,params[:camera_angle] %>
-<%= hidden_field_tag :session_type,params[:session_type] %>
-<%= hidden_field_tag :phrase_type, params[:phrase_type] %>
-<%= hidden_field_tag :phrase_name, params[:phrase_name] %>
+<%= form_tag intervals_path(),   :method => 'get', :class => 'search_form' %>
+	<% Interval.filters.each do |filter| %>
+		<%= hidden_field_tag filter[0].to_sym, params[filter[0].to_sym] %>
+	<% end %>
+<%= text_field_tag :query , params[:query], :id => 'search_box', :type => 'search'  %>
+<%= submit_tag 'Search', :name => nil %>
 </form>
-</div>
+

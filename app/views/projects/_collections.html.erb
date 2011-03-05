@@ -1,0 +1,36 @@
+<% @project.collections.each do |collection| %>
+<div class="project_collection grid_16">
+<h3>
+	<% if collection.name =~ /project_[0-9]+_(favorite|queue)/i %>
+	<% name =  collection.name.split('_') %>
+	<%= link_to  name[2].humanize, collection %>
+	<% else %>
+	<%= link_to "Collection: " + collection.name.humanize, collection %>
+	<% end %>
+</h3>
+<% if !collection.intervals.blank?%>
+<div class="carousel_container">
+	<div class="infiniteCarousel">
+	  <div class="wrapper">
+	    <ul>
+				<% YAML.load(collection.interval_priorities).keys.sort!{|a,b| a.to_i <=> b.to_i}.each do |priority| %><% interval = Interval.find(YAML.load(collection.interval_priorities)[priority.to_s]) %>
+				<li>
+					<div class="collection_interval_time"><%=raw interval.start_time.strftime('%b %d, %Y &nbsp;&nbsp;&nbsp;&nbsp; %I:%M %p') %></div>
+					<div class="image_placeholder"><img src ="<%=interval_path(:id => interval.id, :format => :jpg) %>" width ="160" height ="90" /></div>
+					<%= link_to "FAR#{interval.id.to_s}", interval %><br/>
+					Duration: <%= interval.duration_string %><br />
+					Session <%= interval.session_number %><br />
+					Camera: <%= interval.camera_angle.humanize %><br />
+					Type: <%= interval.session_type.humanize %><br />
+					<%= link_to "See More", interval %>
+				</li>
+				<% end %>
+	    </ul>        
+	  </div>
+	</div>
+</div>
+<% else %>
+	<div>There are no videos in this collection.</div>
+<% end %>
+</div>
+<% end %>

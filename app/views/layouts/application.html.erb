@@ -17,60 +17,72 @@
 
   <title>Cove</title>
   <% if ENV['RAILS_ENV'] == 'production' %>
+	<%= hoptoad_javascript_notifier %>
+
     <%= javascript_include_tag 'jquery.min.js' %>
     <%= javascript_include_tag 'jquery-ui.min.js' %>
   <% else %>
       <%= javascript_include_tag "jquery.js" %>
       <%= javascript_include_tag "jquery-ui.js" %>
   <% end %>
+  <%= javascript_include_tag "jquery.timers-1.2.js" %>
   <%= javascript_include_tag 'modernizr-1.6.min.js' %>
   <%= javascript_include_tag 'video.cove.js' %>
   <%= javascript_include_tag 'application.js' %>
   <%= javascript_include_tag "rails.js" %>
+  <% if !Rails.env.test? %>
+  	<%= javascript_include_tag 'degradable.js' %>
+  <% end %>
+    <script src="http://ajax.cdnjs.com/ajax/libs/underscore.js/1.1.4/underscore-min.js" type="text/javascript"></script>
+  
   <%= stylesheet_link_tag 'style.css' %>
   <%= stylesheet_link_tag '960.css' %>
   <%= stylesheet_link_tag 'style.css'%>
   <%= stylesheet_link_tag 'video-js.cove.css' %>
   <%= stylesheet_link_tag 'video-js-skin.css' %>
+  <%= stylesheet_link_tag 'compiled/mainStyle.css'%>
   <%= csrf_meta_tag %>
-</head>
 
 <body>
 	<header class="container_16">
-
-		<%= link_to image_tag("cove_logo.gif", :class=> "grid_3 logo"), root_path%>
 			<%if current_user %>
-				<div class="grid_13 user_links">
+			<div class= "logo grid_2">
+			<%= link_to image_tag("cove_logo.gif", :class=> "logo_image grid_2"), root_path%>
+			</div>
+				<div class="grid_14 user_links">
 					<ul>
 						<li class="first user_avatar"><%=image_tag gravatar_url_for "ethan.soutar.rau@gmail.com"%></li>
 						<li><%=current_user.email%></li>
 						<li><a class="second logout_link" href="/logout">Logout</a></li>
 						<li><a class="help_link" href="https://cove.tenderapp.com">Help</a></li>
 						<%if current_user.admin %> 
-						<li><a class="admin_link"href="/admin/users/new">Admin</a></li>
+						<li><a class="admin_link"href="/admin">Admin</a></li>
 						<%end%>
 					</ul>
 				</div>
+			
+				<nav class="top_nav">
+					<ul class="grid_16 main_links">
+						<li class=><%= link_to "Home", root_path %></li>
+						<li class=><%= link_to "Browse", intervals_path %></li>
+						<li class=><%= link_to "Collections", collections_path %></li>
+						<li class=><%= link_to "Projects", projects_path %></li>
+						<li class="search_holder">
+							<%= render "intervals/search" if current_user %>
+						</li>
+					</ul>
+					<br style="clear:both"/>
+
+				</nav>
+				
 			<%else%>
+			
+			<%= link_to image_tag("cove_logo.gif", :class=> "grid_4 logo"), root_path%>
 			
 			
 			<%end%>
 		<br style="clear: both"/>
 	</header>
-	
-	<nav class="top_nav container_16">
-		<hr class="grid_16"/>
-		<ul class="grid_16 main_links">
-			<li class="alpha grid_2"><%= link_to "Home", root_path %></li>
-			<li class="grid_2"><%= link_to "Browse", intervals_path %></li>
-			<div class="search_holder grid_4 push_8">
-				<%= render "intervals/search" if current_user %>
-			</div>
-		</ul>
-		<hr class="grid_16"/>
-		<br style="clear:both"/>
-		
-	</nav>
 	
 <div class="content container_16">
 	<%= display_flash %>

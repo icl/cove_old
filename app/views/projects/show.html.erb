@@ -1,68 +1,136 @@
-<style>
-
-h2, h3 {
-   font-size: 1.1em; 
-   margin: 30px 0px 5px 0px; 
-}
-
-h1 {
-   font-size: 2em; 
-   margin: 10px 0px 5px 0px; 
-}	
-
-p {
-   width: 800px;
-   margin: 10px 0px;
-}
-
-div.vid-box {
-   float: left;
-   width: 275px;
-}
-
-p.vid-title {
-   font-size: 1em;
-   font-weight: bold;
-}
-
-</style>
-
-<br class="clear" />
-
+<div class="container_16 project_container" id="<%= @project.id %>" >
 <% if user_signed_in? %>
    <% if @project %>
       <% if @project.user_id == current_user.id %>
-         <h2>Project:
-            <span style="display: block; float: right; font-size: 0.9em;">
-               <%= link_to 'Back', projects_path %>
-            </span>
-         </h2>
-         <h1><%= @project.name %>
-            <span style="display: block; float: right; font-size: 0.5em;">
-               <%= link_to 'Edit', edit_project_path(@project) %> 
-            </span>
-         </h1>
-         <h3>Elevator Pitch 
-            (<%= link_to 'Edit', edit_project_path(@project)  %>): </h3>
-	 <p><%= @project.desc %></p>
-         
-         <div style="clear:both;"></div>
-         <h3>Notes (<%= link_to 'Edit', edit_project_path(@project)  %>): </h3>
-	 <p><%= @project.notes %></p>
+	<div class="grid_15">
+		<p>
+                   &nbsp;
+		</p>
+	</div>
+	<!-- end .grid_16 -->
+	<div class="grid_1">
+		<p>
+                   <%= link_to 'Back', projects_path %>
+		</p>
+	</div>
+	<!-- end .grid_1 -->
+	<div class="clear"></div>
+	<div class="grid_16">
+		<h3>
+		   Project <span>(<%= link_to 'Edit', edit_project_path(@project) %>):</span>	
+		</h3>
+	</div>
+	<!-- end .grid_16 -->
+	<div class="clear"></div>
+	<div class="grid_16">
+		<h2>
+		   <%= @project.name %> 
+		</h2>
+	</div>
+	<!-- end .grid_16 -->
+	<div class="clear"></div>
+	<div class="grid_10">
+		<h3>
+		   Notes	
+		</h3>
+	</div>
+	<!-- end .grid_10 -->
+	<div class="grid_6">
+		<h3>
+		   Elevator Pitch <span>(<%= link_to 'Edit', edit_project_path(@project) %>):</span>	
+		</h3>
+	</div>
+	<div class="clear"></div>
+	<div class="grid_10">
+		<!-- Notes Block -->
+		<div class="note_form">
+			<%= simple_form_for [@project,Note.new] do |form| %>
+				<%= form.input :note, :label => false %>
+				<%= form.button :submit %>
+			<% end %>
+		</div>
+		<div class="note_list_container prefix_1">
+			<ul class="note_list">
+				<%= render @project.notes.order('created_at DESC') if !@project.notes.blank? %>
+			</ul>
+			<a class="expand_all">Expand/Collapse All</a>
+		</div>
+	</div>
+	<!-- end .grid_10 -->
+	<div class="grid_6">
+		<p>
+		   <%= @project.desc %> 
+		</p>
+		
+		<h3>
+		   Tags <span>(<%= link_to 'Edit', edit_project_path(@project) %>):</span>	
+		</h3>
+		
+		<!-->
+		<%# if !@project.tags.blank? %>
+			<p>
+             	<ul>
+             		<%# @project.tags.each do |t| %>
+             		<li class="inline"><%#= t.capitalize %></li>
+             		<%# end %>
+             	</ul>
+			</p>
+		<%# end %>
+		<-->
+		<h3>
+		   Owner <span>(<%= link_to 'Edit', edit_project_path(@project) %>):</span>	
+		</h3>
+                   <p><%= current_user.email %></p>
+	<!-- end .grid_6 -->
+	</div>
+	
+	<div class="clear"></div>
+	<div class="grid_16 favorite_table">
+		
+		<%= render :partial => 'collections' %>
+	
+	</div>
+	
+	<div class="clear"></div>
+	<div class="grid_15">
+		<p>
+                   &nbsp;
+		</p>
+	</div>
+	<div class="grid_1">
+		<p>
+                   <%= link_to 'Destroy', @project , :confirm => 'Are you sure?', :method => :delete  %>
+		</p>
+	</div>
+	<div class="clear"></div>
+      <% else %>
 
-        <h3>Owner (<%= link_to 'Edit', edit_project_path(@project)  %>): </h3>
-	<li><%= current_user.email %></li>
-        <span style="display: block; float: right;">
-           <%= link_to 'Destroy', @project , :confirm => 'Are you sure?', :method => :delete  %>
-        </span>
-        <div style="clear:both;"></div>
-    <% else %>
-       <p>You do not have access to this project.</p>
-    <% end %>
+	<div class="grid_16">
+		<p>
+		    Sorry, but this project is private. 
+		</p>
+	</div>
+	<!-- end .grid_16 -->
+	<div class="clear"></div>
+
+      <% end %>
    <% end %>
 <% else %>
 
-   <p>Please log-in to access projects.</p>
+   <div class="grid_16">
+      <p>
+         Please log in to access projects.
+      </p>
+   </div>
 
 <% end %>
-
+</div>
+<script>
+jQuery(document).ready(function() {
+	$('.jsDisabled_note_controls').remove();
+	$('.note_slide').hide();
+	$('.expandable').css('display','inline');
+	$('.note_br').hide();
+	$('.expand_all').show();
+});
+</script>
