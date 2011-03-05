@@ -1,9 +1,9 @@
 $(document).ready(function(){
 
-//  var videoPlayer = VideoJS.setup('cove-video-player',{
-//    offset: 30,
-//    controlsHiding: false
-//  }); 
+  var videoPlayer = VideoJS.setup('cove-video-player',{
+    offset: 30,
+    controlsHiding: false
+  }); 
 
   function secondsToString(secs) {
     var deciseconds = Math.round(secs * 100);
