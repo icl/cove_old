@@ -3,7 +3,7 @@ class SnippetsController < ApplicationController
     @interval = Interval.find(params[:interval_id])
     @snippet = @interval.snippets.create(params[:snippet])
     if request.xhr?
-      render :partial => "intervals/snippets", :locals => { :interval => @interval }, :layout => false
+      render :partial => "intervals/snippets_list", :locals => { :interval => @interval }, :layout => false
     else
       redirect_to interval_path(@interval)
     end
