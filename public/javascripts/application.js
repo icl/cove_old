@@ -1,10 +1,10 @@
 $(document).ready(function(){
 
-  $('#cove-video-player').VideoJS({
+  var videoPlayer = $('#cove-video-player').VideoJS({
     offset: 30,
     controlsHiding: false,
     controlsAtStart: true
-  }); 
+  }).player(); 
 
   function secondsToString(secs) {
     var deciseconds = Math.round(secs * 100);
