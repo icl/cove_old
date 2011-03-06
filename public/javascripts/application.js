@@ -1,8 +1,9 @@
 $(document).ready(function(){
 
-  var videoPlayer = VideoJS.setup('cove-video-player',{
+  $('#cove-video-player').VideoJS({
     offset: 30,
-    controlsHiding: false
+    controlsHiding: false,
+    controlsAtStart: true
   }); 
 
   function secondsToString(secs) {
