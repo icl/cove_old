@@ -1,7 +1,7 @@
 - @interval.snippets.each do |snippet|
   = link_to interval_path(@interval, :snippet_id => snippet.id), :class => "snippet" do
     %p= snippet.title
-    %p= snippet
+    %p= snippet.id
     .outer-duration
       .max-duration
         .start-timestamp

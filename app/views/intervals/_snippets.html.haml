@@ -10,7 +10,7 @@
         %button.markend End Mark
         %input#end_mark(type="text")
       .grid_5.alpha.interval_form
-        = form_for([@interval, @interval.snippets.build], :remote => true) do |f|
+        = form_for @snippet, :as => :snippet, :url => interval_snippets_path(@interval), :html => { :id => "new_snippet_form" }, :remote => true do |f|
           = f.hidden_field :offset
           = f.hidden_field :duration
           %fieldset

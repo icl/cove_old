@@ -89,7 +89,7 @@ $(document).ready(function(){
   /* End Billy's js */
     
  
-  $("#new_snippet").submit(function(event){
+  $("#new_snippet_form").submit(function(event){
     $('#snippet_offset').val( videoPlayer.snippetStart() );
     $('#snippet_duration').val( videoPlayer.snippetDuration() );
 
