@@ -117,6 +117,7 @@ $(document).ready(function(){
 });
 
 /* Thumbnail fast scrub */    
+$(document).ready(function(){
     function changeSpriteWindow(obj){
         //TODO: figure out how to grab misc 10 pixel additional margin
         var extra_margin =10;
@@ -148,6 +149,7 @@ $(document).ready(function(){
     // immediately invoke thumbnails after page load
     $(document).ready(function(){$('.thumbnail_box').trigger('mouseover')});
     
+});
 /* end Thumbnail fast scrub */    
 
 $(document).ready(function(){
