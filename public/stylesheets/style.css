@@ -644,19 +644,46 @@ input[type=search] {
 
 
 /***********************************/
-/* Style adjustments for show.html */
+/* Style adjustments for show.html
 
-				/*Notes:  light bg: #E0E0E0
-						  font blue: #0297C1
-							height: 40px;
-						margin-bottom: 15px;
-						padding pushes the grid width wise :/ */
+Style adjustments for show page separated into partials.
+-collections
+-adding_to_videos
+-snippets
+-metadata
+
+*/
+
+
+/****Row 1 - start****/
+.show_video_header {
+	height: 43px;
+	width: 280px;
+	margin-bottom: 10px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	background: #E0E0E0;
+}
+
+.show_video_header h1 {
+	font-size: 14pt;
+	margin-left: 5px;
+	color: #0297C1;
+}
+
+.show_video_header h2 {
+	font-size: 11pt;
+	margin-left: 5px;
+
+}
+
+.show_camera_angle {
+	margin-bottom: 15px;
+}
 
 
 
-
-
-/* end style adjustments for show.html */
+/*end style adjustments for show.html */
 /***************************************/
 
 

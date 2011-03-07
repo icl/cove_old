@@ -1,8 +1,14 @@
-%h3.grid_5#title
-  Place Holder Title 
+%div.grid_6.show_video_header
+  %h1 Far ID
+  %h2="Session #{@interval.session_number} : #{@interval.session_type}" 
 
-%div#collections_container.grid_6
+%div.grid_5#collections_container
   = render :partial => "collections"
+
+%div.grid_5.show_camera_angle 
+  %div= @interval.camera_angle
+  
+%div.clear
 
 %div.grid_11#video_container
   = video_tag interval_path(@interval.id, :format => :m4v), :controls => true, :height => 360, :width => 640
