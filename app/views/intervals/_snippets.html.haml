@@ -19,12 +19,13 @@
             %p 2. Description:
             = f.text_area :description, :cols => 52, :rows => 5
             %p 3. Select Tags Above
-          #save_cancel_button
-            %button.cancel Cancel
+            %button.clear Clear
             = f.submit "Save", :class => "save"
     .grid_4.omega.interval_browse
       = render "intervals/snippets_list"
     .grid_7.alpha#snippet_info
       %p.info_title Snippet Title
       %p.info_time 3:40-4:00
-      %p.info_description "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+      %p.info_description "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+      %button.delete Delete
+      %button.save Save
