@@ -25,10 +25,10 @@ class Interval < ActiveRecord::Base
   def self.search args
 	  search_params = [:camera_angle, :session_type, :phrase_type, :phrase_name]
 
-	  intersect_us = []
+	  ids = Interval.all.map{|i| i.id}
 
 	  search_params.reject{|p| args[p].blank?}.each do |param|
-		intersect_us << includes(:codes).where("codes.coding_type".to_sym => param.to_s, "codes.name".to_sym => args[param])
+		  ids &= Interval.includes(:codes).where("codes.name".to_sym => args[param], "codes.coding_type".to_sym => param.to_s).map{|i| i.id}
 	  end
 
 	  unless args[:start_time].blank?
@@ -39,9 +39,7 @@ class Interval < ActiveRecord::Base
 
 	  query = args[:query].blank? ? [] : Interval.search_columns.collect{|col| "#{col} LIKE :query"}.join(" OR ")
 
-	  intersect_us << includes(:tags).includes(:codes).where(query, :query => "%#{args[:query]}%")
-
-	  intersect_us.reduce(intersect_us[0], :&)
+	  includes(:codes).includes(:tags).where(query, :query => "%#{args[:query]}%").where(:id => ids)
   end
   
   def self.search_columns
