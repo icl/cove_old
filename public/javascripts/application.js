@@ -49,46 +49,6 @@ $(document).ready(function(){
     return false;
   }); 
   
-  /* Billy's javascript */
-  
-  $('.snippet_info').hide();
-  $('.interval_form').hide();
-  $('.mark_buttons').hide();
-  
-  $('.create_interval_button').click(function(){
-    $('.create_interval_button').hide();
-    $('.mark_buttons').show("slide", {direction: "left"}, 2000);
-    $('.interval_form').show("slide", {direction: "left"}, 2050);
-    $('.snippet_info').hide();
-    return false;
-  });
-  
-  $('button.cancel').click(function(){
-    $('.interval_form').hide("slide", {direction: "left"}, 500);
-    $('.mark_buttons').hide("slide", {direction: "left"}, 500);
-    $('.create_interval_button').show();
-    return false;
-  });
-  
-  $('.snippet_edit').hide();
-  
-  $('.snippet').click(function(){
-    $('.interval_form').hide();
-    $('.snippet_info').show();
-    $('.create_interval_button').show();
-    $('.interval_browse').show();
-    $('.mark_buttons').hide("slide", {direction: "left"}, 500);
-    return false;
-  });
-  
-  $('button.delete').click(function(){
-    $('.snippet_info').hide();
-    $('.create_interval_button').show();
-    return false;
-  });
-  
-  /* End Billy's js */
-    
  
   $("#new_snippet_form").submit(function(event){
     $('#snippet_offset').val( videoPlayer.snippetStart() );

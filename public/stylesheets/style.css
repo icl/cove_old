@@ -895,6 +895,69 @@ input[type=search] {
 /* end style adjustments for intervals.index.html */
 /***************************************/
 
+#start_button, #end_button{
+	border-color:transparent;
+	background:#333333;
+	color:white;
+	margin-top:5px;
+	height:30px;
+	width:50px;
+}
+
+#start_time, #end_time{
+	color:#3399CC;
+	width:50px;
+}
+
+#interval_form{
+	margin-top:10px;
+}
+
+#interval_form legend{
+	font-weight:bold;
+	color:#996666;
+}
+
+#interval_form .text_field{
+	width:400px;
+}
+
+.info_title{
+	font-weight:bold;
+	color:#996666;
+}
+
+.info_time{
+	color:#0099CC;
+}
+
+.info_description{
+	color:black;
+}
+
+.interval_browse{
+	margin-top:5px;
+	height:270px;
+	overflow:scroll;
+}
+
+#snippet_info{	
+	margin-top:20px;
+}
+
+
+.snippet p{
+	font-weight:bold;
+	margin-top:10px;
+    color:#996666;
+    font-size: 14px;
+}
+
+.snippet-duration{
+	color:gray;
+}
+
+
 
 /***********************************/
 /* Style sheet for collections/index.html */
