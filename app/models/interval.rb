@@ -31,15 +31,16 @@ class Interval < ActiveRecord::Base
 		  ids &= Interval.includes(:codes).where("codes.name".to_sym => args[param], "codes.coding_type".to_sym => param.to_s).map{|i| i.id}
 	  end
 
+	  time = {};
 	  unless args[:start_time].blank?
 		  (m, d, y) = args[:start_time].split("-")
 		  st = Time.gm(y,m,d)
-		  search_conditions[:start_time] = st.beginning_of_day..st.end_of_day
+		  time[:start_time] = st.beginning_of_day..st.end_of_day
 	  end
 
 	  query = args[:query].blank? ? [] : Interval.search_columns.collect{|col| "#{col} LIKE :query"}.join(" OR ")
 
-	  includes(:codes).includes(:tags).where(query, :query => "%#{args[:query]}%").where(:id => ids)
+	  includes(:codes).includes(:tags).where(query, :query => "%#{args[:query]}%").where(:id => ids).where(time)
   end
   
   def self.search_columns
