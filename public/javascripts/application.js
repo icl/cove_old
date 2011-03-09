@@ -77,6 +77,17 @@ $(document).ready(function(){
   });
 });
 
+/* Winny's bad Javascript */
+
+ $('.interval_browse').click(function () {
+    $('#snippet_info').show("slow");
+    });
+
+
+
+
+
+
 /* Thumbnail fast scrub */    
 $(document).ready(function(){
     function changeSpriteWindow(obj){
@@ -309,3 +320,4 @@ $(document).ready(function(){
     });
 
   });  
+

@@ -918,8 +918,12 @@ input[type=search] {
 	color:#996666;
 }
 
-#interval_form .text_field{
+#interval_form{
 	width:400px;
+}
+
+#snippet_title{
+	width:380px;
 }
 
 .info_title{
@@ -941,11 +945,6 @@ input[type=search] {
 	overflow:scroll;
 }
 
-#snippet_info{	
-	margin-top:20px;
-}
-
-
 .snippet p{
 	font-weight:bold;
 	margin-top:10px;
@@ -957,6 +956,10 @@ input[type=search] {
 	color:gray;
 }
 
+#snippet_info{	
+	margin-top:20px;
+	display:none;
+}
 
 
 /***********************************/
