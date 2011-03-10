@@ -150,7 +150,7 @@ $(document).ready(function(){
           xhr.setRequestHeader('X-CSRF-Token', $('meta[name=csrf-token]').attr('content'));
         },
         failure:function(){
-          $("#tag_container").prepend('<div class="flash alert"> Your Tag could not be submitted at this time </div>');
+          $("#tag_container").prepend('<div class="flash alert">We were unable to save your tag, please try again.</div>');
         },
         success: function(data, status, xhr){
           console.log(data);
@@ -170,18 +170,18 @@ $(document).ready(function(){
           count.text(parseInt(count.text()) + 1);
 
           //display a flash
-          $("#tag_container").prepend('<div class="flash notice"> Your Coding has been added </div>');
+          $("#tag_container").prepend('<div class="flash notice">Success! Your tag is added.</div>');
         }
       });
     });
 
     $("#new_tag_form").bind("ajax:error", function(){
-      $("#tag_container").prepend('<div class="flash alert"> Your Tag could not be submitted at this time </div>');  
+      $("#tag_container").prepend('<div class="flash alert">We were unable to save your tag, please try again.</div>');  
     });
 
     $("#new_tag_form").bind("ajax:success", function(data, xhr, status){
       $(".flash").remove();
-      $("#tag_container").prepend('<div class="flash notice"> Your Tag has been added </div>');  
+      $("#tag_container").prepend('<div class="flash notice">Success! Your tag is added.</div>');  
 
       var newTagName = xhr["tagName"];
       console.log("tag successfully added" + newTagName);

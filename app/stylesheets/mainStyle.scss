@@ -2,17 +2,50 @@
 $applied_color :#D2D2D2;
 
 
+
 .interaction_container ul li{
   list-style: none;
   float: left;
 }
 
+ul{
+  margin-left: 0px;
+}
+
+
+h4{
+  color: #0297C1;
+  margin-top: 5px;
+  /*margin-right: 20px;*/
+  font-size: 10pt;
+  display: inline-block;
+
+}
+
+#tags_filter{
+  width: 175px;
+  margin-left: 35px;
+}
+
+
+.tag_titles{
+  margin-bottom: 5px;
+}
+
+.coding_filter{
+  width: 122px;
+  margin: 3px 20px 3px 5px;
+  border-radius: 3px;
+  float: right;
+
+}
+
 .code, .tag{
-  width: 100px;
-  height: 20px;
-  margin: 5px;
+  width: 125px;
+  height: 15px;
+  margin: 1px 2px 1px 2px;
   text-align: center;
-  padding-top: 5px;
+  padding: 2px 0px 2px 0px;
   @include border-radius(3px);
   color: black;
   cursor: pointer;
@@ -24,17 +57,18 @@ $applied_color :#D2D2D2;
 }
 
 .applied{
-  background-color: ($applied_color - 100);
-  color: white;
+  background-color: #F0D24D; /*($applied_color - 100);*/
+  color: #F2F0E6;
 }
 .unapplied{
-  background-color: $applied_color;
+  background-color: #F2F0E6;
+  color: #F0D24D;
 }
   
 #tagging_name{
   width: 220px;
   height: 20px;
-  font-size: 18pt;
+  font-size: 12pt;
   @include border-radius(5px);
   border: 1px solid black;
   padding: 5px;
@@ -42,8 +76,11 @@ $applied_color :#D2D2D2;
 
 #adding_shit_to_videos{
   height: 360px;
+  width: 290px;
   overflow-y:scroll;
   overflow-x:hidden;
+  background: #E3B07D;
+  border-top-left-radius: 7px;
 }
   
 

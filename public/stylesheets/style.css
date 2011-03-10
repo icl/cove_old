@@ -315,13 +315,13 @@ a, a:visited, a:active {
 
 body {
 	color: #gray;
-	background: #EEEEEE;
+	background: #FFFFFF;
 }
 
 
 header {
 	font-size: 12pt;
-	background: #EEEEEE;
+	background: #FFFFFF;
 }
 
 header h1 {
@@ -341,7 +341,7 @@ header h1 {
 }
 
 .user_links ul {
-	background: #EEE;
+	background: #FFFFFF;
 	height: 40px;
 	font-size: 10pt;
 	margin-left: 0;
@@ -371,17 +371,19 @@ header h1 {
 	}
 
 
-.form_container_invite {
+.form_container_invite {EEEE
 	line-height: 2.0;
 	
 }
 
 .main_links {
-	border-top: 2px solid #d2d2d2;
+	border-top: 2px solid #BD8751;
 	margin-bottom: 10px;
 	padding-top: 5px;
 	padding-bottom: 5px;
-	background: #E0E0E0;
+	background: #E3B07D;
+	border-bottom-left-radius: 7px;
+	border-bottom-right-radius: 7px;
 }
 
 .search_form {
@@ -430,7 +432,7 @@ footer h5 {
 }
 
 .notice {
-	color: #95C53D;
+	color: #1C9125;
 }
 
 .flash {
@@ -662,7 +664,8 @@ Style adjustments for show page separated into partials.
 	margin-bottom: 10px;
 	padding-top: 5px;
 	padding-bottom: 5px;
-	background: #E0E0E0;
+	background: #E3B07D;
+	border-radius: 6px;
 }
 
 .show_video_header h1 {
@@ -674,12 +677,21 @@ Style adjustments for show page separated into partials.
 .show_video_header h2 {
 	font-size: 11pt;
 	margin-left: 5px;
-
+	color: #86979C;
 }
 
 .show_camera_angle {
 	margin-bottom: 15px;
 }
+
+#adding_shit_to_videos {
+	margin-left: 0px;
+}
+
+body {
+	background: #FFFFFF;
+}
+
 
 
 
