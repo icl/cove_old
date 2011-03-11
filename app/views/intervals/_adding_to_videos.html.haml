@@ -1,3 +1,27 @@
+%div.grid_5#codedterms_container.interaction_container
+
+  .grid_5#phenomenon_container.interaction_container
+  
+    %h4
+      Phenomenon (
+      %span#phenomenon_count
+        =@applied_phenomenon.length
+      )
+
+    %input.coding_filter#phenom_filter{:type => "text", :value => "Search Phenomena"}
+    = display_coding_term(@applied_phenomenon, @all_phenomenon)
+ 
+
+  .grid_5#people_container.interaction_container
+    %h4
+      People (
+      %span#people_count
+        =@applied_people.length
+      )
+    %input.coding_filter#people_filter{:type => "text", :value => "Search People to Add"}
+    = display_coding_term(@applied_people, @all_people)
+
+
 %div.grid_5#tag_container.interaction_container
   
   %h4
@@ -5,44 +29,15 @@
     %span#tag_count
     =@applied_tags.length
     ) 
-  
-  %input.coding_filter#tags_filter{:type => "text", :value => "Search Tags"}
-  = display_coding_term(@applied_tags)
-    
+
+  %div.tag_form
+    -form_for @tag , :as => :tagging, :url => interval_taggings_path(@interval, :format => :json), :remote => true, :html => {:id => "new_tag_form"}  do |f|
+      %div.add_field
+        =f.text_field :name, :value => "Create new tag"
 
   %ul#tag_list
     -if !@applied_tags.blank?
       -for tagging in @applied_tags
         %li.tag.applied
           =tagging.tag.name
-          
-  %div.tag_form
-    -form_for @tag , :as => :tagging, :url => interval_taggings_path(@interval, :format => :json), :remote => true, :html => {:id => "new_tag_form"}  do |f|
-      %div.add_field
-        =f.text_field :name, :value => "Create new tag"
-
-
-.grid_5#phenomenon_container.interaction_container
-  
-  %h4
-    Phenomenon (
-    %span#phenomenon_count
-      =@applied_phenomenon.length
-    )
-
-  %input.coding_filter#phenom_filter{:type => "text", :value => "Search Phenomena"}
-  = display_coding_term(@applied_phenomenon, @all_phenomenon)
-  
-
-
-
-.grid_5#people_container.interaction_container
-  %h4
-    People (
-    %span#people_count
-      =@applied_people.length
-    )
-  %input.coding_filter#people_filter{:type => "text", :value => "Search People to Add"}
-  = display_coding_term(@applied_people, @all_people)
-
 
