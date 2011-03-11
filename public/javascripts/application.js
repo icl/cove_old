@@ -283,7 +283,11 @@ $(document).ready(function(){
           count.text(parseInt(count.text()) + 1);
 
           //display a flash
+          $('.flash').remove();
           $("#tag_container").prepend('<div class="flash notice"> Your Coding has been added </div>');
+
+          //remove focus from the textboxes
+          $('.coding_filter').blur();
         }
       });
     });
@@ -341,11 +345,16 @@ $(document).ready(function(){
 
   jQuery(document).ready(function(){
     $('.coding_filter').keyup(function () {
-      filterResults($(this).attr("value"), $(this).parent().find('ul li'));
+      filterResults($(this).attr("value"), $('.coding_container ul li'));
     });
-    $('.coding_filter').blur(function() {
-      $(this).attr('value', '');
-      $(this).parent().find('ul li').show();
+    //$('.coding_filter').parent(".interaction_container").blur(function() {
+      //$(this).attr('value', '');
+      //$(this).parent().find('ul li').show();
+    //});      
+    $('.coding_filter').parent(".interaction_container").blur(function() {
+      $('.coding_filter').parent(".interaction_container").mouseleave(function  () {
+        $(this).find(".coding_filter").attr("value", "");
+        $('coding_container ul li').show();
+      });
     });
-
   });  
