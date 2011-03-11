@@ -692,7 +692,9 @@ body {
 	background: #FFFFFF;
 }
 
-
+#video_container {
+	float: left;
+}
 
 
 /*end style adjustments for show.html */

@@ -1,6 +1,6 @@
-%div.grid_5#codedterms_container.interaction_container
+%div.grid_5.alpha#codedterms_container.interaction_container
 
-  .grid_5#phenomenon_container.interaction_container
+  .grid_5#phenomenon_container.interaction_container.coding_container
   
     %h4
       Phenomenon (
@@ -8,21 +8,21 @@
         =@applied_phenomenon.length
       )
 
-    %input.coding_filter#phenom_filter{:type => "text", :value => "Search Phenomena"}
+    %input.coding_filter#phenom_filter{:type => "text", :value => "Search All Coded Terms"}
     = display_coding_term(@applied_phenomenon, @all_phenomenon)
  
 
-  .grid_5#people_container.interaction_container
+  .grid_5#people_container.interaction_container.coding_container
+    
     %h4
-      People (
+      People(
       %span#people_count
         =@applied_people.length
       )
-    %input.coding_filter#people_filter{:type => "text", :value => "Search People to Add"}
-    = display_coding_term(@applied_people, @all_people)
+      = display_coding_term(@applied_people, @all_people)
 
 
-%div.grid_5#tag_container.interaction_container
+%div.grid_5.omega#tag_container.interaction_container
   
   %h4
     Tags (
@@ -42,24 +42,7 @@
           =tagging.tag.name
 
 
-/just added
 
-.grid_5#phenomenon_container.interaction_container.coding_container
-  %h4
-    Phenomenon(
-    %span#phenomenon_count
-      =@applied_phenomenon.length
-    )
-    
-  %input.coding_filter#phenom_filter{:type => "text"}
-  = display_coding_term(@applied_phenomenon, @all_phenomenon)
 
-.grid_5#people_container.interaction_container.coding_container
-  %h4
-    People(
-    %span#people_count
-      =@applied_people.length
-    )
-  = display_coding_term(@applied_people, @all_people)
 
 

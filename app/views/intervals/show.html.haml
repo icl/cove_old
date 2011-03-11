@@ -8,14 +8,17 @@
 %div.grid_5#collections_container
   = render :partial => "collections"
 
+
 %div.grid_5#adding_shit_to_videos
   = render :partial => "adding_to_videos"
   
 %div.clear
 
+
 %div.grid_11#video_container
   = video_tag interval_path(@interval.id, :format => :m4v), :controls => true, :height => 360, :width => 640
 
+%div.clear
 
 
 %div#snippets_container.grid_11
