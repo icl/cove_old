@@ -1,8 +1,3 @@
-/* Definition Function */
-
-
-
-
 /* Thumbnail fast scrub */    
     function changeSpriteWindow(obj){
         //TODO: figure out how to grab misc 10 pixel additional margin
@@ -38,9 +33,8 @@
 /* end Thumbnail fast scrub */    
 
 
-
 $(document).ready(function(){
-	
+
 	// --------------------------------
 	// .define_me
 	// --------------------------------
@@ -118,7 +112,7 @@ $(document).ready(function(){
 	$(".definition_holder").live("goaway",function(){
 		$(this).fadeOut("fast");
 	});
-	
+
 	// --------------------------------
 	// Fauxselect Menus
 	// --------------------------------
@@ -150,7 +144,7 @@ $(document).ready(function(){
           xhr.setRequestHeader('X-CSRF-Token', $('meta[name=csrf-token]').attr('content'));
         },
         failure:function(){
-          $("#tag_container").prepend('<div class="flash alert">We were unable to save your tag, please try again.</div>');
+          $("#tag_container").prepend('<div class="flash alert"> Your Tag could not be submitted at this time </div>');
         },
         success: function(data, status, xhr){
           console.log(data);
@@ -170,18 +164,22 @@ $(document).ready(function(){
           count.text(parseInt(count.text()) + 1);
 
           //display a flash
-          $("#tag_container").prepend('<div class="flash notice">Success! Your tag is added.</div>');
+          $('.flash').remove();
+          $("#tag_container").prepend('<div class="flash notice"> Your Coding has been added </div>');
+
+          //remove focus from the textboxes
+          $('.coding_filter').blur();
         }
       });
     });
 
     $("#new_tag_form").bind("ajax:error", function(){
-      $("#tag_container").prepend('<div class="flash alert">We were unable to save your tag, please try again.</div>');  
+      $("#tag_container").prepend('<div class="flash alert"> Your Tag could not be submitted at this time </div>');  
     });
 
     $("#new_tag_form").bind("ajax:success", function(data, xhr, status){
       $(".flash").remove();
-      $("#tag_container").prepend('<div class="flash notice">Success! Your tag is added.</div>');  
+      $("#tag_container").prepend('<div class="flash notice"> Your Tag has been added </div>');  
 
       var newTagName = xhr["tagName"];
       console.log("tag successfully added" + newTagName);
@@ -230,11 +228,16 @@ $(document).ready(function(){
 
   jQuery(document).ready(function(){
     $('.coding_filter').keyup(function () {
-      filterResults($(this).attr("value"), $(this).parent().find('ul li'));
+      filterResults($(this).attr("value"), $('.coding_container ul li'));
     });
-    $('.coding_filter').blur(function() {
-      $(this).attr('value', '');
-      $(this).parent().find('ul li').show();
+    //$('.coding_filter').parent(".interaction_container").blur(function() {
+      //$(this).attr('value', '');
+      //$(this).parent().find('ul li').show();
+    //});      
+    $('.coding_filter').parent(".interaction_container").blur(function() {
+      $('.coding_filter').parent(".interaction_container").mouseleave(function  () {
+        $(this).find(".coding_filter").attr("value", "");
+        $('coding_container ul li').show();
+      });
     });
-
-  });  
+  });
