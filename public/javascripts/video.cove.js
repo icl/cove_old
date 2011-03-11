@@ -627,6 +627,11 @@ VideoJS.player.extend({
     this.timeControl.appendChild(this.durationDisplay);
     this.activateElement(this.durationDisplay, "durationDisplay");
 
+    // COVE. Create the snippet duration toggle control
+    this.durationToggleControl = _V_.createElement("div", { className: "cove-duration-toggle-control", innerHTML: "<span></span>" });
+    this.controls.appendChild(this.durationToggleControl);
+    this.activateElement(this.durationToggleControl, "durationToggle");
+    
     // Create the volumne control
     this.volumeControl = _V_.createElement("div", {
       className: "vjs-volume-control",
@@ -638,11 +643,6 @@ VideoJS.player.extend({
     this.volumeDisplay = this.volumeControl.children[0];
     this.activateElement(this.volumeDisplay, "volumeDisplay");
 
-    // COVE. Create the snippet duration toggle control
-    this.durationToggleControl = _V_.createElement("div", { className: "cove-duration-toggle-control", innerHTML: "<span></span>" });
-    this.controls.appendChild(this.playControl);
-    this.activateElement(this.durationToggleControl, "durationToggleControl");
-    
     // Crete the fullscreen control
     this.fullscreenControl = _V_.createElement("div", {
       className: "vjs-fullscreen-control",
@@ -1477,6 +1477,31 @@ VideoJS.player.newBehavior("volumeScrubber", function(element){
     setVolumeWithScrubber: function(event){
       var newVol = _V_.getRelativePosition(event.pageX, this.currentScrubber);
       this.volume(newVol);
+    }
+  }
+);
+/* COVE. Snippet duration toggle behavior
+================================================================================ */
+VideoJS.player.newBehavior("durationToggle", function(element){
+    _V_.addListener(element, "click", this.onFullscreenToggleClick.context(this));
+  },{
+    // When the user clicks on the fullscreen button, update fullscreen setting
+    onFullscreenToggleClick: function(event){
+      if (!this.videoIsFullScreen) {
+        this.enterFullScreen();
+      } else {
+        this.exitFullScreen();
+      }
+    },
+
+    fullscreenOnWindowResize: function(event){ // Removeable
+      this.positionControlBars();
+    },
+    // Create listener for esc key while in full screen mode
+    fullscreenOnEscKey: function(event){ // Removeable
+      if (event.keyCode == 27) {
+        this.exitFullScreen();
+      }
     }
   }
 );
