@@ -1,6 +1,7 @@
 /*
 VideoJS - HTML5 Video Player
 v2.0.2
+MODIFIED FOR COVE
 
 This file is part of VideoJS. Copyright 2010 Zencoder, Inc.
 
@@ -43,6 +44,7 @@ var VideoJS = JRClass.extend({
     this.video.player = this;
     this.values = {}; // Cache video values.
     this.elements = {}; // Store refs to controls elements.
+    this.snippets = {}; // For playing and marking snippets
 
     // Default Options
     this.options = {
@@ -416,6 +418,11 @@ VideoJS.player.extend({
       this.options.useBuiltInControls = true;
       this.androidInterface();
     }
+
+    // Read snippet offset and duration from video tag
+    var offset = this.video.getAttribute("data-offset");
+    var duration = this.video.getAttribute("data-duration");
+    this.playSelection(offset, duration);
 
     // Add VideoJS Controls
     if (!this.options.useBuiltInControls) {
@@ -834,7 +841,7 @@ VideoJS.player.extend({
     if (seconds !== undefined) {
       try { this.video.currentTime = this.offset() + seconds; }
       catch(e) { this.warning(VideoJS.warnings.videoNotReady); }
-      this.values.currentTime = seconds;
+      this.values.currentTime = this.seconds;
       return this;
     }
     return this.video.currentTime - this.offset();
@@ -845,18 +852,17 @@ VideoJS.player.extend({
 
 
   // COVE play snippets
-  offset: function(){
-    if (this.video.dataset && this.video.dataset.offset) 
-      return this.video.dataset.offset;
-    else
-      return 0;
+  playSelection: function(offset, duration) {
+    if (offset !== undefined) this.snippets.offset = offset;
+    if (duration !== undefined) this.snippets.duration = duration;
+    if (this.snippets.offset !== undefined || this.snippets.duration !== undefined) return true;
+    else return false;
   },
-  
+  offset: function(){
+    return this.playSelection() ? this.snippets.offset : 0;
+  },
   duration: function(){
-    if (this.video.dataset && this.video.dataset.duration) 
-      return this.video.dataset.duration;
-    else
-      return this.video.duration;
+    return this.playSelection() ? this.snippets.duration : this.video.duration;
   },
   
   // COVE select snippets
@@ -868,20 +874,17 @@ VideoJS.player.extend({
   },
   snippetStart: function(seconds){
     if (seconds !== undefined) {
-      this.values.snippetStart = seconds;
+      this.snippets.startMark = seconds;
       this.updateSnippetSelectionBars();
     }
-    return this.values.snippetStart;
+    return this.snippets.startMark;
   },
   snippetEnd: function(seconds){
     if (seconds !== undefined) {
-      this.values.snippetEnd = seconds;
+      this.snippets.endMark = seconds;
       this.updateSnippetSelectionBars();
     }
-    if (this.values.snippetEnd == undefined || this.values.snippetEnd < this.snippetStart()) {
-      this.values.snippetEnd = this.duration();
-    }
-    return this.values.snippetEnd;
+    return this.snippets.endMark;
   },
   snippetDuration: function() {
     return this.snippetEnd() - this.snippetStart();
@@ -1483,11 +1486,12 @@ VideoJS.player.newBehavior("volumeScrubber", function(element){
 /* COVE. Snippet duration toggle behavior
 ================================================================================ */
 VideoJS.player.newBehavior("durationToggle", function(element){
-    _V_.addListener(element, "click", this.onFullscreenToggleClick.context(this));
+    _V_.addListener(element, "click", this.onDurationToggleClick.context(this));
   },{
-    // When the user clicks on the fullscreen button, update fullscreen setting
-    onFullscreenToggleClick: function(event){
-      if (!this.videoIsFullScreen) {
+    // When the user clicks on the duration button, toggle duration view
+    // mode
+    onDurationToggleClick: function(event){
+      if (this.playSelection()) {
         this.enterFullScreen();
       } else {
         this.exitFullScreen();
