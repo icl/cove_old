@@ -228,7 +228,7 @@ $(document).ready(function(){
 
   jQuery(document).ready(function(){
     $('.coding_filter').keyup(function () {
-      filterResults($(this).attr("value"), $(this).parent().find('ul li'));
+      filterResults($(this).attr("value"), $('.coding_container ul li'));
     });
     //$('.coding_filter').parent(".interaction_container").blur(function() {
       //$(this).attr('value', '');
@@ -237,7 +237,7 @@ $(document).ready(function(){
     $('.coding_filter').parent(".interaction_container").blur(function() {
       $('.coding_filter').parent(".interaction_container").mouseleave(function  () {
         $(this).find(".coding_filter").attr("value", "");
-        $(this).find("ul li").show();
+        $('coding_container ul li').show();
       });
     });
   });  
