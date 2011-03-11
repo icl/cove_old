@@ -1,6 +1,7 @@
 /*
 VideoJS VimCSS Skin (http://videojs.com)
 Version 2.0.0
+MODIFIED FOR COVE
 */
 
 .vim-css .vjs-controls {
@@ -12,11 +13,12 @@ Version 2.0.0
   box-shadow: none; -webkit-box-shadow: none; -moz-box-shadow: none;
 }
 /* Placement of Control Items */
-.vim-css .vjs-controls > div.vjs-play-control       { width: 65px; left: 10px; }
-.vim-css .vjs-controls > div.vjs-progress-control   { left: 85px; right: 160px; }
-.vim-css .vjs-controls > div.vjs-time-control       { width: 75px; right: 85px; }
-.vim-css .vjs-controls > div.vjs-volume-control     { width: 50px; right: 35px; }
-.vim-css .vjs-controls > div.vjs-fullscreen-control { width: 25px; right: 10px; }
+.vim-css .vjs-controls > div.vjs-play-control             { width: 65px; left: 10px; }
+.vim-css .vjs-controls > div.vjs-progress-control         { left: 85px; right: 190px; }
+.vim-css .vjs-controls > div.vjs-time-control             { width: 75px; right: 115px; }
+.vim-css .vjs-controls > div.cove-duration-toggle-control { width: 25px; right: 85px; }
+.vim-css .vjs-controls > div.vjs-volume-control           { width: 50px; right: 35px; }
+.vim-css .vjs-controls > div.vjs-fullscreen-control       { width: 25px; right: 10px; }
 
 /* Play/Pause
 -------------------------------------------------------------------------------- */

@@ -1,6 +1,6 @@
 /* 
-VideoJS Default Styles (http://videojs.com)
-Version 2.0.2
+VideoJS Default Styles (http://videojs.com) Version 2.0.2
+MODIFIED FOR COVE 
 
 REQUIRED STYLES (be careful overriding)
 ================================================================================ */
@@ -76,11 +76,12 @@ so you can upgrade to newer versions easier. */
    - Left side of pogress bar, use left & width
    - Rigth side of progress bar, use right & width
    - Expand with the video (like progress bar) use left & right */
-.vjs-controls > div.vjs-play-control       { left: 5px;   width: 25px;  }
-.vjs-controls > div.vjs-progress-control   { left: 35px;  right: 165px; } /* Using left & right so it expands with the width of the video */
-.vjs-controls > div.vjs-time-control       { width: 75px; right: 90px;  } /* Time control and progress bar are combined to look like one */
-.vjs-controls > div.vjs-volume-control     { width: 50px; right: 35px;  }
-.vjs-controls > div.vjs-fullscreen-control { width: 25px; right: 5px;   }
+.vjs-controls > div.vjs-play-control             { left: 5px;   width: 25px;  }
+.vjs-controls > div.vjs-progress-control         { left: 35px;  right: 195px; } /* Using left & right so it expands with the width of the video */
+.vjs-controls > div.vjs-time-control             { width: 75px; right: 120px;  } /* Time control and progress bar are combined to look like one */
+.vjs-controls > div.cove-duration-toggle-control { width: 25px; right: 90px;   }
+.vjs-controls > div.vjs-volume-control           { width: 50px; right: 35px;  }
+.vjs-controls > div.vjs-fullscreen-control       { width: 25px; right: 5px;   }
 
 /* Removing curved corners on progress control and time control to join them. */
 .vjs-controls > div.vjs-progress-control {
@@ -146,6 +147,15 @@ so you can upgrade to newer versions easier. */
 -------------------------------------------------------------------------------- */
 .vjs-controls .vjs-time-control { font-size: 10px; line-height: 1; font-weight: normal; font-family: Helvetica, Arial, sans-serif; }
 .vjs-controls .vjs-time-control span { line-height: 25px; /* Centering vertically */ }
+
+/* COVE. Snippet duration control
+-------------------------------------------------------------------------------- */
+.cove-duration-toggle-control { cursor: pointer !important; }
+.cove-duration-toggle-control div {
+  padding: 0; text-align: left; vertical-align: top; cursor: pointer !important; 
+  margin: 5px 0 0 5px; /* Placement within the fullscreen control item */
+  width: 20px; height: 20px;
+}
 
 /* Volume
 -------------------------------------------------------------------------------- */
