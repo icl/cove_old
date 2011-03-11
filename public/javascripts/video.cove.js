@@ -557,6 +557,9 @@ VideoJS.player.extend({
         <div class="vjs-time-control">
           <span class="vjs-current-time-display">00:00</span><span> / </span><span class="vjs-duration-display">00:00</span>
         </div>
+        <div class="cove-duration-toggle-control">
+          <span></span>
+        </div>
         <div class="vjs-volume-control">
           <div>
             <span></span><span></span><span></span><span></span><span></span><span></span>
@@ -635,6 +638,11 @@ VideoJS.player.extend({
     this.volumeDisplay = this.volumeControl.children[0];
     this.activateElement(this.volumeDisplay, "volumeDisplay");
 
+    // COVE. Create the snippet duration toggle control
+    this.durationToggleControl = _V_.createElement("div", { className: "cove-duration-toggle-control", innerHTML: "<span></span>" });
+    this.controls.appendChild(this.playControl);
+    this.activateElement(this.durationToggleControl, "durationToggleControl");
+    
     // Crete the fullscreen control
     this.fullscreenControl = _V_.createElement("div", {
       className: "vjs-fullscreen-control",
