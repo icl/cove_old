@@ -1,5 +1,5 @@
 - @interval.snippets.each do |snippet|
-  = link_to interval_path(@interval, :snippet_id => snippet.id), :class => "snippet" do
+  = link_to interval_path(@interval, :snippet_id => snippet.id), :class => "snippet", "data-offset" => snippet.offset, "data-duration" => snippet.duration do
     %p= snippet.title
     %p= snippet.id
     .outer-duration
