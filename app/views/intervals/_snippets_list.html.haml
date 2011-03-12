@@ -6,8 +6,8 @@
         .max-duration
           .duration 1m12s34cs
           .snippet-duration
-            .snippet-duration2
+            .snippet-duration2{:style => "margin-left: %dpx; width: %dpx;" % [(snippet.offset/@interval.duration*150).ceil, (snippet.duration/@interval.duration*150).ceil]}
       .grid_5.snippet_description
-        %span This is where descriptions will go and it will go on and on and on and on and on...
+        %span= snippet.description
         %a.snippet_see_more see more
       %a.edit_button edit
