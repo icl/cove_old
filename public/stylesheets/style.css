@@ -781,7 +781,94 @@ input[type=search] {
 
 /****Row 4 - start****/
 /*create subinterval widget (Winny)*/
+ 
+#snippet_title{
+    width: 100px;
+}
 
+.snippet{
+    background-color: #C0C0C0;
+    border: solid 1px;
+}
+
+.snippet p{
+	font-weight:bold;
+	margin-top:10px;
+    color:#996666;
+    font-size: 14px;
+}
+
+.duration{
+    float: left;
+    margin-left: 5px;
+    margin-right: 20px;
+}
+
+.max-duration{
+    float:left;
+	height:20px;
+}
+
+.snippet-duration{
+	margin-top:4px;
+	float:left;
+    width: 150px;
+	height:5px;
+	background:#0297c1;
+    color: gray;
+}
+
+.snippet-duration2{
+    background:#FF0000;
+    height: 5px;
+    width: 10%;
+    margin-left: 50px;
+}
+
+.snippet_description{
+    color: #808080;
+}
+
+.edit_button{
+    margin-right: 30px;
+    float: right;
+}
+
+.edit_button a{
+    color: black;
+}
+
+.markstart, .markend{
+	border-color:transparent;
+	background:#333333;
+	color:white;
+	margin-top:5px;
+	height:40px;
+	width:70px;
+}
+
+
+.interval_form{
+	margin-top:10px;
+}
+
+.info_title{
+	font-weight:bold;
+	color:#996666;
+}
+
+.info_time{
+	color:#0099CC;
+}
+
+.info_description{
+	color:black;
+}
+
+.interval_browse{
+	margin-top:5px;
+	height:270px;
+}
 
 
 /* end style adjustments for show.html */

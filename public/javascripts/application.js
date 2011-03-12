@@ -49,46 +49,6 @@ $(document).ready(function(){
     return false;
   }); 
   
-  /* Billy's javascript */
-  
-  $('.snippet_info').hide();
-  $('.interval_form').hide();
-  $('.mark_buttons').hide();
-  
-  $('.create_interval_button').click(function(){
-    $('.create_interval_button').hide();
-    $('.mark_buttons').show("slide", {direction: "left"}, 2000);
-    $('.interval_form').show("slide", {direction: "left"}, 2050);
-    $('.snippet_info').hide();
-    return false;
-  });
-  
-  $('button.cancel').click(function(){
-    $('.interval_form').hide("slide", {direction: "left"}, 500);
-    $('.mark_buttons').hide("slide", {direction: "left"}, 500);
-    $('.create_interval_button').show();
-    return false;
-  });
-  
-  $('.snippet_edit').hide();
-  
-  $('.snippet').click(function(){
-    $('.interval_form').hide();
-    $('.snippet_info').show();
-    $('.create_interval_button').show();
-    $('.interval_browse').show();
-    $('.mark_buttons').hide("slide", {direction: "left"}, 500);
-    return false;
-  });
-  
-  $('button.delete').click(function(){
-    $('.snippet_info').hide();
-    $('.create_interval_button').show();
-    return false;
-  });
-  
-  /* End Billy's js */
-    
  
   $("#new_snippet_form").submit(function(event){
     $('#snippet_offset').val( videoPlayer.snippetStart() );
@@ -115,7 +75,47 @@ $(document).ready(function(){
     });
     return false;
   });
+  
+  $('.snippet_info').hide();
+  $('.mark_buttons span').hide();
+  
+  $('.snippet').click(function(){
+    $('.snippet_info').show();
+    $('fieldset').hide();
+    $('.save_cancel_button').hide();
+    $('.mark_buttons input').hide();
+    $('.mark_buttons span').show();
+    return false;
+  });
+  
+  $('.new_snippet_buttons .back').click(function(){
+    $('fieldset').show();
+    $('.save_cancel_button').show();
+    $('.mark_buttons input').show();
+    $('.snippet_info').hide();
+    $('.mark_buttons span').hide();
+    return false;
+  });
+  
+  $('.new_snippet_buttons .edit').click(function(){
+    $('fieldset').show();
+    $('.save_cancel_button').show();
+    $('.mark_buttons input').show();
+    $('.snippet_info').hide();
+    $('.mark_buttons span').hide();
+    return false;
+  });
+
+  
+  
 });
+
+
+
+
+
+
+
 
 /* Thumbnail fast scrub */    
 $(document).ready(function(){
@@ -358,3 +358,4 @@ $(document).ready(function(){
       });
     });
   });  
+
