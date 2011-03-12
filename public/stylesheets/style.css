@@ -781,9 +781,26 @@ input[type=search] {
 
 /****Row 4 - start****/
 /*create subinterval widget (Winny)*/
+ 
+#snippet_title{
+    width: 100px;
+}
 
 .snippet{
-    float:left;
+    background-color: #C0C0C0;
+    border: solid 1px;
+}
+
+.snippet p{
+    padding: 5px;
+    font-size: large;
+    color: black;
+}
+
+.duration{
+    float: left;
+    margin-left: 5px;
+    margin-right: 20px;
 }
 
 .max-duration{
@@ -794,9 +811,24 @@ input[type=search] {
 .snippet-duration{
 	margin-top:4px;
 	float:left;
-	width: 50px;
+    width: 100px;
 	height:5px;
 	background:#0297c1;
+}
+
+.snippet-duration2{
+    background:#FF0000;
+    height: 5px;
+    width: 10%;
+    margin-left: 20px;
+}
+
+.snippet_description{
+    width: 300px;
+}
+
+.edit_button{
+    float: right;
 }
 
 
