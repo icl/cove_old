@@ -841,7 +841,6 @@ VideoJS.player.extend({
     if (seconds !== undefined) {
       try { this.video.currentTime = this.offset() + seconds; }
       catch(e) { this.warning(VideoJS.warnings.videoNotReady); }
-      this.values.currentTime = seconds;
     }
     return this.video.currentTime - this.offset();
   },
@@ -849,11 +848,10 @@ VideoJS.player.extend({
     this.currentTimeListeners.push(fn);
   },
 
-
   // COVE play snippets
   playSelection: function(offset, duration) {
-    if (offset !== undefined) this.snippets.offset = offset;
-    if (duration !== undefined) this.snippets.duration = duration;
+    if (offset !== undefined) this.snippets.offset = parseFloat(offset);
+    if (duration !== undefined) this.snippets.duration = parseFloat(duration);
     if (this.snippets.offset || this.snippets.duration) return true;
     else return false;
   },
@@ -873,14 +871,14 @@ VideoJS.player.extend({
   },
   snippetStart: function(seconds){
     if (seconds !== undefined) {
-      this.snippets.startMark = seconds;
+      this.snippets.startMark = parseFloat(seconds)
       this.updateSnippetSelectionBars();
     }
     return this.snippets.startMark;
   },
   snippetEnd: function(seconds){
     if (seconds !== undefined) {
-      this.snippets.endMark = seconds;
+      this.snippets.endMark = parseFloat(seconds);
       this.updateSnippetSelectionBars();
     }
     return this.snippets.endMark;
