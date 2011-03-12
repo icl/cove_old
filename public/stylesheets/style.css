@@ -782,6 +782,22 @@ input[type=search] {
 /****Row 4 - start****/
 /*create subinterval widget (Winny)*/
 
+.snippet{
+    float:left;
+}
+
+.max-duration{
+    float:left;
+	height:20px;
+}
+
+.snippet-duration{
+	margin-top:4px;
+	float:left;
+	width: 50px;
+	height:5px;
+	background:#0297c1;
+}
 
 
 /* end style adjustments for show.html */
