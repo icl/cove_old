@@ -2,7 +2,7 @@
 .grid_16.create_snippet
   .grid_5.display_snippet
     .grid_5.alpha
-      .grid_5.mark_buttons
+      .grid_5.alpha.mark_buttons
         %button.markstart Start Mark
         %span --:--.--
         %input#start_mark(type="text")
@@ -15,7 +15,7 @@
           = f.hidden_field :offset
           = f.hidden_field :duration
           %fieldset
-            %p Title
+            %p.title_input Title
             = f.text_field :title
             %br
             %p Description

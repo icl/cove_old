@@ -911,27 +911,22 @@ input[type=search] {
 /* end style adjustments for intervals.index.html */
 /***************************************/
 
-#start_button, #end_button{
+.markstart, .markend{
 	border-color:transparent;
 	background:#333333;
 	color:white;
 	margin-top:5px;
-	height:30px;
-	width:50px;
+	height:40px;
+	width:70px;
 }
 
-#start_time, #end_time{
-	color:#3399CC;
-	width:50px;
-}
 
-#interval_form{
+.interval_form{
 	margin-top:10px;
 }
 
-#interval_form legend{
-	font-weight:bold;
-	color:#996666;
+.title_input{
+	width:100px;
 }
 
 #interval_form{
