@@ -842,7 +842,6 @@ VideoJS.player.extend({
       try { this.video.currentTime = this.offset() + seconds; }
       catch(e) { this.warning(VideoJS.warnings.videoNotReady); }
       this.values.currentTime = seconds;
-      return this;
     }
     return this.video.currentTime - this.offset();
   },
