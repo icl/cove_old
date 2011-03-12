@@ -858,20 +858,35 @@ input[type=search] {
 	width:50px;
 }
 
+.mark_buttons{
+	background-color: #D8D8D8;
+    border-radius:10px;
+    padding:9px;
+    margin-top:5px;
+}
+
 .markstart, .markend{
 	border-color:transparent;
 	background:#33CCFF;
 	color:white;
-	margin-top:5px;
+	margin-top:3px;
 	height:30px;
 	width:50px;
 }
 
 
 .interval_form{
-	margin-top:10px;
+	background-color: #D8D8D8;
+    border-radius:10px;
+    padding:9px;
+	margin-top:3px;
 }
 
+.snippet_info{
+	background-color: #D8D8D8;
+    border-radius:10px;
+    padding:9px;
+}
 .info_title{
 	font-weight:bold;
 	color:black;
