@@ -811,7 +811,7 @@ input[type=search] {
 .snippet-duration{
 	margin-top:4px;
 	float:left;
-    width: 100px;
+    width: 200px;
 	height:5px;
 	background:#0297c1;
 }
@@ -820,16 +820,21 @@ input[type=search] {
     background:#FF0000;
     height: 5px;
     width: 10%;
-    margin-left: 20px;
+    margin-left: 50px;
 }
 
 .snippet_description{
     width: 400px;
     margin-left: 20px;
+    color: #808080;
 }
 
 .edit_button{
     float: right;
+}
+
+.edit_button a{
+    color: black;
 }
 
 
