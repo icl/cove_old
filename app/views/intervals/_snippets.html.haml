@@ -1,0 +1,35 @@
+.grid_16.create_snippet
+  .grid_2.snippet_button
+    %button.create_interval_button Create Snippet
+  .clear
+  .grid_16.display_snippet
+    .grid_9.alpha
+      .grid_8.mark_buttons
+        %button.markstart Start Mark
+        %input#start_mark(type="text")
+        %button.markend End Mark
+        %input#end_mark(type="text")
+      .grid_5.alpha.interval_form
+        = form_for @snippet, :as => :snippet, :url => interval_snippets_path(@interval, :format => :html), :html => { :id => "new_snippet_form" }, :remote => true do |f|
+          = f.hidden_field :offset
+          = f.hidden_field :duration
+          %fieldset
+            %legend New Snippet
+            %p 1. Title:
+            = f.text_field :title
+            %br
+            %p 2. Description:
+            = f.text_area :description, :cols => 32, :rows => 5
+            %p 3. Select Tags Above
+          .save_cancel_button
+            %button.cancel Cancel
+            = f.submit "Save", :class => "save"
+      .grid_5.alpha.snippet_info
+        %p.info_title Snippet Title 1
+        %p.info_time 3:40-4:05
+        %p.info_description 
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusm    od tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim venia    m, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo co    nsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillu    m dolore eu
+        .delete_edit_button
+          %button.delete Close
+  .omega.interval_browse
+    = render "intervals/snippets_list"

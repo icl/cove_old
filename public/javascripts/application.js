@@ -1,4 +1,124 @@
+$(document).ready(function(){
+
+  var videoPlayer = $('#cove-video-player').VideoJS({
+    offset: 30,
+    controlsHiding: false,
+    controlsAtStart: true
+  }).player(); 
+
+  function secondsToString(secs) {
+    var deciseconds = Math.round(secs * 100);
+    var seconds = Math.floor(deciseconds / 100);
+    var minutes = Math.floor(seconds / 60);
+    minutes = (minutes >= 10) ? minutes : "0" + minutes;
+    seconds = Math.floor(seconds % 60);
+    seconds = (seconds >= 10) ? seconds : "0" + seconds;
+    deciseconds = Math.floor(deciseconds % 100);
+    deciseconds = (deciseconds >= 10) ? deciseconds : "0" + deciseconds;
+    return minutes + ":" + seconds + "." + deciseconds;
+  }
+
+  function stringToSeconds(str) {
+    var nums = str.split(":");
+    if (nums.length == 1) return parseFloat( nums[0] );
+    else if (nums.length == 2) return parseInt( nums[0] ) * 60 + parseFloat( nums[1] );
+    else return NaN;
+  }
+
+  $("button.markstart").click(function(){
+    videoPlayer.markSnippetStart();
+    $("#start_mark").val( secondsToString(videoPlayer.snippetStart()) );
+    return false;
+  });
+  
+  $("button.markend").click(function(){
+    videoPlayer.markSnippetEnd();
+    $("#end_mark").val( secondsToString(videoPlayer.snippetEnd()) );
+    return false;
+  });
+  
+  $("#start_mark").change(function(){
+    videoPlayer.snippetStart( stringToSeconds(this.value) );
+    $(this).val( secondsToString( videoPlayer.snippetStart() ));
+    return false;
+  });
+
+  $("#end_mark").change(function(){
+    videoPlayer.snippetEnd( stringToSeconds(this.value) );
+    $(this).val( secondsToString( videoPlayer.snippetEnd() ));
+    return false;
+  }); 
+  
+  /* Billy's javascript */
+  
+  $('.snippet_info').hide();
+  $('.interval_form').hide();
+  $('.mark_buttons').hide();
+  
+  $('.create_interval_button').click(function(){
+    $('.create_interval_button').hide();
+    $('.mark_buttons').show("slide", {direction: "left"}, 2000);
+    $('.interval_form').show("slide", {direction: "left"}, 2050);
+    $('.snippet_info').hide();
+    return false;
+  });
+  
+  $('button.cancel').click(function(){
+    $('.interval_form').hide("slide", {direction: "left"}, 500);
+    $('.mark_buttons').hide("slide", {direction: "left"}, 500);
+    $('.create_interval_button').show();
+    return false;
+  });
+  
+  $('.snippet_edit').hide();
+  
+  $('.snippet').click(function(){
+    $('.interval_form').hide();
+    $('.snippet_info').show();
+    $('.create_interval_button').show();
+    $('.interval_browse').show();
+    $('.mark_buttons').hide("slide", {direction: "left"}, 500);
+    return false;
+  });
+  
+  $('button.delete').click(function(){
+    $('.snippet_info').hide();
+    $('.create_interval_button').show();
+    return false;
+  });
+  
+  /* End Billy's js */
+    
+ 
+  $("#new_snippet_form").submit(function(event){
+    $('#snippet_offset').val( videoPlayer.snippetStart() );
+    $('#snippet_duration').val( videoPlayer.snippetDuration() );
+
+    var target = $(event.target);
+
+    // This part borrowed from Paul
+    $.ajax({
+      type: 'POST' ,
+      url: target.attr( 'action' ),
+      data: target.serialize(),
+      beforeSend: function(xhr) {
+        xhr.setRequestHeader("Accept",'text/html');
+      },
+      success: function(data) {
+        $('.interval_browse').html(data);
+        setTimeout( function() { jQuery(".noticeSuccessful").fadeTo(1000,0); }, 6000);
+        setTimeout( function() { jQuery(".noticeErrors").fadeTo(1000,0); }, 30000);
+        clearTimeout();
+        return false;
+      },
+      dataType: 'text'
+    });
+    return false;
+  });
+});
+
 /* Thumbnail fast scrub */    
+$(document).ready(function(){
     function changeSpriteWindow(obj){
         //TODO: figure out how to grab misc 10 pixel additional margin
         var extra_margin =10;
@@ -30,8 +150,8 @@
     // immediately invoke thumbnails after page load
     $(document).ready(function(){$('.thumbnail_box').trigger('mouseover')});
     
+});
 /* end Thumbnail fast scrub */    
-
 
 $(document).ready(function(){
 	
@@ -123,7 +243,6 @@ $(document).ready(function(){
 });
 
 
-
 // -------------------------------------------------------------------
 // Javascript for tagging
 // -------------------------------------------------------------------
@@ -205,8 +324,6 @@ $(document).ready(function(){
     });
     
   });
-
-
 
 // ------------------------------------------------------------
 // Javascript for client side filtering of phenomenon and people

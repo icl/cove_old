@@ -21,6 +21,7 @@ class Interval < ActiveRecord::Base
   has_many :codes, :through => :codings
   has_many :taggings
   has_many :tags, :through => :taggings
+  has_many :snippets
 
   def self.search args
 	  search_conditions = {}
@@ -101,7 +102,7 @@ class Interval < ActiveRecord::Base
     return File.join(path_prefix, "thumbs" , %Q[#{filename.chomp(".m4v")}_thumb.jpg]) if filename
   end
 
-  def video_file
+ def video_file
     return File.join(path_prefix, "videos",filename) if filename
   end
 
