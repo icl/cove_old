@@ -824,7 +824,8 @@ input[type=search] {
 }
 
 .snippet_description{
-    width: 300px;
+    width: 400px;
+    margin-left: 20px;
 }
 
 .edit_button{
