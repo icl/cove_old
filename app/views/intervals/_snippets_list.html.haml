@@ -1,14 +1,14 @@
 .grid_5.snippet_list
-- @interval.snippets.each do |snippet|
-  = link_to interval_path(@interval, :snippet_id => snippet.id), :class => "snippet" do
-    .grid_5.alpha.snippet
-      %p= snippet.title
-      .max-duration
-        .duration 1m12s34cs
-        .snippet-duration
-          .snippet-duration2
-      .grid_5.snippet_description
-        %span This is where descriptions will go and it will go on and on and on and on and on...
-        %a see more
-        .edit_button
-          %a edit
+  - @interval.snippets.each do |snippet|
+    = link_to interval_path(@interval, :snippet_id => snippet.id), :class => "snippet" do
+      .grid_5.alpha.snippet
+        %p= snippet.title
+        .max-duration
+          .duration 1m12s34cs
+          .snippet-duration
+            .snippet-duration2
+        .grid_5.snippet_description
+          %span This is where descriptions will go and it will go on and on and on and on and on...
+          %a see more
+          .edit_button
+            %a edit
