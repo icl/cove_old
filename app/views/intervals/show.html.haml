@@ -1,0 +1,20 @@
+%h3.grid_5#title
+  Place Holder Title 
+
+%div#collections_container.grid_6
+  = render :partial => "collections"
+
+%div.grid_11#video_container
+  = video_tag interval_path(@interval.id, :format => :m4v), :controls => true, :height => 360, :width => 640
+
+%div#adding_shit_to_videos.grid_5
+  = render :partial => "adding_to_videos"
+
+%div#snippets_container.grid_11
+  = render :partial => "snippets"
+
+%div.grid_5.meta_info_container
+  This is going to be the meta data
+
+
+

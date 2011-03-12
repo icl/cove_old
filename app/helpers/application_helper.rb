@@ -9,7 +9,7 @@ module ApplicationHelper
     end
     return raw(html)
   end
-  def add_params params_to_add
+  def add_params params_to_add={}
 	  new_p = params.dup
 	  new_p.delete(:page)
 	  new_p.delete(:auth)
@@ -21,5 +21,19 @@ module ApplicationHelper
   def gravatar_url_for email 
     hash = Digest::MD5.hexdigest(email)
     image_src = "http://www.gravatar.com/avatar/#{hash}"
+  end
+
+  def display_coding_term(applied=[], all=[])
+    html = "<ul>"
+    applied.each do |term|
+      if all.delete(term)
+        html << %Q[<li class="code applied" data-codingType="#{term.coding_type}" data-rails_object_id="#{term.id}"> #{term.name} </li>]
+      end
+    end
+    all.each do |term|
+      html << %Q[<li class="code unapplied" data-codingType= "#{term.coding_type}" data-rails_object_id="#{term.id}"> #{term.name} </li>]
+    end
+    html << "</ul>"
+    return html.html_safe
   end
 end

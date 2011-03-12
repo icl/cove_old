@@ -1,0 +1,11 @@
+.filter{:class=> "filter_#{filter[0]}"}
+	%ul.nav
+		%li
+			%a.filter_title
+				=filter[0].humanize
+			%ul
+				%li
+					= link_to "Any", intervals_path(add_params filter[0].to_sym => nil)
+				- filter[1].each do |type|
+					%li
+						= link_to type, intervals_path(add_params filter[0].to_sym => type), :class => "define_me"

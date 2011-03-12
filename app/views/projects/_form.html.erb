@@ -1,14 +1,6 @@
-<h1 class="grid_16">Project Form</h1>
-
-<%= simple_form_for(@project) do |f| %>
-  <%= f.error_notification %>
-
-  
- <%= f.input :name %>
- <%= f.input :desc, :as => :text, :label => "Elevator Pitch" %>
- <%= f.input :notes %>
- <%= f.button :submit %>
-
-<%= f.hidden_field :user_id %>
-
+<%= simple_form_for @project do |form| %>
+	<%= form.input :name %>
+	<%= form.input :desc, :label => "Description" %>
+	<%= form.hidden_field :user_id, :value => current_user.id %>	
+	<%= form.submit 'Submit' %>
 <% end %>
