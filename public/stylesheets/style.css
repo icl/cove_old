@@ -783,24 +783,39 @@ input[type=search] {
 /*create subinterval widget (Winny)*/
  
 #snippet_title{
-    width: 100px;
+    width: 250px;
 }
 
 .snippet{
-    background-color: #C0C0C0;
-    border: solid 1px;
+    background-color: #D8D8D8;
+    border-radius:10px;
+    height:84px;
+    margin-bottom:3px;
+}
+
+
+.snippet_description a{
+	color:#404040;
+}
+
+.snippet_description .see_more{
+	color:gray;
 }
 
 .snippet p{
-    padding: 5px;
-    font-size: large;
-    color: black;
+	font-weight:bold;
+	margin-left:10px;
+	margin-top:10px;
+    color:black;
+    font-size: 14px;
 }
+
 
 .duration{
     float: left;
-    margin-left: 5px;
+    margin-left: 10px;
     margin-right: 20px;
+    color:#FF3300;
 }
 
 .max-duration{
@@ -813,32 +828,43 @@ input[type=search] {
 	float:left;
     width: 150px;
 	height:5px;
-	background:#0297c1;
+	background:#00CCFF;
+    color: gray;
 }
 
 .snippet-duration2{
-    background:#FF0000;
+    background:#FF3300;
     height: 5px;
     width: 10%;
     margin-left: 50px;
 }
 
-.snippet_description{
-    color: #808080;
-}
 
 .edit_button{
     margin-right: 30px;
     float: right;
 }
 
-.markstart, .markend{
+.edit_button a{
+    color: black;
+}
+
+
+.erase, .save {
 	border-color:transparent;
 	background:#333333;
 	color:white;
+	height:30px;
+	width:50px;
+}
+
+.markstart, .markend{
+	border-color:transparent;
+	background:#33CCFF;
+	color:white;
 	margin-top:5px;
-	height:40px;
-	width:70px;
+	height:30px;
+	width:50px;
 }
 
 
@@ -846,25 +872,18 @@ input[type=search] {
 	margin-top:10px;
 }
 
-#interval_form{
-	width:400px;
-}
-
-#snippet_title{
-	width:380px;
-}
-
 .info_title{
 	font-weight:bold;
-	color:#996666;
+	color:black;
+	size:18px;
 }
 
 .info_time{
-	color:#0099CC;
+	color:#FF3300;;
 }
 
 .info_description{
-	color:black;
+	color:#404040;
 }
 
 .interval_browse{
@@ -872,25 +891,14 @@ input[type=search] {
 	height:270px;
 }
 
-.snippet p{
-	font-weight:bold;
-	margin-top:10px;
-    color:#996666;
-    font-size: 14px;
+.back, .edit{
+	margin-top:5px;
+	border-color:transparent;
+	background:#333333;
+	color:white;
+	height:30px;
+	width:50px;
 }
-
-.snippet-duration{
-	color:gray;
-}
-
-#snippet_info{	
-	margin-top:20px;
-	display:none;
-}
-.edit_button a{
-    color: black;
-}
-
 
 /* end style adjustments for show.html */
 /***************************************/

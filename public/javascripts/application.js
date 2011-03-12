@@ -75,13 +75,42 @@ $(document).ready(function(){
     });
     return false;
   });
+  
+  $('.snippet_info').hide();
+  $('.mark_buttons span').hide();
+  
+  $('.snippet').click(function(){
+    $('.snippet_info').show();
+    $('fieldset').hide();
+    $('.save_cancel_button').hide();
+    $('.mark_buttons input').hide();
+    $('.mark_buttons span').show();
+    return false;
+  });
+  
+  $('.new_snippet_buttons .back').click(function(){
+    $('fieldset').show();
+    $('.save_cancel_button').show();
+    $('.mark_buttons input').show();
+    $('.snippet_info').hide();
+    $('.mark_buttons span').hide();
+    return false;
+  });
+  
+  $('.new_snippet_buttons .edit').click(function(){
+    $('fieldset').show();
+    $('.save_cancel_button').show();
+    $('.mark_buttons input').show();
+    $('.snippet_info').hide();
+    $('.mark_buttons span').hide();
+    return false;
+  });
+
+  
+  
 });
 
-/* Winny's bad Javascript */
 
- $('.interval_browse').click(function () {
-    $('#snippet_info').show("slow");
-    });
 
 
 
