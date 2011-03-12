@@ -1,19 +1,21 @@
-.grid_6.snippet_list
+.grid_5.snippet_list
 - @interval.snippets.each do |snippet|
-    .grid_6.alpha.snippet
-    %p= snippet.title
-    <div class="max-duration">
-    <div class="duration">
-    1m12s34cs
-    </div>
-    <div class="snippet-duration">
-    <div class="snippet-duration2">
-    </div>
-    </div>
-    </div>
-    <div class="grid_5 snippet_description">
-    This is where descriptions will go and it will go on and on and on and on and on... <a>see more</a>
-    <div class="edit_button">
-    <a>edit</a>
-    </div>
-    </div>z   
+  = link_to interval_path(@interval, :snippet_id => snippet.id), :class => "snippet" do
+    .grid_5.alpha.snippet
+      %p= snippet.title
+      <div class="max-duration">
+      <div class="duration">
+      1m12s34cs
+      </div>
+      <div class="snippet-duration">
+      <div class="snippet-duration2">
+      </div>
+      </div>
+      </div>
+      <div class="grid_5 snippet_description">
+      This is where descriptions will go and it will go on and on and on and on and on... <a>see more</a>
+      <div class="edit_button">
+      <a>edit</a>
+      </div>
+      </div>
+
