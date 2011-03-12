@@ -315,13 +315,13 @@ a, a:visited, a:active {
 
 body {
 	color: #gray;
-	background: #FFFFFF;
+	background: #EEEEEE;
 }
 
 
 header {
 	font-size: 12pt;
-	background: #FFFFFF;
+	background: #EEEEEE;
 }
 
 header h1 {
@@ -341,7 +341,7 @@ header h1 {
 }
 
 .user_links ul {
-	background: #FFFFFF;
+	background: #EEEEEE;
 	height: 40px;
 	font-size: 10pt;
 	margin-left: 0;
@@ -377,11 +377,11 @@ header h1 {
 }
 
 .main_links {
-	border-top: 2px solid #BD8751;
+	border-top: 2px solid #D2D2D2;
 	margin-bottom: 10px;
 	padding-top: 5px;
 	padding-bottom: 5px;
-	background: #E3B07D;
+	background: #E0E0E0;
 	border-bottom-left-radius: 7px;
 	border-bottom-right-radius: 7px;
 }
@@ -664,8 +664,9 @@ Style adjustments for show page separated into partials.
 	margin-bottom: 10px;
 	padding-top: 5px;
 	padding-bottom: 5px;
-	background: #E3B07D;
+	background: #E0E0E0;
 	border-radius: 6px;
+	display: inline-block;
 }
 
 .show_video_header h1 {
@@ -681,21 +682,21 @@ Style adjustments for show page separated into partials.
 }
 
 .show_camera_angle {
-	margin-bottom: 15px;
+	float: right;
 }
 
-#adding_shit_to_videos {
+#collections_container {
 	margin-left: 0px;
 }
 
-body {
-	background: #FFFFFF;
+#video_container{
+	margin-left: 0px;
 }
 
-#video_container {
-	float: left;
+#snippets_container {
+	margin-left: 0px;
+	height: 500px;
 }
-
 
 /*end style adjustments for show.html */
 /***************************************/

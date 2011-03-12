@@ -1,14 +1,37 @@
 @import "compass";
 $applied_color :#D2D2D2;
 
-/*#adding_shit_to_videos{
-  height: 360px;
-  width: 290px;
+#all_coding_terms{
+  background: #E0E0E0;
+  border: #E0E0E0;
+  border-radius: 7px;
+  padding-bottom: 10px;
+}
+
+.coding_container{
+  margin-top: 0px;
+  margin-left: 0px;
+  height: 155px;
   overflow-y:scroll;
   overflow-x:hidden;
-  background: #E3B07D;
-  border-top-left-radius: 7px;
-}*/
+  border-bottom-left-radius: 7px;
+  border-bottom: 2px solid #E0E0E0;
+  border-left: 2px solid #E0E0E0;
+  border-right: 2px solid #E0E0E0;
+  border-bottom: 2px solid #EEEEEE;
+  background: #EEEEEE;
+}
+
+#tag_container{
+  margin-top: 10px;
+  margin-left: 0px;
+  overflow-y:hidden;
+  overflow-x:hidden;
+  border-bottom: 2px solid #E0E0E0;
+  background: #E0E0E0;
+  border-radius: 7px;
+  padding-bottom: 10px;
+}
 
 .interaction_container ul li{
   list-style: none;
@@ -16,23 +39,33 @@ $applied_color :#D2D2D2;
 }
 
 ul{
-  margin-left: 0px;
+  margin-left: 4px;
 }
 
-h4{
+h2.show_terms{
+  font-size: 12pt;
+  margin: 10px 0px 2px 8px;
   color: #0297C1;
-  margin-top: 5px;
-  /*margin-right: 20px;*/
-  font-size: 10pt;
   display: inline-block;
 }
 
-.coding_filter{
-  width: 122px;
-  margin: 3px 20px 3px 5px;
+.coding_filter, #tagging_name{
+  width: 150px;
+  margin: 8px 10px 3px 0px;
   border-radius: 3px;
   float: right;
 
+}
+
+h4.show_terms{
+  color: #0297C1;
+  margin: 10px 20px 2px 2px;
+  font-size: 10pt;
+  display: inline-block;
+  background: #EEEEEE;
+  border-top-right-radius: 7px;
+  border-top-left-radius: 7px;
+  padding: 5px 8px 2px 8px;
 }
 
 .code, .tag{
@@ -47,47 +80,17 @@ h4{
   overflow: hidden;
 }
 
-/*.tag{
-  cursor: auto;
-}*/
-
 .applied{
-  background-color: #F0D24D; /*($applied_color - 100);*/
+  background-color: #F0D24D;
   color: #F2F0E6;
 }
 .unapplied{
-  background-color: #F2F0E6;
+  background-color: #F0E3CE;
   color: #F0D24D;
 }
-  
-#tagging_name{
-  width: 220px;
-  height:10px;
-  font-size: 12pt;
-  @include border-radius(5px);
-  border: 1px solid black;
-  padding: 5px;
+
+div.list_tags{
+  background: #EEEEEE;
+
 }
 
-
-
-#codedterms_container{
-  height: 200px;
-  width: 290px;
-  border-bottom: 2px solid #E3B07D;
-  overflow-y:scroll;
-  overflow-x:hidden;
-  background: #E3B07D;
-  border-top-left-radius: 7px;
-}
-  
-#tag_container{
-  margin-top: 10px;
-  margin-left: 0px;
-  height: 150px;
-  width: 290px;
-  overflow-y:scroll;
-  overflow-x:hidden;
-  background: #E3B07D;
-  border-top-left-radius: 7px;
-}

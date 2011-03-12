@@ -197,7 +197,7 @@ $(document).ready(function(){
     });
 
     $("#tagging_name").blur(function() {
-      $(this).attr("value", "Enter New Tag");
+      $(this).attr("value", "Create New Tag");
     });
 
     $('#tagging_name').focus(function() {
