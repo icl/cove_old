@@ -4,13 +4,13 @@
     .grid_5.alpha
       = form_for @snippet, :as => :snippet, :url => interval_snippets_path(@interval, :format => :html), :html => { :id => "new_snippet_form" }, :remote => true do |f|
         .alpha.mark_buttons
-          %button.markstart Start Mark
+          %button.markstart Start
           %span 03:30.23
-          %input#start_mark(type="text")
+          = f.text_field :start_time
           .clear
-          %button.markend End Mark
+          %button.markend End
           %span 04:23.34
-          %input#end_mark(type="text")
+          = f.text_field :end_time
         .alpha.interval_form
           = f.hidden_field :offset
           = f.hidden_field :duration
