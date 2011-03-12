@@ -79,7 +79,7 @@ $(document).ready(function(){
   $('.snippet_info').hide();
   $('.mark_buttons span').hide();
   
-  $('.snippet').click(function(){
+  $('.snippet_see_more').click(function(){
     $('.snippet_info').show();
     $('fieldset').hide();
     $('.save_cancel_button').hide();
