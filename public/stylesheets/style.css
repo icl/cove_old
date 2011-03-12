@@ -792,9 +792,10 @@ input[type=search] {
 }
 
 .snippet p{
-    padding: 5px;
-    font-size: large;
-    color: black;
+	font-weight:bold;
+	margin-top:10px;
+    color:#996666;
+    font-size: 14px;
 }
 
 .duration{
@@ -814,6 +815,7 @@ input[type=search] {
     width: 150px;
 	height:5px;
 	background:#0297c1;
+    color: gray;
 }
 
 .snippet-duration2{
@@ -832,6 +834,10 @@ input[type=search] {
     float: right;
 }
 
+.edit_button a{
+    color: black;
+}
+
 .markstart, .markend{
 	border-color:transparent;
 	background:#333333;
@@ -844,18 +850,6 @@ input[type=search] {
 
 .interval_form{
 	margin-top:10px;
-}
-
-#snippet_title{
-	width:100px;
-}
-
-#interval_form{
-	width:400px;
-}
-
-#snippet_title{
-	width:380px;
 }
 
 .info_title{
@@ -874,25 +868,6 @@ input[type=search] {
 .interval_browse{
 	margin-top:5px;
 	height:270px;
-}
-
-.snippet p{
-	font-weight:bold;
-	margin-top:10px;
-    color:#996666;
-    font-size: 14px;
-}
-
-.snippet-duration{
-	color:gray;
-}
-
-#snippet_info{	
-	margin-top:20px;
-	display:none;
-}
-.edit_button a{
-    color: black;
 }
 
 
