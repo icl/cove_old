@@ -841,7 +841,7 @@ VideoJS.player.extend({
     if (seconds !== undefined) {
       try { this.video.currentTime = this.offset() + seconds; }
       catch(e) { this.warning(VideoJS.warnings.videoNotReady); }
-      this.values.currentTime = this.seconds;
+      this.values.currentTime = seconds;
       return this;
     }
     return this.video.currentTime - this.offset();
@@ -855,7 +855,7 @@ VideoJS.player.extend({
   playSelection: function(offset, duration) {
     if (offset !== undefined) this.snippets.offset = offset;
     if (duration !== undefined) this.snippets.duration = duration;
-    if (this.snippets.offset !== undefined || this.snippets.duration !== undefined) return true;
+    if (this.snippets.offset || this.snippets.duration) return true;
     else return false;
   },
   offset: function(){
