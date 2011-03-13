@@ -51,9 +51,6 @@ $(document).ready(function(){
   
  
   $("#new_snippet_form").submit(function(event){
-    $('#snippet_offset').val( videoPlayer.snippetStart() );
-    $('#snippet_duration').val( videoPlayer.snippetDuration() );
-
     var target = $(event.target);
 
     // This part borrowed from Paul

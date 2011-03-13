@@ -6,7 +6,7 @@
         .max-duration
           .duration 1m12s34cs
           .snippet-duration
-            .snippet-duration2{:style => "margin-left: %dpx; width: %dpx;" % [(snippet.offset/@interval.duration*150).ceil, (snippet.duration/@interval.duration*150).ceil]}
+            .snippet-duration2{:style => "margin-left: %dpx; width: %dpx;" % [(snippet.offset/@interval.duration*150 rescue 0), (snippet.duration/@interval.duration*150 rescue 1)]}
       .grid_5.snippet_description
         %span= snippet.description
         %a.snippet_see_more see more
