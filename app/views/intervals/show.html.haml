@@ -5,7 +5,7 @@
     %div.grid_6.alpha.show_video_header
       %div.show_camera_angle
         = @interval.camera_angle
-      %h1 Far ID
+      %h1="Far #{@interval.id.to_s()}"
       %h2="Session #{@interval.session_number}: #{@interval.session_type}"
  
     %div.grid_5#collections_container

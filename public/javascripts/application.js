@@ -132,9 +132,30 @@ $(document).ready(function(){
       //alert("I was clicked");
     //});
 
+
+
+
+   $('.btn_unapplied').click(function() {
+	 $('.unapplied').toggle();
+   });
+
+ 
+
+
+
+
+    $('.coding_filter').blur(function() {
+      $(this).attr("value", "Search Coding Term");
+    });
+
+    $('.coding_filter').focus(function() {
+      $(this).attr("value", "");
+    });
+
     $("#people_container, #phenomenon_container").delegate(".code", "click", function(){
       var name = $(this).text().trim();
       var coding_type = $(this).attr("data-codingType");
+
       $.ajax({
         url: document.URL + "/codings.json",
         type: 'POST',
@@ -144,7 +165,7 @@ $(document).ready(function(){
           xhr.setRequestHeader('X-CSRF-Token', $('meta[name=csrf-token]').attr('content'));
         },
         failure:function(){
-          $("#tag_container").prepend('<div class="flash alert"> Your Tag could not be submitted at this time </div>');
+          $("#all_coding_terms").prepend('<div class="flash alert"> Your Tag could not be submitted at this time </div>');
         },
         success: function(data, status, xhr){
           console.log(data);
@@ -165,16 +186,16 @@ $(document).ready(function(){
 
           //display a flash
           $('.flash').remove();
-          $("#tag_container").prepend('<div class="flash notice"> Your Coding has been added </div>');
+          $("#all_coding_terms").prepend('<div class="flash notice"> Your Coding has been added. </div>');
 
           //remove focus from the textboxes
           $('.coding_filter').blur();
-        }
-      });
-    });
+        } //end success
+      }); //end $.ajax
+    }); //end .delegate
 
     $("#new_tag_form").bind("ajax:error", function(){
-      $("#tag_container").prepend('<div class="flash alert"> Your Tag could not be submitted at this time </div>');  
+      $("#tag_container").prepend('<div class="flash alert"> Your Tag could not be submitted at this time. </div>');  
     });
 
     $("#new_tag_form").bind("ajax:success", function(data, xhr, status){
@@ -194,7 +215,7 @@ $(document).ready(function(){
       
       //$("#tagging_name").trigger("blur");
       $("#tagging_name").attr("value", "");
-    });
+    }); //end .bind
 
     $("#tagging_name").blur(function() {
       $(this).attr("value", "Create New Tag");
@@ -202,9 +223,9 @@ $(document).ready(function(){
 
     $('#tagging_name').focus(function() {
       $(this).attr("value", "");
-    });
+    }); 
     
-  });
+  }); //end jquery
 
 
 

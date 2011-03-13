@@ -8,6 +8,10 @@ $applied_color :#D2D2D2;
   padding-bottom: 10px;
 }
 
+.btn_unapplied{
+  float: right;
+  margin-right: 10px;
+}
 .coding_container{
   margin-top: 0px;
   margin-left: 0px;
@@ -93,4 +97,14 @@ div.list_tags{
   background: #EEEEEE;
 
 }
+
+
+.flash.notice{
+  color: black;
+}
+
+.code.unapplied{
+  display: none;
+}
+
 

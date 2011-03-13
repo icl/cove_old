@@ -2,7 +2,9 @@
 
   %h2.show_terms
     Coding
-  %input.coding_filter#phenom_filter{:type => "text", :value => "Search Coding Terms"}
+  %input.coding_filter#phenom_filter{:type => "text", :value => "Search All Coding Terms"}
+
+  %input.btn_unapplied{:type => "button", :value => "Show/Hide Unselected"}
 
   
   %h4.show_terms
@@ -10,6 +12,7 @@
     %span#phenomenon_count
       =@applied_phenomenon.length
     )
+
 
 
   %div.grid_5.alpha#phenomenon_container.interaction_container.coding_container
