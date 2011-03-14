@@ -858,8 +858,24 @@ input[type=search] {
     color: black;
 }
 
-.erase, .save {
+.erase{
 	border-color:transparent;
+	background:#333333;
+	color:white;
+	height:30px;
+	width:50px;
+}
+
+.cancel{
+    border-color:transparent;
+	background:#333333;
+	color:white;
+	height:30px;
+	width:60px;
+}
+
+.save{
+    border-color:transparent;
 	background:#333333;
 	color:white;
 	height:30px;
