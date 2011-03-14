@@ -4,7 +4,7 @@
       = link_to interval_path(@interval, :snippet_id => snippet.id), :class => "snippet" do
         %p= snippet.title
         .max-duration
-          .duration 1m12s34cs
+          .duration= snippet.duration_s
           .snippet-duration
             .snippet-duration2{:style => "margin-left: %dpx; width: %dpx;" % [(snippet.offset/@interval.duration*150 rescue 0), (snippet.duration/@interval.duration*150 rescue 1)]}
       .grid_5.snippet_description

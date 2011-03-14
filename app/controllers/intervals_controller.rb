@@ -90,6 +90,8 @@ class IntervalsController < ApplicationController
     snippet_id = params[:snippet_id]
     if snippet_id
       @snippet = Snippet.find(snippet_id)
+    else
+      @snippet = @interval.snippets.build
     end
   end
   

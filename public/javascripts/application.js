@@ -50,7 +50,7 @@ $(document).ready(function(){
   }); 
   
  
-  $("#new_snippet_form").submit(function(event){
+  $(".new_snippet,.edit_snippet").submit(function(event){
     var target = $(event.target);
 
     // This part borrowed from Paul

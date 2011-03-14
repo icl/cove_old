@@ -1,26 +1,33 @@
 class Snippet < ActiveRecord::Base
-  validates_presence_of :offset, :duration
+  validates_presence_of :offset
   belongs_to :interval
 
-  attr_accessor :start_time
-  attr_accessor :end_time
+  attr_accessor :start_time, :end_time
 
-  def start_time=(time_string)
-    write_attribute :offset, string_to_seconds(time_string)
+  before_validation :read_start_end_times
+  after_find :write_start_end_times
+  
+  def read_start_end_times
+    self.offset = (string_to_seconds self.start_time) rescue nil
+    self.duration = (string_to_seconds self.end_time) - self.offset rescue nil
+    true
   end
 
-  def start_time
-    seconds_to_string offset rescue nil
+  def write_start_end_times
+    self.start_time = seconds_to_string self.offset rescue nil
+    self.end_time = seconds_to_string (self.offset + self.duration) rescue nil
+    true
   end
 
-  def end_time=(time_string)
-    write_attribute :duration, string_to_seconds(time_string)
+  def duration_s
+    sec = self.duration
+    if (sec.nil?)
+      "none"
+    else
+      "%.2dh%.2dm%.2ds" % [(sec/360).floor, (sec/60%360).floor, (sec%60).round]
+    end
   end
-
-  def end_time
-    seconds_to_string(duration) rescue nil
-  end
-
+  
   def string_to_seconds(s)
     min_sec = s.split(":")
     case min_sec.length
