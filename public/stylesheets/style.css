@@ -781,16 +781,13 @@ input[type=search] {
 
 /****Row 4 - start****/
 /*create subinterval widget (Winny)*/
- 
-#snippet_title{
-    width: 250px;
-}
 
 .snippet{
     background-color: #D8D8D8;
     border-radius:10px;
-    height:84px;
+    height:inherit;
     margin-bottom:3px;
+    padding-bottom: 5px;
 }
 
 
@@ -800,6 +797,18 @@ input[type=search] {
 
 .snippet_description .see_more{
 	color:gray;
+}
+
+.snippet_description {
+    text-overflow:ellipsis;
+    overflow:hidden;
+    white-space: nowrap;
+
+}
+
+.snippet_see_more{
+    margin-left: 10px;
+    color: black;
 }
 
 .snippet p{
@@ -849,7 +858,6 @@ input[type=search] {
     color: black;
 }
 
-
 .erase, .save {
 	border-color:transparent;
 	background:#333333;
@@ -863,6 +871,7 @@ input[type=search] {
     border-radius:10px;
     padding:9px;
     margin-top:5px;
+    width:280px;
 }
 
 .markstart, .markend{
@@ -874,27 +883,31 @@ input[type=search] {
 	width:50px;
 }
 
-
 .interval_form{
 	background-color: #D8D8D8;
     border-radius:10px;
     padding:9px;
 	margin-top:3px;
+    width:280px;
 }
 
 .snippet_info{
+    margin-top: 3px;
 	background-color: #D8D8D8;
     border-radius:10px;
     padding:9px;
 }
+
 .info_title{
 	font-weight:bold;
 	color:black;
 	size:18px;
+    padding-bottom: 5px;
 }
 
 .info_time{
-	color:#FF3300;;
+	color:#FF3300;
+    padding-bottom: 5px;
 }
 
 .info_description{

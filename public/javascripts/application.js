@@ -81,6 +81,7 @@ $(document).ready(function(){
     $('fieldset').hide();
     $('.save_cancel_button').hide();
     $('.mark_buttons input').hide();
+    $('.interval_form').hide();
     $('.mark_buttons span').show();
     return false;
   });
@@ -89,6 +90,7 @@ $(document).ready(function(){
     $('fieldset').show();
     $('.save_cancel_button').show();
     $('.mark_buttons input').show();
+    $('.interval_form').show();
     $('.snippet_info').hide();
     $('.mark_buttons span').hide();
     return false;
@@ -100,9 +102,19 @@ $(document).ready(function(){
     $('.mark_buttons input').show();
     $('.snippet_info').hide();
     $('.mark_buttons span').hide();
+    $('.interval_form').show();
     return false;
   });
-
+  
+  $('.edit_button').click(function(){
+    $('fieldset').show();
+    $('.save_cancel_button').show();
+    $('.mark_buttons input').show();
+    $('.snippet_info').hide();
+    $('.mark_buttons span').hide();
+    $('.interval_form').show();
+    return false;
+  });
   
   
 });

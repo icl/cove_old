@@ -1,13 +1,15 @@
-.grid_5.snippet_list
+.grid_6.snippet_list
   - @interval.snippets.each do |snippet|
-    .grid_5.alpha.snippet
+    .grid_6.alpha.snippet
       = link_to interval_path(@interval, :snippet_id => snippet.id), :class => "snippet" do
         %p= snippet.title
         .max-duration
           .duration= snippet.duration_s
           .snippet-duration
             .snippet-duration2{:style => "margin-left: %dpx; width: %dpx;" % [(snippet.offset/@interval.duration*150 rescue 0), (snippet.duration/@interval.duration*150 rescue 1)]}
+      .clear
       .grid_5.snippet_description
         %span= snippet.description
-        %a.snippet_see_more see more
+      .clear
+      %a.snippet_see_more see more
       %a.edit_button edit
