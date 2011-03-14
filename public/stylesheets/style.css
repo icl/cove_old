@@ -781,27 +781,50 @@ input[type=search] {
 
 /****Row 4 - start****/
 /*create subinterval widget (Winny)*/
- 
-#snippet_title{
-    width: 100px;
-}
 
 .snippet{
-    background-color: #C0C0C0;
-    border: solid 1px;
+    background-color: #D8D8D8;
+    border-radius:10px;
+    height:inherit;
+    margin-bottom:3px;
+    padding-bottom: 5px;
+}
+
+
+.snippet_description a{
+	color:#404040;
+}
+
+.snippet_description .see_more{
+	color:gray;
+}
+
+.snippet_description {
+    text-overflow:ellipsis;
+    overflow:hidden;
+    white-space: nowrap;
+
+}
+
+.snippet_see_more{
+    margin-left: 10px;
+    color: black;
 }
 
 .snippet p{
 	font-weight:bold;
+	margin-left:10px;
 	margin-top:10px;
-    color:#996666;
+    color:black;
     font-size: 14px;
 }
 
+
 .duration{
     float: left;
-    margin-left: 5px;
+    margin-left: 10px;
     margin-right: 20px;
+    color:#FF3300;
 }
 
 .max-duration{
@@ -814,20 +837,17 @@ input[type=search] {
 	float:left;
     width: 150px;
 	height:5px;
-	background:#0297c1;
+	background:#00CCFF;
     color: gray;
 }
 
 .snippet-duration2{
-    background:#FF0000;
+    background:#FF3300;
     height: 5px;
     width: 10%;
     margin-left: 50px;
 }
 
-.snippet_description{
-    color: #808080;
-}
 
 .edit_button{
     margin-right: 30px;
@@ -838,31 +858,60 @@ input[type=search] {
     color: black;
 }
 
-.markstart, .markend{
+.erase, .save {
 	border-color:transparent;
 	background:#333333;
 	color:white;
-	margin-top:5px;
-	height:40px;
-	width:70px;
+	height:30px;
+	width:50px;
 }
 
+.mark_buttons{
+	background-color: #D8D8D8;
+    border-radius:10px;
+    padding:9px;
+    margin-top:5px;
+    width:280px;
+}
+
+.markstart, .markend{
+	border-color:transparent;
+	background:#33CCFF;
+	color:white;
+	margin-top:3px;
+	height:30px;
+	width:50px;
+}
 
 .interval_form{
-	margin-top:10px;
+	background-color: #D8D8D8;
+    border-radius:10px;
+    padding:9px;
+	margin-top:3px;
+    width:280px;
+}
+
+.snippet_info{
+    margin-top: 3px;
+	background-color: #D8D8D8;
+    border-radius:10px;
+    padding:9px;
 }
 
 .info_title{
 	font-weight:bold;
-	color:#996666;
+	color:black;
+	size:18px;
+    padding-bottom: 5px;
 }
 
 .info_time{
-	color:#0099CC;
+	color:#FF3300;
+    padding-bottom: 5px;
 }
 
 .info_description{
-	color:black;
+	color:#404040;
 }
 
 .interval_browse{
@@ -870,6 +919,14 @@ input[type=search] {
 	height:270px;
 }
 
+.back, .edit{
+	margin-top:5px;
+	border-color:transparent;
+	background:#333333;
+	color:white;
+	height:30px;
+	width:50px;
+}
 
 /* end style adjustments for show.html */
 /***************************************/
