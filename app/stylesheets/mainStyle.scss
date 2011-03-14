@@ -1,29 +1,78 @@
 @import "compass";
 $applied_color :#D2D2D2;
 
+.btn_coding_help{
+  height: 18px;
+  width: 18px;
+  background: #F2F0F0;
+  color: black;
+  padding: 0px;
+  border-radius: 50px;
+  font-size: 9pt;
+  font-weight: bold;
+  color: #736F70;
+  border: 2px solid #736F70;
+}
+
+
+.coding_key{
+  display: inline;
+}
+
+.key_applied, .key_unapplied{
+  margin-top: 3px;
+  margin-bottom: 5px;
+}
+
 #all_coding_terms{
   background: #E0E0E0;
   border: #E0E0E0;
   border-radius: 7px;
-  padding-bottom: 10px;
+  padding-bottom: 5px;
+  overflow: auto;
+  display: inline;
 }
 
 .btn_unapplied{
-  float: right;
-  margin-right: 10px;
+  margin-right: 3px;
+  margin-left: 152px;
+  padding: 2px;
 }
-.coding_container{
-  margin-top: 0px;
-  margin-left: 0px;
-  height: 155px;
-  overflow-y:scroll;
-  overflow-x:hidden;
-  border-bottom-left-radius: 7px;
-  border-bottom: 2px solid #E0E0E0;
-  border-left: 2px solid #E0E0E0;
-  border-right: 2px solid #E0E0E0;
-  border-bottom: 2px solid #EEEEEE;
+
+.interaction_container.coding_container, .list_tags, .coding_help_info{
   background: #EEEEEE;
+  width: 260px;
+  /*height: 155px;*/
+  overflow-y:hidden;
+  overflow-x:hidden;
+  border-top-right-radius: 7px;
+  border-bottom-right-radius: 7px;
+  border-bottom-left-radius: 7px;
+  padding: 8px 5px 8px 5px;
+  margin: 0px 5px 2px 5px;
+}
+
+div.grid_5.list_tags{
+  border-radius: 7px;
+  width: 260px;
+}
+
+div.grid_5.coding_help_info{
+  border-top-left-radius: 15px;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 15px;
+  border-bottom-left-radius: 15px;  
+  width: 260px;
+  margin-top: 5px;
+  display: none;
+  /*border: 2px solid #736F70;*/
+  
+}
+
+.coding_explain{
+  list-style: square outside;
+  margin-left: 15px;
+  margin-bottom: 5px;
 }
 
 #tag_container{
@@ -31,10 +80,9 @@ $applied_color :#D2D2D2;
   margin-left: 0px;
   overflow-y:hidden;
   overflow-x:hidden;
-  border-bottom: 2px solid #E0E0E0;
   background: #E0E0E0;
   border-radius: 7px;
-  padding-bottom: 10px;
+  padding-bottom: 5px;
 }
 
 .interaction_container ul li{
@@ -48,59 +96,72 @@ ul{
 
 h2.show_terms{
   font-size: 12pt;
-  margin: 10px 0px 2px 8px;
+  margin: 10px 0px 10px 8px;
   color: #0297C1;
   display: inline-block;
+  cursor: default;
 }
 
 .coding_filter, #tagging_name{
   width: 150px;
-  margin: 8px 10px 3px 0px;
-  border-radius: 3px;
+  margin: 8px 7px 2px 0px;
+  border-radius: 5px;
   float: right;
-
 }
 
 h4.show_terms{
   color: #0297C1;
-  margin: 10px 20px 2px 2px;
+  margin: 10px 20px 2px 5px;
   font-size: 10pt;
   display: inline-block;
   background: #EEEEEE;
   border-top-right-radius: 7px;
   border-top-left-radius: 7px;
   padding: 5px 8px 2px 8px;
+  cursor: default;
 }
 
-.code, .tag{
-  width: 125px;
+.code, .tag, .key_color_applied, .key_color_unapplied{
+  width: 121px;
   height: 13px;
-  margin: 1px 2px 1px 2px;
+  margin: 1px 2px 1px 0px;
   text-align: center;
-  padding: 2px 0px 2px 0px;
+  padding: 1px 2px 3px 2px;
   @include border-radius(3px);
-  color: black;
   cursor: pointer;
   overflow: hidden;
 }
 
-.applied{
-  background-color: #F0D24D;
-  color: #F2F0E6;
+.key_color_applied, .key_color_unapplied{
+  width: 20px;
+  margin-bottom: 3px;
+  text-align: center;
 }
-.unapplied{
-  background-color: #F0E3CE;
-  color: #F0D24D;
+
+.tag{
+  cursor: default;
+}
+
+.applied, .key_color_applied{
+  background-color: #37CCD4;
+  color: white;
+}
+
+
+.unapplied, .key_color_unapplied{
+  background-color: #A3D6D9;
+  color: white;
+  font-style: italic;
+}
+
+.unapplied:hover{
+  background-color: #37CCD4;
+  color: white;
 }
 
 div.list_tags{
   background: #EEEEEE;
 
-}
-
-
-.flash.notice{
-  color: black;
 }
 
 .code.unapplied{

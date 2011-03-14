@@ -141,11 +141,15 @@ $(document).ready(function(){
 
  
 
-
+   $(".btn_coding_help").mouseenter(function(){
+	$(".coding_help_info").slideDown("fast");
+   }).mouseleave(function(){
+	$(".coding_help_info").slideUp("fast");
+   });
 
 
     $('.coding_filter').blur(function() {
-      $(this).attr("value", "Search Coding Term");
+      $(this).attr("value", "Search All Coding Terms");
     });
 
     $('.coding_filter').focus(function() {
@@ -165,7 +169,7 @@ $(document).ready(function(){
           xhr.setRequestHeader('X-CSRF-Token', $('meta[name=csrf-token]').attr('content'));
         },
         failure:function(){
-          $("#all_coding_terms").prepend('<div class="flash alert"> Your Tag could not be submitted at this time </div>');
+          $("#all_coding_terms").prepend('<div class="flash alert">There was an error, please try again!</div>');
         },
         success: function(data, status, xhr){
           console.log(data);
@@ -186,7 +190,7 @@ $(document).ready(function(){
 
           //display a flash
           $('.flash').remove();
-          $("#all_coding_terms").prepend('<div class="flash notice"> Your Coding has been added. </div>');
+          $("#all_coding_terms").prepend('<div class="flash notice">The term you selected has been applied.</div>');
 
           //remove focus from the textboxes
           $('.coding_filter').blur();
@@ -195,12 +199,12 @@ $(document).ready(function(){
     }); //end .delegate
 
     $("#new_tag_form").bind("ajax:error", function(){
-      $("#tag_container").prepend('<div class="flash alert"> Your Tag could not be submitted at this time. </div>');  
+      $("#tag_container").prepend('<div class="flash alert">There was an error, please try again!</div>');  
     });
 
     $("#new_tag_form").bind("ajax:success", function(data, xhr, status){
       $(".flash").remove();
-      $("#tag_container").prepend('<div class="flash notice"> Your Tag has been added </div>');  
+      $("#tag_container").prepend('<div class="flash notice">Your tag has been created.</div>');  
 
       var newTagName = xhr["tagName"];
       console.log("tag successfully added" + newTagName);
@@ -218,7 +222,7 @@ $(document).ready(function(){
     }); //end .bind
 
     $("#tagging_name").blur(function() {
-      $(this).attr("value", "Create New Tag");
+      $(this).attr("value", "Create a New Tag");
     });
 
     $('#tagging_name').focus(function() {
