@@ -27,13 +27,13 @@ $(document).ready(function(){
 
   $("button.markstart").click(function(){
     videoPlayer.markSnippetStart();
-    $("#start_mark").val( secondsToString(videoPlayer.snippetStart()) );
+    $("#snippet_start_time").val( secondsToString(videoPlayer.snippetStart()) );
     return false;
   });
   
   $("button.markend").click(function(){
     videoPlayer.markSnippetEnd();
-    $("#end_mark").val( secondsToString(videoPlayer.snippetEnd()) );
+    $("#snippet_end_time").val( secondsToString(videoPlayer.snippetEnd()) );
     return false;
   });
   
