@@ -5,7 +5,7 @@
   = render :partial => "collections"
 
 %div.grid_11#video_container
-  = video_tag interval_path(@interval.id, :format => :m4v), :controls => true, :height => 360, :width => 640
+  = render :partial => "video_player"
 
 %div#adding_shit_to_videos.grid_5
   = render :partial => "adding_to_videos"

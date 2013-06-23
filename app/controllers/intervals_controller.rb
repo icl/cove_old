@@ -2,6 +2,7 @@ class IntervalsController < ApplicationController
     before_filter :authenticate_user!
     before_filter :require_nda
     before_filter :find_interval, :only => [:show, :update, :edit]
+    before_filter :find_snippet, :only => [:show]
     
     respond_to :html
     respond_to :m4v, :sprite, :jpg, :only => [:show]
@@ -83,6 +84,13 @@ class IntervalsController < ApplicationController
   
   def send_video
     send_file(@interval.video_file, :type => 'video/mp4', :disposition => 'inline', :url_based_filename => true) 
+  end
+
+  def find_snippet
+    snippet_id = params[:snippet_id]
+    if snippet_id
+      @snippet = Snippet.find(snippet_id)
+    end
   end
   
 end

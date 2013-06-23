@@ -27,6 +27,7 @@
   <% end %>
   <%= javascript_include_tag "jquery.timers-1.2.js" %>
   <%= javascript_include_tag 'modernizr-1.6.min.js' %>
+  <%= javascript_include_tag 'video.cove.js' %>
   <%= javascript_include_tag 'application.js' %>
   <%= javascript_include_tag "rails.js" %>
   <% if !Rails.env.test? %>
@@ -37,9 +38,10 @@
   <%= stylesheet_link_tag 'style.css' %>
   <%= stylesheet_link_tag '960.css' %>
   <%= stylesheet_link_tag 'style.css'%>
+  <%= stylesheet_link_tag 'video-js.cove.css' %>
+  <%= stylesheet_link_tag 'video-js-skin.css' %>
   <%= stylesheet_link_tag 'compiled/mainStyle.css'%>
   <%= csrf_meta_tag %>
-</head>
 
 <body>
 	<header class="container_16">
