@@ -1,20 +1,31 @@
-%h3.grid_5#title
-  Place Holder Title 
+%div.container_16.interval_show
 
-%div#collections_container.grid_6
-  = render :partial => "collections"
+  %div.grid_11.show_left_side
 
-%div.grid_11#video_container
-  = video_tag interval_path(@interval.id, :format => :m4v), :controls => true, :height => 360, :width => 640
+    %div.grid_6.alpha.show_video_header
+      %div.show_camera_angle
+        = @interval.camera_angle
+      %h1 Far ID
+      %h2="Session #{@interval.session_number}: #{@interval.session_type}"
+ 
+    %div.grid_5#collections_container
+      = render :partial => "collections"
+    
+    %div.grid_11#video_container
+      = video_tag interval_path(@interval.id, :format => :m4v), :controls => true, :height => 360, :width => 640
 
-%div#adding_shit_to_videos.grid_5
-  = render :partial => "adding_to_videos"
+    %div.grid_11.omega#snippets_container
+      = render :partial => "snippets"
 
-%div#snippets_container.grid_11
-  = render :partial => "snippets"
 
-%div.grid_5.meta_info_container
-  This is going to be the meta data
+  %div.grid_5#adding_shit_to_videos
+    = render :partial => "adding_to_videos"
+
+  %div.clear
+
+
+
+
 
 
 

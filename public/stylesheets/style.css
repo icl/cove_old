@@ -341,7 +341,7 @@ header h1 {
 }
 
 .user_links ul {
-	background: #EEE;
+	background: #EEEEEE;
 	height: 40px;
 	font-size: 10pt;
 	margin-left: 0;
@@ -371,17 +371,19 @@ header h1 {
 	}
 
 
-.form_container_invite {
+.form_container_invite {EEEE
 	line-height: 2.0;
 	
 }
 
 .main_links {
-	border-top: 2px solid #d2d2d2;
+	border-top: 2px solid #D2D2D2;
 	margin-bottom: 10px;
 	padding-top: 5px;
 	padding-bottom: 5px;
 	background: #E0E0E0;
+	border-bottom-left-radius: 7px;
+	border-bottom-right-radius: 7px;
 }
 
 .search_form {
@@ -430,7 +432,7 @@ footer h5 {
 }
 
 .notice {
-	color: #95C53D;
+	color: #1C9125;
 }
 
 .flash {
@@ -644,147 +646,59 @@ input[type=search] {
 
 
 /***********************************/
-/* Style adjustments for show.html */
+/* Style adjustments for show.html
 
-				/*Notes:  light bg: #383838
-						  font blue: #0297C1
-							height: 40px;
-						margin-bottom: 15px;
-						padding pushes the grid width wise :/ */
+Style adjustments for show page separated into partials.
+-collections
+-adding_to_videos
+-snippets
+-metadata
+
+*/
+
 
 /****Row 1 - start****/
 .show_video_header {
-	height: 40px;
-	margin-bottom: 15px;
+	height: 43px;
+	width: 280px;
+	margin-bottom: 10px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	background: #E0E0E0;
+	border-radius: 6px;
+	display: inline-block;
 }
 
 .show_video_header h1 {
 	font-size: 14pt;
+	margin-left: 5px;
 	color: #0297C1;
 }
 
 .show_video_header h2 {
 	font-size: 11pt;
-}
-
-.show_addto_widget {
-	background: #383838;
-	height: 40px;
-	margin-bottom: 15px;
+	margin-left: 5px;
+	color: #86979C;
 }
 
 .show_camera_angle {
-	margin-bottom: 15px;
-}
-
-
-/****Row 2 - start****/
-
-.show_video_player p {
-	margin-bottom: 15px;
-}
-
-.show_metadata div.show_mvt_content {
-	border: 5px solid #383838;
-	background: #383838;
-
-}
-
-.show_metadata div h2 {
-	color: #0297C1;
-	display: inline;
-	background: #383838;
-
-}
-
-.show_metadata div h3 {  /*buttons*/
-	background: #DDDDDD;
-	border: 1px solid #444444;	
-	color: black;
 	float: right;
-	padding-right: 4px;
-	padding-left: 4px;
-	cursor: pointer;
 }
 
-
-.show_metadata div.show_more_data {
-	border-left: 5px solid #383838;
-	border-right: 5px solid #383838;
-	border-bottom: 5px solid #383838;
-	display: none;
-	background: #383838;
-
+#collections_container {
+	margin-left: 0px;
 }
 
-
-
-/****Row 3 - start - Coding Terms****/
-
-.show_codingterms_phen {
-	margin-top: 15px;
-	background: #383838;
-
+#video_container{
+	margin-left: 0px;
 }
 
-.show_applied_phen {
-	border: 5px solid #383838;
+#snippets_container {
+	margin-left: 0px;
+	height: 500px;
 }
 
-.show_applied_people {
-	border: 5px solid #383838;
-}
-
-.show_codingterms_people {
-	margin-top: 15px;
-	background: #383838;
-
-}
-
-.show_add_phen_list {
-	display: none;
-	border: 5px solid #383838;
-}
-
-.show_add_people_list {
-	display: none;
-	border: 5px solid #383838;
-}
-
-.show_tags {
-	margin-top: 15px;
-	background: #383838;
-
-}
-
-.show_applied_tags {
-	border: 5px solid #383838;
-}
-
-.show_tags_create {
-	display: none;
-	border: 5px solid #383838;
-}
-
-.show_tags_create input {
-	width: 157px;
-	margin-left: 25px;
-}
-
-.show_tags_create textarea {
-	margin-left: 25px;
-}
-
-.subintervals {
-	background: #383838;
-}
-
-/****Row 4 - start****/
-/*create subinterval widget (Winny)*/
-
-
-
-/* end style adjustments for show.html */
+/*end style adjustments for show.html */
 /***************************************/
 
 
