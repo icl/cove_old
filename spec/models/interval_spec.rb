@@ -67,11 +67,6 @@ describe Interval do
 				@interval.day.should == "05-03-88"
 			end
 		end
-		describe "start_time_of_day" do
-			it "returns a stringy time of day" do
-				@interval.start_time_of_day.should == " 4:55 AM"
-			end
-		end
 		describe "end_time" do
 			it "returns the end time of the interval as a Time" do
 				end_time = @interval.end_time
@@ -111,7 +106,7 @@ describe Interval do
 		end
 		describe "unique_days" do
 			it "returns the unique days" do
-				Interval.unique_days.should == ["04-03-89", "03-03-90"]
+				Interval.unique_days.should == ["03-04-89", "03-03-90"]
 			end
 		end
 		describe "unique_angles" do

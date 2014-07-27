@@ -18,6 +18,7 @@ class Interval < ActiveRecord::Base
   has_and_belongs_to_many :collections
   
   has_many :codings
+  has_many :codes, :through => :codings
   has_many :taggings
   has_many :tags, :through => :taggings
 
@@ -28,8 +29,13 @@ class Interval < ActiveRecord::Base
 	  search_conditions[:session_type] = args[:session_type] unless args[:session_type].blank?
 	  search_conditions[:phrase_type] = args[:phrase_type] unless args[:phrase_type].blank?
 	  search_conditions[:phrase_name] = args[:phrase_name] unless args[:phrase_name].blank?
-	  search_conditions[:start_time] = Time.parse(args[:date]).beginning_of_day..Time.parse(args[:date]).end_of_day unless args[:date].blank?
 
+	  unless args[:start_time].blank?
+		  (m, d, y) = args[:start_time].split("-")
+		  st = Time.gm(y,m,d)
+		  search_conditions[:start_time] = st.beginning_of_day..st.end_of_day
+	  end
+    
 	  query = args[:query].blank? ? [] : Interval.search_columns.collect{|col| "#{col} LIKE :query"}.join(" OR ")
 
 	  includes(:tags).where(query, :query => "%#{args[:query]}%").where(search_conditions)
@@ -63,13 +69,9 @@ class Interval < ActiveRecord::Base
 	def day
 		start_time.strftime("%m-%d-%y") if start_time
 	end
-
-	def start_time_of_day
-		start_time.strftime("%l:%M %p") if start_time
-	end
 	
 	def self.unique_days
-		find(:all, :select => "start_time", :order => "start_time").map{|int| [int.day]}.uniq.compact
+		find(:all, :select => "start_time", :order => "start_time").map{|int| int.day}.uniq.compact
 	end
 
 	def self.unique_angles
@@ -88,7 +90,20 @@ class Interval < ActiveRecord::Base
 		return group(:session_type).collect { |interval| interval.session_type}.compact
 	end
 
+  def path_prefix
+    return File.join(Rails.root, 'private')
+  end
+  
+  def sprite_file
+    return File.join(path_prefix, "sprites", %Q[#{filename.chomp(".m4v")}_sprite.jpg]) if filename
+  end
+  def thumbnail_file
+    return File.join(path_prefix, "thumbs" , %Q[#{filename.chomp(".m4v")}_thumb.jpg]) if filename
+  end
 
+  def video_file
+    return File.join(path_prefix, "videos",filename) if filename
+  end
 
   def self.import!
     Dir.foreach("tmp/notes/") do |file|
@@ -151,5 +166,8 @@ class Interval < ActiveRecord::Base
   def annotations
     @annotations ||= Annotation.new :interval_id => self.id
   end
+
+  #kaminari
+  paginates_per 10
 
 end

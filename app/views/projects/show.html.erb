@@ -49,11 +49,11 @@
 				<%= form.button :submit %>
 			<% end %>
 		</div>
-		<div class="note_list_container grid_10">
-			<ul>
+		<div class="note_list_container prefix_1">
+			<ul class="note_list">
 				<%= render @project.notes.order('created_at DESC') if !@project.notes.blank? %>
 			</ul>
-			<a class="expand_all" style="float:right; display:none;">Expand/Collapse All</a>
+			<a class="expand_all">Expand/Collapse All</a>
 		</div>
 	</div>
 	<!-- end .grid_10 -->
@@ -66,17 +66,17 @@
 		   Tags <span>(<%= link_to 'Edit', edit_project_path(@project) %>):</span>	
 		</h3>
 		
-		
-	<% if !@project.tags.blank? %>
-		<p>
-             <ul>
-             <% @project.tags.each do |t| %>
-             <li class="inline"><%= t.capitalize %></li>
-             <% end %>
-             </ul>
-		</p>
-	<% end %>
-
+		<!-->
+		<%# if !@project.tags.blank? %>
+			<p>
+             	<ul>
+             		<%# @project.tags.each do |t| %>
+             		<li class="inline"><%#= t.capitalize %></li>
+             		<%# end %>
+             	</ul>
+			</p>
+		<%# end %>
+		<-->
 		<h3>
 		   Owner <span>(<%= link_to 'Edit', edit_project_path(@project) %>):</span>	
 		</h3>

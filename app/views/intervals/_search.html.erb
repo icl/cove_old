@@ -1,5 +1,7 @@
 <%= form_tag intervals_path(),   :method => 'get', :class => 'search_form' %>
-
+	<% Interval.filters.each do |filter| %>
+		<%= hidden_field_tag filter[0].to_sym, params[filter[0].to_sym] %>
+	<% end %>
 <%= text_field_tag :query , params[:query], :id => 'search_box', :type => 'search'  %>
 <%= submit_tag 'Search', :name => nil %>
 </form>

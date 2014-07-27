@@ -1,0 +1,69 @@
+%div.grid_5.alpha#all_coding_terms
+
+  %h2.show_terms
+    Coding
+  %input.coding_filter#phenom_filter{:type => "text", :value => "Search All Coding Terms"}
+
+  %input.btn_unapplied{:type => "button", :value => "Show All | Hide"} 
+ 
+  %input.btn_coding_help{:type => "button", :value => "?"}
+
+  %div.grid_5.coding_help_info
+
+    %ul
+      %li.coding_explain
+        Click on the "Show All | Hide" button to view and hide unapplied terms.
+      %li.coding_explain
+        Click on an un-applied term to apply it to this video.
+    %h4
+      Key: 
+    %ul
+      %li.key_applied
+        %span.key_color_applied
+          term
+        Applied coding terms for this video.
+    %ul
+      %li.key_unapplied
+        %span.key_color_unapplied
+          term
+        Un-applied coding terms.
+  
+  %h4.show_terms
+    Phenomenon (
+    %span#phenomenon_count
+      =@applied_phenomenon.length
+    )
+
+  %div.grid_5.alpha#phenomenon_container.interaction_container.coding_container
+    = display_coding_term(@applied_phenomenon, @all_phenomenon)
+
+  %div
+    %h4.show_terms
+      People (
+      %span#people_count
+        =@applied_people.length
+      )
+
+  %div.grid_5.omega#people_container.interaction_container.coding_container
+    = display_coding_term(@applied_people, @all_people)
+
+
+%div.grid_5.omega#tag_container.interaction_container
+
+  %div.tag_form
+    -form_for @tag , :as => :tagging, :url => interval_taggings_path(@interval, :format => :json), :remote => true, :html => {:id => "new_tag_form"}  do |f|
+      %div.add_field
+        =f.text_field :name, :value => "Create a New Tag"
+
+  %h2.show_terms
+    Tags (
+    %span#tag_count
+    =@applied_tags.length
+    )
+
+  %div.grid_5.list_tags
+    %ul#tag_list
+      -if !@applied_tags.blank?
+        -for tagging in @applied_tags
+          %li.tag.applied
+            =tagging.tag.name
