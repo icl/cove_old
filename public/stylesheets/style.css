@@ -782,7 +782,167 @@ input[type=search] {
 /****Row 4 - start****/
 /*create subinterval widget (Winny)*/
 
+.snippet{
+    background-color: #D8D8D8;
+    border-radius:10px;
+    height:inherit;
+    margin-bottom:3px;
+    padding-bottom: 5px;
+}
 
+
+.snippet_description a{
+	color:#404040;
+}
+
+.snippet_description .see_more{
+	color:gray;
+}
+
+.snippet_description {
+    text-overflow:ellipsis;
+    overflow:hidden;
+    white-space: nowrap;
+
+}
+
+.snippet_see_more{
+    margin-left: 10px;
+    color: black;
+}
+
+.snippet p{
+	font-weight:bold;
+	margin-left:10px;
+	margin-top:10px;
+    color:black;
+    font-size: 14px;
+}
+
+
+.duration{
+    float: left;
+    margin-left: 10px;
+    margin-right: 20px;
+    color:#FF3300;
+}
+
+.max-duration{
+    float:left;
+	height:20px;
+}
+
+.snippet-duration{
+	margin-top:4px;
+	float:left;
+    width: 150px;
+	height:5px;
+	background:#00CCFF;
+    color: gray;
+}
+
+.snippet-duration2{
+    background:#FF3300;
+    height: 5px;
+    width: 10%;
+    margin-left: 50px;
+}
+
+
+.edit_button{
+    margin-right: 30px;
+    float: right;
+}
+
+.edit_button a{
+    color: black;
+}
+
+.erase{
+	border-color:transparent;
+	background:#333333;
+	color:white;
+	height:30px;
+	width:50px;
+}
+
+.cancel{
+    border-color:transparent;
+	background:#333333;
+	color:white;
+	height:30px;
+	width:60px;
+}
+
+.save{
+    border-color:transparent;
+	background:#333333;
+	color:white;
+	height:30px;
+	width:50px;
+}
+
+.mark_buttons{
+	background-color: #D8D8D8;
+    border-radius:10px;
+    padding:9px;
+    margin-top:5px;
+    width:280px;
+}
+
+.markstart, .markend{
+	border-color:transparent;
+	background:#33CCFF;
+	color:white;
+	margin-top:3px;
+	height:30px;
+	width:50px;
+}
+
+.interval_form{
+	background-color: #D8D8D8;
+    border-radius:10px;
+    padding:9px;
+	margin-top:3px;
+    width:280px;
+}
+
+.snippet_info{
+    margin-top: 3px;
+	background-color: #D8D8D8;
+    border-radius:10px;
+    padding:9px;
+}
+
+.info_title{
+	font-weight:bold;
+	color:black;
+	size:18px;
+    padding-bottom: 5px;
+}
+
+.info_time{
+	color:#FF3300;
+    padding-bottom: 5px;
+}
+
+.info_description{
+	color:#404040;
+}
+
+.interval_browse{
+	margin-top:5px;
+	height:270px;
+}
+
+.back, .edit{
+	margin-top:5px;
+	border-color:transparent;
+	background:#333333;
+	color:white;
+	height:30px;
+	width:50px;
+}
 
 /* end style adjustments for show.html */
 /***************************************/

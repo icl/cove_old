@@ -37,3 +37,4 @@ public/videos
 public/stylesheets/compiled
 .autotest
 private
+Gemfile.lock

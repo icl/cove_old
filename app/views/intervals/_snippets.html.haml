@@ -1,0 +1,34 @@
+.grid_16.alpha.create_snippet
+  .grid_5.alpha.display_snippet
+    .grid_5.alpha
+      =form_for [@interval, @snippet], :remote => true do |f|
+        .alpha.mark_buttons
+          %button.markstart Start
+          %span 03:30.23
+          = f.text_field :start_time, :size => 10
+          .clear
+          %button.markend End
+          %span 04:23.34
+          = f.text_field :end_time, :size => 10
+        .alpha.interval_form
+          %fieldset
+            %p Title
+            = f.text_field :title, :size => 15
+            %br
+            %p Description
+            = f.text_area :description, :cols => 32, :rows => 5
+          .save_cancel_button
+            %button.cancel Cancel
+            %button.erase  Clear
+            = f.submit "Save", :class => "save"
+      .clear
+      .grid_5.alpha.snippet_info
+        %p.info_title Short music sequence
+        %p.info_time 1m12s34cs
+        %p.info_description 
+          This is where description will go and it will go on and on and on and on and on and on with more description and more description.
+        .new_snippet_buttons
+          %button.back Back
+          %button.edit	Edit
+  .grid_7.alpha.interval_browse
+    = render "intervals/snippets_list"
