@@ -77,7 +77,6 @@ class IntervalsController < ApplicationController
   end
   
   def send_sprite
-    
     send_file(@interval.sprite_file, :type => 'image/jpeg', :disposition => 'inline', :url_based_filename => true)
   end
   
